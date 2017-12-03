@@ -27,6 +27,16 @@ v1.get('/', function(req, res){
     res.send('API Paraguay - GIS');
 });
 
+// Funcion para obtener la IP.
+function getCallerIP(req) {
+    var ip = req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
+    ip = ip.split(',')[0];
+    ip = ip.split(':').slice(-1); //in case the ip returned in a format: "::ffff:146.xxx.xxx.xxx"
+    return ip;
+}
 
 /*------------------------------------------------------
 *  This is router middleware,invoked everytime
@@ -36,14 +46,7 @@ v1.get('/', function(req, res){
 *  for every route started with /api
 --------------------------------------------------------*/
 v1.use(function(req, res, next) {;;
-    var ip;
-    if (req.headers['x-forwarded-for']) {
-        ip = req.headers['x-forwarded-for'].split(",")[0];
-    } else if (req.connection && req.connection.remoteAddress) {
-        ip = req.connection.remoteAddress;
-    } else {
-        ip = req.ip;
-    }
+    var ip = getCallerIP(req);
     console.log("Cliente IP es: " + ip);
     console.log(req.method, req.url);
     next();
