@@ -70,7 +70,6 @@ route.all is extremely useful. you can use it to do
 stuffs for specific routes. for example you need to do
 a validation everytime route /api//departamento/:log/:lat it hit.
 
-remove curut2.all() if you dont want it
 ------------------------------------------------------*/
 curut2.all(function(req, res, next){
     console.log(req.params);
