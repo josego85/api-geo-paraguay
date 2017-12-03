@@ -1,0 +1,13 @@
+{
+    "name": "api-geo-paraguay",
+    "description": "API GEO - Paraguay",
+    "version": "0.0.1",
+    "private": true,
+    "main": "server.js",
+    "dependencies": {
+        "body-parser": "1.9.0",
+        "express": "4.9.5",
+        "express-myconnection": "^1.0.4",
+        "mysql": "^2.15.0"
+    }
+}
