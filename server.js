@@ -45,7 +45,7 @@ function getIP(req) {
 *  we can use this for doing validation,authetication
 *  for every route started with /api
 --------------------------------------------------------*/
-v1.use(function(req, res, next) {;;
+v1.use(function(req, res, next) {
     var ip = getIP(req);
     console.log("Cliente IP es: " + ip);
     console.log(req.method, req.url);
@@ -120,8 +120,6 @@ var server = app.listen(3000, function () {
     var host = server.address().address;
     host = (host === '::' ? 'localhost' : host);
     var port = server.address().port;
-    //var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log("server: ", server.address());
-
+    console.log("Server: ", server.address());
     console.log('Escucha http://%s:%s', host, port);
 });
