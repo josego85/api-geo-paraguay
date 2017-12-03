@@ -28,13 +28,13 @@ v1.get('/', function(req, res){
 });
 
 // Funcion para obtener la IP.
-function getCallerIP(req) {
+function getIP(req) {
     var ip = req.headers['x-forwarded-for'] ||
       req.connection.remoteAddress ||
       req.socket.remoteAddress ||
       req.connection.socket.remoteAddress;
     ip = ip.split(',')[0];
-    ip = ip.split(':').slice(-1); //in case the ip returned in a format: "::ffff:146.xxx.xxx.xxx"
+    ip = ip.split(':').slice(-1); // En caso que la IP retorne en el formato: "::ffff:146.xxx.xxx.xxx"
     return ip;
 }
 
@@ -46,7 +46,7 @@ function getCallerIP(req) {
 *  for every route started with /api
 --------------------------------------------------------*/
 v1.use(function(req, res, next) {;;
-    var ip = getCallerIP(req);
+    var ip = getIP(req);
     console.log("Cliente IP es: " + ip);
     console.log(req.method, req.url);
     next();
