@@ -6,14 +6,13 @@ server.js
 
         host: 'localhost',
         user: 'root',
-        password : 'root',
-        port : 3306, // Puerto mysql
+        password : '123456',
+        port : 3306,        // Puerto mysql
         database: 'paraguay'
 
 
-
-You're gonna need to create a DB named 'test' or whatever you name it,  import t_user.sql
-
+## Hacer correr la app
+node server.js
 
 ## Abrir navegador web
 * http://localhost:3000/api/v1/departamentos
