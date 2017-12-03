@@ -1,23 +1,23 @@
 var express  = require('express'),
     path     = require('path'),
     bodyParser = require('body-parser'),
-    app = express();
+    app = express(),
+    config = require('./database');
 
 app.use(bodyParser.urlencoded({ extended: true })); //support x-www-form-urlencoded
 app.use(bodyParser.json());
 
-/*
-    Conexion a MySql.
-*/
+
+// Conexion a MySql.
 var connection  = require('express-myconnection'),
     mysql = require('mysql');
 
 app.use(
     connection(mysql, {
-        host     : 'localhost',
-        user     : 'root',
-        password : '123456',
-        database : 'paraguay',
+        host     : config.database.HOST,
+        user     : config.database.USERNAME,
+        password : config.database.PASSWORD,
+        database : config.database.DATABASE,
         debug    : false    // Si es true es para el debug.
     }, 'request')
 );
