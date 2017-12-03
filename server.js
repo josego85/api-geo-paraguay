@@ -4,12 +4,9 @@ var express  = require('express'),
     app = express();
 var config = require('./database');
 
-app.use(bodyParser.urlencoded({ extended: true })); //support x-www-form-urlencoded
 app.use(bodyParser.json());
 
-/*
-    Conexion a MySql.
-*/
+// Conexion a MySql.
 var connection  = require('express-myconnection'),
     mysql = require('mysql');
 
@@ -38,7 +35,16 @@ v1.get('/', function(req, res){
 *  we can use this for doing validation,authetication
 *  for every route started with /api
 --------------------------------------------------------*/
-v1.use(function(req, res, next) {
+v1.use(function(req, res, next) {;;
+    var ip;
+    if (req.headers['x-forwarded-for']) {
+        ip = req.headers['x-forwarded-for'].split(",")[0];
+    } else if (req.connection && req.connection.remoteAddress) {
+        ip = req.connection.remoteAddress;
+    } else {
+        ip = req.ip;
+    }
+    console.log("Cliente IP es: " + ip);
     console.log(req.method, req.url);
     next();
 });
@@ -111,6 +117,8 @@ var server = app.listen(3000, function () {
     var host = server.address().address;
     host = (host === '::' ? 'localhost' : host);
     var port = server.address().port;
+    //var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log("server: ", server.address());
 
     console.log('Escucha http://%s:%s', host, port);
 });
