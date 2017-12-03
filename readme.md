@@ -3,13 +3,16 @@
     
 ## Base de datos MySQL
 Entramos a la consola de MySQL
+    
     mysql -u root -p
     
 Creamos la base de datos paraguay
+    
     CREATE DATABASE paraguay CHARACTER SET utf8 COLLATE utf8_general_ci;
     exit
     
 Importamos la base de datos paraguay
+    
     mysql -u root -p paraguay < db/paraguay.sql
     
 ## Configuracion (base de datos MySQL)
