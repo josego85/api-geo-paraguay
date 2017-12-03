@@ -64,12 +64,12 @@ curut.get(function(req, res, next){
 });
 
 //now for Single route (GET)
-var curut2 = v1.route('/departamento/:log/:lat');
+var curut2 = v1.route('/departamentos/:log/:lat');
 
 /*------------------------------------------------------
 route.all is extremely useful. you can use it to do
 stuffs for specific routes. for example you need to do
-a validation everytime route /api//departamento/:log/:lat it hit.
+a validation everytime route /api//departamentos/:log/:lat it hit.
 
 ------------------------------------------------------*/
 curut2.all(function(req, res, next){
@@ -78,7 +78,7 @@ curut2.all(function(req, res, next){
 });
 
 //get data to update
-// Ejemplo: http://localhost:3000/api/v1/departamento/-56.987/-25.564
+// Ejemplo: http://localhost:3000/api/v1/departamentos/-56.987/-25.564
 curut2.get(function(req, res, next){
     var log = req.params.log;
     var lat = req.params.lat;
