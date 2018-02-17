@@ -31,8 +31,9 @@ node server.js
 ## Abrir navegador web
 * http://localhost:3000/api/v1/departamentos
 * http://localhost:3000/api/v1/departamentos/-56.987/-25.564
-
+* http://localhost:3000/api/v1/departamentos/-59.517228974/-23.8302210107
 
 ## Utilizacion de la api
 * http://51.15.192.116:3000/api/v1/departamentos
 * http://51.15.192.116:3000/api/v1/departamentos/-56.987/-25.564
+* http://51.15.192.116:3000/api/v1/departamentos/-59.517228974/-23.8302210107

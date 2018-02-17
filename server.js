@@ -87,7 +87,8 @@ curut2.all(function(req, res, next){
 });
 
 //get data to update
-// Ejemplo: http://localhost:3000/api/v1/departamentos/-56.987/-25.564
+// Ejemplo1: http://localhost:3000/api/v1/departamentos/-56.987/-25.564
+// Ejemplo2: http://localhost:3000/api/v1/departamentos/-59.517228974/-23.8302210107
 curut2.get(function(req, res, next){
     var log = req.params.log;
     var lat = req.params.lat;
@@ -96,8 +97,11 @@ curut2.get(function(req, res, next){
         if (err){
             return next("No se puede conectar a la base de datos.");
         }
-        var query = conn.query("SELECT departamento_id, departamento_nombre, departamento_capital" +
-          " FROM departamentos WHERE ST_CONTAINS(geom, POINT(" + log + "," + lat + "))", function(err, rows){
+        var query = conn.query(
+          "SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre " +
+          "  FROM departamentos dep LEFT JOIN distritos dis " +
+          "  ON ST_Contains(dis.geom, POINT(" + log + "," + lat + "))" +
+          "  WHERE ST_Contains(dep.geom, POINT(" + log + "," + lat + "))", function(err, rows){
             if(err){
                 console.log(err);
                 return next("Error Mysql, verificar la consulta.");
