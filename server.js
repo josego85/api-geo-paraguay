@@ -96,13 +96,14 @@ curut2.get(function(req, res, next){
         if (err){
             return next("No se puede conectar a la base de datos.");
         }
-        var query = conn.query("SELECT departamento_id, departamento_nombre, departamento_capital FROM departamentos WHERE ST_CONTAINS(geom, POINT(" + log + "," + lat + "))", function(err, rows){
+        var query = conn.query("SELECT departamento_id, departamento_nombre, departamento_capital" +
+          " FROM departamentos WHERE ST_CONTAINS(geom, POINT(" + log + "," + lat + "))", function(err, rows){
             if(err){
                 console.log(err);
-                return next("Error Mysql, check la consulta.");
+                return next("Error Mysql, verificar la consulta.");
             }
 
-            // if departemento not found
+            // if departamento no encontrado.
             if(rows.length < 1){
                 return res.send("Departamento no encontrado!!!");
             }
