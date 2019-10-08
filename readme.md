@@ -32,12 +32,15 @@ server.js
 
 ## Hacer correr la app (modo producción)
 Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.Js, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
+    
     npm install pm2 -g
 
 Debemos crear un demonio con PM2 así que paramos el servidor y ejecutamos el siguiente comando:
+    
     pm2 start /home/-proyectosbeta/repositoriosGit/api-geo-paraguay/server.js --name api-geo-paraguay
 
 Necesitamos configurar el script de startup del servidor.
+    
     pm2 startup
 
 ## Abrir navegador web
