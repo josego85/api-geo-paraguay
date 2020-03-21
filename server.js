@@ -98,10 +98,11 @@ curut2.get(function(req, res, next){
             return next("No se puede conectar a la base de datos.");
         }
         var query = conn.query(
-          "SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre " +
-          "  FROM departamentos dep LEFT JOIN distritos dis " +
-          "  ON ST_Contains(dis.geom, POINT(" + log + "," + lat + "))" +
-          "  WHERE ST_Contains(dep.geom, POINT(" + log + "," + lat + "))", function(err, rows){
+          'SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre, ciu.ciudad_nombre ' +
+          '  FROM departamentos dep LEFT JOIN distritos dis ' +
+          '  ON ST_Contains(dis.geom, POINT(' + log + ',' + lat + '))' +
+          '  LEFT JOIN ciudades ciu ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
+          '  WHERE ST_Contains(dep.geom, POINT(' + log + ',' + lat + ')) AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))', function(err, rows){
             if(err){
                 console.log(err);
                 return next("Error Mysql, verificar la consulta.");
