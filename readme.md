@@ -15,6 +15,7 @@ Importamos la base de datos paraguay
 
     mysql -u root -p paraguay < db/paraguay.sql
     mysql -u root -p paraguay < db/distritos.sql
+    mysql -u root -p paraguay < db/ciudades.sql
 
 ## Configuracion (base de datos MySQL)
 server.js
