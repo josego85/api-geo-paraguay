@@ -100,7 +100,7 @@ curut2.get(function(req, res, next){
         var query = conn.query(
           'SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre, ciu.ciudad_nombre ' +
           '  FROM departamentos dep LEFT JOIN distritos dis ' +
-          '  ON ST_Contains(dis.geom, POINT(' + log + ',' + lat + '))' +
+          '  ON ST_Contains(dis.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
           '  LEFT JOIN ciudades ciu ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
           '  WHERE ST_Contains(dep.geom, POINT(' + log + ',' + lat + ')) AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))', function(err, rows){
             if(err){
