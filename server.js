@@ -98,11 +98,13 @@ curut2.get(function(req, res, next){
             return next("No se puede conectar a la base de datos.");
         }
         var query = conn.query(
-          'SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre, ciu.ciudad_nombre ' +
+          'SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre, ciu.ciudad_nombre,ba.barrio_nombre ' +
           '  FROM departamentos dep LEFT JOIN distritos dis ' +
           '  ON ST_Contains(dis.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
           '  LEFT JOIN ciudades ciu ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
-          '  WHERE ST_Contains(dep.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1)) AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))', function(err, rows){
+          '  LEFT JOIN barrios ba ON ST_Contains(ba.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
+          '  WHERE ST_Contains(dep.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1)) AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))' +
+          ' AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + log + ' ' + lat + ')",1))', function(err, rows){
             if(err){
                 console.log(err);
                 return next("Error Mysql, verificar la consulta.");
