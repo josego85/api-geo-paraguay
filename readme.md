@@ -1,4 +1,4 @@
-## Instalacion
+## Instalación
     npm install
 
 ## Base de datos MySQL
@@ -15,7 +15,7 @@ Importamos la base de datos paraguay
     tar xzvf db/paraguay.sql.tar.gz
     mysql -u root -p paraguay < db/paraguay.sql
 
-## Configuracion (base de datos MySQL)
+## Configuración (base de datos MySQL)
 server.js
 
         host: 'localhost',
@@ -47,7 +47,7 @@ Necesitamos configurar el script de startup del servidor.
 * http://localhost:3000/api/v1/departamentos/-56.987/-25.564
 * http://localhost:3000/api/v1/departamentos/-59.517228974/-23.8302210107
 
-## Utilizacion de la api
+## Utilización de la api
 * http://51.15.192.116:3000/api/v1/departamentos
 * http://51.15.192.116:3000/api/v1/departamentos/-56.987/-25.564
 * http://51.15.192.116:3000/api/v1/departamentos/-59.517228974/-23.8302210107
