@@ -1,9 +1,10 @@
-const Department = require("../models/department.model.js");
+const Department = require('../models/department.model.js');
 
-// Retrieve all Department from the database.
-exports.findByLngLat = (req, res) =>
+
+// Retrieve all departments from the database.
+exports.findAll = (req, res) =>
 {
-    Department.findByLngLat(req.params, (err, data) =>
+    Department.getAll((err, data) =>
     {
         if (err)
         {
@@ -19,10 +20,9 @@ exports.findByLngLat = (req, res) =>
     });
 };
 
-// Retrieve all Department from the database.
-exports.findAll = (req, res) =>
+exports.findByLngLat = (req, res) =>
 {
-    Department.getAll((err, data) =>
+    Department.findByLngLat(req.params, (err, data) =>
     {
         if (err)
         {

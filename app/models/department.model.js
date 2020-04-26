@@ -1,11 +1,20 @@
-const sql = require("./db.js");
+const sql = require('./db.js');
 
 // Constructor.
-const Department = function(customer)
+const Department = function(department){};
+
+Department.getAll = result =>
 {
-    // this.email = customer.email;
-    // this.name = customer.name;
-    // this.active = customer.active;
+    sql.query("SELECT d.departamento_id, d.departamento_nombre, d.departamento_capital FROM departamentos as d ORDER BY d.departamento_id", (err, res) =>
+    {
+        if (err)
+        {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        result(null, res);
+    });
 };
 
 Department.findByLngLat = (req, result) =>
@@ -37,20 +46,6 @@ Department.findByLngLat = (req, result) =>
 
         // Not found Department with the longitude and the latitude.
         result({ kind: "not_found" }, null);
-  });
-};
-
-Department.getAll = result =>
-{
-    sql.query("SELECT d.departamento_id, d.departamento_nombre, d.departamento_capital FROM departamentos as d ORDER BY d.departamento_id", (err, res) =>
-    {
-        if (err)
-        {
-            console.log("error: ", err);
-            result(null, err);
-            return;
-        }
-        result(null, res);
     });
 };
 
