@@ -12,6 +12,7 @@ Creamos la base de datos paraguay
     exit
 
 Importamos la base de datos paraguay
+
     tar xzvf db/paraguay.sql.tar.gz
     mysql -u root -p paraguay < db/paraguay.sql
 
