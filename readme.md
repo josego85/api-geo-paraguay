@@ -17,14 +17,12 @@ Importamos la base de datos paraguay
     mysql -u root -p paraguay < db/paraguay.sql
 
 ## Configuración (base de datos MySQL)
-server.js
+database.js
 
-        host: 'localhost',
-        user: 'root',
-        password : '123456',
-        port : 3306,        // Puerto mysql
-        database: 'paraguay'
-
+        DATBASE: 'paraguay',
+        USERNAME: 'root',
+        PASSWORD : '123456',
+        HOST: 'localhost'
 
 
 ## Hacer correr la app (modo desarrollo)
