@@ -4,12 +4,20 @@
     "version": "0.0.1",
     "private": true,
     "main": "server.js",
+    "author": {
+        "name": "Proyectos Beta",
+        "email": "josego85@gmail.com",
+        "url": "https://proyectosbeta.net/"
+      },
+      "license": "GPlv3",
     "dependencies": {
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
-        "express-myconnection": "^1.0.4",
         "ms": "^2.1.2",
         "mysql": "^2.18.1",
         "send": "^0.17.1"
+    },
+    "devDependencies": {
+        "eslint": "^6.8.0"
     }
 }
