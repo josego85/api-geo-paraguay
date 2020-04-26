@@ -17,7 +17,7 @@ Importamos la base de datos paraguay
     mysql -u root -p paraguay < db/paraguay.sql
 
 ## Configuración (base de datos MySQL)
-database.js
+config/db.config.js
 
         DATBASE: 'paraguay',
         USERNAME: 'root',
@@ -41,12 +41,9 @@ Necesitamos configurar el script de startup del servidor.
     
     pm2 startup
 
-## Abrir navegador web
-* http://localhost:3000/api/v1/departamentos
-* http://localhost:3000/api/v1/departamentos/-56.987/-25.564
-* http://localhost:3000/api/v1/departamentos/-59.517228974/-23.8302210107
-
-## Utilización de la api
+## Utilización del API
+* http://51.15.192.116:3000/api/v1/paraguay/-59.517228974/-23.8302210107
 * http://51.15.192.116:3000/api/v1/departamentos
 * http://51.15.192.116:3000/api/v1/departamentos/-56.987/-25.564
-* http://51.15.192.116:3000/api/v1/departamentos/-59.517228974/-23.8302210107
+* http://51.15.192.116:3000/api/v1/distritos
+* http://51.15.192.116:3000/api/v1/ciudades
