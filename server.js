@@ -1,8 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const key = fs.readFileSync('./certificates/key.pem');
+const cert = fs.readFileSync('./certificates/cert.pem');
 const rest = require('./app/routes/index.js');
+const globalConfig = require('./app/config/global.config.js');
 
 const app = express();
+const https = require('https');
 
 // Parse requests of content-type: application/json
 app.use(bodyParser.json());
@@ -17,15 +22,27 @@ app.use(bodyParser.urlencoded(
 app.use('/api/v1', rest);
 
 // Start Server.
-let server = app.listen(3000, function ()
+const server = https.createServer(
 {
-    let host = server.address().address;
-    let port = server.address().port;
+    key: key, 
+    cert: cert
+}, app);
 
-    host = (host === '::' ? 'localhost' : host);
-    console.log("Server: ", server.address());
-    console.log('Escucha http://%s:%s', host, port);
+server.listen(globalConfig.PORT, () =>
+{
+    console.log('listening on ' + globalConfig.PORT);
 });
+
+
+// let server = app.listen(3000, function ()
+// {
+//     let host = server.address().address;
+//     let port = server.address().port;
+
+//     host = (host === '::' ? 'localhost' : host);
+//     console.log("Server: ", server.address());
+//     console.log('Escucha http://%s:%s', host, port);
+// });
 
 // Funcion para obtener la IP.
 // function getIP(req) {
