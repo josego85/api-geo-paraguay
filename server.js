@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const key = fs.readFileSync('./certificates/key.pem');
-const cert = fs.readFileSync('./certificates/cert.pem');
+const key = fs.readFileSync(__dirname + '/certificates/key.pem');
+const cert = fs.readFileSync(__dirname + '/certificates/cert.pem');
 const rest = require('./app/routes/index.js');
 const globalConfig = require('./app/config/global.config.js');
 
@@ -24,7 +24,7 @@ app.use('/api/v1', rest);
 // Start Server.
 const server = https.createServer(
 {
-    key: key, 
+    key: key,
     cert: cert
 }, app);
 
