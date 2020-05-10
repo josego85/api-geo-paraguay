@@ -29,7 +29,7 @@ config/db.config.js
     node server.js
 
 ## Hacer correr la app (modo producción)
-Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.Js, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
+Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
     
     npm install pm2 -g
 
