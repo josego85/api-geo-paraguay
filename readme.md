@@ -18,11 +18,11 @@ Importamos la base de datos paraguay
 
 ## Configuración (base de datos MySQL)
 config/db.config.js
-
-        DATBASE: 'paraguay',
-        USERNAME: 'root',
-        PASSWORD : '123456',
-        HOST: 'localhost'
+  
+    DATBASE: 'paraguay',
+    USERNAME: 'root',
+    PASSWORD : '123456',
+    HOST: 'localhost'
 
 
 ## Hacer correr la app (modo desarrollo)
