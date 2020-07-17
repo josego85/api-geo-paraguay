@@ -14,7 +14,12 @@ exports.findAll = (req, res) =>
         }
         else 
         {
-            res.send(data);
+            const json =
+            {
+                success: true,
+                data: data
+            }
+            res.status(200).json(json);
         }
     });
 };
