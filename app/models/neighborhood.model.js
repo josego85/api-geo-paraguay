@@ -1,11 +1,11 @@
 const sql = require('./db.js');
 
 // Constructor.
-const City = function(city){};
+const Neighborhood = function(neighborhood){};
 
-City.getAll = result =>
+Neighborhood.getAll = result =>
 {
-    sql.query("SELECT c.ciudad_id, c.ciudad_nombre FROM ciudades as c ORDER BY c.ciudad_id", (err, res) =>
+    sql.query("SELECT b.barrio_id, b.barrio_nombre FROM barrios as b ORDER BY b.barrio_id", (err, res) =>
     {
         if (err)
         {
@@ -17,4 +17,4 @@ City.getAll = result =>
     });
 };
 
-module.exports = City;
+module.exports = Neighborhood;

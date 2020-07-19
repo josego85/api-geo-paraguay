@@ -43,7 +43,8 @@ Necesitamos configurar el script de startup del servidor.
 
 ## Utilización del API
 * https://51.15.192.116:3000/api/v1/paraguay/-59.517228974/-23.8302210107
-* https://51.15.192.116:3000/api/v1/departamentos
 * https://51.15.192.116:3000/api/v1/departamentos/-56.987/-25.564
+* https://51.15.192.116:3000/api/v1/departamentos
 * https://51.15.192.116:3000/api/v1/distritos
 * https://51.15.192.116:3000/api/v1/ciudades
+* https://51.15.192.116:3000/api/v1/barrios

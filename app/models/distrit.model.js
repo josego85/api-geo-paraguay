@@ -5,7 +5,7 @@ const Distrit = function(distrit){};
 
 Distrit.getAll = result =>
 {
-    sql.query("SELECT dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id", (err, res) =>
+    sql.query("SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id", (err, res) =>
     {
         if (err)
         {
