@@ -1,3 +1,11 @@
+# API GEO Paraguay
+
+# Tecnologías
+
+- NodeJS 14.16.xx
+- NPM 7.6.xx
+- MySQL 5.7
+
 ## Instalación
     npm install
 
@@ -31,10 +39,58 @@ Cambiar las varibles del .env
     DB_USER="api-geo"
     DB_PASSWORD="123456"
 
-## Hacer correr la app (modo desarrollo)
-    node server.js
+# Dearrollo
 
-## Hacer correr la app (modo producción)
+## Hacer correr la app
+
+```
+node server.js
+```
+
+## Calidad de código]
+
+### Sonarqube
+
+- [Sitio oficial](https://www.sonarqube.org/)
+
+#### Instalar
+
+##### Con docker
+
+```
+docker pull sonarqube
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+```
+
+##### Acceso web
+
+```
+http://localhost:9000
+```
+
+###### Credenciales por defecto
+
+- User: admin
+- Password: admin
+
+#### Uar con docker
+
+```
+docker pull newtmitch/sonar-scanner
+
+```
+
+##### GNU-Linux/MacOS
+
+Ejecutar
+
+```
+docker run -ti -v /home/proyectosbeta/repositoriosGit/api-geo-paraguay:/usr/src --link sonarqube newtmitch/sonar-scanner
+```
+
+# Producción
+
+## Hacer correr la app
 Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
     
     npm install pm2 -g
@@ -47,7 +103,9 @@ Necesitamos configurar el script de startup del servidor.
     
     pm2 startup
 
-## Utilización del API
+
+
+# Utilización del API
 * https://51.15.192.116:3000/api/v1/paraguay/-59.517228974/-23.8302210107
 * https://51.15.192.116:3000/api/v1/departamentos/-56.987/-25.564
 * https://51.15.192.116:3000/api/v1/departamentos
