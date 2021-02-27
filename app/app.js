@@ -3,6 +3,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const rest = require("./routes/index.js");
+const helmet = require("helmet");
+const cors = require("cors");
 const app = express();
 
 // Parse requests of content-type: application/json
@@ -14,6 +16,10 @@ app.use(
     extended: true,
   })
 );
+
+// Seguridad.
+app.use(helmet());
+app.use(cors());
 
 // Register the routes.
 app.use("/api/v1", rest);
