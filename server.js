@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -28,9 +30,9 @@ const server = https.createServer(
     cert: cert
 }, app);
 
-server.listen(globalConfig.PORT, () =>
+server.listen(globalConfig.APP_PORT, () =>
 {
-    console.log('listening on ' + globalConfig.PORT);
+    console.log('listening on ' + globalConfig.APP_PORT);
 });
 
 
