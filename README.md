@@ -17,13 +17,19 @@ Importamos la base de datos paraguay
     mysql -u root -p paraguay < db/paraguay.sql
 
 ## Configuración (base de datos MySQL)
-config/db.config.js
-  
-    DATBASE: 'paraguay',
-    USERNAME: 'root',
-    PASSWORD : '123456',
-    HOST: 'localhost'
 
+```
+cp .env.example .env
+```
+
+Cambiar las varibles del .env
+    
+    APP_PORT=3000
+    
+    DB_HOST=localhost
+    DB_NAME=paraguay
+    DB_USER="api-geo"
+    DB_PASSWORD="123456"
 
 ## Hacer correr la app (modo desarrollo)
     node server.js
