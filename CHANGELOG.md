@@ -1,3 +1,7 @@
+# v1.3.0
+
+- Se prepara el package json para producción.
+
 # v1.2.0
 
 - Se agrega seguridad usando cors y helmet.
