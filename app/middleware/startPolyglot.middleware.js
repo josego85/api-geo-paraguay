@@ -10,8 +10,6 @@ const languages = {
   en: myEn,
 };
 
-console.log("languages: ", languages);
-
 const getLanguage = (language) => {
   return languages[language] || myEn;
 };

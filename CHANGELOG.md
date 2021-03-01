@@ -1,3 +1,7 @@
+# v1.4.0
+
+- Se agrega la documentación del API.
+
 # v1.3.0
 
 - Se prepara el package json para producción.
