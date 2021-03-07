@@ -88,6 +88,14 @@ Ejecutar
 docker run -ti -v /home/proyectosbeta/repositoriosGit/api-geo-paraguay:/usr/src --link sonarqube newtmitch/sonar-scanner
 ```
 
+##### Microsoft Windows
+
+Ejecutar
+
+```
+docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src --link sonarqube newtmitch/sonar-scanner
+```
+
 # Producción
 
 ## Hacer correr la app
