@@ -105,7 +105,7 @@ Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS,
 
 Debemos crear un demonio con PM2 así que paramos el servidor y ejecutamos el siguiente comando:
     
-    pm2 start /home/-proyectosbeta/repositoriosGit/api-geo-paraguay/server.js --name api-geo-paraguay
+    pm2 start /home/proyectosbeta/repositoriosGit/api-geo-paraguay/server.js --name api-geo-paraguay
 
 Necesitamos configurar el script de startup del servidor.
     
