@@ -2,8 +2,8 @@
 
 # Tecnologías
 
-- NodeJS 14.16.xx
-- NPM 7.6.xx
+- NodeJS 14.17.xx
+- NPM 6.14.xx
 - MySQL 5.7
 
 ## Instalación
