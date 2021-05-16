@@ -3,7 +3,7 @@ const swagger = {
   info: {
     title: "API GEO Paraguay",
     description: "API GEO Paraguay",
-    version: "1.4.0",
+    version: "1.5.0",
     contact: {
       email: "josego85@gmail.com",
     },
