@@ -73,7 +73,7 @@ http://localhost:9000
 - User: admin
 - Password: admin
 
-#### Uar con docker
+#### Usar con docker
 
 ```
 docker pull newtmitch/sonar-scanner
