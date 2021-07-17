@@ -2,7 +2,6 @@
 
 - Se agrega babel y webpack.
 
-
 # v1.4.0
 
 - Se agrega la documentación del API.
