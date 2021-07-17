@@ -4,13 +4,7 @@
 
 - NodeJS 14.17.xx
 - NPM 6.14.xx
-- MySQL 5.7.xx
-
-## Instalación
-
-```bash
-npm install
-```    
+- MySQL 5.7.xx    
 
 ## Base de datos MySQL
 
@@ -49,6 +43,12 @@ Cambiar las varibles del .env
     DB_NAME=paraguay
     DB_USER="api-geo"
     DB_PASSWORD="123456"
+```
+
+## Instalación
+
+```bash
+npm install
 ```
 
 # Dearrollo
