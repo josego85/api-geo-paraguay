@@ -3,7 +3,7 @@
 # Tecnologías
 
 - NodeJS 14.17.xx
-- NPM 6.14.xx
+- NPM 7.20.xx
 - MySQL 5.7.xx    
 
 ## Base de datos MySQL
@@ -59,7 +59,7 @@ npm install
 node server.js
 ```
 
-## Calidad de código]
+## Calidad de código
 
 ### Sonarqube
 
