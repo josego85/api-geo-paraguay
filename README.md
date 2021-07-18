@@ -4,7 +4,8 @@
 
 - NodeJS 14.17.xx
 - NPM 7.20.xx
-- MySQL 5.7.xx    
+- MySQL 5.7.xx
+- Redis para el cache  
 
 ## Base de datos MySQL
 
@@ -37,12 +38,15 @@ cp .env.example .env
 Cambiar las varibles del .env
 
 ```
-    APP_PORT=3000
+APP_PORT=3000
     
-    DB_HOST=localhost
-    DB_NAME=paraguay
-    DB_USER="api-geo"
-    DB_PASSWORD="123456"
+DB_HOST=localhost
+DB_NAME=paraguay
+DB_USER="api-geo"
+DB_PASSWORD="123456"
+
+REDIS_HOST='localhost'
+REDIS_PORT=6379
 ```
 
 ## Instalación

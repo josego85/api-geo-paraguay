@@ -1,25 +1,57 @@
+"use strict";
+
+import { redisClient, save} from "helpers/providers/cache/redisClient.js";
+
 const City = require('models/city.model.js');
 
+const getCaching = async (field) => {
+    // Query redis.
+      const cacheResult = await redisClient.getAsync(
+      `${field}`
+    );
+  
+      if(!cacheResult){ return; }
+  
+      return JSON.parse(cacheResult);
+};
+
 // Retrieve all city from the database.
-exports.findAll = (req, res) =>
-{
+exports.findAll = async (request, response) => {
+    const field = 'cities';
+    const resultCache = await getCaching(field);
+    
+    if (resultCache){
+        response.status(200).json({
+            success: true,
+            data: resultCache,
+        });
+
+        return ;
+    }
+
     City.getAll((err, data) =>
     {
         if (err)
         {
-            res.status(500).send(
+            response.status(500).send(
             {
                 message: err.message || "Some error occurred while retrieving city."
             });
         }
         else 
         {
+            // Update cache.
+            save(
+                field,
+                data
+            ).catch(error => log.error("Error: ", error));
+
             const json =
             {
                 success: true,
                 data: data
             }
-            res.status(200).json(json);
+            response.status(200).json(json);
         }
     });
 };

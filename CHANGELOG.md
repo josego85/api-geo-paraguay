@@ -1,6 +1,7 @@
 # v1.6.0
 
 - Refactorización de código. Se agrega los módulos.
+- Se agrega redis para el cache de todos los departamentos y ciudades.
 
 # v1.5.0
 
