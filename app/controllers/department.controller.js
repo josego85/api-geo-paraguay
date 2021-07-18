@@ -1,19 +1,9 @@
 "use strict";
 
-import { redisClient, save} from "helpers/providers/cache/redisClient.js";
+import getCaching from "./app.controller.js";
+import { save} from "helpers/providers/cache/redisClient.js";
 
 const Department = require("models/department.model.js");
-
-const getCaching = async (field) => {
-  // Query redis.
-	const cacheResult = await redisClient.getAsync(
-    `${field}`
-  );
-
-	if(!cacheResult){ return; }
-
-	return JSON.parse(cacheResult);
-};
 
 // Retrieve all departments from the database.
 exports.findAll = async (request, response) => {
