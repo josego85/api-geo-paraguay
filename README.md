@@ -64,6 +64,12 @@ npm install
 node server.js
 ```
 
+## Documentation
+
+### Access
+
+- [Oficial site](http://localhost:3000/api-docs)
+
 ## Calidad de código
 
 ### Sonarqube

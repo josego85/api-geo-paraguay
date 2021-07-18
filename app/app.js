@@ -1,13 +1,14 @@
 "use strict";
 
-const express = require("express");
-const createLocaleMiddleware = require("express-locale");
-const helmet = require("helmet");
-const cors = require("cors");
-//import swaggerUi from "swagger-ui-express";
-//import { swagger as swaggerDocument } from "./config/swagger.config.js";
-const rest = require("routes/index.js");
-const startPolyglot = require("middleware/startPolyglot.middleware.js");
+import express from "express";
+import createLocaleMiddleware from "express-locale";
+import helmet from "helmet";
+import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import { swagger as swaggerDocument } from "./config/swagger.config.js";
+import rest from "routes/index.js";
+import startPolyglot from "middleware/startPolyglot.middleware.js";
+
 const app = express();
 
 app.use(express.json());
@@ -28,7 +29,7 @@ app.use(helmet());
 app.use(cors());
 
 // Documentation.
-//app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Register the API REST routes.
 app.use("/api/v1", rest);

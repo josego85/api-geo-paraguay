@@ -2,6 +2,7 @@
 
 - Refactorización de código. Se agrega los módulos.
 - Se agrega redis para el cache de todos los departamentos, ciudades, distritos y barrios.
+- Se agrega documentación del API.
 
 # v1.5.0
 
