@@ -29,7 +29,7 @@ exports.findAll = async (request, response) => {
       save(
         field,
         data
-      ).catch(error => log.error("Error: ", error));
+      ).catch(error => console.error("Error: ", error));
 
       const json = {
         success: true,
