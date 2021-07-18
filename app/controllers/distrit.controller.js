@@ -1,25 +1,46 @@
+"use strict";
+
+import getCaching from "./app.controller.js";
+import { save } from "helpers/providers/cache/redisClient.js";
+
 const Distrit = require('models/distrit.model.js');
 
 // Retrieve all distrits from the database.
-exports.findAll = (req, res) =>
-{
-    Distrit.getAll((err, data) =>
-    {
+exports.findAll = async (request, response) => {
+    const field = 'distrits';
+    const resultCache = await getCaching(field);
+    
+    if (resultCache){
+        response.status(200).json({
+            success: true,
+            data: resultCache,
+        });
+
+        return ;
+    }
+
+    Distrit.getAll((err, data) =>{
         if (err)
         {
-            res.status(500).send(
+            response.status(500).send(
             {
                 message: err.message || "Some error occurred while retrieving distrit."
             });
         }
         else 
         {
+            // Update cache.
+            save(
+                field,
+                data
+            ).catch(error => log.error("Error: ", error));
+
             const json =
             {
                 success: true,
                 data: data
             }
-            res.status(200).json(json);
+            response.status(200).json(json);
         }
     });
 };

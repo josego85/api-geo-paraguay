@@ -1,7 +1,7 @@
 "use strict";
 
 import getCaching from "./app.controller.js";
-import { save} from "helpers/providers/cache/redisClient.js";
+import { save } from "helpers/providers/cache/redisClient.js";
 
 const Department = require("models/department.model.js");
 
