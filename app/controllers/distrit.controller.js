@@ -1,4 +1,4 @@
-const Distrit = require('../models/distrit.model.js');
+const Distrit = require('models/distrit.model.js');
 
 // Retrieve all distrits from the database.
 exports.findAll = (req, res) =>

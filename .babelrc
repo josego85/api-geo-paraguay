@@ -1,4 +1,22 @@
 {
-    "presets": ["@babel/preset-env"],
-    "plugins": ["@babel/plugin-proposal-class-properties"]
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties"
+      ],
+      ["module-resolver", {
+        "root": ["."],
+        "alias": {
+          "config": "./app/config",
+          "controllers": "./app/controllers",
+          "i18n": "./app/i18n",
+          "helpers": "./app/helpers",
+          "middleware": "./app/middleware",
+          "models": "./app/models",
+          "routes": "./app/routes"
+        }
+      }]
+    ]
 }

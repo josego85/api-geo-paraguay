@@ -1,6 +1,6 @@
 "use strict";
 
-const Department = require("../models/department.model.js");
+const Department = require("models/department.model.js");
 
 // Retrieve all departments from the database.
 exports.findAll = (req, res) => {

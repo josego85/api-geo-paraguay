@@ -1,4 +1,4 @@
-const City = require('../models/city.model.js');
+const City = require('models/city.model.js');
 
 // Retrieve all city from the database.
 exports.findAll = (req, res) =>

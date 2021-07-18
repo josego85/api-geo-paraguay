@@ -1,4 +1,4 @@
-const Neighborhood = require('../models/neighborhood.model.js');
+const Neighborhood = require('models/neighborhood.model.js');
 
 // Retrieve all neighborhood from the database.
 exports.findAll = (req, res) =>

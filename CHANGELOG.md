@@ -1,3 +1,7 @@
+# v1.6.0
+
+- Refactorización de código. Se agrega los módulos.
+
 # v1.5.0
 
 - Se agrega babel y webpack.

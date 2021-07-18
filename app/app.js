@@ -6,8 +6,8 @@ const helmet = require("helmet");
 const cors = require("cors");
 //import swaggerUi from "swagger-ui-express";
 //import { swagger as swaggerDocument } from "./config/swagger.config.js";
-const rest = require("./routes/index.js");
-const startPolyglot = require("./middleware/startPolyglot.middleware.js");
+const rest = require("routes/index.js");
+const startPolyglot = require("middleware/startPolyglot.middleware.js");
 const app = express();
 
 app.use(express.json());
