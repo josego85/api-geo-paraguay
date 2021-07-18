@@ -1,16 +1,25 @@
+import { APP_PORT, URL_DOMAIN } from "./global.config.js";
+
+const versionSystem = process.env.npm_package_version;
+
 const swagger = {
   openapi: "3.0.3",
   info: {
+    version: versionSystem,
     title: "API GEO Paraguay",
     description: "API GEO Paraguay",
-    version: "1.5.0",
     contact: {
       email: "josego85@gmail.com",
     },
   },
+  externalDocs: [
+    {
+      url: `${URL_DOMAIN}:${APP_PORT}/api-docs`,
+    },
+  ],
   servers: [
     {
-      url: "http://localhost:3000/api/v1",
+      url: `${URL_DOMAIN}:${APP_PORT}/api/v1`,
       description: "Development server,",
     },
   ],
