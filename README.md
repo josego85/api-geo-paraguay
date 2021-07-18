@@ -114,6 +114,12 @@ docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src
 
 # Producción
 
+## Build
+
+```bash
+npm run build
+```
+
 ## Hacer correr la app
 Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
     
@@ -124,7 +130,7 @@ npm install pm2 -g
 Debemos crear un demonio con PM2 así que paramos el servidor y ejecutamos el siguiente comando:
 
 ```bash    
-pm2 start /home/proyectosbeta/repositoriosGit/api-geo-paraguay/server.js --name api-geo-paraguay
+pm2 start /home/proyectosbeta/repositoriosGit/api-geo-paraguay/dist/bundle.js --name api-geo-paraguay
 ```
 
 Necesitamos configurar el script de startup del servidor.
