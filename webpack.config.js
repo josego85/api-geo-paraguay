@@ -17,4 +17,18 @@ module.exports = {
   },
   externals: [nodeExternals()],
   plugins: [new Dotenv(), new CleanWebpackPlugin()],
+  resolve: {
+    alias: {
+        config: path.resolve(__dirname, './app/config'),
+        controllers: path.resolve(__dirname, './app/controllers'),
+        i18n: path.resolve(__dirname, './app/i18n'),
+        helpers: path.resolve(__dirname, './app/helpers'),
+        middleware: path.resolve(__dirname, './app/middleware'),
+        models: path.resolve(__dirname, './app/models'),
+        routes: path.resolve(__dirname, './app/routes'),
+    },
+    modules: [
+        'node_modules',
+    ]
+  }
 };
