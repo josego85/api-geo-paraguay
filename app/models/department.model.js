@@ -5,22 +5,25 @@ const Department = function(department){};
 
 Department.getAll = result =>
 {
-    sql.query("SELECT d.departamento_id, d.departamento_nombre, d.departamento_capital FROM departamentos as d ORDER BY d.departamento_id", (err, res) =>
+    sql.query("SELECT d.departamento_id, d.departamento_nombre, d.departamento_capital FROM departamentos as d ORDER BY d.departamento_id",
+      (error, response) =>
     {
-        if (err)
+        if (error)
         {
-            console.log("error: ", err);
-            result(null, err);
+            console.log("error: ", error);
+            result(null, error);
+
             return;
         }
-        result(null, res);
+
+        result(null, response);
     });
 };
 
-Department.findByLngLat = (req, result) =>
+Department.findByLngLat = (request, result) =>
 {
-    let lng = req.lng;
-    let lat = req.lat;
+    let lng = request.lng;
+    let lat = request.lat;
 
     sql.query('SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre, ciu.ciudad_nombre,ba.barrio_nombre ' +
       '  FROM departamentos dep LEFT JOIN distritos dis ' +
@@ -28,23 +31,27 @@ Department.findByLngLat = (req, result) =>
       '  LEFT JOIN ciudades ciu ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + lng + ' ' + lat + ')",1))' +
       '  LEFT JOIN barrios ba ON ST_Contains(ba.geom, ST_GeomFromText("POINT(' + lng + ' ' + lat + ')",1))' +
       '  WHERE ST_Contains(dep.geom, ST_GeomFromText("POINT(' + lng + ' ' + lat + ')",1)) AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + lng + ' ' + lat + ')",1))' +
-      ' AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + lng + ' ' + lat + ')",1))', (err, res) =>
+      ' AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' + lng + ' ' + lat + ')",1))',
+        (error, response) =>
     {
-        if (err)
+        if (error)
         {
-            console.log("error: ", err);
-            result(err, null);
+            console.log("error: ", error);
+            result(error, null);
+
             return;
         }
 
-        if (res.length) 
+        if (response.length) 
         {
-            console.log("found department: ", res[0]);
-            result(null, res[0]);
+            console.log("found department: ", response[0]);
+            result(null, response[0]);
+
             return;
         }
 
-        // Not found Department with the longitude and the latitude.
+        // Not found Department with the longitude 
+        // and the latitude.
         result({ kind: "not_found" }, null);
     });
 };
