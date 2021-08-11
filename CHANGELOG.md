@@ -1,3 +1,7 @@
+# v1.6.1
+
+- Se agrega el engine en el package.json
+
 # v1.6.0
 
 - Refactorización de código. Se agrega los módulos.
