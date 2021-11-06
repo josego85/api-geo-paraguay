@@ -1,6 +1,7 @@
-import { APP_PORT, URL_DOMAIN } from "./global.config.js";
+"use strict";
 
-const versionSystem = process.env.npm_package_version;
+const { APP_PORT, URL_DOMAIN } = require("./global.config.js");
+const versionSystem            = process.env.npm_package_version;
 const swagger = {
   openapi: "3.0.3",
   info: {
@@ -146,4 +147,4 @@ const swagger = {
   tags: [],
 };
 
-export { swagger };
+module.exports = swagger;

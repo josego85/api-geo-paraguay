@@ -1,15 +1,14 @@
 "use strict";
 
-import express from "express";
-import createLocaleMiddleware from "express-locale";
-import helmet from "helmet";
-import cors from "cors";
-import swaggerUi from "swagger-ui-express";
-import { swagger as swaggerDocument } from "config/swagger.config.js";
-import { router as rest } from "routes/index.js";
-import startPolyglot from "middleware/startPolyglot.middleware.js";
-
-const app = express();
+const express                = require("express");
+const createLocaleMiddleware = require("express-locale");
+const helmet                 = require("helmet");
+const cors                   = require("cors");
+const swaggerUi              = require("swagger-ui-express");
+const swaggerDocument        = require("./config/swagger.config.js");
+const rest                   = require("./routes/index.js");
+const startPolyglot          = require("./middleware/startPolyglot.middleware.js");
+const app                    = express();
 
 app.use(express.json());
 

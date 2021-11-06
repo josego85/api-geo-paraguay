@@ -6,4 +6,4 @@ const welcome = (req, res) => {
   });
 };
 
-export { welcome };
+module.exports = welcome;

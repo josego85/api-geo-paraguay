@@ -1,6 +1,6 @@
 "use strict";
 
-const mysql = require('mysql');
+const mysql    = require('mysql');
 const dbConfig = require('config/db.config.js');
 
 // Create a connection to the database

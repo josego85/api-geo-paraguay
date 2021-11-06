@@ -1,8 +1,7 @@
 "use strict";
 
-import getCaching from "./app.controller.js";
-import { save } from "helpers/providers/cache/redisClient.js";
-
+const getCaching   = require("./app.controller.js");
+const { save }     = require("../helpers/providers/cache/redisClient.js");
 const Neighborhood = require('models/neighborhood.model.js');
 
 // Retrieve all neighborhood from the database.

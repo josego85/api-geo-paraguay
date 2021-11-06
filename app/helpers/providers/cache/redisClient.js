@@ -1,8 +1,8 @@
 "use strict";
 
-import { REDIS_HOST, REDIS_PORT } from "config/global.config.js";
-import redis from "redis";
-import bluebird from "bluebird";
+const { REDIS_HOST, REDIS_PORT } = require("../../../config/global.config.js");
+const redis                      = require("redis");
+const bluebird                   = require("bluebird");
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 
@@ -20,4 +20,4 @@ const save = async (field, data) => {
       serializedDetails, "EX", expirationTime);
 };
 
-export { redisClient, save };
+module.exports = { redisClient, save };

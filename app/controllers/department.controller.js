@@ -1,9 +1,8 @@
 "use strict";
 
-import getCaching from "./app.controller.js";
-import { save } from "helpers/providers/cache/redisClient.js";
-
-const Department = require("models/department.model.js");
+const getCaching = require("./app.controller.js");
+const { save }   = require("../helpers/providers/cache/redisClient.js");
+const Department = require("../models/department.model.js");
 
 // Retrieve all departments from the database.
 exports.findAll = async (request, response) => {

@@ -1,8 +1,8 @@
 "use strict";
 
-const path = require("path");
-const nodeExternals = require("webpack-node-externals");
-const Dotenv = require("dotenv-webpack");
+const path                   = require("path");
+const nodeExternals          = require("webpack-node-externals");
+const Dotenv                 = require("dotenv-webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
@@ -14,6 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    clean: true,
   },
   externals: [nodeExternals()],
   plugins: [new Dotenv(), new CleanWebpackPlugin()],

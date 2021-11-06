@@ -1,8 +1,7 @@
 "use strict";
 
-import { redisClient } from "helpers/providers/cache/redisClient.js";
-
-const getCaching = async (field) => {
+const { redisClient } = require("../helpers/providers/cache/redisClient.js");
+const getCaching      = async (field) => {
     // Query redis.
     const cacheResult = await redisClient.getAsync(
       `${field}`
@@ -13,4 +12,4 @@ const getCaching = async (field) => {
     return JSON.parse(cacheResult);
 };
 
-export default getCaching;
+module.exports = getCaching;
