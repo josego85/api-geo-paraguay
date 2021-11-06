@@ -1,3 +1,11 @@
+# v1.6.3
+
+- Fix alias.
+
+# v1.6.2
+
+- Fix varios errores.
+
 # v1.6.1
 
 - Se agrega el engine en el package.json
