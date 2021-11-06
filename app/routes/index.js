@@ -27,4 +27,4 @@ router.get("/ciudades", cities.findAll);
 // Neighborhoods.
 router.get("/barrios", neighborhoods.findAll);
 
-module.exports = router;
+export { router };

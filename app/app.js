@@ -5,8 +5,8 @@ import createLocaleMiddleware from "express-locale";
 import helmet from "helmet";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
-import { swagger as swaggerDocument } from "./config/swagger.config.js";
-import rest from "routes/index.js";
+import { swagger as swaggerDocument } from "config/swagger.config.js";
+import { router as rest } from "routes/index.js";
 import startPolyglot from "middleware/startPolyglot.middleware.js";
 
 const app = express();
