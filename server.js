@@ -1,6 +1,6 @@
 "use strict";
 
-const globalConfig = require("./app/config/global.config.js");
+const globalConfig = require("config/global.config.js");
 const app = require("./app/app.js");
 const APP_PORT = globalConfig.APP_PORT;
 
