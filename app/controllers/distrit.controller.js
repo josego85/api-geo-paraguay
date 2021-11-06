@@ -6,13 +6,13 @@ const Distrit    = require('models/distrit.model.js');
 
 // Retrieve all distrits from the database.
 exports.findAll = async (request, response) => {
-    const field = 'distrits';
+    const field       = 'distrits';
     const resultCache = await getCaching(field);
     
     if (resultCache){
         response.status(200).json({
             success: true,
-            data: resultCache,
+            data   : resultCache,
         });
 
         return ;
@@ -37,7 +37,7 @@ exports.findAll = async (request, response) => {
             const json =
             {
                 success: true,
-                data: data
+                data   : data
             }
             response.status(200).json(json);
         }
@@ -58,5 +58,5 @@ exports.getLngLat = async (request, response) => {
           };
           response.status(200).json(json);
         }
-      });
+    });
 };

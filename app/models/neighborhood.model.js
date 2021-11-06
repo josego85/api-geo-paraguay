@@ -21,4 +21,35 @@ Neighborhood.getAll = result =>
     });
 };
 
+Neighborhood.getLngLat = (request, result) =>
+{
+    let barrio = request.name;
+    let query   = `SELECT ST_X(ST_Centroid(geom)) as latitude,` +
+      `ST_Y(ST_Centroid(geom)) as longitude FROM barrios ` +
+      `WHERE barrio_nombre = '${barrio}'`;
+
+    sql.query(query,
+        (error, response) =>
+    {
+        if (error)
+        {
+            console.log("error: ", error);
+            result(error, null);
+
+            return;
+        }
+
+        if (response.length) 
+        {
+            console.log("found longitude latitude neighborhood: ", response[0]);
+            result(null, response[0]);
+
+            return;
+        }
+
+        // Not found neighborhood.
+        result({ kind: "not_found" }, null);
+    });
+};
+
 module.exports = Neighborhood;
