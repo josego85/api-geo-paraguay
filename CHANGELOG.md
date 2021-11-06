@@ -1,3 +1,7 @@
+# v1.7.0
+
+- The endpoint is added that returns length and latitude of a specific district.
+
 # v1.6.3
 
 - Fix alias.

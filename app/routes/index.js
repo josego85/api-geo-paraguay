@@ -20,6 +20,7 @@ router.get("/departamentos/:lng/:lat", departments.findByLngLat);
 
 // Distrits.
 router.get("/distritos", distrits.findAll);
+router.get("/distritos/:name", distrits.getLngLat);
 
 // Cities.
 router.get("/ciudades", cities.findAll);

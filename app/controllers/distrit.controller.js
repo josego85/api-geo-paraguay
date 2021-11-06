@@ -43,3 +43,20 @@ exports.findAll = async (request, response) => {
         }
     });
 };
+
+// Get longitude and latitude of a specific district.
+exports.getLngLat = async (request, response) => {
+    Distrit.getLngLat(request.params, (err, data) => {
+        if (err) {
+          response.status(403).send({
+            message: request.polyglot.t("not_retrieve_distrit") || err.message,
+          });
+        } else {
+          const json = {
+            success: true,
+            data: data,
+          };
+          response.status(200).json(json);
+        }
+      });
+};
