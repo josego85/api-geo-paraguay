@@ -5,9 +5,9 @@ const createLocaleMiddleware = require("express-locale");
 const helmet                 = require("helmet");
 const cors                   = require("cors");
 const swaggerUi              = require("swagger-ui-express");
-const swaggerDocument        = require("./config/swagger.config.js");
-const rest                   = require("./routes/index.js");
-const startPolyglot          = require("./middleware/startPolyglot.middleware.js");
+const swaggerDocument        = require("config/swagger.config.js");
+const rest                   = require("routes/index.js");
+const startPolyglot          = require("middleware/startPolyglot.middleware.js");
 const app                    = express();
 
 app.use(express.json());

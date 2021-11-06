@@ -1,6 +1,6 @@
 "use strict";
 
-const { redisClient } = require("../helpers/providers/cache/redisClient.js");
+const { redisClient } = require("helpers/providers/cache/redisClient.js");
 const getCaching      = async (field) => {
     // Query redis.
     const cacheResult = await redisClient.getAsync(
