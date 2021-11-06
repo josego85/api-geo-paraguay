@@ -21,4 +21,35 @@ City.getAll = result =>
     });
 };
 
+City.getLngLat = (request, result) =>
+{
+    let city    = request.name;
+    let query   = `SELECT ST_X(ST_Centroid(geom)) as latitude,` +
+      `ST_Y(ST_Centroid(geom)) as longitude FROM ciudades ` +
+      `WHERE ciudad_nombre = '${city}'`;
+
+    sql.query(query,
+        (error, response) =>
+    {
+        if (error)
+        {
+            console.log("error: ", error);
+            result(error, null);
+
+            return;
+        }
+
+        if (response.length) 
+        {
+            console.log("found longitude latitude city: ", response[0]);
+            result(null, response[0]);
+
+            return;
+        }
+
+        // Not found city.
+        result({ kind: "not_found" }, null);
+    });
+};
+
 module.exports = City;

@@ -1,6 +1,6 @@
 # v1.7.0
 
-- Se agrega el endpoint que devuelve longitud y latitude de un distrio y un barrio.
+- Se agrega el endpoint que devuelve longitud y latitude de un distrito, de una ciudad y de un barrio.
 
 # v1.6.3
 

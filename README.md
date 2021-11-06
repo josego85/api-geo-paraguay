@@ -153,5 +153,6 @@ pm2 startup
 * http://51.15.192.116:3000/api/v1/distritos
 * http://51.15.192.116:3000/api/v1/distritos/Luque
 * http://51.15.192.116:3000/api/v1/ciudades
+* http://51.15.192.116:3000/api/v1/ciudades/Aregua
 * http://51.15.192.116:3000/api/v1/barrios
 * http://51.15.192.116:3000/api/v1/barrios/Jara

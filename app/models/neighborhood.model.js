@@ -23,10 +23,10 @@ Neighborhood.getAll = result =>
 
 Neighborhood.getLngLat = (request, result) =>
 {
-    let barrio = request.name;
-    let query   = `SELECT ST_X(ST_Centroid(geom)) as latitude,` +
+    let neighborhood = request.name;
+    let query        = `SELECT ST_X(ST_Centroid(geom)) as latitude,` +
       `ST_Y(ST_Centroid(geom)) as longitude FROM barrios ` +
-      `WHERE barrio_nombre = '${barrio}'`;
+      `WHERE barrio_nombre = '${neighborhood}'`;
 
     sql.query(query,
         (error, response) =>
