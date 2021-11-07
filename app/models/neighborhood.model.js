@@ -1,9 +1,9 @@
 "use strict";
 
 const sql = require('./db.js');
-
-// Constructor.
-const Neighborhood = function(neighborhood){};
+const Neighborhood = function(neighborhood){
+    // Constructor.
+};
 
 Neighborhood.getAll = result =>
 {
