@@ -1,6 +1,7 @@
 # v1.7.0
 
 - Se agrega el endpoint que devuelve longitud y latitude de un distrito, de una ciudad y de un barrio.
+- Refactorización de código.
 
 # v1.6.3
 
