@@ -25,12 +25,13 @@ app.use(startPolyglot);
 
 // Security.
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin              : '*',
+  optionsSuccessStatus: 200,
+  methods             : ['GET'],
+}));
 
-// Documentation.
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// Register the API REST routes.
 app.use("/api/v1", rest);
 
 module.exports = app;

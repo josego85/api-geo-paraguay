@@ -2,6 +2,7 @@
 
 - Se agrega el endpoint que devuelve longitud y latitude de un distrito, de una ciudad y de un barrio.
 - Refactorización de código.
+- Mejora la seguridad cors.
 
 # v1.6.3
 
