@@ -1,3 +1,7 @@
+# v1.8.0
+
+- Se actualiza las versiones de los paquetes utilizados en package.json
+
 # v1.7.0
 
 - Se agrega el endpoint que devuelve longitud y latitude de un distrito, de una ciudad y de un barrio.
