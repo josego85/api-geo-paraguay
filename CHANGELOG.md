@@ -1,3 +1,8 @@
+# v1.9.0
+
+- Se agrega el endpoint de un departamento espécifico para mostrar todas las ciudades. 
+- Se actualiza las versiones de los paquetes utilizados en package.json
+
 # v1.8.0
 
 - Se actualiza las versiones de los paquetes utilizados en package.json

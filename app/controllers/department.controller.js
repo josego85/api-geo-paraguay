@@ -48,8 +48,26 @@ exports.findByLngLat = (request, response) => {
     } else {
       const json = {
         success: true,
-        data: data,
+        data   : data,
       };
+      
+      response.status(200).json(json);
+    }
+  });
+};
+
+exports.findById = (request, response) => {
+  Department.findById(request.params, (err, data) => {
+    if (err) {
+      response.status(403).send({
+        message: request.polyglot.t("not_retrieve_department") || err.message,
+      });
+    } else {
+      const json = {
+        success: true,
+        data   : data,
+      };
+      
       response.status(200).json(json);
     }
   });
