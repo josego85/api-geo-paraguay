@@ -56,15 +56,15 @@ REDIS_PORT=6379
 npm install
 ```
 
-# Dearrollo
+# Desarrollo
 
 ## Hacer correr la app
 
 ```bash
-node server.js
+npm start 
 ```
 
-## Documentation
+## Documentación
 
 ### Access
 
