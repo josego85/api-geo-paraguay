@@ -150,6 +150,7 @@ pm2 startup
 * http://51.15.192.116:3000/api/v1/paraguay/-59.517228974/-23.8302210107
 * http://51.15.192.116:3000/api/v1/departamentos/-56.987/-25.564
 * http://51.15.192.116:3000/api/v1/departamentos
+* http://51.15.192.116:3000/api/v1/departamentos/14
 * http://51.15.192.116:3000/api/v1/distritos
 * http://51.15.192.116:3000/api/v1/distritos/Luque
 * http://51.15.192.116:3000/api/v1/ciudades
