@@ -1,6 +1,6 @@
-# v1.10.0
+# v1.9.1
 
-- Se agrega variable URL_EXTERNAL_DOMAIN en el env
+- Fix la ulr de la documentación del API.
 
 # v1.9.0
 
