@@ -40,6 +40,7 @@ Cambiar las varibles del .env
 
 ```
 APP_PORT=3000
+URL_DOMAIN="https://api-geo.proyectosbeta.net"
     
 DB_HOST=localhost
 DB_NAME=paraguay
@@ -68,7 +69,7 @@ npm start
 
 ### Access
 
-- [Oficial site](https://www.api-geo.proyectosbeta.net/api-docs)
+- [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
 
 ## Calidad de código
 
@@ -182,13 +183,13 @@ sudo a2enmod proxy proxy_http
 
 
 # Utilización del API
-* https://www.api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
-* https://www.api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
-* https://www.api-geo.proyectosbeta.net/api/v1/departamentos
-* https://www.api-geo.proyectosbeta.net/api/v1/departamentos/14
-* https://www.api-geo.proyectosbeta.net/api/v1/distritos
-* https://www.api-geo.proyectosbeta.net/api/v1/distritos/Luque
-* https://www.api-geo.proyectosbeta.net/api/v1/ciudades
-* https://www.api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
-* https://www.api-geo.proyectosbeta.net/api/v1/barrios
-* https://www.api-geo.proyectosbeta.net/api/v1/barrios/Jara
+* https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
+* https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
+* https://api-geo.proyectosbeta.net/api/v1/departamentos
+* https://api-geo.proyectosbeta.net/api/v1/departamentos/14
+* https://api-geo.proyectosbeta.net/api/v1/distritos
+* https://api-geo.proyectosbeta.net/api/v1/distritos/Luque
+* https://api-geo.proyectosbeta.net/api/v1/ciudades
+* https://api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
+* https://api-geo.proyectosbeta.net/api/v1/barrios
+* https://api-geo.proyectosbeta.net/api/v1/barrios/Jara
