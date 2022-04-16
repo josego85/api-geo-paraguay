@@ -1,6 +1,6 @@
 "use strict";
 
-const { APP_PORT, URL_DOMAIN } = require("./global.config.js");
+const { URL_DOMAIN } = require("./global.config.js");
 const versionSystem            = process.env.npm_package_version;
 const swagger = {
   openapi: "3.0.3",
