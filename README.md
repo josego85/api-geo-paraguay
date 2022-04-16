@@ -146,6 +146,41 @@ Necesitamos configurar el script de startup del servidor.
 pm2 startup
 ```
 
+## Configuración Apache
+
+```
+<VirtualHost *:80>
+    ServerAdmin josego85@gmail.com
+    ServerName api-geo.proyectosbeta.net
+    ServerAlias www.api-geo.proyectosbeta.net
+
+    ProxyRequests Off
+    ProxyPreserveHost On
+    ProxyVia Full
+    <Proxy *>
+        Require all granted
+    </Proxy>
+
+    ProxyPass / http://127.0.0.1:3000/
+    ProxyPassReverse / http://127.0.0.1:3000/
+
+    ErrorLog "/var/log/apache2/api-geo.proyectosbeta.net.error.log"
+    CustomLog "/var/log/apache2/api-geo.proyectosbeta.net.access.log" common
+
+    RewriteEngine on
+    RewriteCond %{SERVER_NAME} =api-geo.proyectosbeta.net [OR]
+    RewriteCond %{SERVER_NAME} =www.api-geo.proyectosbeta.net
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+```
+
+### Módulos
+
+```bash
+sudo a2enmod proxy proxy_http 
+```
+
+
 # Utilización del API
 * https://www.api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
 * https://www.api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
