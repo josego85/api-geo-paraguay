@@ -1,3 +1,7 @@
+# v1.10.0
+
+- Se agrega variable URL_EXTERNAL_DOMAIN en el env
+
 # v1.9.0
 
 - Se agrega el endpoint de un departamento espécifico para mostrar todas las ciudades. 
