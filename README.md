@@ -68,7 +68,7 @@ npm start
 
 ### Access
 
-- [Oficial site](http://localhost:3000/api-docs)
+- [Oficial site](https://www.api-geo.proyectosbeta.net/api-docs)
 
 ## Calidad de código
 
