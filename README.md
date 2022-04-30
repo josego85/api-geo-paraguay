@@ -3,7 +3,7 @@
 # Tecnologías
 
 - NodeJS 14.19.xx
-- Express 4.17.xx para el API
+- Express 4.18.xx para el API
 - NPM 8.7.xx
 - MySQL 5.7.xx
 - Redis para el cache  
