@@ -1,3 +1,7 @@
+# v1.10.0
+
+- Se actualiza las versiones de los paquetes utilizados en package.json
+
 # v1.9.1
 
 - Fix la ulr de la documentación del API.
