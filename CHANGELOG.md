@@ -1,3 +1,7 @@
+# v1.11.0
+
+- [update] Se actualiza las versiones de los paquetes utilizados en package.json
+
 # v1.10.0
 
 - Se actualiza las versiones de los paquetes utilizados en package.json
