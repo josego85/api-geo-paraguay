@@ -1,6 +1,6 @@
-"use strict";
+'use strict'
 
-const myEs = require("./es.js");
-const myEn = require("./en.js");
+const myEs = require('./es.js')
+const myEn = require('./en.js')
 
-module.exports = { myEs, myEn };
+module.exports = { myEs, myEn }

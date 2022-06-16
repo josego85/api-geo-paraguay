@@ -1,23 +1,27 @@
-"use strict";
+'use strict'
 
-const { REDIS_HOST, REDIS_PORT } = require("config/global.config.js");
-const redis                      = require("redis");
-const bluebird                   = require("bluebird");
+const { REDIS_HOST, REDIS_PORT } = require('config/global.config.js')
+const redis = require('redis')
+const bluebird = require('bluebird')
 
-bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.RedisClient.prototype)
 
 const redisClient = bluebird.promisifyAll(redis).createClient({
     host: REDIS_HOST,
-    port: REDIS_PORT
-});
+    port: REDIS_PORT,
+})
 
 const save = async (field, data) => {
-    const expirationTime = 86400 * 30 * 1;	// 1 month.
-	const serializedDetails = JSON.stringify(data);
+    const expirationTime = 86400 * 30 * 1 // 1 month.
+    const serializedDetails = JSON.stringify(data)
 
-	// Save in redis.
-	await redisClient.setAsync(`${field}`,
-      serializedDetails, "EX", expirationTime);
-};
+    // Save in redis.
+    await redisClient.setAsync(
+        `${field}`,
+        serializedDetails,
+        'EX',
+        expirationTime
+    )
+}
 
-module.exports = { redisClient, save };
+module.exports = { redisClient, save }

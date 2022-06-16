@@ -1,63 +1,55 @@
-"use strict";
+'use strict'
 
-const getCaching = require("./app.controller.js");
-const { save }   = require("helpers/providers/cache/redisClient.js");
-const City       = require('models/city.model.js');
+const getCaching = require('./app.controller.js')
+const { save } = require('helpers/providers/cache/redisClient.js')
+const City = require('models/city.model.js')
 
 // Retrieve all city from the database.
 exports.findAll = async (request, response) => {
-    const field       = 'cities';
-    const resultCache = await getCaching(field);
-    
-    if (resultCache){
+    const field = 'cities'
+    const resultCache = await getCaching(field)
+
+    if (resultCache) {
         response.status(200).json({
             success: true,
-            data   : resultCache,
-        });
+            data: resultCache,
+        })
 
-        return ;
+        return
     }
 
-    City.getAll((err, data) =>
-    {
-        if (err)
-        {
-            response.status(500).send(
-            {
-                message: err.message || "Some error occurred while retrieving city."
-            });
-        }
-        else 
-        {
+    City.getAll((err, data) => {
+        if (err) {
+            response.status(500).send({
+                message:
+                    err.message || 'Some error occurred while retrieving city.',
+            })
+        } else {
             // Update cache.
-            save(
-                field,
-                data
-            ).catch(error => console.error("Error: ", error));
+            save(field, data).catch((error) => console.error('Error: ', error))
 
-            const json =
-            {
+            const json = {
                 success: true,
-                data   : data
+                data: data,
             }
-            response.status(200).json(json);
+            response.status(200).json(json)
         }
-    });
-};
+    })
+}
 
 // Get longitude and latitude of a specific city.
 exports.getLngLat = async (request, response) => {
     City.getLngLat(request.params, (err, data) => {
         if (err) {
-          response.status(403).send({
-            message: request.polyglot.t("not_retrieve_city") || err.message,
-          });
+            response.status(403).send({
+                message: request.polyglot.t('not_retrieve_city') || err.message,
+            })
         } else {
-          const json = {
-            success: true,
-            data   : data,
-          };
-          response.status(200).json(json);
+            const json = {
+                success: true,
+                data: data,
+            }
+            response.status(200).json(json)
         }
-    });
-};
+    })
+}

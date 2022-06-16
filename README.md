@@ -2,11 +2,11 @@
 
 # Tecnologías
 
-- NodeJS 14.19.xx
-- Express 4.18.xx para el API
-- NPM 8.12.xx
-- MySQL 5.7.xx
-- Redis para el cache  
+-   NodeJS 14.19.xx
+-   Express 4.18.xx para el API
+-   NPM 8.12.xx
+-   MySQL 5.7.xx
+-   Redis para el cache
 
 ## Base de datos MySQL
 
@@ -41,7 +41,7 @@ Cambiar las varibles del .env
 ```
 APP_PORT=3000
 URL_DOMAIN="https://api-geo.proyectosbeta.net"
-    
+
 DB_HOST=localhost
 DB_NAME=paraguay
 DB_USER="api-geo"
@@ -62,20 +62,38 @@ npm install
 ## Hacer correr la app
 
 ```bash
-npm start 
+npm start
+```
+
+## Checking code
+
+```bash
+npx prettier --write .
+```
+
+```bash
+npm run format:check
+```
+
+```bash
+npm run lint:check
+```
+
+```bash
+npm run lint:fix
 ```
 
 ## Documentación
 
 ### Access
 
-- [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
+-   [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
 
 ## Calidad de código
 
 ### Sonarqube
 
-- [Sitio oficial](https://www.sonarqube.org/)
+-   [Sitio oficial](https://www.sonarqube.org/)
 
 #### Instalar
 
@@ -94,8 +112,8 @@ http://localhost:9000
 
 ###### Credenciales por defecto
 
-- User: admin
-- Password: admin
+-   User: admin
+-   Password: admin
 
 #### Usar con docker
 
@@ -129,15 +147,16 @@ npm run build
 ```
 
 ## Hacer correr la app
+
 Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
-    
+
 ```bash
 npm install pm2 -g
 ```
 
 Debemos crear un demonio con PM2 así que paramos el servidor y ejecutamos el siguiente comando:
 
-```bash    
+```bash
 pm2 start /home/proyectosbeta/repositoriosGit/api-geo-paraguay/dist/bundle.js --name api-geo-paraguay
 ```
 
@@ -178,18 +197,18 @@ pm2 startup
 ### Módulos
 
 ```bash
-sudo a2enmod proxy proxy_http 
+sudo a2enmod proxy proxy_http
 ```
 
-
 # Utilización del API
-* https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
-* https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
-* https://api-geo.proyectosbeta.net/api/v1/departamentos
-* https://api-geo.proyectosbeta.net/api/v1/departamentos/14
-* https://api-geo.proyectosbeta.net/api/v1/distritos
-* https://api-geo.proyectosbeta.net/api/v1/distritos/Luque
-* https://api-geo.proyectosbeta.net/api/v1/ciudades
-* https://api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
-* https://api-geo.proyectosbeta.net/api/v1/barrios
-* https://api-geo.proyectosbeta.net/api/v1/barrios/Jara
+
+-   https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
+-   https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
+-   https://api-geo.proyectosbeta.net/api/v1/departamentos
+-   https://api-geo.proyectosbeta.net/api/v1/departamentos/14
+-   https://api-geo.proyectosbeta.net/api/v1/distritos
+-   https://api-geo.proyectosbeta.net/api/v1/distritos/Luque
+-   https://api-geo.proyectosbeta.net/api/v1/ciudades
+-   https://api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
+-   https://api-geo.proyectosbeta.net/api/v1/barrios
+-   https://api-geo.proyectosbeta.net/api/v1/barrios/Jara
