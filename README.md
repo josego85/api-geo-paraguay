@@ -164,6 +164,7 @@ Necesitamos configurar el script de startup del servidor.
 
 ```bash
 pm2 startup
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u proyectosbeta --hp /home/proyectosbeta
 ```
 
 ## Configuración Apache
