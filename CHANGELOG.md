@@ -1,3 +1,7 @@
+# v1.12.1
+
+-   [update] Se actualiza el archivo package.json
+
 # v1.12.0
 
 -   [feat] Se agrega eslint y prettier para el desarrollo.
