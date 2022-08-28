@@ -36,7 +36,7 @@ mysql -u root -p paraguay < paraguay.sql
 cp .env.example .env
 ```
 
-Cambiar las varibles del .env
+Cambiar las variables del .env
 
 ```
 APP_PORT=3000
