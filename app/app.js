@@ -5,7 +5,7 @@ const createLocaleMiddleware = require('express-locale');
 const helmet = require('helmet');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
-const geoip = require('geoip-lite');
+const { lookup } = require('geoip-lite');
 const swaggerDocument = require('config/swagger.config.js');
 const rest = require('routes/index.js');
 const startPolyglot = require('middleware/startPolyglot.middleware.js');
@@ -36,8 +36,12 @@ app.use(
 );
 
 app.use(async (req, res, next) => {
-    const ip = req.ip;
-    const geo = geoip.lookup(ip);
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const geo = lookup(ip);
+
+    console.log(req);
+    console.log(req.ip);
+    console.log(geo);
 
     const log = new Log({
         url: req.url,
