@@ -7,6 +7,7 @@
 -   [fix] Actualización del cliente de redis.
 -   [feat] Se agregan tests.
 -   [refactor] Refactorización de código - endpoint ciudades.
+-   [refactor] Refactorización de código - app.js.
 
 ## v1.12.1
 
