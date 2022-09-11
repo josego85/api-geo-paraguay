@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.12.2
+
+-   [update] Se actualiza el archivo package.json 
+
 ## v1.12.1
 
 -   [update] Se actualiza el archivo package.json
