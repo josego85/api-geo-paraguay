@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.13.0
+
+-   [feat] Se agrega el store de los logs.
+
 ## v1.12.2
 
 -   [update] Se actualiza el archivo package.json

@@ -5,9 +5,11 @@ const createLocaleMiddleware = require('express-locale');
 const helmet = require('helmet');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
+const geoip = require('geoip-lite');
 const swaggerDocument = require('config/swagger.config.js');
 const rest = require('routes/index.js');
 const startPolyglot = require('middleware/startPolyglot.middleware.js');
+const Log = require('models/log.model.js');
 const app = express();
 
 app.use(express.json());
@@ -32,6 +34,21 @@ app.use(
         methods: ['GET'],
     })
 );
+
+app.use(async (req, res, next) => {
+    const ip = req.ip;
+    const geo = geoip.lookup(ip);
+
+    const log = new Log({
+        url: req.url,
+        method: req.method,
+        ip: ip,
+        geo: geo,
+    });
+
+    await log.save();
+    next();
+});
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', rest);

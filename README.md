@@ -7,6 +7,7 @@
 -   NPM 8.18.0
 -   MySQL 5.7.xx
 -   Client Redis 4.3.1
+-   Client Mongoose 6.6.0
 -   Swagger para la documentación
 
 ## Base de datos MySQL
