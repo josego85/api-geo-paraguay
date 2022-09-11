@@ -1,5 +1,8 @@
 # Release Notes
 
+## v1.13.1
+-   [fix] Se arregla la ip (logs).
+
 ## v1.13.0
 
 -   [feat] Se agrega el store de los logs.

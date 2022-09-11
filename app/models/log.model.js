@@ -5,6 +5,7 @@ const schema = mongoose.Schema({
     method: String,
     ip: String,
     geo: Object,
+    date: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Log', schema);

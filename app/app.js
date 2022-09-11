@@ -38,11 +38,6 @@ app.use(
 app.use(async (req, res, next) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const geo = lookup(ip);
-
-    console.log(req);
-    console.log(req.ip);
-    console.log(geo);
-
     const log = new Log({
         url: req.url,
         method: req.method,
