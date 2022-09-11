@@ -5,6 +5,7 @@
 -   [update] Se actualiza el archivo package.json
 -   [doc] Actualización de readme file.
 -   [fix] Actualización del cliente de redis.
+-   [feat] Se agrega tests.
 
 ## v1.12.1
 
