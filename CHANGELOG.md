@@ -2,7 +2,8 @@
 
 ## v1.12.2
 
--   [update] Se actualiza el archivo package.json 
+-   [update] Se actualiza el archivo package.json
+-   [doc] Actualización de readme file.
 
 ## v1.12.1
 
