@@ -4,6 +4,7 @@
 
 -   [update] Se actualiza el archivo package.json
 -   [doc] Actualización de readme file.
+-   [fix] Actualización del cliente de redis.
 
 ## v1.12.1
 

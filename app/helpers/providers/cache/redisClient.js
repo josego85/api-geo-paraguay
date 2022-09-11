@@ -2,11 +2,7 @@
 
 const { REDIS_HOST, REDIS_PORT } = require('config/global.config.js')
 const redis = require('redis')
-const bluebird = require('bluebird')
-
-bluebird.promisifyAll(redis.RedisClient.prototype)
-
-const redisClient = bluebird.promisifyAll(redis).createClient({
+const redisClient = redis.createClient({
     host: REDIS_HOST,
     port: REDIS_PORT,
 })

@@ -6,7 +6,7 @@
 -   Express 4.18.1 para el API
 -   NPM 8.18.0
 -   MySQL 5.7.xx
--   Redis para el cache
+-   Client Redis 4.3.1
 -   Swagger para la documentación
 
 ## Base de datos MySQL
