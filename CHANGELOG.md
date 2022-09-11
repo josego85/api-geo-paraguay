@@ -6,6 +6,7 @@
 -   [doc] Actualización de readme file.
 -   [fix] Actualización del cliente de redis.
 -   [feat] Se agregan tests.
+-   [refactor] Refactorización de codigo - endpoint ciudades.
 
 ## v1.12.1
 
