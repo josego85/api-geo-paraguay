@@ -66,7 +66,7 @@ Department.findByLngLat = (request, result) => {
             }
 
             if (response.length) {
-                console.log('found department: ', response[0])
+                // console.log('found department: ', response[0])
                 result(null, response[0])
 
                 return
@@ -94,7 +94,7 @@ Department.findById = (request, result) => {
             }
 
             if (response.length) {
-                console.log('found department: ', response[0])
+                // console.log('found department: ', response[0])
                 result(null, response)
 
                 return

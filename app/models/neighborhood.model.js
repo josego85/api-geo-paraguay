@@ -37,7 +37,7 @@ Neighborhood.getLngLat = (request, result) => {
         }
 
         if (response.length) {
-            console.log('found longitude latitude neighborhood: ', response[0])
+            // console.log('found longitude latitude neighborhood: ', response[0])
             result(null, response[0])
 
             return

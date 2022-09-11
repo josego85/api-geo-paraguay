@@ -2,6 +2,7 @@
 
 ## v1.13.1
 -   [fix] Se arregla la ip (logs).
+-   [refactor] Refactorización de código.
 
 ## v1.13.0
 
