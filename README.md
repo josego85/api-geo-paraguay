@@ -22,6 +22,8 @@ Creamos la base de datos paraguay
 
 ```
 CREATE DATABASE paraguay CHARACTER SET utf8 COLLATE utf8_general_ci;
+GRANT ALL PRIVILEGES ON paraguay.* TO api_geo@'localhost' IDENTIFIED BY 'xxxxxx';
+FLUSH PRIVILEGES;
 exit
 ```
 
@@ -46,8 +48,8 @@ URL_DOMAIN="https://api-geo.proyectosbeta.net"
 
 DB_HOST=localhost
 DB_NAME=paraguay
-DB_USER="api-geo"
-DB_PASSWORD="123456"
+DB_USER="api_geo"
+DB_PASSWORD="xxxxxx"
 
 REDIS_HOST='localhost'
 REDIS_PORT=6379
