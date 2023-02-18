@@ -1,6 +1,11 @@
 # Release Notes
 
+## v1.14.0
+
+-   [update] Se actualiza el archivo package.json
+
 ## v1.13.1
+
 -   [fix] Se arregla la ip (logs).
 -   [refactor] Refactorización de código.
 

@@ -3,10 +3,10 @@
 # Tecnologías
 
 -   NodeJS 14.21.2
--   Express 4.18.1 para el API
--   NPM 8.18.0
+-   Express 4.18.2 para el API
+-   NPM 8.19.3
 -   MySQL 5.7.xx
--   Client Redis 4.3.1
+-   Client Redis 4.6.4
 -   Client Mongoose 6.6.0 (MongoDB Server 6.x)
 -   Swagger para la documentación
 
