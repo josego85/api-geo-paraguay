@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.14.1
+
+-   [fix] Fix warning MongoDB.
+
 ## v1.14.0
 
 -   [update] Se actualiza el archivo package.json
