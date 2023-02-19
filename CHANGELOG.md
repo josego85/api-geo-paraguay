@@ -3,6 +3,7 @@
 ## v1.14.1
 
 -   [fix] Fix warning MongoDB.
+-   [refactor] Add constant in .env for MongoDB.
 
 ## v1.14.0
 

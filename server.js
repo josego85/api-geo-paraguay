@@ -2,11 +2,11 @@
 const mongoose = require('mongoose');
 const globalConfig = require('./app/config/global.config.js');
 const app = require('./app/app.js');
-const { APP_NAME, APP_PORT } = globalConfig;
+const { APP_NAME, APP_PORT, MONGO_URI } = globalConfig;
 
 async function main() {
-    mongoose.set("strictQuery", false);
-    await mongoose.connect(`mongodb://localhost:27017/${APP_NAME}`);
+    mongoose.set('strictQuery', false);
+    await mongoose.connect(`${MONGO_URI}/${APP_NAME}`);
 }
 async function startServer() {
     app.listen(APP_PORT, (err) => {
