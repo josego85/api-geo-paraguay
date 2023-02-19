@@ -2,7 +2,7 @@
 
 # Tecnologías
 
--   NodeJS 14.21.2
+-   NodeJS 14.21.3
 -   Express 4.18.2 para el API
 -   NPM 8.19.3
 -   MySQL 5.7.xx
