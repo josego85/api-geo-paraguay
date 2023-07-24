@@ -3,6 +3,7 @@
 ## v1.15.0
 
 -   [refactor] Use prettier new configuration.
+-   [update] Se actualiza el archivo package.json
 
 ## v1.14.1
 
