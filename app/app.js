@@ -2,8 +2,7 @@
 
 const express = require('express');
 const createLocaleMiddleware = require('express-locale');
-const helmet = require('helmet');
-const cors = require('cors');
+const securityMiddleware = require('middleware/security.middleware.js');
 const swaggerUi = require('swagger-ui-express');
 const { lookup } = require('geoip-lite');
 const swaggerDocument = require('config/swagger.config.js');
@@ -25,16 +24,7 @@ app.use(
 // Set the language in the req with the phrases to be used.
 app.use(startPolyglot);
 
-// Security.
-app.use(helmet());
-
-app.use(
-    cors({
-        origin: '*',
-        optionsSuccessStatus: 200,
-        methods: ['GET'],
-    })
-);
+securityMiddleware(app);
 
 app.use(async (req, res, next) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
