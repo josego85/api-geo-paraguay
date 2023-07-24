@@ -1,21 +1,21 @@
-'use strict'
+'use strict';
 
-const getCaching = require('./app.controller.js')
-const { save } = require('helpers/providers/cache/redisClient.js')
-const Department = require('models/department.model.js')
+const getCaching = require('./app.controller.js');
+const { save } = require('helpers/providers/cache/redisClient.js');
+const Department = require('models/department.model.js');
 
 // Retrieve all departments from the database.
 exports.findAll = async (request, response) => {
-    const field = 'departaments'
-    const resultCache = await getCaching(field)
+    const field = 'departaments';
+    const resultCache = await getCaching(field);
 
     if (resultCache) {
         response.status(200).json({
             success: true,
             data: resultCache,
-        })
+        });
 
-        return
+        return;
     }
 
     Department.getAll((err, data) => {
@@ -24,19 +24,19 @@ exports.findAll = async (request, response) => {
                 message:
                     request.polyglot.t('not_retrieve_department') ||
                     err.message,
-            })
+            });
         } else {
             // Update cache.
-            save(field, data).catch((error) => console.error('Error: ', error))
+            save(field, data).catch((error) => console.error('Error: ', error));
 
             const json = {
                 success: true,
                 data: data,
-            }
-            response.status(200).json(json)
+            };
+            response.status(200).json(json);
         }
-    })
-}
+    });
+};
 
 exports.findByLngLat = (request, response) => {
     Department.findByLngLat(request.params, (err, data) => {
@@ -45,17 +45,17 @@ exports.findByLngLat = (request, response) => {
                 message:
                     request.polyglot.t('not_retrieve_department') ||
                     err.message,
-            })
+            });
         } else {
             const json = {
                 success: true,
                 data: data,
-            }
+            };
 
-            response.status(200).json(json)
+            response.status(200).json(json);
         }
-    })
-}
+    });
+};
 
 exports.findById = (request, response) => {
     Department.findById(request.params, (err, data) => {
@@ -64,14 +64,14 @@ exports.findById = (request, response) => {
                 message:
                     request.polyglot.t('not_retrieve_department') ||
                     err.message,
-            })
+            });
         } else {
             const json = {
                 success: true,
                 data: data,
-            }
+            };
 
-            response.status(200).json(json)
+            response.status(200).json(json);
         }
-    })
-}
+    });
+};

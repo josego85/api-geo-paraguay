@@ -27,6 +27,7 @@ app.use(startPolyglot);
 
 // Security.
 app.use(helmet());
+
 app.use(
     cors({
         origin: '*',

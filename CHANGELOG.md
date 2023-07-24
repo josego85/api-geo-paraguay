@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.15.0
+
+-   [refactor] Use prettier new configuration.
+
 ## v1.14.1
 
 -   [fix] Fix warning MongoDB.

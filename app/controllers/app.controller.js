@@ -9,7 +9,7 @@ const getCaching = async (field) => {
 
         return JSON.parse(cacheResult);
     } catch (error) {
-        return ;
+        return;
     }
 };
 

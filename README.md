@@ -69,19 +69,37 @@ npm install
 npm start
 ```
 
-## Checking code
+## Prettier
 
-```bash
-npx prettier --write .
-```
+### Prettier check
+
+Check if the formatting matches this Prettier’s rules by using:
 
 ```bash
 npm run format:check
 ```
 
+### Prettier format
+
+Force the formatting by using this command:
+
+```bash
+npm run format:write
+```
+
+## Lint
+
+### Lint check
+
+Lint your code with:
+
 ```bash
 npm run lint:check
 ```
+
+### Lint fix
+
+Auto-fixing errors with this command:
 
 ```bash
 npm run lint:fix

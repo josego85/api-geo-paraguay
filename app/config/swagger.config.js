@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const { URL_DOMAIN } = require('./global.config.js')
-const versionSystem = process.env.npm_package_version
+const { URL_DOMAIN } = require('./global.config.js');
+const versionSystem = process.env.npm_package_version;
 const swagger = {
     openapi: '3.0.3',
     info: {
@@ -148,6 +148,6 @@ const swagger = {
     },
     components: {},
     tags: [],
-}
+};
 
-module.exports = swagger
+module.exports = swagger;

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const myEs = {
     welcome: 'Bienvenido a la API REST (api-geo-paraguay)',
@@ -6,6 +6,6 @@ const myEs = {
     not_retrieve_distrit: 'Ocurrió algún error al recuperar distrito.',
     not_retrieve_neighborhood: 'Ocurrió algún error al recuperar barrio.',
     not_retrieve_city: 'Ocurrió algún error al recuperar ciudad.',
-}
+};
 
-module.exports = myEs
+module.exports = myEs;

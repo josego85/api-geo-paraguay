@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 const welcome = (req, res) => {
     res.status(200).json({
         message: req.polyglot.t('welcome'),
-    })
-}
+    });
+};
 
-module.exports = welcome
+module.exports = welcome;
