@@ -4,6 +4,7 @@
 
 -   [refactor] Use prettier new configuration.
 -   [update] Se actualiza el archivo package.json
+-   [doc] Actualización de readme file.
 
 ## v1.14.1
 
