@@ -7,6 +7,7 @@
 -   [doc] Actualización de readme file.
 -   [feat] More security in helmet.
 -   [feat] Add rate limit.
+-   [feat] Add Feature-Policy header security.
 
 ## v1.14.1
 

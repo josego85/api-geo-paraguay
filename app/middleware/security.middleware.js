@@ -1,6 +1,7 @@
 const helmet = require('helmet');
 const cors = require('cors');
-const expectCt = require("expect-ct");
+const expectCt = require('expect-ct');
+const featurePolicy = require('feature-policy');
 const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
@@ -43,16 +44,19 @@ const securityMiddleware = (app) => {
     // Set X-Permitted-Cross-Domain-Policies header to 'none'
     app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' }));
 
-    // // Set Feature-Policy header to restrict certain features
-    // app.use(
-    //     helmet.featurePolicy({
-    //         features: {
-    //             geolocation: ["'none'"],
-    //             camera: ["'none'"],
-    //             microphone: ["'none'"],
-    //         },
-    //     })
-    // );
+    // Set Feature-Policy header to restrict certain features
+    app.use(
+        featurePolicy({
+            features: {
+                fullscreen: ["'self'"],
+                vibrate: ["'none'"],
+                syncXhr: ["'none'"],
+                geolocation: ["'none'"],
+                camera: ["'none'"],
+                microphone: ["'none'"],
+            },
+        })
+    );
 
     app.use(
         cors({
@@ -64,6 +68,5 @@ const securityMiddleware = (app) => {
 
     app.use(limiter);
 };
-
 
 module.exports = securityMiddleware;
