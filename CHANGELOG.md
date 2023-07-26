@@ -6,6 +6,7 @@
 -   [update] Se actualiza el archivo package.json
 -   [doc] Actualización de readme file.
 -   [feat] More security in helmet.
+-   [feat] Add rate limit.
 
 ## v1.14.1
 
