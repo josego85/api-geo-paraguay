@@ -1,10 +1,14 @@
 # Release Notes
 
+## v1.16.0
+
+-   [docs] Actualización de readme file.
+
 ## v1.15.0
 
 -   [refactor] Use prettier new configuration.
 -   [update] Se actualiza el archivo package.json
--   [doc] Actualización de readme file.
+-   [docs] Actualización de readme file.
 -   [feat] More security in helmet.
 -   [feat] Add rate limit.
 -   [feat] Add Feature-Policy header security.
@@ -30,7 +34,7 @@
 ## v1.12.2
 
 -   [update] Se actualiza el archivo package.json
--   [doc] Actualización de readme file.
+-   [docs] Actualización de readme file.
 -   [fix] Actualización del cliente de redis.
 -   [feat] Se agregan tests.
 -   [refactor] Refactorización de código - endpoint ciudades.
@@ -87,7 +91,7 @@
 
 -   [refactor] Refactorización de código. Se agrega los módulos.
 -   [feat] Se agrega redis para el cache de todos los departamentos, ciudades, distritos y barrios.
--   [doc] Se agrega documentación del API.
+-   [docs] Se agrega documentación del API.
 
 ## v1.5.0
 
@@ -95,7 +99,7 @@
 
 ## v1.4.0
 
--   [doc] Se agrega la documentación del API.
+-   [docs] Se agrega la documentación del API.
 
 ## v1.3.0
 

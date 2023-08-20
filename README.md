@@ -189,38 +189,42 @@ pm2 startup
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u proyectosbeta --hp /home/proyectosbeta
 ```
 
-## Configuración Apache
+## Configuración Nginx
 
 ```
-<VirtualHost *:80>
-    ServerAdmin josego85@gmail.com
-    ServerName api-geo.proyectosbeta.net
-    ServerAlias www.api-geo.proyectosbeta.net
+server {
+    server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
 
-    ProxyRequests Off
-    ProxyPreserveHost On
-    ProxyVia Full
-    <Proxy *>
-        Require all granted
-    </Proxy>
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
 
-    ProxyPass / http://127.0.0.1:3000/
-    ProxyPassReverse / http://127.0.0.1:3000/
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api-geo.proyectosbeta.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+server {
+    if ($host = www.api-geo.proyectosbeta.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
 
-    ErrorLog "/var/log/apache2/api-geo.proyectosbeta.net.error.log"
-    CustomLog "/var/log/apache2/api-geo.proyectosbeta.net.access.log" common
 
-    RewriteEngine on
-    RewriteCond %{SERVER_NAME} =api-geo.proyectosbeta.net [OR]
-    RewriteCond %{SERVER_NAME} =www.api-geo.proyectosbeta.net
-    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
-</VirtualHost>
-```
+    if ($host = api-geo.proyectosbeta.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
 
-### Módulos
 
-```bash
-sudo a2enmod proxy proxy_http
+    listen 80;
+    server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
+    return 404; # managed by Certbot
+}
 ```
 
 # Utilización del API
