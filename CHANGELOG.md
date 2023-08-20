@@ -3,11 +3,12 @@
 ## v1.16.0
 
 -   [docs] Actualización de readme file.
+-   [build] Se actualiza el archivo package.json
 
 ## v1.15.0
 
 -   [refactor] Use prettier new configuration.
--   [update] Se actualiza el archivo package.json
+-   [build] Se actualiza el archivo package.json
 -   [docs] Actualización de readme file.
 -   [feat] More security in helmet.
 -   [feat] Add rate limit.
@@ -20,7 +21,7 @@
 
 ## v1.14.0
 
--   [update] Se actualiza el archivo package.json
+-   [build] Se actualiza el archivo package.json
 
 ## v1.13.1
 
@@ -33,7 +34,7 @@
 
 ## v1.12.2
 
--   [update] Se actualiza el archivo package.json
+-   [build] Se actualiza el archivo package.json
 -   [docs] Actualización de readme file.
 -   [fix] Actualización del cliente de redis.
 -   [feat] Se agregan tests.
@@ -42,7 +43,7 @@
 
 ## v1.12.1
 
--   [update] Se actualiza el archivo package.json
+-   [build] Se actualiza el archivo package.json
 
 ## v1.12.0
 
@@ -50,11 +51,11 @@
 
 ## v1.11.0
 
--   [update] Se actualiza las versiones de los paquetes utilizados en package.json
+-   [build] Se actualiza las versiones de los paquetes utilizados en package.json
 
 ## v1.10.0
 
--   [update] Se actualiza las versiones de los paquetes utilizados en package.json
+-   [build] Se actualiza las versiones de los paquetes utilizados en package.json
 
 ## v1.9.1
 
@@ -63,11 +64,11 @@
 ## v1.9.0
 
 -   [feat] Se agrega el endpoint de un departamento espécifico para mostrar todas las ciudades.
--   [update] Se actualiza las versiones de los paquetes utilizados en package.json
+-   [build] Se actualiza las versiones de los paquetes utilizados en package.json
 
 ## v1.8.0
 
--   [update] Se actualiza las versiones de los paquetes utilizados en package.json
+-   [build] Se actualiza las versiones de los paquetes utilizados en package.json
 
 ## v1.7.0
 
