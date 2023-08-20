@@ -203,6 +203,12 @@ server {
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
     }
+    
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
+        expires 7d;  
+        add_header Cache-Control "public, max-age=604800"; 
+        access_log off;   
+    }
 
     listen 443 ssl http2; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem; # managed by Certbot
