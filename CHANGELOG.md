@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.17.0
+
+-   [build] CI is added for the project 
+
 ## v1.16.0
 
 -   [docs] Actualización de readme file.
