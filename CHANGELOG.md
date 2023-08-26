@@ -2,7 +2,8 @@
 
 ## v1.17.0
 
--   [build] CI is added for the project 
+-   [build] CI is added for the project
+-   [refactor] env variables
 
 ## v1.16.0
 

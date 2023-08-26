@@ -1,8 +1,6 @@
 'use strict';
 
-const dotenv = require('dotenv');
-
-dotenv.config();
+require('dotenv').config();
 
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;

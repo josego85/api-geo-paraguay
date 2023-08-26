@@ -1,8 +1,6 @@
 'use strict';
 
-const dotenv = require('dotenv');
-
-dotenv.config();
+require('dotenv').config();
 
 const APP_NAME = process.env.APP_NAME;
 const APP_PORT = process.env.APP_PORT;
