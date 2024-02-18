@@ -3,3 +3,5 @@ node_modules/
 .scannerwork/
 dist/
 paraguay.sql
+newrelic.js
+newrelic_agent.log
