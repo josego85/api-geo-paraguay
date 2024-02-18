@@ -1,5 +1,7 @@
 'use strict';
+
 const mongoose = require('mongoose');
+const newrelic = require('newrelic');
 const globalConfig = require('./app/config/global.config.js');
 const app = require('./app/app.js');
 const { APP_NAME, APP_PORT, MONGO_URI } = globalConfig;

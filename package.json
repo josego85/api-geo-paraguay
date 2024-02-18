@@ -38,6 +38,7 @@
         "mongoose": "8.1.3",
         "ms": "2.1.3",
         "mysql": "2.18.1",
+        "newrelic": "11.10.4",
         "node-polyglot": "2.5.0",
         "redis": "4.6.13",
         "send": "0.18.0",

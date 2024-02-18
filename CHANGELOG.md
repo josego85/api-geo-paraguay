@@ -4,6 +4,7 @@
 
 - [build] Se actualiza el archivo package.json
 - [docs] Actualización de readme file
+- [feat] Add New Relic
 
 ## v1.17.0
 
