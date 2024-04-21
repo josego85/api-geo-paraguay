@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.19.0
+
+- [build] Se actualiza el archivo package.json
+
 ## v1.18.0
 
 - [build] Se actualiza el archivo package.json
