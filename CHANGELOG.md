@@ -3,6 +3,7 @@
 ## v1.20.0
 
 - [build] Add docker.
+- [build] Update package.json file.
 
 ## v1.19.0
 
