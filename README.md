@@ -9,6 +9,8 @@
 - Client Redis 4.6.7
 - Client Mongoose 7.4.1 (MongoDB Server 6.x)
 - Swagger para la documentación
+- Docker version 26.1.1
+- Docker Compose version v2.27.0-desktop.2
 
 ## Base de datos MySQL
 
@@ -46,12 +48,17 @@ Cambiar las variables del .env
 APP_PORT=3000
 URL_DOMAIN="https://api-geo.proyectosbeta.net"
 
-DB_HOST=localhost
+# DataBase MySQL.
+DB_HOST="database"
 DB_NAME=paraguay
-DB_USER="api_geo"
-DB_PASSWORD="xxxxxx"
+DB_USER="api-geo"
+DB_PASSWORD="123456"
+DB_ROOT_PASSWORD="password"
 
-REDIS_HOST='localhost'
+# MongoDB
+MONGO_URI="mongodb://mongodb:27017"
+
+REDIS_HOST="cache"
 REDIS_PORT=6379
 ```
 

@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.20.0
+
+- [build] Add docker.
+
 ## v1.19.0
 
 - [build] Se actualiza el archivo package.json
