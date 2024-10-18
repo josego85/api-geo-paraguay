@@ -7,6 +7,7 @@ const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_NAME = process.env.DB_NAME;
 const SRID = process.env.SRID;
+const SRID_TRANSFORM = process.env.SRID_TRANSFORM;
 
 module.exports = {
     DB_HOST,
@@ -14,4 +15,5 @@ module.exports = {
     DB_PASSWORD,
     DB_NAME,
     SRID,
+    SRID_TRANSFORM,
 };

@@ -11,6 +11,8 @@ services:
       - database
       - mongodb
       - cache
+    volumes:
+      - ./:/app
     networks:
       - app-network
 

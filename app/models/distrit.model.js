@@ -1,6 +1,8 @@
 'use strict';
 
 const sql = require('./db.js');
+const dbConfig = require('config/db.config.js');
+const { SRID_TRANSFORM } = dbConfig;
 const Distrit = function (distrit) {
     // Constructor.
 };
@@ -22,11 +24,14 @@ Distrit.getAll = (result) => {
 };
 
 Distrit.getLngLat = (request, result) => {
-    let distrit = request.name;
-    let query =
-        `SELECT ST_X(ST_Centroid(geom)) as latitude,` +
-        `ST_Y(ST_Centroid(geom)) as longitude FROM distritos ` +
-        `WHERE distrito_nombre = '${distrit}'`;
+    const distrit = request.name;
+    const query =
+      `SELECT 
+        ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
+        ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
+        FROM distritos 
+        WHERE distrito_nombre = '${distrit}'
+      `;
 
     sql.query(query, (error, response) => {
         if (error) {
