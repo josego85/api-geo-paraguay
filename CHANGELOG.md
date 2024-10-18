@@ -1,5 +1,10 @@
 # Release Notes
 
+## v1.30.0
+
+- [feat]: add healthcheck in mysql - docker compose
+- [feat]: update packahe.json and server versions (redis, mongo, node)
+
 ## v1.20.0
 
 - [build] Add docker.
