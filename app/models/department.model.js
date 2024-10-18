@@ -1,6 +1,8 @@
 'use strict';
 
 const sql = require('./db.js');
+const dbConfig = require('config/db.config.js');
+const { SRID } = dbConfig;
 const Department = function (department) {
     // Constructor.
 };
@@ -22,41 +24,24 @@ Department.getAll = (result) => {
 };
 
 Department.findByLngLat = (request, result) => {
-    let lng = request.lng;
-    let lat = request.lat;
-
+    const lng = request.lng;
+    const lat = request.lat;
+    
     sql.query(
-        'SELECT dep.departamento_nombre, dep.departamento_capital, dis.distrito_nombre, ciu.ciudad_nombre,ba.barrio_nombre ' +
-            '  FROM departamentos dep LEFT JOIN distritos dis ' +
-            '  ON ST_Contains(dis.geom, ST_GeomFromText("POINT(' +
-            lng +
-            ' ' +
-            lat +
-            ')",1))' +
-            '  LEFT JOIN ciudades ciu ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(' +
-            lng +
-            ' ' +
-            lat +
-            ')",1))' +
-            '  LEFT JOIN barrios ba ON ST_Contains(ba.geom, ST_GeomFromText("POINT(' +
-            lng +
-            ' ' +
-            lat +
-            ')",1))' +
-            '  WHERE ST_Contains(dep.geom, ST_GeomFromText("POINT(' +
-            lng +
-            ' ' +
-            lat +
-            ')",1)) AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' +
-            lng +
-            ' ' +
-            lat +
-            ')",1))' +
-            ' AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(' +
-            lng +
-            ' ' +
-            lat +
-            ')",1))',
+      `SELECT dep.departamento_nombre, dep.departamento_capital,
+      dis.distrito_nombre, ciu.ciudad_nombre,ba.barrio_nombre
+      FROM departamentos dep LEFT JOIN distritos dis
+      ON ST_Contains(dis.geom, ST_GeomFromText("POINT(
+      ${lng} ${lat})",${SRID})) LEFT JOIN ciudades ciu
+      ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(
+      ${lng} ${lat})",${SRID})) LEFT JOIN barrios ba
+      ON ST_Contains(ba.geom, ST_GeomFromText("POINT(
+      ${lng} ${lat})",${SRID})) WHERE
+      ST_Contains(dep.geom, ST_GeomFromText("POINT(
+      ${lng} ${lat})",${SRID})) AND ST_Contains(ciu.geom,
+      ST_GeomFromText("POINT(${lng} ${lat})",${SRID}))
+      AND ST_Contains(ciu.geom, ST_GeomFromText("POINT(
+      ${lng} ${lat})",${SRID}))`,
         (error, response) => {
             if (error) {
                 console.log('error: ', error);

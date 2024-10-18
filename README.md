@@ -1,18 +1,25 @@
 # API GEO Paraguay
 
-## Tecnologías
+## Technologies
 
-- NodeJS v16.20.2
-- Express 4.18.2 para el API
-- NPM 8.19.4
-- MySQL 5.7.xx
-- Client Redis 4.6.7
-- Client Mongoose 7.4.1 (MongoDB Server 6.x)
-- Swagger para la documentación
-- Docker version 26.1.1
-- Docker Compose version v2.27.0-desktop.2
+- NodeJS v20.18.0 LTS
+- Express 4.21.1 for the API
+- NPM 10.8.2
+- MySQL 8.0.xx
+- Client Redis 4.7.0 (Redis 7.4.x)
+- Client Mongoose 8.7.2 (MongoDB Server 7.0)
+- Swagger for documentation
+- Docker version 27.3.1
 
-## Base de datos MySQL
+## Docker
+
+```bash
+docker compose pull
+docker compose up --build -d
+docker compose logs -f
+```
+
+## Database in MySQL 8.0
 
 Entramos a la consola de MySQL
 
@@ -23,8 +30,9 @@ mysql -u root -p
 Creamos la base de datos paraguay
 
 ```
-CREATE DATABASE paraguay CHARACTER SET utf8 COLLATE utf8_general_ci;
-GRANT ALL PRIVILEGES ON paraguay.* TO api_geo@'localhost' IDENTIFIED BY 'xxxxxx';
+CREATE DATABASE paraguay CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'api_geo'@'localhost' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON paraguay.* TO 'api_geo'@'localhost';
 FLUSH PRIVILEGES;
 exit
 ```
@@ -48,12 +56,13 @@ Cambiar las variables del .env
 APP_PORT=3000
 URL_DOMAIN="https://api-geo.proyectosbeta.net"
 
-# DataBase MySQL.
-DB_HOST="database"
+# DataBase MySQL
+DB_HOST=mysql
 DB_NAME=paraguay
 DB_USER="api-geo"
 DB_PASSWORD="123456"
 DB_ROOT_PASSWORD="password"
+SRID=4326
 
 # MongoDB
 MONGO_URI="mongodb://mongodb:27017"
@@ -62,15 +71,15 @@ REDIS_HOST="cache"
 REDIS_PORT=6379
 ```
 
-## Instalación
+## Install
 
 ```bash
 npm install
 ```
 
-# Desarrollo
+## Desarrollo
 
-## Hacer correr la app
+### Hacer correr la app
 
 ```bash
 npm start
@@ -167,15 +176,15 @@ Ejecutar
 docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src --link sonarqube newtmitch/sonar-scanner
 ```
 
-# Producción
+## Producción
 
-## Build
+### Build
 
 ```bash
 npm run build
 ```
 
-## Hacer correr la app
+### Hacer correr la app
 
 Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
 
@@ -196,7 +205,7 @@ pm2 startup
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u proyectosbeta --hp /home/proyectosbeta
 ```
 
-## Configuración Nginx
+### Configuración Nginx
 
 ```
 server {
@@ -240,7 +249,7 @@ server {
 }
 ```
 
-# Utilización del API
+## Utilización del API
 
 -   https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
 -   https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
