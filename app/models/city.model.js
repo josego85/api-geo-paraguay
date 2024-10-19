@@ -1,6 +1,8 @@
 'use strict';
 
 const sql = require('./db.js');
+const dbConfig = require('config/db.config.js');
+const { SRID_TRANSFORM } = dbConfig;
 const City = function (city) {
     // Constructor.
 };
@@ -22,11 +24,13 @@ City.getAll = (result) => {
 };
 
 City.getLngLat = (request, result) => {
-    let city = request.name;
-    let query =
-        `SELECT ST_X(ST_Centroid(geom)) as latitude,` +
-        `ST_Y(ST_Centroid(geom)) as longitude FROM ciudades ` +
-        `WHERE ciudad_nombre = '${city}'`;
+    const city = request.name;
+    const query = `SELECT 
+        ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
+        ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
+        FROM ciudades 
+        WHERE ciudad_nombre = '${city}'
+      `;
 
     sql.query(query, (error, response) => {
         if (error) {

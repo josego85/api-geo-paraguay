@@ -5,6 +5,9 @@
 - [feat]: add healthcheck in mysql - docker compose
 - [feat]: update packahe.json and server versions (redis, mongo, node)
 - [feat]: update mysql to 8.0feat: update mysql to 8.0
+- [docs]: update changelog
+- [fix]: distrit for mysql 8.0
+- [fix]: city and neighborhood for mysql 8.0
 
 ## v1.20.0
 
