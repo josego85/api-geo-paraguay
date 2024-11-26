@@ -13,6 +13,7 @@ services:
       - cache
     volumes:
       - ./:/app
+      - /app/node_modules
     environment:
       NODE_ENV: development
     networks:

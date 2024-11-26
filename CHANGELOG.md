@@ -4,6 +4,7 @@
 
 - [fix]: endpoint api-docs
 - [docs]: update readme file
+- [fix]: nodemon in Dockerfile dev
 
 ## v2.1.0
 
