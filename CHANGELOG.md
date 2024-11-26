@@ -3,6 +3,7 @@
 ## v2.2.0
 
 -   [build]: se actualiza el archivo package.json
+-   [fix]: swagger description server
 
 ## v2.1.1
 

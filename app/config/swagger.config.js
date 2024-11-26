@@ -1,5 +1,15 @@
 const { URL_DOMAIN } = require('./global.config.js');
 const versionSystem = process.env.npm_package_version;
+const nodeEnv = process.env.NODE_ENV || 'development';
+const servers = [
+    {
+        url: `${URL_DOMAIN}/api/v1`,
+        description:
+            nodeEnv === 'production'
+                ? 'Production server'
+                : 'Development server',
+    },
+];
 const swagger = {
     openapi: '3.0.3',
     info: {
@@ -15,12 +25,7 @@ const swagger = {
             url: `${URL_DOMAIN}/api-docs`,
         },
     ],
-    servers: [
-        {
-            url: `${URL_DOMAIN}/api/v1`,
-            description: 'Development server',
-        },
-    ],
+    servers,
     paths: {
         '/barrios': {
             get: {
