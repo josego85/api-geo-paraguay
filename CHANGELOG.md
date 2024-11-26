@@ -2,7 +2,8 @@
 
 ## v2.1.0
 
-- feat: change ports in docker compose
+- [feat]: change ports in docker compose
+- [feat]: change port app in docker compose
 
 ## v2.0.0
 

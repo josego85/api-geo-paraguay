@@ -7,5 +7,5 @@ COPY package-lock.json ./
 RUN npm install
 COPY app/ ./app/
 
-EXPOSE 4000
+EXPOSE 5000
 CMD [ "npm", "start" ]

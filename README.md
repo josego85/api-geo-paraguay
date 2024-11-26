@@ -52,7 +52,7 @@ cp .env.example .env
 Cambiar las variables del .env
 
 ```
-APP_PORT=4000
+APP_PORT=5000
 URL_DOMAIN="https://api-geo.proyectosbeta.net"
 
 # DataBase MySQL
@@ -212,7 +212,7 @@ server {
     server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
 
     location / {
-        proxy_pass http://127.0.0.1:4000;
+        proxy_pass http://127.0.0.1:5000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
