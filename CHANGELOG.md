@@ -7,6 +7,7 @@
 -   [refactor]: use lint and prettier
 -   [fix]: version in swagger
 -   [docs]: update readme file
+-   [refactor]: dockerfile.prod
 
 ## v2.1.1
 
