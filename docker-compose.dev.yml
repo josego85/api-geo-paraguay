@@ -1,6 +1,7 @@
 services:
   app:
     stdin_open: true
+    container_name: app-api-geo-paraguay
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -19,6 +20,7 @@ services:
 
   database:
     image: mysql:8.0
+    container_name: database-api-geo-paraguay
     restart: always
     environment:
       MYSQL_DATABASE: ${DB_NAME}
@@ -42,6 +44,7 @@ services:
 
   mongodb:
     image: mongo:7-jammy
+    container_name: mongodb-api-geo-paraguay
     ports:
       - '28017:27017'
     volumes:
@@ -51,6 +54,7 @@ services:
 
   cache:
     image: redis:7.4-alpine
+    container_name: cache-api-geo-paraguay
     restart: always
     ports:
       - '6380:6379'

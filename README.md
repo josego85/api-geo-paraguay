@@ -20,36 +20,21 @@ docker compose logs -f
 
 ## Database in MySQL 8.0
 
-Entramos a la consola de MySQL
-
+### Import Database in docker container
 ```bash
-mysql -u root -p
-```
-
-Creamos la base de datos paraguay
-
-```
-CREATE DATABASE paraguay CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-CREATE USER 'api_geo'@'localhost' IDENTIFIED BY '123456';
-GRANT ALL PRIVILEGES ON paraguay.* TO 'api_geo'@'localhost';
-FLUSH PRIVILEGES;
-exit
-```
-
-Importamos la base de datos paraguay
-
-```bash
-tar xzvf db/paraguay.sql.tar.gz
+tar xzvf database/paraguay.sql.tar.gz
+docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
+docker exec -it database-api-geo-paraguay bash
 mysql -u root -p paraguay < paraguay.sql
 ```
 
-## Configuración (base de datos MySQL)
+### Config
 
 ```bash
 cp .env.example .env
 ```
 
-Cambiar las variables del .env
+Change variables in .env
 
 ```
 APP_PORT=5000
@@ -71,23 +56,23 @@ REDIS_HOST="cache"
 REDIS_PORT=6379
 ```
 
-## Install
+### Install
 
 ```bash
 npm install
 ```
 
-## Desarrollo
-
-### Hacer correr la app
+### Run app
 
 ```bash
 npm start
 ```
 
-## Prettier
+## Tools dev
 
-### Prettier check
+### Prettier
+
+#### Prettier check
 
 Check if the formatting matches this Prettier’s rules by using:
 
@@ -95,7 +80,7 @@ Check if the formatting matches this Prettier’s rules by using:
 npm run format:check
 ```
 
-### Prettier format
+#### Prettier format
 
 Force the formatting by using this command:
 
@@ -103,9 +88,9 @@ Force the formatting by using this command:
 npm run format:write
 ```
 
-## Lint
+### Lint
 
-### Lint check
+#### Lint check
 
 Lint your code with:
 
@@ -113,7 +98,7 @@ Lint your code with:
 npm run lint:check
 ```
 
-### Lint fix
+#### Lint fix
 
 Auto-fixing errors with this command:
 
@@ -121,39 +106,39 @@ Auto-fixing errors with this command:
 npm run lint:fix
 ```
 
-## Documentación
+## Docs
 
 ### Access
 
 -   [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
 
-## Calidad de código
+## QA
 
 ### Sonarqube
 
 -   [Sitio oficial](https://www.sonarqube.org/)
 
-#### Instalar
+#### Install
 
-##### Con docker
+##### With docker
 
 ```bash
 docker pull sonarqube
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 ```
 
-##### Acceso web
+##### Web access
 
 ```
 http://localhost:9000
 ```
 
-###### Credenciales por defecto
+###### Credencials
 
 -   User: admin
 -   Password: admin
 
-#### Usar con docker
+#### Use
 
 ```bash
 docker pull newtmitch/sonar-scanner
@@ -162,7 +147,7 @@ docker pull newtmitch/sonar-scanner
 
 ##### GNU-Linux/MacOS
 
-Ejecutar
+Execute
 
 ```bash
 docker run -ti -v /home/proyectosbeta/repositoriosGit/api-geo-paraguay:/usr/src --link sonarqube newtmitch/sonar-scanner
@@ -170,13 +155,13 @@ docker run -ti -v /home/proyectosbeta/repositoriosGit/api-geo-paraguay:/usr/src 
 
 ##### Microsoft Windows
 
-Ejecutar
+Execute
 
 ```bash
 docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src --link sonarqube newtmitch/sonar-scanner
 ```
 
-## Producción
+## Production
 
 ### Docker prod
 
@@ -185,34 +170,13 @@ docker compose -f docker-compose.prod.yml up --build -d
 docker compose logs -f
 ```
 
-### Build
+#### Build
 
 ```bash
 npm run build
 ```
 
-### Hacer correr la app
-
-Pm2 es una herramienta para ambientes de producción de aplicaciones de Node.JS, básicamente esta herramienta nos sirve para levantar nuestra aplicación como un servicio demonio en nuestro servidor.
-
-```bash
-npm install pm2 -g
-```
-
-Debemos crear un demonio con PM2 así que paramos el servidor y ejecutamos el siguiente comando:
-
-```bash
-pm2 start /home/proyectosbeta/repositoriosGit/api-geo-paraguay/dist/bundle.js --name api-geo-paraguay
-```
-
-Necesitamos configurar el script de startup del servidor.
-
-```bash
-pm2 startup
-sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u proyectosbeta --hp /home/proyectosbeta
-```
-
-### Configuración Nginx
+#### Config Nginx
 
 ```
 server {
@@ -250,7 +214,7 @@ server {
 }
 ```
 
-## Utilización del API
+## Use API
 
 -   https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
 -   https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
