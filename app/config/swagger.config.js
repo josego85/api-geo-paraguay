@@ -1,6 +1,6 @@
 const { URL_DOMAIN } = require('./global.config.js');
+const { version: versionSystem } = require('../../package.json');
 
-const versionSystem = process.env.npm_package_version;
 const nodeEnv = process.env.NODE_ENV || 'development';
 const servers = [
     {

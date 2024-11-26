@@ -5,6 +5,7 @@
 -   [build]: se actualiza el archivo package.json
 -   [fix]: swagger description server
 -   [refactor]: use lint and prettier
+-   [fix]: version in swagger
 
 ## v2.1.1
 
