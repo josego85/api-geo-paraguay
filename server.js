@@ -1,5 +1,3 @@
-'use strict';
-
 const mongoose = require('mongoose');
 const newrelic = require('newrelic');
 const globalConfig = require('./app/config/global.config.js');

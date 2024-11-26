@@ -5,6 +5,8 @@
 -   [fix]: endpoint api-docs
 -   [docs]: update readme file
 -   [fix]: nodemon in Dockerfile dev
+-   [refactor]: use prettier
+-   [refactor]: use lint
 
 ## v2.1.0
 

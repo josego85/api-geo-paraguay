@@ -1,5 +1,3 @@
-'use strict';
-
 const Polyglot = require('node-polyglot');
 const i18n = require('i18n/index.js');
 const myEs = i18n.myEs;

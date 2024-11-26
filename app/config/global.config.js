@@ -1,5 +1,3 @@
-'use strict';
-
 require('dotenv').config();
 
 const APP_NAME = process.env.APP_NAME;

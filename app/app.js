@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const createLocaleMiddleware = require('express-locale');
 const securityMiddleware = require('middleware/security.middleware.js');

@@ -1,5 +1,3 @@
-'use strict';
-
 const getCaching = require('./app.controller.js');
 const { save } = require('helpers/providers/cache/redisClient.js');
 const City = require('models/city.model.js');

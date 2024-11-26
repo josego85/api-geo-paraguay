@@ -1,5 +1,3 @@
-'use strict';
-
 const { REDIS_HOST, REDIS_PORT } = require('config/global.config.js');
 const redis = require('redis');
 let redisClient;

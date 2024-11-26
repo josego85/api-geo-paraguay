@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const router = express.Router();
 const neighborhoods = require('controllers/neighborhood.controller.js');

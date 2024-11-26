@@ -1,5 +1,3 @@
-'use strict';
-
 const { URL_DOMAIN } = require('./global.config.js');
 const versionSystem = process.env.npm_package_version;
 const swagger = {
