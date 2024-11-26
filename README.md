@@ -14,7 +14,6 @@
 ## Docker
 
 ```bash
-docker compose pull
 docker compose up --build -d
 docker compose logs -f
 ```
@@ -53,11 +52,11 @@ cp .env.example .env
 Cambiar las variables del .env
 
 ```
-APP_PORT=3000
+APP_PORT=4000
 URL_DOMAIN="https://api-geo.proyectosbeta.net"
 
 # DataBase MySQL
-DB_HOST=mysql
+DB_HOST=database
 DB_NAME=paraguay
 DB_USER="api-geo"
 DB_PASSWORD="123456"
@@ -66,7 +65,7 @@ SRID=4326
 SRID_TRANSFORM=3857
 
 # MongoDB
-MONGO_URI="mongodb://mongodb:27017"
+MONGO_URI=mongodb://mongodb:27017
 
 REDIS_HOST="cache"
 REDIS_PORT=6379
@@ -213,7 +212,7 @@ server {
     server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
 
     location / {
-        proxy_pass http://127.0.0.1:3000;
+        proxy_pass http://127.0.0.1:4000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';

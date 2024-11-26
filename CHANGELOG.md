@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.1.0
+
+- feat: change ports in docker compose
+
 ## v2.0.0
 
 - [feat]: add healthcheck in mysql - docker compose
