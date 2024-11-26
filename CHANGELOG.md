@@ -8,6 +8,7 @@
 - [docs]: update changelog
 - [fix]: distrit for mysql 8.0
 - [fix]: city and neighborhood for mysql 8.0
+- [fix]: database for mysql 8.0
 
 ## v1.20.0
 

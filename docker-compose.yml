@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
     ports:
       - "3000:3000"
     depends_on:
@@ -18,7 +17,6 @@ services:
 
   database:
     image: mysql:8.0
-    container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: ${DB_NAME}
