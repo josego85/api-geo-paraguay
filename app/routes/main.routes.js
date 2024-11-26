@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const main = require('controllers/main.controller.js');
+
+const router = express.Router();
 
 router.get('/', main);
 

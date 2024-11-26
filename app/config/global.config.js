@@ -1,11 +1,11 @@
 require('dotenv').config();
 
-const APP_NAME = process.env.APP_NAME;
-const APP_PORT = process.env.APP_PORT;
-const URL_DOMAIN = process.env.URL_DOMAIN;
-const REDIS_HOST = process.env.REDIS_HOST;
-const REDIS_PORT = process.env.REDIS_PORT;
-const MONGO_URI = process.env.MONGO_URI;
+const { APP_NAME } = process.env;
+const { APP_PORT } = process.env;
+const { URL_DOMAIN } = process.env;
+const { REDIS_HOST } = process.env;
+const { REDIS_PORT } = process.env;
+const { MONGO_URI } = process.env;
 
 module.exports = {
     APP_NAME,

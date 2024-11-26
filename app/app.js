@@ -7,6 +7,7 @@ const swaggerDocument = require('config/swagger.config.js');
 const rest = require('routes/index.js');
 const startPolyglot = require('middleware/startPolyglot.middleware.js');
 const Log = require('models/log.model.js');
+
 const app = express();
 
 app.use(express.json());
@@ -30,8 +31,8 @@ app.use(async (req, res, next) => {
     const log = new Log({
         url: req.url,
         method: req.method,
-        ip: ip,
-        geo: geo,
+        ip,
+        geo,
     });
 
     await log.save();

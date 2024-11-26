@@ -1,5 +1,6 @@
 const sql = require('./db.js');
 const dbConfig = require('config/db.config.js');
+
 const { SRID_TRANSFORM } = dbConfig;
 const City = function (city) {
     // Constructor.

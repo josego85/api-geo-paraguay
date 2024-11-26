@@ -1,4 +1,5 @@
 const { redisClient } = require('helpers/providers/cache/redisClient.js');
+
 const getCaching = async (field) => {
     try {
         const cacheResult = await redisClient.get(`${field}`);

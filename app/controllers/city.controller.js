@@ -28,7 +28,7 @@ exports.findAll = async (request, response) => {
 
             const json = {
                 success: true,
-                data: data,
+                data,
             };
             response.status(200).json(json);
         }
@@ -45,7 +45,7 @@ exports.getLngLat = async (request, response) => {
         } else {
             const json = {
                 success: true,
-                data: data,
+                data,
             };
             response.status(200).json(json);
         }

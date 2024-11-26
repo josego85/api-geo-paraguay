@@ -4,6 +4,7 @@
 
 -   [build]: se actualiza el archivo package.json
 -   [fix]: swagger description server
+-   [refactor]: use lint and prettier
 
 ## v2.1.1
 
@@ -11,7 +12,6 @@
 -   [docs]: update readme file
 -   [fix]: nodemon in Dockerfile dev
 -   [refactor]: use prettier
--   [refactor]: use lint
 -   [refactor]: use lint
 
 ## v2.1.0

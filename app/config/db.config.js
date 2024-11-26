@@ -1,11 +1,11 @@
 require('dotenv').config();
 
-const DB_HOST = process.env.DB_HOST;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME;
-const SRID = process.env.SRID;
-const SRID_TRANSFORM = process.env.SRID_TRANSFORM;
+const { DB_HOST } = process.env;
+const { DB_USER } = process.env;
+const { DB_PASSWORD } = process.env;
+const { DB_NAME } = process.env;
+const { SRID } = process.env;
+const { SRID_TRANSFORM } = process.env;
 
 module.exports = {
     DB_HOST,

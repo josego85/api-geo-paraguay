@@ -1,5 +1,6 @@
 const sql = require('./db.js');
 const dbConfig = require('config/db.config.js');
+
 const { SRID } = dbConfig;
 const Department = function (department) {
     // Constructor.
@@ -22,8 +23,8 @@ Department.getAll = (result) => {
 };
 
 Department.findByLngLat = (request, result) => {
-    const lng = request.lng;
-    const lat = request.lat;
+    const { lng } = request;
+    const { lat } = request;
 
     sql.query(
         `SELECT dep.departamento_nombre, dep.departamento_capital,
@@ -63,7 +64,7 @@ Department.findByLngLat = (request, result) => {
 };
 
 Department.findById = (request, result) => {
-    let id = request.id;
+    const { id } = request;
 
     sql.query(
         `SELECT ciu.ciudad_id, ciu.ciudad_nombre FROM departamentos dep LEFT JOIN ciudades ciu ON ST_Contains(dep.geom, ST_Centroid(ciu.geom))

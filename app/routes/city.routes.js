@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const cities = require('controllers/city.controller.js');
 
