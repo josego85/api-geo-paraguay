@@ -1,11 +1,16 @@
 # Release Notes
 
+## v2.2.0
+
+-   [build]: se actualiza el archivo package.json
+
 ## v2.1.1
 
 -   [fix]: endpoint api-docs
 -   [docs]: update readme file
 -   [fix]: nodemon in Dockerfile dev
 -   [refactor]: use prettier
+-   [refactor]: use lint
 -   [refactor]: use lint
 
 ## v2.1.0
