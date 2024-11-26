@@ -10,53 +10,50 @@ const limiter = rateLimit({
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-
 const securityMiddleware = (app) => {
-    // Security headers using Helmet
-    app.use(helmet());
+    app.use((req, res, next) => {
+        if (req.path.startsWith('/api-docs')) {
+            return next();
+        }
 
-    // Set Referrer Policy to 'strict-origin'
-    app.use(helmet.referrerPolicy({ policy: 'strict-origin' }));
+        // Security headers using Helmet
+        app.use(helmet());
+        app.use(helmet.referrerPolicy({ policy: 'strict-origin' }));
+        app.use(
+            helmet.contentSecurityPolicy({
+                directives: {
+                    defaultSrc: ["'self'"],
+                    scriptSrc: ["'self'"],
+                    styleSrc: ["'self'"],
+                    imgSrc: ["'self'"],
+                },
+            })
+        );
+        app.use(
+            expectCt({
+                enforce: true,
+                maxAge: 123,
+            })
+        );
+        app.use(helmet.frameguard({ action: 'DENY' }));
+        app.use(
+            helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' })
+        );
+        app.use(
+            featurePolicy({
+                features: {
+                    fullscreen: ["'self'"],
+                    vibrate: ["'none'"],
+                    syncXhr: ["'none'"],
+                    geolocation: ["'none'"],
+                    camera: ["'none'"],
+                    microphone: ["'none'"],
+                },
+            })
+        );
 
-    // Set Content Security Policy (CSP)
-    app.use(
-        helmet.contentSecurityPolicy({
-            directives: {
-                defaultSrc: ["'self'"],
-                scriptSrc: ["'self'"],
-                styleSrc: ["'self'"],
-                imgSrc: ["'self'"],
-            },
-        })
-    );
-
-    // Sets Expect-CT: enforce, max-age=123
-    app.use(
-        expectCt({
-            enforce: true,
-            maxAge: 123,
-        })
-    );
-
-    // Set X-Frame-Options
-    app.use(helmet.frameguard({ action: 'DENY' }));
-
-    // Set X-Permitted-Cross-Domain-Policies header to 'none'
-    app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' }));
-
-    // Set Feature-Policy header to restrict certain features
-    app.use(
-        featurePolicy({
-            features: {
-                fullscreen: ["'self'"],
-                vibrate: ["'none'"],
-                syncXhr: ["'none'"],
-                geolocation: ["'none'"],
-                camera: ["'none'"],
-                microphone: ["'none'"],
-            },
-        })
-    );
+        next();
+    });
 
     app.use(
         cors({

@@ -1,5 +1,11 @@
 # Release Notes
 
+## v2.1.1
+
+- [fix]: endpoint api-docs
+- [docs]: update readme file
+
+
 ## v2.1.0
 
 - [feat]: change ports in docker compose
