@@ -2,7 +2,7 @@
 
 ## Technologies
 
-- NodeJS v20.18.0 LTS
+- NodeJS v20.18.1 LTS
 - Express 4.21.1 for the API
 - NPM 10.8.2
 - MySQL 8.0.xx
@@ -11,10 +11,10 @@
 - Swagger for documentation
 - Docker version 27.3.1
 
-## Docker
+## Docker dev
 
 ```bash
-docker compose up --build -d
+docker compose -f docker-compose.dev.yml up --build -d
 docker compose logs -f
 ```
 
@@ -177,6 +177,13 @@ docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src
 ```
 
 ## Producción
+
+### Docker prod
+
+```bash
+docker compose -f docker-compose.prod.yml up --build -d
+docker compose logs -f
+```
 
 ### Build
 

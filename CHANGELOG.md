@@ -4,6 +4,7 @@
 
 - [feat]: change ports in docker compose
 - [feat]: change port app in docker compose
+- [feat]: add dockerfile and docker compose for production
 
 ## v2.0.0
 
