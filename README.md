@@ -24,7 +24,7 @@ docker compose logs -f
 ```bash
 tar xzvf database/paraguay.sql.tar.gz
 docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
-docker exec -it database-api-geo-paraguay bash
+docker exec -it database-api-geo-paraguay sh
 mysql -u root -p paraguay < paraguay.sql
 exit
 ```
