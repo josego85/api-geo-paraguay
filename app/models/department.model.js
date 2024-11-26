@@ -26,9 +26,9 @@ Department.getAll = (result) => {
 Department.findByLngLat = (request, result) => {
     const lng = request.lng;
     const lat = request.lat;
-    
+
     sql.query(
-      `SELECT dep.departamento_nombre, dep.departamento_capital,
+        `SELECT dep.departamento_nombre, dep.departamento_capital,
       dis.distrito_nombre, ciu.ciudad_nombre,ba.barrio_nombre
       FROM departamentos dep LEFT JOIN distritos dis
       ON ST_Contains(dis.geom, ST_GeomFromText("POINT(

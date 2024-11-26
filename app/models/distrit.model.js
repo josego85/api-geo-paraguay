@@ -25,8 +25,7 @@ Distrit.getAll = (result) => {
 
 Distrit.getLngLat = (request, result) => {
     const distrit = request.name;
-    const query =
-      `SELECT 
+    const query = `SELECT 
         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
         FROM distritos 

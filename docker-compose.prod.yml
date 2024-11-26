@@ -1,76 +1,76 @@
 services:
-  app:
-    stdin_open: true
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-    ports:
-      - "5000:5000"
-    depends_on:
-      - database
-      - mongodb
-      - cache
-    volumes:
-      - ./:/app
-    environment:
-      NODE_ENV: production
-    networks:
-      - app-network
+    app:
+        stdin_open: true
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+        ports:
+            - '5000:5000'
+        depends_on:
+            - database
+            - mongodb
+            - cache
+        volumes:
+            - ./:/app
+        environment:
+            NODE_ENV: production
+        networks:
+            - app-network
 
-  database:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}     
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-    ports:
-      - '3406:3306'
-    expose:
-      - '3306'
-    volumes:
-      - 'mysql-data:/var/lib/mysql'
-      - '/db/init.sql:/docker-entrypoint-initdb.d/init.sql'
-    networks:
-      - app-network
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    database:
+        image: mysql:8.0
+        restart: always
+        environment:
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        ports:
+            - '3406:3306'
+        expose:
+            - '3306'
+        volumes:
+            - 'mysql-data:/var/lib/mysql'
+            - '/db/init.sql:/docker-entrypoint-initdb.d/init.sql'
+        networks:
+            - app-network
+        healthcheck:
+            test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
-  mongodb:
-    image: mongo:7-jammy
-    ports:
-      - '28017:27017'
-    volumes:
-      - dbdata6:/data/db
-    networks:
-      - app-network
+    mongodb:
+        image: mongo:7-jammy
+        ports:
+            - '28017:27017'
+        volumes:
+            - dbdata6:/data/db
+        networks:
+            - app-network
 
-  cache:
-    image: redis:7.4-alpine
-    restart: always
-    ports:
-      - '6380:6379'
-    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
-    volumes: 
-      - cache:/data
-    networks:
-      - app-network
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    cache:
+        image: redis:7.4-alpine
+        restart: always
+        ports:
+            - '6380:6379'
+        command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+        volumes:
+            - cache:/data
+        networks:
+            - app-network
+        healthcheck:
+            test: ['CMD', 'redis-cli', 'ping']
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
 volumes:
-  mysql-data:
-  dbdata6:
-  cache:
-    driver: local
+    mysql-data:
+    dbdata6:
+    cache:
+        driver: local
 
 networks:
-  app-network:
-    driver: bridge
+    app-network:
+        driver: bridge

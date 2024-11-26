@@ -2,14 +2,14 @@
 
 ## Technologies
 
-- NodeJS v20.18.1 LTS
-- Express 4.21.1 for the API
-- NPM 10.8.2
-- MySQL 8.0.xx
-- Client Redis 4.7.0 (Redis 7.4.x)
-- Client Mongoose 8.7.2 (MongoDB Server 7.0)
-- Swagger for documentation
-- Docker version 27.3.1
+-   NodeJS v20.18.1 LTS
+-   Express 4.21.1 for the API
+-   NPM 10.8.2
+-   MySQL 8.0.xx
+-   Client Redis 4.7.0 (Redis 7.4.x)
+-   Client Mongoose 8.7.2 (MongoDB Server 7.0)
+-   Swagger for documentation
+-   Docker version 27.3.1
 
 ## Docker dev
 
@@ -21,6 +21,7 @@ docker compose logs -f
 ## Database in MySQL 8.0
 
 ### Import Database in docker container
+
 ```bash
 tar xzvf database/paraguay.sql.tar.gz
 docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql

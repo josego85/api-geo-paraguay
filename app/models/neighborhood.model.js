@@ -31,7 +31,7 @@ Neighborhood.getLngLat = (request, result) => {
         FROM barrios 
         WHERE barrio_nombre = '${neighborhood}'
       `;
-    
+
     sql.query(query, (error, response) => {
         if (error) {
             console.log('error: ', error);
