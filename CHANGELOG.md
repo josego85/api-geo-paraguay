@@ -6,6 +6,7 @@
 -   [fix]: swagger description server
 -   [refactor]: use lint and prettier
 -   [fix]: version in swagger
+-   [docs]: update readme file
 
 ## v2.1.1
 
