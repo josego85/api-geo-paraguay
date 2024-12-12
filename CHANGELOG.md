@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.3.0
+
+-   [build]: se actualiza el archivo package.json
+
 ## v2.2.0
 
 -   [build]: se actualiza el archivo package.json
@@ -7,7 +11,7 @@
 -   [refactor]: use lint and prettier
 -   [fix]: version in swagger
 -   [docs]: update readme file
--   [refactor]: dockerfile.prod
+-   [refactor]: Dockerfile.prod
 
 ## v2.1.1
 
