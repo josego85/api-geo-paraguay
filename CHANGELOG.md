@@ -4,6 +4,7 @@
 
 -   [build]: se actualiza el archivo package.json
 -   [update]: Dockerfile.dev
+-   [docs]: update readme file
 
 ## v2.2.0
 
