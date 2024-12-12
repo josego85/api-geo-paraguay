@@ -3,6 +3,7 @@
 ## v2.3.0
 
 -   [build]: se actualiza el archivo package.json
+-   [update]: Dockerfile.dev
 
 ## v2.2.0
 
