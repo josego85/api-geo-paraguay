@@ -7,7 +7,7 @@
 -   NPM 10.8.2
 -   MySQL 8.0.xx
 -   Client Redis 4.7.0 (Redis 7.4.x)
--   Client Mongoose 8.8.4 (MongoDB Server 7.0)
+-   Client Mongoose 8.9.1 (MongoDB Server 7.0)
 -   Swagger for documentation
 -   Docker version 27.4.0
 
