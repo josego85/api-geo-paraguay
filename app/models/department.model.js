@@ -2,7 +2,7 @@ const sql = require('./db');
 const dbConfig = require('config/db.config');
 
 const { SRID } = dbConfig;
-const Department = function (department) {
+const Department = function () {
   // Constructor.
 };
 

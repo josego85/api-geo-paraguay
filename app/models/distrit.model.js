@@ -2,7 +2,7 @@ const sql = require('./db');
 const dbConfig = require('config/db.config');
 
 const { SRID_TRANSFORM } = dbConfig;
-const Distrit = function (distrit) {
+const Distrit = function () {
   // Constructor.
 };
 
