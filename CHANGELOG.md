@@ -9,6 +9,7 @@
 - [refactor]: changes in prettier and eslint
 - [refactor]: server.js
 - [fix]: app.controllers
+- [feat]: add optimization in webpack
 
 ## v2.3.0
 
