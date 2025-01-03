@@ -3,7 +3,7 @@
 ## v2.4.0
 
 -   [build]: se actualiza el archivo package.json
--   [refactor]: Dockerfiles
+-   [refactor]: Dockerfiles and code
 
 ## v2.3.0
 
