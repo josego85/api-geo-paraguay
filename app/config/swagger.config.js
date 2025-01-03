@@ -3,155 +3,150 @@ const { version: versionSystem } = require('../../package.json');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const servers = [
-    {
-        url: `${URL_DOMAIN}/api/v1`,
-        description:
-            nodeEnv === 'production'
-                ? 'Production server'
-                : 'Development server',
-    },
+  {
+    url: `${URL_DOMAIN}/api/v1`,
+    description: nodeEnv === 'production' ? 'Production server' : 'Development server',
+  },
 ];
 const swagger = {
-    openapi: '3.0.3',
-    info: {
-        version: versionSystem,
-        title: 'API GEO Paraguay',
-        description: 'API GEO Paraguay',
-        contact: {
-            email: 'josego85@gmail.com',
-        },
+  openapi: '3.0.3',
+  info: {
+    version: versionSystem,
+    title: 'API GEO Paraguay',
+    description: 'API GEO Paraguay',
+    contact: {
+      email: 'josego85@gmail.com',
     },
-    externalDocs: [
-        {
-            url: `${URL_DOMAIN}/api-docs`,
-        },
-    ],
-    servers,
-    paths: {
-        '/barrios': {
-            get: {
-                summary: 'All neighborhood',
-                description: 'All neighborhood',
-                parameters: [
-                    {
-                        in: 'header',
-                        name: 'accept-language',
-                        schema: {
-                            type: 'string',
-                        },
-                    },
-                ],
-                responses: {
-                    200: {
-                        description: 'Return all the neighborhood',
-                    },
-                },
-            },
-        },
-        '/departamentos': {
-            get: {
-                summary: 'All departaments',
-                description: 'All departaments',
-                parameters: [
-                    {
-                        in: 'header',
-                        name: 'accept-language',
-                        schema: {
-                            type: 'string',
-                        },
-                    },
-                ],
-                responses: {
-                    200: {
-                        description: 'Return all the departements',
-                    },
-                },
-            },
-        },
-        '/distritos': {
-            get: {
-                summary: 'All distrits',
-                description: 'All distrits',
-                parameters: [
-                    {
-                        in: 'header',
-                        name: 'accept-language',
-                        schema: {
-                            type: 'string',
-                        },
-                    },
-                ],
-                responses: {
-                    200: {
-                        description: 'Return all the distrits',
-                    },
-                },
-            },
-        },
-        '/ciudades': {
-            get: {
-                summary: 'All cities',
-                description: 'All cities',
-                parameters: [
-                    {
-                        in: 'header',
-                        name: 'accept-language',
-                        schema: {
-                            type: 'string',
-                        },
-                    },
-                ],
-                responses: {
-                    200: {
-                        description: 'Return all the cities',
-                    },
-                },
-            },
-        },
-        '/paraguay/{longitude}/{latitude}': {
-            get: {
-                summary:
-                    'All information from Paraguay (department, distrit, city and neighborhood',
-                description:
-                    'All information from Paraguay (department, distrit, city and neighborhood',
-                parameters: [
-                    {
-                        in: 'header',
-                        name: 'accept-language',
-                        schema: {
-                            type: 'string',
-                        },
-                    },
-                    {
-                        in: 'path',
-                        name: 'longitude',
-                        description: 'The longitude',
-                        required: true,
-                        schema: {
-                            type: 'number',
-                        },
-                    },
-                    {
-                        in: 'path',
-                        name: 'latitude',
-                        description: 'The latitude',
-                        required: true,
-                        schema: {
-                            type: 'number',
-                        },
-                    },
-                ],
-                responses: {
-                    200: {
-                        description:
-                            'All information from Paraguay (department, distrit, city and neighborhoods',
-                    },
-                },
-            },
-        },
+  },
+  externalDocs: [
+    {
+      url: `${URL_DOMAIN}/api-docs`,
     },
-    components: {},
-    tags: [],
+  ],
+  servers,
+  paths: {
+    '/barrios': {
+      get: {
+        summary: 'All neighborhood',
+        description: 'All neighborhood',
+        parameters: [
+          {
+            in: 'header',
+            name: 'accept-language',
+            schema: {
+              type: 'string',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Return all the neighborhood',
+          },
+        },
+      },
+    },
+    '/departamentos': {
+      get: {
+        summary: 'All departaments',
+        description: 'All departaments',
+        parameters: [
+          {
+            in: 'header',
+            name: 'accept-language',
+            schema: {
+              type: 'string',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Return all the departements',
+          },
+        },
+      },
+    },
+    '/distritos': {
+      get: {
+        summary: 'All distrits',
+        description: 'All distrits',
+        parameters: [
+          {
+            in: 'header',
+            name: 'accept-language',
+            schema: {
+              type: 'string',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Return all the distrits',
+          },
+        },
+      },
+    },
+    '/ciudades': {
+      get: {
+        summary: 'All cities',
+        description: 'All cities',
+        parameters: [
+          {
+            in: 'header',
+            name: 'accept-language',
+            schema: {
+              type: 'string',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Return all the cities',
+          },
+        },
+      },
+    },
+    '/paraguay/{longitude}/{latitude}': {
+      get: {
+        summary: 'All information from Paraguay (department, distrit, city and neighborhood',
+        description: 'All information from Paraguay (department, distrit, city and neighborhood',
+        parameters: [
+          {
+            in: 'header',
+            name: 'accept-language',
+            schema: {
+              type: 'string',
+            },
+          },
+          {
+            in: 'path',
+            name: 'longitude',
+            description: 'The longitude',
+            required: true,
+            schema: {
+              type: 'number',
+            },
+          },
+          {
+            in: 'path',
+            name: 'latitude',
+            description: 'The latitude',
+            required: true,
+            schema: {
+              type: 'number',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description:
+              'All information from Paraguay (department, distrit, city and neighborhoods',
+          },
+        },
+      },
+    },
+  },
+  components: {},
+  tags: [],
 };
 
 module.exports = swagger;

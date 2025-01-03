@@ -6,6 +6,7 @@
 - [refactor]: Dockerfiles and code
 - [refactor]: configs code
 - [docs]: update readme file
+- [refactor]: changes in prettier and eslint
 
 ## v2.3.0
 

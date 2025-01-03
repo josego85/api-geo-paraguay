@@ -3,52 +3,52 @@ const dbConfig = require('config/db.config.js');
 
 const { SRID_TRANSFORM } = dbConfig;
 const Distrit = function (distrit) {
-    // Constructor.
+  // Constructor.
 };
 
 Distrit.getAll = (result) => {
-    sql.query(
-        'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id',
-        (error, response) => {
-            if (error) {
-                console.log('error: ', error);
-                result(null, error);
+  sql.query(
+    'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id',
+    (error, response) => {
+      if (error) {
+        console.log('error: ', error);
+        result(null, error);
 
-                return;
-            }
+        return;
+      }
 
-            result(null, response);
-        }
-    );
+      result(null, response);
+    }
+  );
 };
 
 Distrit.getLngLat = (request, result) => {
-    const distrit = request.name;
-    const query = `SELECT 
+  const distrit = request.name;
+  const query = `SELECT 
         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
         FROM distritos 
         WHERE distrito_nombre = '${distrit}'
       `;
 
-    sql.query(query, (error, response) => {
-        if (error) {
-            console.log('error: ', error);
-            result(error, null);
+  sql.query(query, (error, response) => {
+    if (error) {
+      console.log('error: ', error);
+      result(error, null);
 
-            return;
-        }
+      return;
+    }
 
-        if (response.length) {
-            // console.log('found longitude latitude distrit: ', response[0])
-            result(null, response[0]);
+    if (response.length) {
+      // console.log('found longitude latitude distrit: ', response[0])
+      result(null, response[0]);
 
-            return;
-        }
+      return;
+    }
 
-        // Not found distrit.
-        result({ kind: 'not_found' }, null);
-    });
+    // Not found distrit.
+    result({ kind: 'not_found' }, null);
+  });
 };
 
 module.exports = Distrit;

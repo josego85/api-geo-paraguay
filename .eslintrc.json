@@ -1,22 +1,26 @@
 {
-    "root": true,
-    "env": {
-        "es2021": true,
-        "node": true
-    },
-    "extends": ["airbnb-base", "prettier", "plugin:node/recommended"],
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": ["prettier"],
-    "rules": {
-        "prettier/prettier": "error",
-        "no-unused-vars": "warn",
-        "no-console": "off",
-        "func-names": "off",
-        "no-plusplus": "off",
-        "no-process-exit": "off",
-        "class-methods-use-this": "off"
-    }
+  "root": true,
+  "env": {
+    "es2021": true,
+    "node": true,
+    "jest": true // Add this if you are using Jest for testing
+  },
+  "extends": ["airbnb-base", "prettier", "plugin:node/recommended"],
+  "parser": "babel-eslint", // Add this line
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "func-names": "off",
+    "no-plusplus": "off",
+    "no-process-exit": "off",
+    "class-methods-use-this": "off",
+    "consistent-return": "error", // Add this line
+    "no-unused-expressions": "error" // Add this line
+  }
 }

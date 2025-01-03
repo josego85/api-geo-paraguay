@@ -14,10 +14,10 @@ app.use(express.json());
 
 // Translation. English default language.
 app.use(
-    createLocaleMiddleware({
-        priority: ['accept-language', 'default'],
-        default: 'en-US',
-    })
+  createLocaleMiddleware({
+    priority: ['accept-language', 'default'],
+    default: 'en-US',
+  })
 );
 
 // Set the language in the req with the phrases to be used.
@@ -26,17 +26,17 @@ app.use(startPolyglot);
 securityMiddleware(app);
 
 app.use(async (req, res, next) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const geo = lookup(ip);
-    const log = new Log({
-        url: req.url,
-        method: req.method,
-        ip,
-        geo,
-    });
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const geo = lookup(ip);
+  const log = new Log({
+    url: req.url,
+    method: req.method,
+    ip,
+    geo,
+  });
 
-    await log.save();
-    next();
+  await log.save();
+  next();
 });
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
