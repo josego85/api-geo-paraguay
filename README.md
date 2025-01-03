@@ -2,14 +2,14 @@
 
 ## Technologies
 
--   NodeJS v20.18.1 LTS
--   Express 4.21.2 for the API
--   NPM 10.8.2
--   MySQL 8.0.xx
--   Client Redis 4.7.0 (Redis 7.4.x)
--   Client Mongoose 8.9.1 (MongoDB Server 7.0)
--   Swagger for documentation
--   Docker version 27.4.0
+- NodeJS v20.18.1 LTS
+- Express 4.21.2 for the API
+- NPM 10.8.2
+- MySQL 8.0.xx
+- Client Redis 4.7.0 (Redis 7.4.x)
+- Client Mongoose 8.9.1 (MongoDB Server 7.0)
+- Swagger for documentation
+- Docker version 27.4.0
 
 ## Docker dev
 
@@ -114,13 +114,13 @@ npm run lint:fix
 
 ### Access
 
--   [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
+- [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
 
 ## QA
 
 ### Sonarqube
 
--   [Sitio oficial](https://www.sonarqube.org/)
+- [Sitio oficial](https://www.sonarqube.org/)
 
 #### Install
 
@@ -139,8 +139,8 @@ http://localhost:9000
 
 ###### Credencials
 
--   User: admin
--   Password: admin
+- User: admin
+- Password: admin
 
 #### Use
 
@@ -220,13 +220,13 @@ server {
 
 ## Use API
 
--   https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
--   https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
--   https://api-geo.proyectosbeta.net/api/v1/departamentos
--   https://api-geo.proyectosbeta.net/api/v1/departamentos/14
--   https://api-geo.proyectosbeta.net/api/v1/distritos
--   https://api-geo.proyectosbeta.net/api/v1/distritos/Luque
--   https://api-geo.proyectosbeta.net/api/v1/ciudades
--   https://api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
--   https://api-geo.proyectosbeta.net/api/v1/barrios
--   https://api-geo.proyectosbeta.net/api/v1/barrios/Jara
+- https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
+- https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
+- https://api-geo.proyectosbeta.net/api/v1/departamentos
+- https://api-geo.proyectosbeta.net/api/v1/departamentos/14
+- https://api-geo.proyectosbeta.net/api/v1/distritos
+- https://api-geo.proyectosbeta.net/api/v1/distritos/Luque
+- https://api-geo.proyectosbeta.net/api/v1/ciudades
+- https://api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
+- https://api-geo.proyectosbeta.net/api/v1/barrios
+- https://api-geo.proyectosbeta.net/api/v1/barrios/Jara
