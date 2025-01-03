@@ -1,4 +1,4 @@
-const myEs = require('./es.js');
-const myEn = require('./en.js');
+const myEs = require('./es');
+const myEn = require('./en');
 
 module.exports = { myEs, myEn };

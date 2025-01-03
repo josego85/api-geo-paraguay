@@ -1,12 +1,12 @@
 const express = require('express');
 const createLocaleMiddleware = require('express-locale');
-const securityMiddleware = require('middleware/security.middleware.js');
+const securityMiddleware = require('middleware/security.middleware');
 const swaggerUi = require('swagger-ui-express');
 const { lookup } = require('geoip-lite');
-const swaggerDocument = require('config/swagger.config.js');
-const rest = require('routes/index.js');
-const startPolyglot = require('middleware/startPolyglot.middleware.js');
-const Log = require('models/log.model.js');
+const swaggerDocument = require('config/swagger.config');
+const rest = require('routes/index');
+const startPolyglot = require('middleware/startPolyglot.middleware');
+const Log = require('models/log.model');
 
 const app = express();
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const distrits = require('controllers/distrit.controller.js');
+const distrits = require('controllers/distrit.controller');
 
 const router = express.Router();
 

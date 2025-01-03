@@ -3,10 +3,10 @@
   "env": {
     "es2021": true,
     "node": true,
-    "jest": true // Add this if you are using Jest for testing
+    "jest": true
   },
   "extends": ["airbnb-base", "prettier", "plugin:node/recommended"],
-  "parser": "babel-eslint", // Add this line
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module"
@@ -20,7 +20,7 @@
     "no-plusplus": "off",
     "no-process-exit": "off",
     "class-methods-use-this": "off",
-    "consistent-return": "error", // Add this line
-    "no-unused-expressions": "error" // Add this line
+    "consistent-return": "error",
+    "no-unused-expressions": "error"
   }
 }

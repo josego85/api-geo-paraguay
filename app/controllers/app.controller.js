@@ -1,4 +1,4 @@
-const { redisClient } = require('helpers/providers/cache/redisClient.js');
+const { redisClient } = require('helpers/providers/cache/redisClient');
 
 const getCaching = async (field) => {
   try {

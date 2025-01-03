@@ -1,6 +1,6 @@
-const getCaching = require('./app.controller.js');
-const { save } = require('helpers/providers/cache/redisClient.js');
-const City = require('models/city.model.js');
+const getCaching = require('./app.controller');
+const { save } = require('helpers/providers/cache/redisClient');
+const City = require('models/city.model');
 
 // Retrieve all city from the database.
 exports.findAll = async (request, response) => {

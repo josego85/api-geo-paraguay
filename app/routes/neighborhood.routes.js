@@ -1,5 +1,5 @@
 const express = require('express');
-const neighborhoods = require('controllers/neighborhood.controller.js');
+const neighborhoods = require('controllers/neighborhood.controller');
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
 const Polyglot = require('node-polyglot');
-const i18n = require('i18n/index.js');
+const i18n = require('i18n/index');
 
 const { myEs } = i18n;
 const { myEn } = i18n;
