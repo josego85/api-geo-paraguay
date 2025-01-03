@@ -45,17 +45,18 @@ URL_DOMAIN="https://api-geo.proyectosbeta.net"
 
 # DataBase MySQL
 DB_HOST=database
+DB_PORT=3306
 DB_NAME=paraguay
-DB_USER="api-geo"
-DB_PASSWORD="123456"
-DB_ROOT_PASSWORD="password"
+DB_USER=api-geo
+DB_PASSWORD=123456
+DB_ROOT_PASSWORD=password
 SRID=4326
 SRID_TRANSFORM=3857
 
 # MongoDB
 MONGO_URI=mongodb://mongodb:27017
 
-REDIS_HOST="cache"
+REDIS_HOST=cache
 REDIS_PORT=6379
 ```
 

@@ -34,7 +34,7 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         ports:
-            - '3406:3306'
+            - '3306:3306'
         expose:
             - '3306'
         volumes:
@@ -43,7 +43,7 @@ services:
         networks:
             - app-network
         healthcheck:
-            test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+            test: ['CMD', 'mysqladmin', 'ping', '-h', 'database']
             interval: 10s
             timeout: 5s
             retries: 5
