@@ -10,7 +10,7 @@ const getCaching = async (field) => {
 
     return JSON.parse(cacheResult);
   } catch (error) {
-    return;
+    console.error('Error fetching from cache:', error);
   }
 };
 

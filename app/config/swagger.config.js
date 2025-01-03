@@ -1,4 +1,4 @@
-const { URL_DOMAIN } = require('./global.config.js');
+const { URL_DOMAIN } = require('./global.config');
 const { version: versionSystem } = require('../../package.json');
 
 const nodeEnv = process.env.NODE_ENV || 'development';

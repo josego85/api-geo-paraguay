@@ -8,6 +8,7 @@
 - [docs]: update readme file
 - [refactor]: changes in prettier and eslint
 - [refactor]: server.js
+- [fix]: app.controllers
 
 ## v2.3.0
 
