@@ -7,6 +7,7 @@
 - [refactor]: configs code
 - [docs]: update readme file
 - [refactor]: changes in prettier and eslint
+- [refactor]: server.js
 
 ## v2.3.0
 

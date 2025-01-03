@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const globalConfig = require('./app/config/global.config.js');
-const app = require('./app/app.js');
+const globalConfig = require('./app/config/global.config');
+const app = require('./app/app');
 
 const { APP_NAME, APP_PORT, MONGO_URI } = globalConfig;
 
@@ -11,11 +11,11 @@ async function main() {
 async function startServer() {
     app.listen(APP_PORT, (err) => {
         if (err) {
-            console.log(err);
-            return;
+            console.error('Error starting server:', err);
+            process.exit(1);
         }
         main().catch((error) => console.log(error));
-        console.log(`The server listening on ${APP_PORT}`);
+        console.log(`Server running on port ${APP_PORT}`);
     });
 }
 
