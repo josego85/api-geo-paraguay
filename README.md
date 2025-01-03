@@ -14,6 +14,7 @@
 ## Docker dev
 
 ```bash
+npm i
 docker compose -f docker-compose.dev.yml up --build -d
 docker compose logs -f
 ```

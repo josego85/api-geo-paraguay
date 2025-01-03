@@ -1,5 +1,10 @@
 # Release Notes
 
+## v2.4.0
+
+-   [build]: se actualiza el archivo package.json
+-   [refactor]: Dockerfiles
+
 ## v2.3.0
 
 -   [build]: se actualiza el archivo package.json

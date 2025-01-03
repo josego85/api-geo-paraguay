@@ -16,6 +16,11 @@ services:
             - /app/node_modules
         environment:
             NODE_ENV: development
+            DB_HOST: database
+            DB_PORT: 3306
+            DB_USER: ${DB_USER}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_NAME: ${DB_NAME}
         networks:
             - app-network
 
@@ -56,7 +61,6 @@ services:
     cache:
         image: redis:7.4-alpine
         container_name: cache-api-geo-paraguay
-        restart: always
         ports:
             - '6380:6379'
         command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81

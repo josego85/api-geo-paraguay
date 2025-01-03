@@ -1,6 +1,7 @@
 services:
     app:
         stdin_open: true
+        container_name: app-api-geo-paraguay
         build:
             context: .
             dockerfile: Dockerfile.prod
@@ -16,10 +17,10 @@ services:
             NODE_ENV: production
         networks:
             - app-network
+        restart: always
 
     database:
         image: mysql:8.0
-        restart: always
         environment:
             MYSQL_DATABASE: ${DB_NAME}
             MYSQL_USER: ${DB_USER}
@@ -39,19 +40,22 @@ services:
             interval: 10s
             timeout: 5s
             retries: 5
+        restart: always
 
     mongodb:
         image: mongo:7-jammy
+        container_name: mongodb-api-geo-paraguay
         ports:
             - '28017:27017'
         volumes:
             - dbdata6:/data/db
         networks:
             - app-network
+        restart: always
 
     cache:
         image: redis:7.4-alpine
-        restart: always
+        container_name: cache-api-geo-paraguay
         ports:
             - '6380:6379'
         command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
@@ -64,6 +68,7 @@ services:
             interval: 10s
             timeout: 5s
             retries: 5
+        restart: always
 
 volumes:
     mysql-data:
