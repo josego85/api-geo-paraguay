@@ -7,7 +7,7 @@
 - NPM 10.8.2
 - MySQL 8.0.xx
 - Client Redis 4.7.0 (Redis 7.4.x)
-- Client Mongoose 8.9.1 (MongoDB Server 7.0)
+- Client Mongoose 8.9.3 (MongoDB Server 7.0)
 - Swagger for documentation
 - Docker version 27.4.0
 
@@ -167,17 +167,17 @@ docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src
 
 ## Production
 
+### Build
+
+```bash
+npm run build
+```
+
 ### Docker prod
 
 ```bash
 docker compose -f docker-compose.prod.yml up --build -d
 docker compose logs -f
-```
-
-#### Build
-
-```bash
-npm run build
 ```
 
 #### Config Nginx

@@ -5,6 +5,7 @@
 - [build]: se actualiza el archivo package.json
 - [refactor]: Dockerfiles and code
 - [refactor]: configs code
+- [docs]: update readme file
 
 ## v2.3.0
 
