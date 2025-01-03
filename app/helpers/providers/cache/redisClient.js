@@ -23,7 +23,9 @@ const save = async (field, data) => {
   try {
     // Save in redis.
     await redisClient.set(`${field}`, serializedDetails, 'EX', expirationTime);
-  } catch (error) {}
+  } catch (error) {
+    console.error(`Failed to save data in Redis: ${error}`);
+  }
 };
 
 module.exports = { redisClient, save };

@@ -1,6 +1,6 @@
-const getCaching = require('./app.controller');
 const { save } = require('helpers/providers/cache/redisClient');
 const Distrit = require('models/distrit.model');
+const getCaching = require('./app.controller');
 
 // Retrieve all distrits from the database.
 exports.findAll = async (request, response) => {
