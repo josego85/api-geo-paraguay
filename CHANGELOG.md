@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.5.0
+
+- [build]: se actualiza el archivo package.json. Error de seguridad critico en el paquete mongoose.
+
 ## v2.4.0
 
 - [build]: se actualiza el archivo package.json
