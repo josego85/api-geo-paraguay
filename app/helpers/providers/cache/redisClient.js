@@ -1,4 +1,4 @@
-const { REDIS_HOST, REDIS_PORT } = require('config/global.config');
+const { REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = require('config/global.config');
 const redis = require('redis');
 
 let redisClient;
@@ -9,6 +9,7 @@ let redisClient;
       host: REDIS_HOST,
       port: REDIS_PORT,
     },
+    password: REDIS_PASSWORD,
   });
 
   redisClient.on('error', (error) => console.error(`Error : ${error}`));
