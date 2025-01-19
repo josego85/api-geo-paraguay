@@ -3,7 +3,7 @@
 ## Technologies
 
 - NodeJS v20.18.1 LTS
-- Express 4.21.2 for the API
+- Express 5.0.1 for the API
 - NPM 10.8.2
 - MySQL 8.0.xx
 - Client Redis 4.7.0 (Redis 7.4.x)
