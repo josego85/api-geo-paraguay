@@ -1,13 +1,12 @@
 {
   "name": "api-geo-paraguay",
   "description": "API GEO - Paraguay",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "main": "server.js",
   "author": {
-    "name": "Proyectos Beta",
-    "email": "josego85@gmail.com",
-    "url": "https://proyectosbeta.net/"
+    "name": "Josego",
+    "email": "josego85@gmail.com"
   },
   "license": "GPlv3",
   "scripts": {
@@ -29,7 +28,7 @@
     "cors": "2.8.5",
     "dotenv": "16.4.7",
     "expect-ct": "1.0.0",
-    "express": "4.21.2",
+    "express": "5.0.1",
     "express-locale": "2.0.2",
     "express-rate-limit": "7.5.0",
     "feature-policy": "0.6.0",

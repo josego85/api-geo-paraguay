@@ -1,5 +1,10 @@
 # Release Notes
 
+## v2.6.0
+
+- [fix]: autenticación en Redis.
+- [feat]: update a express 5
+
 ## v2.5.0
 
 - [build]: se actualiza el archivo package.json. Error de seguridad critico en el paquete mongoose.

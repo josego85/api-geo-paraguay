@@ -58,6 +58,7 @@ MONGO_URI=mongodb://mongodb:27017
 
 REDIS_HOST=cache
 REDIS_PORT=6379
+REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
 ```
 
 ### Install
