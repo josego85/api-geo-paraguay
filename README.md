@@ -2,12 +2,12 @@
 
 ## Technologies
 
-- NodeJS v20.18.1 LTS
+- NodeJS v20.18.2 LTS
 - Express 5.0.1 for the API
 - NPM 10.8.2
 - MySQL 8.0.xx
 - Client Redis 4.7.0 (Redis 7.4.x)
-- Client Mongoose 8.9.3 (MongoDB Server 7.0)
+- Client Mongoose 8.10.0 (MongoDB Server 7.0)
 - Swagger for documentation
 - Docker version 27.4.0
 

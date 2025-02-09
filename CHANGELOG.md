@@ -1,5 +1,10 @@
 # Release Notes
 
+
+## v2.7.0
+
+- [build]: update to node 20.18.2
+
 ## v2.6.0
 
 - [fix]: autenticación en Redis.
