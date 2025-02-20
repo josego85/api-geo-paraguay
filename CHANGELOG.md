@@ -3,6 +3,7 @@
 ## v2.8.0
 
 - [build]: update to node 20.18.3
+- [build]: se actualiza el archivo package.json
 
 
 ## v2.7.0
