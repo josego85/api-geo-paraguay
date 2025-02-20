@@ -2,7 +2,7 @@
 
 ## Technologies
 
-- NodeJS v20.18.2 LTS
+- NodeJS v20.18.3 LTS
 - Express 5.0.1 for the API
 - NPM 10.8.2
 - MySQL 8.0.xx

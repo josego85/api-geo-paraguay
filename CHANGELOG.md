@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.8.0
+
+- [build]: update to node 20.18.3
+
 
 ## v2.7.0
 
