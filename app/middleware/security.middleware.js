@@ -50,7 +50,7 @@ const securityMiddleware = (app) => {
       })
     );
 
-    next();
+    return next();
   });
 
   app.use(

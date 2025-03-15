@@ -5,12 +5,13 @@ const getCaching = async (field) => {
     const cacheResult = await redisClient.get(`${field}`);
 
     if (!cacheResult) {
-      return;
+      return null;
     }
 
     return JSON.parse(cacheResult);
   } catch (error) {
     console.error('Error fetching from cache:', error);
+    return null;
   }
 };
 

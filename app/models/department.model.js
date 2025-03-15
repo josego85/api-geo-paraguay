@@ -1,5 +1,5 @@
-const sql = require('./db');
 const dbConfig = require('config/db.config');
+const sql = require('./db');
 
 const { SRID } = dbConfig;
 const Department = function () {
