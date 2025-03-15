@@ -1,233 +1,205 @@
 # API GEO Paraguay
 
+API GEO Paraguay is a RESTful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). With this API, you can determine the corresponding department, district, city, or neighborhood of any provided location.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Quick Start](#quick-start)
+  - [Local Development](#local-development)
+  - [Docker (Development)](#docker-development)
+- [Database Setup](#database-setup)
+- [Testing & Code Quality](#testing--code-quality)
+- [API Documentation](#api-documentation)
+- [Production](#production)
+- [License](#license)
+- [Support](#support)
+
+## Overview
+
+API GEO Paraguay simplifies the integration of geographic data into your applications by offering high precision geolocation services. Whether you are building solutions for logistics, tourism, research, or urban planning, this API provides continuously updated geographical data to enhance your project's capabilities.
+
+## Features
+
+- Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates.
+- Cache integration using Redis for faster responses.
+- Secure endpoints with industry-standard security practices.
+- Comprehensive API documentation with Swagger.
+
 ## Technologies
 
-- NodeJS v22.14.0 LTS
-- Express 5.0.1 for the API
-- NPM 10.9.2
-- MySQL 8.0.xx
-- Client Redis 4.7.0 (Redis 7.4.x)
-- Client Mongoose 8.10.0 (MongoDB Server 7.0)
-- Swagger for documentation
-- Docker version 27.4.0
+- **NodeJS**: v22.14.0 LTS
+- **Express**: 5.0.1
+- **MySQL**: 8.0.xx
+- **Redis**: 7.4.x (client: Redis 4.7.0)
+- **MongoDB**: Server 7.0 (client: Mongoose 8.12.1)
+- **Swagger**: For API documentation
+- **Docker**: Version 27.4.0
 
-## Docker dev
+## Quick Start
 
-```bash
-npm i
-docker compose -f docker-compose.dev.yml up --build -d
-docker compose logs -f
-```
+### Local Development
 
-## Database in MySQL 8.0
+1. **Install dependencies:**
 
-### Import Database in docker container
+    ```bash
+    npm install
+    ```
 
-```bash
-tar xzvf database/paraguay.sql.tar.gz
-docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
-docker exec -it database-api-geo-paraguay sh
-mysql -u root -p paraguay < paraguay.sql
-exit
-```
+2. **Copy and update environment configuration:**
 
-### Config
+    ```bash
+    cp .env.example .env
+    ```
 
-```bash
-cp .env.example .env
-```
+3. **Run the application:**
 
-Change variables in .env
+    ```bash
+    npm start
+    ```
 
-```
-APP_PORT=5000
-URL_DOMAIN="https://api-geo.proyectosbeta.net"
+### Docker (Development)
 
-# DataBase MySQL
-DB_HOST=database
-DB_PORT=3306
-DB_NAME=paraguay
-DB_USER=api-geo
-DB_PASSWORD=123456
-DB_ROOT_PASSWORD=password
-SRID=4326
-SRID_TRANSFORM=3857
+1. **Install dependencies:**
 
-# MongoDB
-MONGO_URI=mongodb://mongodb:27017
+    ```bash
+    npm install
+    ```
 
-REDIS_HOST=cache
-REDIS_PORT=6379
-REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
-```
+2. **Start the development environment:**
 
-### Install
+    ```bash
+    docker compose -f docker-compose.dev.yml up --build -d
+    docker compose logs -f
+    ```
 
-```bash
-npm install
-```
+## Database Setup
 
-### Run app
+### Import Database (MySQL 8.0)
 
-```bash
-npm start
-```
+1. **Extract the SQL dump:**
 
-## Tools dev
+    ```bash
+    tar xzvf database/paraguay.sql.tar.gz
+    ```
 
-### Prettier
+2. **Copy the SQL file into the MySQL container:**
 
-#### Prettier check
+    ```bash
+    docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
+    ```
 
-Check if the formatting matches this Prettier’s rules by using:
+3. **Import the database:**
 
-```bash
-npm run format:check
-```
+    ```bash
+    docker exec -it database-api-geo-paraguay sh
+    mysql -u root -p paraguay < paraguay.sql
+    exit
+    ```
 
-#### Prettier format
+## Testing & Code Quality
 
-Force the formatting by using this command:
+- **Prettier**  
+  Check formatting:
 
-```bash
-npm run format:write
-```
+  ```bash
+  npm run format:check
+  ```
 
-### Lint
+  Auto-format:
 
-#### Lint check
+  ```bash
+  npm run format:write
+  ```
 
-Lint your code with:
+- **ESLint**  
+  Check linting:
 
-```bash
-npm run lint:check
-```
+  ```bash
+  npm run lint:check
+  ```
 
-#### Lint fix
+  Auto-fix linting errors:
 
-Auto-fixing errors with this command:
+  ```bash
+  npm run lint:fix
+  ```
 
-```bash
-npm run lint:fix
-```
+- **Jest**  
+  Run tests:
 
-## Docs
+  ```bash
+  npm test
+  ```
 
-### Access
+## API Documentation
 
-- [Oficial site](https://api-geo.proyectosbeta.net/api-docs)
-
-## QA
-
-### Sonarqube
-
-- [Sitio oficial](https://www.sonarqube.org/)
-
-#### Install
-
-##### With docker
-
-```bash
-docker pull sonarqube
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
-```
-
-##### Web access
-
-```
-http://localhost:9000
-```
-
-###### Credencials
-
-- User: admin
-- Password: admin
-
-#### Use
-
-```bash
-docker pull newtmitch/sonar-scanner
-
-```
-
-##### GNU-Linux/MacOS
-
-Execute
-
-```bash
-docker run -ti -v /home/proyectosbeta/repositoriosGit/api-geo-paraguay:/usr/src --link sonarqube newtmitch/sonar-scanner
-```
-
-##### Microsoft Windows
-
-Execute
-
-```bash
-docker run -ti -v C:\Users\proyectosbeta\repositoriosGit\api-paraguayos:/usr/src --link sonarqube newtmitch/sonar-scanner
-```
+Access the Swagger documentation at:  
+[https://api-geo.proyectosbeta.net/api-docs](https://api-geo.proyectosbeta.net/api-docs)
 
 ## Production
 
-### Build
+### Build for Production
+
+Build the production bundle:
 
 ```bash
 npm run build
 ```
 
-### Docker prod
+### Docker (Production)
 
-```bash
-docker compose -f docker-compose.prod.yml up --build -d
-docker compose logs -f
-```
+1. **Build and start the production containers:**
 
-#### Config Nginx
+    ```bash
+    docker compose -f docker-compose.prod.yml up --build -d
+    docker compose logs -f
+    ```
 
-```
-server {
-    server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
+2. **Nginx Configuration Sample:**
 
-    location / {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
+    ```nginx
+    server {
+        server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
+    
+        location / {
+            proxy_pass http://127.0.0.1:5000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    
+        listen 443 ssl http2;
+        ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/api-geo.proyectosbeta.net/privkey.pem;
+        include /etc/letsencrypt/options-ssl-nginx.conf;
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
     }
+    server {
+        if ($host = www.api-geo.proyectosbeta.net) {
+            return 301 https://$host$request_uri;
+        }
+        if ($host = api-geo.proyectosbeta.net) {
+            return 301 https://$host$request_uri;
+        }
+        listen 80;
+        server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
+        return 404;
+    }
+    ```
 
-    listen 443 ssl http2; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem; # >
-    ssl_certificate_key /etc/letsencrypt/live/api-geo.proyectosbeta.net/privkey.pem; >
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
-server {
-    if ($host = www.api-geo.proyectosbeta.net) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
+## License
 
+This project is licensed under the GNU General Public License v3.0.
 
-    if ($host = api-geo.proyectosbeta.net) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
+## Support
 
+For issues or feature requests, please open a new issue in the [GitHub repository](https://github.com/josego85/api-geo-paraguay/issues).
 
-    listen 80;
-    server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
-    return 404; # managed by Certbot
-}
-```
+---
 
-## Use API
-
-- https://api-geo.proyectosbeta.net/api/v1/paraguay/-59.517228974/-23.8302210107
-- https://api-geo.proyectosbeta.net/api/v1/departamentos/-56.987/-25.564
-- https://api-geo.proyectosbeta.net/api/v1/departamentos
-- https://api-geo.proyectosbeta.net/api/v1/departamentos/14
-- https://api-geo.proyectosbeta.net/api/v1/distritos
-- https://api-geo.proyectosbeta.net/api/v1/distritos/Luque
-- https://api-geo.proyectosbeta.net/api/v1/ciudades
-- https://api-geo.proyectosbeta.net/api/v1/ciudades/Aregua
-- https://api-geo.proyectosbeta.net/api/v1/barrios
-- https://api-geo.proyectosbeta.net/api/v1/barrios/Jara
+© 2025 API GEO Paraguay
