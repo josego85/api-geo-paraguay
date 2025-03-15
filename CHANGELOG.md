@@ -20,6 +20,7 @@ All notable changes to this project are documented in this file.
 - Improved CHANGELOG for clarity and consistency.
 - Improved RedisClient with URL
 - Improved Docker Compose configuration for both production and development environments.
+- Improved test --> api.main.test.js and api.v1.cities.test
 
 ## [2.8.0]
 

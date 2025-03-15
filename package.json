@@ -17,8 +17,8 @@
     "format:write": "prettier --write .",
     "lint:check": "eslint . --no-cache",
     "lint:fix": "eslint --fix .",
-    "test": "jest",
-    "test:watchAll": "jest --watchAll"
+    "test": "NODE_ENV=test jest",
+    "test:watchAll": "NODE_ENV=test jest --watchAll"
   },
   "bugs": {
     "url": "https://github.com/josego85/api-geo-paraguay/issues"
@@ -76,7 +76,13 @@
     "node": ">= 20"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
-    "testTimeout": 30000
+    "testTimeout": 30000,
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/server.js"
+    ]
   }
 }
