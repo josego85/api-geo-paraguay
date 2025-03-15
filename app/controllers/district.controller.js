@@ -1,5 +1,5 @@
 const { save } = require('helpers/providers/cache/redisClient');
-const Distrit = require('models/distrit.model');
+const Distrit = require('models/district.model');
 const getCaching = require('./app.controller');
 
 // Retrieve all distrits from the database.
