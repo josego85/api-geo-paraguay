@@ -7,6 +7,7 @@ All notable changes to this project are documented in this file.
 ### Fixed
 
 - eslint config
+- Test with Jest config
 
 ### Changed
 
@@ -17,6 +18,8 @@ All notable changes to this project are documented in this file.
 
 - Improved README documentation for clarity and consistency.
 - Improved CHANGELOG for clarity and consistency.
+- Improved RedisClient with URL
+- Improved Docker Compose configuration for both production and development environments.
 
 ## [2.8.0]
 

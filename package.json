@@ -76,6 +76,7 @@
     "node": ">= 20"
   },
   "jest": {
+    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
     "testTimeout": 30000
   }
 }

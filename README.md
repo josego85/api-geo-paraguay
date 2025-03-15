@@ -131,6 +131,7 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
   Run tests:
 
   ```bash
+  docker exec -it app-api-geo-paraguay sh
   npm test
   ```
 
