@@ -1,10 +1,13 @@
 # Release Notes
 
+## v2.9.0
+
+- [build]: update to node 22.14.0
+
 ## v2.8.0
 
 - [build]: update to node 20.18.3
 - [build]: se actualiza el archivo package.json
-
 
 ## v2.7.0
 
