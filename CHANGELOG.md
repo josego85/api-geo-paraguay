@@ -8,6 +8,7 @@ All notable changes to this project are documented in this file.
 
 - eslint config
 - Test with Jest config
+- Endpoint api/v1/departamentos/1
 
 ### Changed
 

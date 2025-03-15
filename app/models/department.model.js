@@ -65,29 +65,30 @@ Department.findByLngLat = (request, result) => {
 
 Department.findById = (request, result) => {
   const { id } = request;
+  const query = `SELECT dep.departamento_id, dep.departamento_nombre,
+    dep.departamento_capital
+    FROM departamentos dep
+    WHERE dep.departamento_id = ${id}
+  `;
 
-  sql.query(
-    `SELECT ciu.ciudad_id, ciu.ciudad_nombre FROM departamentos dep LEFT JOIN ciudades ciu ON ST_Contains(dep.geom, ST_Centroid(ciu.geom))
-    WHERE dep.departamento_id = ${id} ORDER BY ciu.ciudad_nombre ASC`,
-    (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        result(error, null);
+  sql.query(query, (error, response) => {
+    if (error) {
+      console.log('error: ', error);
+      result(error, null);
 
-        return;
-      }
-
-      if (response.length) {
-        // console.log('found department: ', response[0])
-        result(null, response);
-
-        return;
-      }
-
-      // Not found Department with the id.
-      result({ kind: 'not_found' }, null);
+      return;
     }
-  );
+
+    if (response.length) {
+      // console.log('found department: ', response[0])
+      result(null, response);
+
+      return;
+    }
+
+    // Not found Department with the id.
+    result({ kind: 'not_found' }, null);
+  });
 };
 
 module.exports = Department;
