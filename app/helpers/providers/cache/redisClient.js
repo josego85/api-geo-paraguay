@@ -5,14 +5,10 @@ let redisClient;
 
 (async () => {
   redisClient = redis.createClient({
-    socket: {
-      host: REDIS_HOST,
-      port: REDIS_PORT,
-    },
-    password: REDIS_PASSWORD,
+    url: `redis://:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}`,
   });
 
-  redisClient.on('error', (error) => console.error(`Error : ${error}`));
+  redisClient.on('error', (error) => console.error(`Redis Error : ${error}`));
 
   await redisClient.connect();
 })();
