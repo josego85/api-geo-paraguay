@@ -1,212 +1,251 @@
-# Release Notes
+# Changelog
+
+All notable changes to this project are documented in this file.
+
+## [2.9.0] - 2025-03-XX
+### Changed
+- Updated Node.js to v22.14.0.
+- Revised package.json configuration.
+
+### Refactored
+- Improved README documentation for clarity and consistency.
+- Improved CHANGELOG for clarity and consistency.
+
+## [2.8.0]
+### Changed
+- Updated Node.js to v20.18.3.
+- Revised package.json configuration.
+
+## [2.7.0]
+### Changed
+- Updated Node.js to v20.18.2.
+
+## [2.6.0]
+### Fixed
+- Resolved Redis authentication issues.
+
+### Added
+- Upgraded Express to version 5.
+
+## [2.5.0]
+### Changed
+- Updated package.json to address a critical security vulnerability in Mongoose.
+
+## [2.4.0]
+### Changed
+- Revised package.json.
+- Updated Dockerfiles and project configurations.
+- Modified ESLint and Prettier settings.
+- Refactored server.js.
+- Fixed issues in app controllers.
+- Optimized webpack configuration.
+
+## [2.3.0]
+### Changed
+- Updated package.json.
+- Refined Dockerfile for development.
+- Revised README documentation.
+
+## [2.2.0]
+### Changed
+- Updated package.json.
+- Fixed server description in Swagger.
+- Integrated ESLint and Prettier.
+- Corrected version information in Swagger.
+- Revised README documentation.
+- Updated production Dockerfile.
+
+## [2.1.1]
+### Fixed
+- Corrected API documentation endpoint.
+- Adjusted nodemon configuration in Docker development.
+
+### Refactored
+- Applied Prettier formatting.
+- Improved ESLint configurations.
+
+## [2.1.0]
+### Added
+- Adjusted Docker Compose to change application and service ports.
+- Introduced production Dockerfile and Docker Compose configuration.
+
+## [2.0.0]
+### Added
+- Implemented MySQL healthcheck in Docker Compose.
+- Updated package.json and server versions (Redis, MongoDB, Node.js).
+- Upgraded MySQL to version 8.0.
+
+### Fixed
+- Resolved district data issues in MySQL 8.0.
+- Corrected city and neighborhood data for MySQL 8.0.
+- Fixed database import issues for MySQL 8.0.
+
+## [1.20.0]
+### Added
+- Integrated Docker support.
+
+### Changed
+- Updated package.json configuration.
+
+## [1.19.0]
+### Changed
+- Updated package.json configuration.
+
+## [1.18.0]
+### Changed
+- Updated package.json.
+  
+### Added
+- Integrated New Relic monitoring.
+
+### Documentation
+- Revised README documentation.
 
-## v2.9.0
+## [1.17.0]
+### Added
+- Implemented Continuous Integration (CI).
+- Enhanced management of environment variables.
 
-- [build]: update to node 22.14.0
-- [build]: update package.json
+## [1.16.0]
+### Documentation
+- Revised README documentation.
 
-## v2.8.0
+### Changed
+- Updated package.json.
 
-- [build]: update to node 20.18.3
-- [build]: update package.json
+## [1.15.0]
+### Refactored
+- Adopted new Prettier configuration.
 
-## v2.7.0
+### Changed
+- Updated package.json.
 
-- [build]: update to node 20.18.2
+### Documentation
+- Revised README documentation.
 
-## v2.6.0
+### Added
+- Enhanced security with improved Helmet configuration.
+- Implemented rate limiting.
+- Added Feature-Policy header.
 
-- [fix]: autenticación en Redis.
-- [feat]: update a express 5
+## [1.14.1]
+### Fixed
+- Resolved MongoDB warning issues.
 
-## v2.5.0
+### Refactored
+- Added constant for MongoDB configuration in .env.
 
-- [build]: se actualiza el archivo package.json. Error de seguridad critico en el paquete mongoose.
+## [1.14.0]
+### Changed
+- Updated package.json configuration.
 
-## v2.4.0
+## [1.13.1]
+### Fixed
+- Corrected logging IP issues.
 
-- [build]: se actualiza el archivo package.json
-- [refactor]: Dockerfiles and code
-- [refactor]: configs code
-- [docs]: update readme file
-- [refactor]: changes in prettier and eslint
-- [refactor]: server.js
-- [fix]: app.controllers
-- [feat]: add optimization in webpack
+### Refactored
+- General code refactoring for stability.
 
-## v2.3.0
+## [1.13.0]
+### Added
+- Introduced log storage functionality.
 
-- [build]: se actualiza el archivo package.json
-- [update]: Dockerfile.dev
-- [docs]: update readme file
+## [1.12.2]
+### Changed
+- Updated package.json.
+  
+### Documentation
+- Revised README documentation.
 
-## v2.2.0
+### Fixed
+- Updated Redis client.
 
-- [build]: se actualiza el archivo package.json
-- [fix]: swagger description server
-- [refactor]: use lint and prettier
-- [fix]: version in swagger
-- [docs]: update readme file
-- [refactor]: Dockerfile.prod
+### Added
+- Introduced tests.
 
-## v2.1.1
+### Refactored
+- Improved code for cities endpoint.
+- Refactored app.js.
 
-- [fix]: endpoint api-docs
-- [docs]: update readme file
-- [fix]: nodemon in Dockerfile dev
-- [refactor]: use prettier
-- [refactor]: use lint
+## [1.12.1]
+### Changed
+- Updated package.json.
 
-## v2.1.0
+## [1.12.0]
+### Added
+- Integrated ESLint and Prettier for development.
 
-- [feat]: change ports in docker compose
-- [feat]: change port app in docker compose
-- [feat]: add dockerfile and docker compose for production
+## [1.11.0]
+### Changed
+- Updated package versions in package.json.
 
-## v2.0.0
+## [1.10.0]
+### Changed
+- Updated package versions in package.json.
 
-- [feat]: add healthcheck in mysql - docker compose
-- [feat]: update packahe.json and server versions (redis, mongo, node)
-- [feat]: update mysql to 8.0feat: update mysql to 8.0
-- [docs]: update changelog
-- [fix]: distrit for mysql 8.0
-- [fix]: city and neighborhood for mysql 8.0
-- [fix]: database for mysql 8.0
+## [1.9.1]
+### Fixed
+- Corrected the API documentation URL.
 
-## v1.20.0
+## [1.9.0]
+### Added
+- Provided an endpoint to retrieve all cities for a specific department.
 
-- [build] Add docker.
-- [build] Update package.json file.
+### Changed
+- Updated package.json.
 
-## v1.19.0
+## [1.8.0]
+### Changed
+- Updated package.json.
 
-- [build] Se actualiza el archivo package.json
+## [1.7.0]
+### Added
+- Introduced an endpoint to retrieve longitude and latitude for districts, cities, and neighborhoods.
 
-## v1.18.0
+### Refactored
+- General code refactoring.
+- Improved CORS security configuration.
 
-- [build] Se actualiza el archivo package.json
-- [docs] Actualización de readme file
-- [feat] Add New Relic
+## [1.6.3]
+### Fixed
+- Resolved aliasing issues.
 
-## v1.17.0
+## [1.6.2]
+### Fixed
+- Various bug fixes.
 
-- [build] CI is added for the project
-- [refactor] env variables
+## [1.6.1]
+### Added
+- Specified Node.js engine requirement in package.json.
 
-## v1.16.0
+## [1.6.0]
+### Refactored
+- Modularized code and general project refactoring.
 
-- [docs] Actualización de readme file.
-- [build] Se actualiza el archivo package.json
+### Added
+- Integrated Redis caching for departments, cities, districts, and neighborhoods.
+- Added API documentation.
 
-## v1.15.0
+## [1.5.0]
+### Added
+- Introduced Babel and Webpack for modern JavaScript support.
 
-- [refactor] Use prettier new configuration.
-- [build] Se actualiza el archivo package.json
-- [docs] Actualización de readme file.
-- [feat] More security in helmet.
-- [feat] Add rate limit.
-- [feat] Add Feature-Policy header security.
+## [1.4.0]
+### Documentation
+- Added API documentation.
 
-## v1.14.1
+## [1.3.0]
+### Changed
+- Prepared package.json for production deployment.
 
-- [fix] Fix warning MongoDB.
-- [refactor] Add constant in .env for MongoDB.
+## [1.2.0]
+### Added
+- Enhanced security using CORS and Helmet.
 
-## v1.14.0
+## [1.1.0]
+### Added
+- Introduced environment variable support.
 
-- [build] Se actualiza el archivo package.json
-
-## v1.13.1
-
-- [fix] Se arregla la ip (logs).
-- [refactor] Refactorización de código.
-
-## v1.13.0
-
-- [feat] Se agrega el store de los logs.
-
-## v1.12.2
-
-- [build] Se actualiza el archivo package.json
-- [docs] Actualización de readme file.
-- [fix] Actualización del cliente de redis.
-- [feat] Se agregan tests.
-- [refactor] Refactorización de código - endpoint ciudades.
-- [refactor] Refactorización de código - app.js.
-
-## v1.12.1
-
-- [build] Se actualiza el archivo package.json
-
-## v1.12.0
-
-- [feat] Se agrega eslint y prettier para el desarrollo.
-
-## v1.11.0
-
-- [build] Se actualiza las versiones de los paquetes utilizados en package.json
-
-## v1.10.0
-
-- [build] Se actualiza las versiones de los paquetes utilizados en package.json
-
-## v1.9.1
-
-- [fix] Fix la ulr de la documentación del API.
-
-## v1.9.0
-
-- [feat] Se agrega el endpoint de un departamento espécifico para mostrar todas las ciudades.
-- [build] Se actualiza las versiones de los paquetes utilizados en package.json
-
-## v1.8.0
-
-- [build] Se actualiza las versiones de los paquetes utilizados en package.json
-
-## v1.7.0
-
-- [feat] Se agrega el endpoint que devuelve longitud y latitude de un distrito, de una ciudad y de un barrio.
-- [refactor] Refactorización de código.
-- [refactor] Mejora la seguridad cors.
-
-## v1.6.3
-
-- [fix] Fix alias.
-
-## v1.6.2
-
-- [fix] Fix varios errores.
-
-## v1.6.1
-
-- [feat] Se agrega el engine en el package.json
-
-## v1.6.0
-
-- [refactor] Refactorización de código. Se agrega los módulos.
-- [feat] Se agrega redis para el cache de todos los departamentos, ciudades, distritos y barrios.
-- [docs] Se agrega documentación del API.
-
-## v1.5.0
-
-- [feat] Se agrega babel y webpack.
-
-## v1.4.0
-
-- [docs] Se agrega la documentación del API.
-
-## v1.3.0
-
-- [feat] Se prepara el package json para producción.
-
-## v1.2.0
-
-- [feat] Se agrega seguridad usando cors y helmet.
-
-## v1.1.0
-
-- [feat] Se agrega el env
-
-## v1.0.0
-
-- [feat] Se implementa el API para departamentos, barrios, ciudades.
+## [1.0.0]
+### Added
+- Initial implementation of API endpoints for departments, neighborhoods, and cities.
