@@ -44,36 +44,36 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
 
 1. **Install dependencies:**
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 2. **Copy and update environment configuration:**
 
-    ```bash
-    cp .env.example .env
-    ```
+   ```bash
+   cp .env.example .env
+   ```
 
 3. **Run the application:**
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
 ### Docker (Development)
 
 1. **Install dependencies:**
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 2. **Start the development environment:**
 
-    ```bash
-    docker compose -f docker-compose.dev.yml up --build -d
-    docker compose logs -f
-    ```
+   ```bash
+   docker compose -f docker-compose.dev.yml up --build -d
+   docker compose logs -f
+   ```
 
 ## Database Setup
 
@@ -81,23 +81,23 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
 
 1. **Extract the SQL dump:**
 
-    ```bash
-    tar xzvf database/paraguay.sql.tar.gz
-    ```
+   ```bash
+   tar xzvf database/paraguay.sql.tar.gz
+   ```
 
 2. **Copy the SQL file into the MySQL container:**
 
-    ```bash
-    docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
-    ```
+   ```bash
+   docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
+   ```
 
 3. **Import the database:**
 
-    ```bash
-    docker exec -it database-api-geo-paraguay sh
-    mysql -u root -p paraguay < paraguay.sql
-    exit
-    ```
+   ```bash
+   docker exec -it database-api-geo-paraguay sh
+   mysql -u root -p paraguay < paraguay.sql
+   exit
+   ```
 
 ## Testing & Code Quality
 
@@ -153,44 +153,44 @@ npm run build
 
 1. **Build and start the production containers:**
 
-    ```bash
-    docker compose -f docker-compose.prod.yml up --build -d
-    docker compose logs -f
-    ```
+   ```bash
+   docker compose -f docker-compose.prod.yml up --build -d
+   docker compose logs -f
+   ```
 
 2. **Nginx Configuration Sample:**
 
-    ```nginx
-    server {
-        server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
-    
-        location / {
-            proxy_pass http://127.0.0.1:5000;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
-    
-        listen 443 ssl http2;
-        ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/api-geo.proyectosbeta.net/privkey.pem;
-        include /etc/letsencrypt/options-ssl-nginx.conf;
-        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-    }
-    server {
-        if ($host = www.api-geo.proyectosbeta.net) {
-            return 301 https://$host$request_uri;
-        }
-        if ($host = api-geo.proyectosbeta.net) {
-            return 301 https://$host$request_uri;
-        }
-        listen 80;
-        server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
-        return 404;
-    }
-    ```
+   ```nginx
+   server {
+       server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
+
+       location / {
+           proxy_pass http://127.0.0.1:5000;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+       }
+
+       listen 443 ssl http2;
+       ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/api-geo.proyectosbeta.net/privkey.pem;
+       include /etc/letsencrypt/options-ssl-nginx.conf;
+       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+   }
+   server {
+       if ($host = www.api-geo.proyectosbeta.net) {
+           return 301 https://$host$request_uri;
+       }
+       if ($host = api-geo.proyectosbeta.net) {
+           return 301 https://$host$request_uri;
+       }
+       listen 80;
+       server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
+       return 404;
+   }
+   ```
 
 ## License
 
