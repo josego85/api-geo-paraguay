@@ -12,6 +12,14 @@
     "sourceType": "module"
   },
   "plugins": ["prettier"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.js"
+      },
+      "babel-module": {}
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
@@ -21,6 +29,20 @@
     "no-process-exit": "off",
     "class-methods-use-this": "off",
     "consistent-return": "error",
-    "no-unused-expressions": "error"
+    "no-unused-expressions": "error",
+    "node/no-missing-require": [
+      "error",
+      {
+        "allowModules": [
+          "config",
+          "controllers",
+          "i18n",
+          "helpers",
+          "middleware",
+          "models",
+          "routes"
+        ]
+      }
+    ]
   }
 }

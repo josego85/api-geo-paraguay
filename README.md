@@ -36,7 +36,7 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
 - **Redis**: 7.4.x (client: Redis 4.7.0)
 - **MongoDB**: Server 7.0 (client: Mongoose 8.12.1)
 - **Swagger**: For API documentation
-- **Docker**: Version 27.4.0
+- **Docker**: Version 27.5.1
 
 ## Quick Start
 

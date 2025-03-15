@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [2.9.0] - 2025-03-XX
 
+### Fixed
+
+- eslint config
+
 ### Changed
 
 - Updated Node.js to v22.14.0.
