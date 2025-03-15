@@ -13,6 +13,7 @@ All notable changes to this project are documented in this file.
 
 - Updated Node.js to v22.14.0.
 - Revised package.json configuration.
+- Optimize webpack
 
 ### Added
 
