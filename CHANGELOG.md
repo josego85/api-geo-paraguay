@@ -14,6 +14,10 @@ All notable changes to this project are documented in this file.
 - Updated Node.js to v22.14.0.
 - Revised package.json configuration.
 
+### Added
+
+- More endpoints are added in swagger.
+
 ### Refactored
 
 - Improved README documentation for clarity and consistency.
@@ -21,6 +25,7 @@ All notable changes to this project are documented in this file.
 - Improved RedisClient with URL
 - Improved Docker Compose configuration for both production and development environments.
 - Improved test --> api.main.test.js and api.v1.cities.test
+- Improved district name
 
 ## [2.8.0]
 
