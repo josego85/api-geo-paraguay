@@ -7,16 +7,31 @@ All notable changes to this project are documented in this file.
 ### Fixed
 
 - eslint config
+- Test with Jest config
+- Endpoint api/v1/departamentos/1
 
 ### Changed
 
 - Updated Node.js to v22.14.0.
 - Revised package.json configuration.
+- Optimize webpack
+
+### Added
+
+- More endpoints are added in swagger.
+- Add endpoint to get department by ID.
+- Add endpoint to get city by ID.
+- Add endpoint to get district by ID.
+- Add endpoint to get neighborhood by ID.
 
 ### Refactored
 
 - Improved README documentation for clarity and consistency.
 - Improved CHANGELOG for clarity and consistency.
+- Improved RedisClient with URL
+- Improved Docker Compose configuration for both production and development environments.
+- Improved test --> api.main.test.js and api.v1.cities.test
+- Improved district name
 
 ## [2.8.0]
 

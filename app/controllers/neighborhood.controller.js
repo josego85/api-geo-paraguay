@@ -50,3 +50,15 @@ exports.getLngLat = async (request, response) => {
     }
   });
 };
+
+exports.findById = (request, response) => {
+  Neighborhood.findById(request.params, (err, data) => {
+    if (err) {
+      response.status(403).send({
+        message: request.polyglot.t('not_retrieve_neighborhood') || err.message,
+      });
+    } else {
+      response.status(200).json(data);
+    }
+  });
+};

@@ -2,11 +2,11 @@ const dbConfig = require('config/db.config');
 const sql = require('./db');
 
 const { SRID_TRANSFORM } = dbConfig;
-const Distrit = function () {
+const District = function () {
   // Constructor.
 };
 
-Distrit.getAll = (result) => {
+District.getAll = (result) => {
   sql.query(
     'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id',
     (error, response) => {
@@ -22,13 +22,13 @@ Distrit.getAll = (result) => {
   );
 };
 
-Distrit.getLngLat = (request, result) => {
-  const distrit = request.name;
+District.getLngLat = (request, result) => {
+  const district = request.name;
   const query = `SELECT 
         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
-        FROM distritos 
-        WHERE distrito_nombre = '${distrit}'
+        FROM distritos as dis
+        WHERE dis.distrito_nombre = '${district}'
       `;
 
   sql.query(query, (error, response) => {
@@ -40,15 +40,40 @@ Distrit.getLngLat = (request, result) => {
     }
 
     if (response.length) {
-      // console.log('found longitude latitude distrit: ', response[0])
       result(null, response[0]);
 
       return;
     }
 
-    // Not found distrit.
+    // Not found district.
     result({ kind: 'not_found' }, null);
   });
 };
 
-module.exports = Distrit;
+District.findById = (request, result) => {
+  const { id } = request;
+  const query = `SELECT dis.distrito_id, dis.distrito_nombre
+    FROM distritos dis
+    WHERE dis.distrito_id = ?
+  `;
+
+  sql.query(query, [id], (error, response) => {
+    if (error) {
+      console.log('error: ', error);
+      result(error, null);
+
+      return;
+    }
+
+    if (response.length) {
+      result(null, response[0]);
+
+      return;
+    }
+
+    // Not found District with the id.
+    result({ kind: 'not_found' }, null);
+  });
+};
+
+module.exports = District;

@@ -58,12 +58,7 @@ exports.findById = (request, response) => {
         message: request.polyglot.t('not_retrieve_department') || err.message,
       });
     } else {
-      const json = {
-        success: true,
-        data,
-      };
-
-      response.status(200).json(json);
+      response.status(200).json(data);
     }
   });
 };

@@ -31,6 +31,7 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
 ## Technologies
 
 - **NodeJS**: v22.14.0 LTS
+- **NPM**: 10.9.2
 - **Express**: 5.0.1
 - **MySQL**: 8.0.xx
 - **Redis**: 7.4.x (client: Redis 4.7.0)
@@ -131,7 +132,8 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
   Run tests:
 
   ```bash
-  npm test
+  docker exec -it app-api-geo-paraguay sh
+  npm run test
   ```
 
 ## API Documentation

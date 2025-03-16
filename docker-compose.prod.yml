@@ -2,6 +2,7 @@ services:
   app:
     stdin_open: true
     container_name: app-api-geo-paraguay
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -17,10 +18,11 @@ services:
       NODE_ENV: production
     networks:
       - app-network
-    restart: always
 
   database:
     image: mysql:8.0
+    container_name: database-api-geo-paraguay
+    restart: always
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
@@ -33,29 +35,29 @@ services:
     volumes:
       - 'mysql-data:/var/lib/mysql'
       - '/db/init.sql:/docker-entrypoint-initdb.d/init.sql'
-    networks:
-      - app-network
     healthcheck:
       test: ['CMD', 'mysqladmin', 'ping', '-h', 'database']
       interval: 10s
       timeout: 5s
       retries: 5
-    restart: always
+    networks:
+      - app-network
 
   mongodb:
     image: mongo:7-jammy
     container_name: mongodb-api-geo-paraguay
+    restart: always
     ports:
       - '28017:27017'
     volumes:
       - dbdata6:/data/db
     networks:
       - app-network
-    restart: always
 
   cache:
     image: redis:7.4-alpine
     container_name: cache-api-geo-paraguay
+    restart: always
     ports:
       - '6380:6379'
     command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
@@ -63,15 +65,14 @@ services:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     volumes:
       - cache:/data
-    networks:
-      - app-network
     healthcheck:
       test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
-    restart: always
-
+    networks:
+      - app-network
+    
 volumes:
   mysql-data:
   dbdata6:

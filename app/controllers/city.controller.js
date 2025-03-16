@@ -50,3 +50,15 @@ exports.getLngLat = async (request, response) => {
     }
   });
 };
+
+exports.findById = (request, response) => {
+  City.findById(request.params, (err, data) => {
+    if (err) {
+      response.status(403).send({
+        message: request.polyglot.t('not_retrieve_city') || err.message,
+      });
+    } else {
+      response.status(200).json(data);
+    }
+  });
+};
