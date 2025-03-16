@@ -1,5 +1,6 @@
 const express = require('express');
 const createLocaleMiddleware = require('express-locale');
+const { createYoga } = require(require.resolve('graphql-yoga'));
 const securityMiddleware = require('middleware/security.middleware');
 const swaggerUi = require('swagger-ui-express');
 const { lookup } = require('geoip-lite');
@@ -7,6 +8,7 @@ const swaggerDocument = require('config/swagger.config');
 const rest = require('routes/index');
 const startPolyglot = require('middleware/startPolyglot.middleware');
 const Log = require('models/log.model');
+const graphqlSchema = require('./graphql/schema');
 
 const app = express();
 
@@ -41,5 +43,12 @@ app.use(async (req, res, next) => {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', rest);
+
+const yoga = createYoga({
+  schema: graphqlSchema,
+  graphqlEndpoint: '/graphql',
+});
+
+app.use('/graphql', yoga);
 
 module.exports = app;

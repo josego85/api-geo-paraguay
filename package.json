@@ -33,6 +33,8 @@
     "express-rate-limit": "7.5.0",
     "feature-policy": "0.6.0",
     "geoip-lite": "1.4.10",
+    "graphql": "^16.10.0",
+    "graphql-yoga": "^5.13.1",
     "helmet": "8.0.0",
     "mongoose": "8.12.1",
     "ms": "2.1.3",
