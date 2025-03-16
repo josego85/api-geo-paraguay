@@ -6,13 +6,11 @@ describe('🟢 Department API - Version 1', () => {
     const response = await request(app).get('/api/v1/departamentos/1');
 
     expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
-    // expect(response.body).toHaveProperty('data');
-    // expect(response.body.data).toHaveProperty('departamento_id');
-    // expect(response.body.data).toHaveProperty('departamento_nombre');
-    // expect(response.body.data).toHaveProperty('departamento_capital');
+    expect(response.body).toHaveProperty('departamento_id');
+    expect(response.body).toHaveProperty('departamento_nombre');
+    expect(response.body).toHaveProperty('departamento_capital');
 
-    expect.assertions(2);
+    expect.assertions(4);
   });
 
   describe('🔹 GET /api/v1/departamentos/', () => {

@@ -68,10 +68,10 @@ Department.findById = (request, result) => {
   const query = `SELECT dep.departamento_id, dep.departamento_nombre,
     dep.departamento_capital
     FROM departamentos dep
-    WHERE dep.departamento_id = ${id}
+    WHERE dep.departamento_id = ?
   `;
 
-  sql.query(query, (error, response) => {
+  sql.query(query, [id], (error, response) => {
     if (error) {
       console.log('error: ', error);
       result(error, null);
@@ -80,8 +80,7 @@ Department.findById = (request, result) => {
     }
 
     if (response.length) {
-      // console.log('found department: ', response[0])
-      result(null, response);
+      result(null, response[0]);
 
       return;
     }
