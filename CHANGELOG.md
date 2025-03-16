@@ -24,6 +24,7 @@ All notable changes to this project are documented in this file.
 - Add endpoint to get district by ID.
 - Add endpoint to get neighborhood by ID.
 - Add GraphQL for the city query.
+- Add GraphQL for the department query.
 
 ### Refactored
 

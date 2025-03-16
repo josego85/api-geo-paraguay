@@ -6,21 +6,22 @@ const Department = function () {
   // Constructor.
 };
 
-Department.getAll = (result) => {
-  sql.query(
-    'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep ORDER BY dep.departamento_id',
-    (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        result(null, error);
+Department.getAll = () =>
+  new Promise((resolve, reject) => {
+    sql.query(
+      'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep ORDER BY dep.departamento_id',
+      (error, response) => {
+        if (error) {
+          console.log('error: ', error);
+          reject(error);
 
-        return;
+          return;
+        }
+
+        resolve(response);
       }
-
-      result(null, response);
-    }
-  );
-};
+    );
+  });
 
 Department.findByLngLat = (request, result) => {
   const { lng } = request;
@@ -62,31 +63,28 @@ Department.findByLngLat = (request, result) => {
   );
 };
 
-Department.findById = (request, result) => {
-  const { id } = request;
-  const query = `SELECT dep.departamento_id, dep.departamento_nombre,
-    dep.departamento_capital
-    FROM departamentos dep
-    WHERE dep.departamento_id = ?
-  `;
+Department.findById = (id) =>
+  new Promise((resolve, reject) => {
+    const query = `SELECT dep.departamento_id, dep.departamento_nombre,
+      dep.departamento_capital
+      FROM departamentos dep
+      WHERE dep.departamento_id = ?
+    `;
 
-  sql.query(query, [id], (error, response) => {
-    if (error) {
-      console.log('error: ', error);
-      result(error, null);
+    sql.query(query, [id], (error, response) => {
+      if (error) {
+        console.log('error: ', error);
+        reject(error);
 
-      return;
-    }
+        return;
+      }
 
-    if (response.length) {
-      result(null, response[0]);
-
-      return;
-    }
-
-    // Not found Department with the id.
-    result({ kind: 'not_found' }, null);
+      if (response.length) {
+        resolve(response[0]);
+      } else {
+        reject(new Error('Department not found'));
+      }
+    });
   });
-};
 
 module.exports = Department;

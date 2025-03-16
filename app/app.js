@@ -1,5 +1,6 @@
 const express = require('express');
 const createLocaleMiddleware = require('express-locale');
+
 const { createYoga } = require(require.resolve('graphql-yoga'));
 const securityMiddleware = require('middleware/security.middleware');
 const swaggerUi = require('swagger-ui-express');

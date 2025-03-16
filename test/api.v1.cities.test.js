@@ -2,7 +2,6 @@ const request = require('supertest');
 const app = require('../server');
 
 describe('🟢 City API - Version 1', () => {
-
   test('✅ Should return data for city with id 5', async () => {
     const response = await request(app).get('/api/v1/ciudades/5');
 
@@ -35,5 +34,4 @@ describe('🟢 City API - Version 1', () => {
       expect.assertions(11);
     });
   });
-
 });
