@@ -328,6 +328,42 @@ const swagger = {
         },
       },
     },
+    '/barrios/{id}': {
+      get: {
+        tags: ['Neighborhood'],
+        summary: 'Get a neighborhood by ID',
+        description: 'Retrieves details for a specific neighborhood identified by its ID.',
+        parameters: [
+          {
+            in: 'path',
+            name: 'id',
+            description: 'Neighborhood ID',
+            required: true,
+            schema: {
+              type: 'number',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Successful retrieval of neighborhood details',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Neighborhood',
+                },
+              },
+            },
+          },
+          404: {
+            description: 'Neighborhood not found',
+          },
+          500: {
+            description: 'Internal server error',
+          },
+        },
+      },
+    },
   },
   components: {
     schemas: {

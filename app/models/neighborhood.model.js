@@ -8,7 +8,7 @@ const Neighborhood = function () {
 
 Neighborhood.getAll = (result) => {
   sql.query(
-    'SELECT b.barrio_id, b.barrio_nombre FROM barrios as b ORDER BY b.barrio_id',
+    'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba ORDER BY ba.barrio_id',
     (error, response) => {
       if (error) {
         console.log('error: ', error);
@@ -27,8 +27,8 @@ Neighborhood.getLngLat = (request, result) => {
   const query = `SELECT 
         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
-        FROM barrios 
-        WHERE barrio_nombre = '${neighborhood}'
+        FROM barrios as ba
+        WHERE ba.barrio_nombre = '${neighborhood}'
       `;
 
   sql.query(query, (error, response) => {
@@ -40,13 +40,38 @@ Neighborhood.getLngLat = (request, result) => {
     }
 
     if (response.length) {
-      // console.log('found longitude latitude neighborhood: ', response[0])
       result(null, response[0]);
 
       return;
     }
 
     // Not found neighborhood.
+    result({ kind: 'not_found' }, null);
+  });
+};
+
+Neighborhood.findById = (request, result) => {
+  const { id } = request;
+  const query = `SELECT ba.barrio_id, ba.barrio_nombre
+    FROM barrios ba
+    WHERE ba.barrio_id = ?
+  `;
+
+  sql.query(query, [id], (error, response) => {
+    if (error) {
+      console.log('error: ', error);
+      result(error, null);
+
+      return;
+    }
+
+    if (response.length) {
+      result(null, response[0]);
+
+      return;
+    }
+
+    // Not found Neighborhood with the id.
     result({ kind: 'not_found' }, null);
   });
 };
