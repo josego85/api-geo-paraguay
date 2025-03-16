@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-API GEO Paraguay is a RESTful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). With this API, you can determine the corresponding department, district, city, or neighborhood of any provided location.
+API GEO Paraguay is a powerful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). The API supports both traditional REST endpoints and a flexible GraphQL interface, giving you multiple options for querying geographic data including details on departments, districts, cities, and neighborhoods.
 
 ## Table of Contents
 
@@ -13,30 +13,33 @@ API GEO Paraguay is a RESTful service that provides precise geographical informa
 - [Database Setup](#database-setup)
 - [Testing & Code Quality](#testing--code-quality)
 - [API Documentation](#api-documentation)
+- [GraphQL Support](#graphql-support)
 - [Production](#production)
 - [License](#license)
 - [Support](#support)
 
 ## Overview
 
-API GEO Paraguay simplifies the integration of geographic data into your applications by offering high precision geolocation services. Whether you are building solutions for logistics, tourism, research, or urban planning, this API provides continuously updated geographical data to enhance your project's capabilities.
+API GEO Paraguay simplifies the integration of geolocation data into your applications by offering high precision information based on coordinates. Whether you prefer to use REST endpoints or the GraphQL interface, our API delivers comprehensive geographic data—covering departments, districts, cities, and neighborhoods—ideal for applications in logistics, tourism, research, and urban planning.
 
 ## Features
 
 - Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates.
-- Cache integration using Redis for faster responses.
-- Secure endpoints with industry-standard security practices.
-- Comprehensive API documentation with Swagger.
+- Cache integration with Redis for rapid responses.
+- Secure endpoints following industry-standard practices.
+- Comprehensive API documentation via Swagger.
+- **GraphQL Support:** In addition to REST endpoints, use GraphQL for tailored and efficient queries.
 
 ## Technologies
 
 - **NodeJS**: v22.14.0 LTS
-- **NPM**: 10.9.2
+- **NPM**: 11.2.0
 - **Express**: 5.0.1
 - **MySQL**: 8.0.xx
 - **Redis**: 7.4.x (client: Redis 4.7.0)
 - **MongoDB**: Server 7.0 (client: Mongoose 8.12.1)
 - **Swagger**: For API documentation
+- **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1
 
 ## Quick Start
@@ -140,6 +143,22 @@ API GEO Paraguay simplifies the integration of geographic data into your applica
 
 Access the Swagger documentation at:  
 [https://api-geo.proyectosbeta.net/api-docs](https://api-geo.proyectosbeta.net/api-docs)
+
+## GraphQL Support
+
+In addition to the REST endpoints, API GEO Paraguay now fully supports GraphQL. Use GraphQL to build custom queries for retrieving geographic data efficiently.  
+- **Endpoint:** [http://localhost:5000/graphql](http://localhost:5000/graphql)  
+- **GraphiQL Interface:** Simply visit the endpoint in your browser to access the interactive GraphiQL interface for testing queries.  
+- **Example Query:**
+
+   ```graphql
+   query {
+     city(id: 10) {
+       ciudad_id
+       ciudad_nombre
+     }
+   }
+   ```
 
 ## Production
 
