@@ -3,16 +3,14 @@ const app = require('../server');
 
 describe('🟢 City API - Version 1', () => {
 
-  test('✅ Should return data for city Aregua', async () => {
-    const response = await request(app).get('/api/v1/ciudades/Aregua');
+  test('✅ Should return data for city with id 5', async () => {
+    const response = await request(app).get('/api/v1/ciudades/5');
 
     expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
-    expect(response.body).toHaveProperty('data');
-    expect(response.body.data).toHaveProperty('latitude');
-    expect(response.body.data).toHaveProperty('longitude');
+    expect(response.body).toHaveProperty('ciudad_id');
+    expect(response.body).toHaveProperty('ciudad_nombre');
 
-    expect.assertions(5);
+    expect.assertions(3);
   });
 
   describe('🔹 GET /api/v1/ciudades/', () => {

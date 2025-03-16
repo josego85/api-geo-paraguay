@@ -51,4 +51,30 @@ City.getLngLat = (request, result) => {
   });
 };
 
+City.findById = (request, result) => {
+  const { id } = request;
+  const query = `SELECT c.ciudad_id, c.ciudad_nombre
+    FROM ciudades c
+    WHERE c.ciudad_id = ?
+  `;
+
+  sql.query(query, [id], (error, response) => {
+    if (error) {
+      console.log('error: ', error);
+      result(error, null);
+
+      return;
+    }
+
+    if (response.length) {
+      result(null, response[0]);
+
+      return;
+    }
+
+    // Not found City with the id.
+    result({ kind: 'not_found' }, null);
+  });
+};
+
 module.exports = City;
