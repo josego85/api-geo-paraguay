@@ -8,7 +8,7 @@ const City = function () {
 
 City.getAll = (result) => {
   sql.query(
-    'SELECT c.ciudad_id, c.ciudad_nombre FROM ciudades as c ORDER BY c.ciudad_id',
+    'SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci ORDER BY ci.ciudad_id',
     (error, response) => {
       if (error) {
         console.log('error: ', error);
@@ -27,8 +27,8 @@ City.getLngLat = (request, result) => {
   const query = `SELECT 
         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
-        FROM ciudades 
-        WHERE ciudad_nombre = '${city}'
+        FROM ciudades as ci
+        WHERE ci.ciudad_nombre = '${city}'
       `;
 
   sql.query(query, (error, response) => {
@@ -40,7 +40,6 @@ City.getLngLat = (request, result) => {
     }
 
     if (response.length) {
-      // console.log('found longitude latitude city: ', response[0])
       result(null, response[0]);
 
       return;
@@ -53,9 +52,9 @@ City.getLngLat = (request, result) => {
 
 City.findById = (request, result) => {
   const { id } = request;
-  const query = `SELECT c.ciudad_id, c.ciudad_nombre
-    FROM ciudades c
-    WHERE c.ciudad_id = ?
+  const query = `SELECT ci.ciudad_id, ci.ciudad_nombre
+    FROM ciudades ci
+    WHERE ci.ciudad_id = ?
   `;
 
   sql.query(query, [id], (error, response) => {

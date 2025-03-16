@@ -8,7 +8,7 @@ const Department = function () {
 
 Department.getAll = (result) => {
   sql.query(
-    'SELECT d.departamento_id, d.departamento_nombre, d.departamento_capital FROM departamentos as d ORDER BY d.departamento_id',
+    'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep ORDER BY dep.departamento_id',
     (error, response) => {
       if (error) {
         console.log('error: ', error);
@@ -50,7 +50,6 @@ Department.findByLngLat = (request, result) => {
       }
 
       if (response.length) {
-        // console.log('found department: ', response[0])
         result(null, response[0]);
 
         return;

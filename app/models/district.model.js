@@ -27,8 +27,8 @@ District.getLngLat = (request, result) => {
   const query = `SELECT 
         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
-        FROM distritos 
-        WHERE distrito_nombre = '${district}'
+        FROM distritos as dis
+        WHERE dis.distrito_nombre = '${district}'
       `;
 
   sql.query(query, (error, response) => {
@@ -40,7 +40,6 @@ District.getLngLat = (request, result) => {
     }
 
     if (response.length) {
-      // console.log('found longitude latitude district: ', response[0])
       result(null, response[0]);
 
       return;
