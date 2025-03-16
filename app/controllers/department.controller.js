@@ -62,7 +62,7 @@ exports.findById = async (request, response) => {
     const data = await Department.findById(id);
 
     if (!data) {
-      return response.status(404).send({ message: 'City not found' });
+      return response.status(404).send({ message: 'Department not found' });
     }
     return response.status(200).json(data);
   } catch (error) {

@@ -6,21 +6,22 @@ const District = function () {
   // Constructor.
 };
 
-District.getAll = (result) => {
-  sql.query(
-    'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id',
-    (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        result(null, error);
+District.getAll = () =>
+  new Promise((resolve, reject) => {
+    sql.query(
+      'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id',
+      (error, response) => {
+        if (error) {
+          console.log('error: ', error);
+          reject(error);
 
-        return;
+          return;
+        }
+
+        resolve(response);
       }
-
-      result(null, response);
-    }
-  );
-};
+    );
+  });
 
 District.getLngLat = (request, result) => {
   const district = request.name;
@@ -50,30 +51,27 @@ District.getLngLat = (request, result) => {
   });
 };
 
-District.findById = (request, result) => {
-  const { id } = request;
-  const query = `SELECT dis.distrito_id, dis.distrito_nombre
-    FROM distritos dis
-    WHERE dis.distrito_id = ?
-  `;
+District.findById = (id) =>
+  new Promise((resolve, reject) => {
+    const query = `SELECT dis.distrito_id, dis.distrito_nombre
+      FROM distritos dis
+      WHERE dis.distrito_id = ?
+    `;
 
-  sql.query(query, [id], (error, response) => {
-    if (error) {
-      console.log('error: ', error);
-      result(error, null);
+    sql.query(query, [id], (error, response) => {
+      if (error) {
+        console.log('error: ', error);
+        reject(error);
 
-      return;
-    }
+        return;
+      }
 
-    if (response.length) {
-      result(null, response[0]);
-
-      return;
-    }
-
-    // Not found District with the id.
-    result({ kind: 'not_found' }, null);
+      if (response.length) {
+        resolve(response[0]);
+      } else {
+        reject(new Error('District not found'));
+      }
+    });
   });
-};
 
 module.exports = District;
