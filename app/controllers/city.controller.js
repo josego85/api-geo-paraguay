@@ -51,14 +51,24 @@ exports.getLngLat = async (request, response) => {
   });
 };
 
-exports.findById = (request, response) => {
-  City.findById(request.params, (err, data) => {
-    if (err) {
-      response.status(403).send({
-        message: request.polyglot.t('not_retrieve_city') || err.message,
-      });
-    } else {
-      response.status(200).json(data);
+exports.findById = async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    if (!id) {
+      return response.status(400).send({ message: 'ID is required' });
     }
-  });
+
+    const data = await City.findById(id);
+
+    if (!data) {
+      return response.status(404).send({ message: 'City not found' });
+    }
+
+    return response.status(200).json(data);
+  } catch (error) {
+    return response.status(403).send({
+      message: request.polyglot?.t('not_retrieve_city') || error.message,
+    });
+  }
 };

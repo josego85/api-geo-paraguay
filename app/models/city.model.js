@@ -6,21 +6,22 @@ const City = function () {
   // Constructor.
 };
 
-City.getAll = (result) => {
-  sql.query(
-    'SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci ORDER BY ci.ciudad_id',
-    (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        result(null, error);
+City.getAll = () =>
+  new Promise((resolve, reject) => {
+    sql.query(
+      'SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci ORDER BY ci.ciudad_id',
+      (error, response) => {
+        if (error) {
+          console.log('error: ', error);
+          reject(error);
 
-        return;
+          return;
+        }
+
+        resolve(response);
       }
-
-      result(null, response);
-    }
-  );
-};
+    );
+  });
 
 City.getLngLat = (request, result) => {
   const city = request.name;
@@ -50,30 +51,23 @@ City.getLngLat = (request, result) => {
   });
 };
 
-City.findById = (request, result) => {
-  const { id } = request;
-  const query = `SELECT ci.ciudad_id, ci.ciudad_nombre
-    FROM ciudades ci
-    WHERE ci.ciudad_id = ?
-  `;
+City.findById = (id) =>
+  new Promise((resolve, reject) => {
+    const query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades ci WHERE ci.ciudad_id = ?`;
 
-  sql.query(query, [id], (error, response) => {
-    if (error) {
-      console.log('error: ', error);
-      result(error, null);
+    sql.query(query, [id], (error, response) => {
+      if (error) {
+        console.log('error: ', error);
+        reject(error);
+        return;
+      }
 
-      return;
-    }
-
-    if (response.length) {
-      result(null, response[0]);
-
-      return;
-    }
-
-    // Not found City with the id.
-    result({ kind: 'not_found' }, null);
+      if (response.length) {
+        resolve(response[0]);
+      } else {
+        reject(new Error('City not found'));
+      }
+    });
   });
-};
 
 module.exports = City;
