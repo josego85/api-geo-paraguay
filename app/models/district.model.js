@@ -51,4 +51,30 @@ District.getLngLat = (request, result) => {
   });
 };
 
+District.findById = (request, result) => {
+  const { id } = request;
+  const query = `SELECT dis.distrito_id, dis.distrito_nombre
+    FROM distritos dis
+    WHERE dis.distrito_id = ?
+  `;
+
+  sql.query(query, [id], (error, response) => {
+    if (error) {
+      console.log('error: ', error);
+      result(error, null);
+
+      return;
+    }
+
+    if (response.length) {
+      result(null, response[0]);
+
+      return;
+    }
+
+    // Not found District with the id.
+    result({ kind: 'not_found' }, null);
+  });
+};
+
 module.exports = District;

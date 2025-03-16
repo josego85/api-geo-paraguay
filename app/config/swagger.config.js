@@ -97,16 +97,16 @@ const swagger = {
         tags: ['Department'],
         summary: 'List all departments',
         description: 'Retrieves a list of all departments in Paraguay.',
-        parameters: [
-          {
-            in: 'header',
-            name: 'accept-language',
-            description: 'Language code (e.g. en, es)',
-            schema: {
-              type: 'string',
-            },
-          },
-        ],
+        // parameters: [
+        //   {
+        //     in: 'header',
+        //     name: 'accept-language',
+        //     description: 'Language code (e.g. en, es)',
+        //     schema: {
+        //       type: 'string',
+        //     },
+        //   },
+        // ],
         responses: {
           200: {
             description: 'Successful retrieval of departments',
@@ -130,14 +130,6 @@ const swagger = {
         summary: 'Get a department by ID',
         description: 'Retrieves details for a specific department identified by its ID.',
         parameters: [
-          {
-            in: 'header',
-            name: 'accept-language',
-            description: 'Language code (e.g. en, es)',
-            schema: {
-              type: 'string',
-            },
-          },
           {
             in: 'path',
             name: 'id',
@@ -173,16 +165,16 @@ const swagger = {
         tags: ['District'],
         summary: 'List all districts',
         description: 'Retrieves a list of all districts in Paraguay.',
-        parameters: [
-          {
-            in: 'header',
-            name: 'accept-language',
-            description: 'Language code (e.g. en, es)',
-            schema: {
-              type: 'string',
-            },
-          },
-        ],
+        // parameters: [
+        //   {
+        //     in: 'header',
+        //     name: 'accept-language',
+        //     description: 'Language code (e.g. en, es)',
+        //     schema: {
+        //       type: 'string',
+        //     },
+        //   },
+        // ],
         responses: {
           200: {
             description: 'Successful retrieval of districts',
@@ -200,21 +192,57 @@ const swagger = {
         },
       },
     },
+    '/distritos/{id}': {
+      get: {
+        tags: ['District'],
+        summary: 'Get a district by ID',
+        description: 'Retrieves details for a specific district identified by its ID.',
+        parameters: [
+          {
+            in: 'path',
+            name: 'id',
+            description: 'District ID',
+            required: true,
+            schema: {
+              type: 'number',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Successful retrieval of district details',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/District',
+                },
+              },
+            },
+          },
+          404: {
+            description: 'District not found',
+          },
+          500: {
+            description: 'Internal server error',
+          },
+        },
+      },
+    },
     '/ciudades': {
       get: {
         tags: ['City'],
         summary: 'List all cities',
         description: 'Retrieves a list of all cities in Paraguay.',
-        parameters: [
-          {
-            in: 'header',
-            name: 'accept-language',
-            description: 'Language code (e.g. en, es)',
-            schema: {
-              type: 'string',
-            },
-          },
-        ],
+        // parameters: [
+        //   {
+        //     in: 'header',
+        //     name: 'accept-language',
+        //     description: 'Language code (e.g. en, es)',
+        //     schema: {
+        //       type: 'string',
+        //     },
+        //   },
+        // ],
         responses: {
           200: {
             description: 'Successful retrieval of cities',
@@ -232,21 +260,57 @@ const swagger = {
         },
       },
     },
+    '/ciudades/{id}': {
+      get: {
+        tags: ['City'],
+        summary: 'Get a city by ID',
+        description: 'Retrieves details for a specific city identified by its ID.',
+        parameters: [
+          {
+            in: 'path',
+            name: 'id',
+            description: 'City ID',
+            required: true,
+            schema: {
+              type: 'number',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Successful retrieval of city details',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/City',
+                },
+              },
+            },
+          },
+          404: {
+            description: 'City not found',
+          },
+          500: {
+            description: 'Internal server error',
+          },
+        },
+      },
+    },
     '/barrios': {
       get: {
         tags: ['Neighborhood'],
         summary: 'List all neighborhoods',
         description: 'Retrieves a list of all neighborhoods in Paraguay.',
-        parameters: [
-          {
-            in: 'header',
-            name: 'accept-language',
-            description: 'Language code (e.g. en, es)',
-            schema: {
-              type: 'string',
-            },
-          },
-        ],
+        // parameters: [
+        //   {
+        //     in: 'header',
+        //     name: 'accept-language',
+        //     description: 'Language code (e.g. en, es)',
+        //     schema: {
+        //       type: 'string',
+        //     },
+        //   },
+        // ],
         responses: {
           200: {
             description: 'Successful retrieval of neighborhoods',

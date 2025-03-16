@@ -21,6 +21,7 @@ All notable changes to this project are documented in this file.
 - More endpoints are added in swagger.
 - Add endpoint to get department by ID.
 - Add endpoint to get city by ID.
+- Add endpoint to get district by ID.
 
 ### Refactored
 
