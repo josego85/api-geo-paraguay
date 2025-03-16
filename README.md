@@ -146,19 +146,20 @@ Access the Swagger documentation at:
 
 ## GraphQL Support
 
-In addition to the REST endpoints, API GEO Paraguay now fully supports GraphQL. Use GraphQL to build custom queries for retrieving geographic data efficiently.  
-- **Endpoint:** [http://localhost:5000/graphql](http://localhost:5000/graphql)  
-- **GraphiQL Interface:** Simply visit the endpoint in your browser to access the interactive GraphiQL interface for testing queries.  
+In addition to the REST endpoints, API GEO Paraguay now fully supports GraphQL. Use GraphQL to build custom queries for retrieving geographic data efficiently.
+
+- **Endpoint:** [http://localhost:5000/graphql](http://localhost:5000/graphql)
+- **GraphiQL Interface:** Simply visit the endpoint in your browser to access the interactive GraphiQL interface for testing queries.
 - **Example Query:**
 
-   ```graphql
-   query {
-     city(id: 10) {
-       ciudad_id
-       ciudad_nombre
-     }
-   }
-   ```
+  ```graphql
+  query {
+    city(id: 10) {
+      ciudad_id
+      ciudad_nombre
+    }
+  }
+  ```
 
 ## Production
 
