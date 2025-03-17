@@ -51,14 +51,24 @@ exports.getLngLat = async (request, response) => {
   });
 };
 
-exports.findById = (request, response) => {
-  Neighborhood.findById(request.params, (err, data) => {
-    if (err) {
-      response.status(403).send({
-        message: request.polyglot.t('not_retrieve_neighborhood') || err.message,
-      });
-    } else {
-      response.status(200).json(data);
+exports.findById = async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    if (!id) {
+      return response.status(400).send({ message: 'ID is required' });
     }
-  });
+
+    const data = await Neighborhood.findById(id);
+
+    if (!data) {
+      return response.status(404).send({ message: 'District not found' });
+    }
+
+    return response.status(200).json(data);
+  } catch (error) {
+    return response.status(403).send({
+      message: request.polyglot.t('not_retrieve_neighborhood') || error.message,
+    });
+  }
 };

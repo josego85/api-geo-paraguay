@@ -6,21 +6,22 @@ const Neighborhood = function () {
   // Constructor.
 };
 
-Neighborhood.getAll = (result) => {
-  sql.query(
-    'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba ORDER BY ba.barrio_id',
-    (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        result(null, error);
+Neighborhood.getAll = () =>
+  new Promise((resolve, reject) => {
+    sql.query(
+      'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba ORDER BY ba.barrio_id',
+      (error, response) => {
+        if (error) {
+          console.log('error: ', error);
+          reject(error);
 
-        return;
+          return;
+        }
+
+        resolve(response);
       }
-
-      result(null, response);
-    }
-  );
-};
+    );
+  });
 
 Neighborhood.getLngLat = (request, result) => {
   const neighborhood = request.name;
@@ -50,30 +51,28 @@ Neighborhood.getLngLat = (request, result) => {
   });
 };
 
-Neighborhood.findById = (request, result) => {
-  const { id } = request;
-  const query = `SELECT ba.barrio_id, ba.barrio_nombre
+Neighborhood.findById = (id) =>
+  new Promise((resolve, reject) => {
+    const query = `SELECT ba.barrio_id, ba.barrio_nombre
     FROM barrios ba
     WHERE ba.barrio_id = ?
   `;
 
-  sql.query(query, [id], (error, response) => {
-    if (error) {
-      console.log('error: ', error);
-      result(error, null);
+    sql.query(query, [id], (error, response) => {
+      if (error) {
+        console.log('error: ', error);
+        reject(error);
 
-      return;
-    }
+        return;
+      }
 
-    if (response.length) {
-      result(null, response[0]);
-
-      return;
-    }
-
-    // Not found Neighborhood with the id.
-    result({ kind: 'not_found' }, null);
+      if (response.length) {
+        resolve(response[0]);
+      } else {
+        // Not found Neighborhood with the id.
+        reject(new Error('Neighborhood not found'));
+      }
+    });
   });
-};
 
 module.exports = Neighborhood;

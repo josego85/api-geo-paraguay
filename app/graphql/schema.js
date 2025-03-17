@@ -2,9 +2,11 @@ const { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLID } = require('gr
 const Department = require('models/department.model');
 const District = require('models/district.model');
 const City = require('models/city.model');
+const Neighborhood = require('models/neighborhood.model');
 const DepartmentType = require('./types/DepartmentType');
 const DistrictType = require('./types/DistrictType');
 const CityType = require('./types/CityType');
+const NeighborhoodType = require('./types/NeighborhoodType');
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -35,6 +37,15 @@ const RootQuery = new GraphQLObjectType({
       type: CityType,
       args: { id: { type: GraphQLID } },
       resolve: async (parent, args) => City.findById(args.id),
+    },
+    neighborhoods: {
+      type: new GraphQLList(NeighborhoodType),
+      resolve: async () => Neighborhood.getAll(),
+    },
+    neighborhood: {
+      type: NeighborhoodType,
+      args: { id: { type: GraphQLID } },
+      resolve: async (parent, args) => Neighborhood.findById(args.id),
     },
   },
 });

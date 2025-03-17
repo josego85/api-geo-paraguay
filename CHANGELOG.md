@@ -26,6 +26,7 @@ All notable changes to this project are documented in this file.
 - Add GraphQL for the department query.
 - Add GraphQL for the district query.
 - Add GraphQL for the city query.
+- Add GraphQL for the neighborhoods query.
 
 ### Refactored
 
