@@ -11,7 +11,6 @@ beforeAll(async () => {
 
   try {
     await mongoose.connect(`${MONGO_URI}/${TEST_APP_NAME}`);
-    console.log('MongoDB connected for Jest tests!');
   } catch (error) {
     console.error('MongoDB connection error:', error);
   }

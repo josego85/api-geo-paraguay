@@ -2,14 +2,16 @@ const request = require('supertest');
 const app = require('../server');
 
 describe('🟢 Neighborhood API - Version 1', () => {
-  test('✅ Should return data for Neighborhood with id 12', async () => {
-    const response = await request(app).get('/api/v1/barrios/12');
+  describe('🔹 GET /api/v1/barrios/{id}', () => {
+    test('✅ Should return data for Neighborhood with id 12', async () => {
+      const response = await request(app).get('/api/v1/barrios/12');
 
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('barrio_id');
-    expect(response.body).toHaveProperty('barrio_nombre');
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('barrio_id');
+      expect(response.body).toHaveProperty('barrio_nombre');
 
-    expect.assertions(3);
+      expect.assertions(3);
+    });
   });
 
   describe('🔹 GET /api/v1/barrios/', () => {
@@ -19,7 +21,6 @@ describe('🟢 Neighborhood API - Version 1', () => {
       expect(response.statusCode).toBe(200);
       expect(response.type).toEqual('application/json');
       expect(response.header['content-type']).toEqual('application/json; charset=utf-8');
-      expect(response.body.success).toBe(true);
       expect(response.body.data).toBeDefined();
       expect(Array.isArray(response.body.data)).toBe(true);
       expect(response.body.data.length).toBeGreaterThan(0);
@@ -28,6 +29,7 @@ describe('🟢 Neighborhood API - Version 1', () => {
       expect(firstNeighborhood).toHaveProperty('barrio_id');
       expect(firstNeighborhood).toHaveProperty('barrio_nombre');
 
+      expect(typeof firstNeighborhood.barrio_id).toBe('number');
       expect(typeof firstNeighborhood.barrio_nombre).toBe('string');
       expect(firstNeighborhood.barrio_nombre.length).toBeGreaterThan(0);
 

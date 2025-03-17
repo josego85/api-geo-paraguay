@@ -36,6 +36,7 @@ All notable changes to this project are documented in this file.
 - Improved Docker Compose configuration for both production and development environments.
 - Improved test --> api.main.test.js and api.v1.cities.test
 - Improved district name
+- Refactored Neighborhood and City controllers for better performance and maintainability.
 
 ## [2.8.0]
 
