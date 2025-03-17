@@ -2,7 +2,7 @@ const { save } = require('helpers/providers/cache/redisClient');
 const City = require('models/city.model');
 const getCaching = require('./app.controller');
 
-// Retrieve all city from the database.
+// Retrieve all city.
 exports.findAll = async (request, response) => {
   try {
     const field = 'cities';
@@ -15,7 +15,7 @@ exports.findAll = async (request, response) => {
     }
 
     const data = await City.getAll();
-    
+
     if (!data) {
       return response.status(404).send({ message: 'Cities not found' });
     }

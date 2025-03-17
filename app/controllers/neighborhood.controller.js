@@ -2,7 +2,7 @@ const { save } = require('helpers/providers/cache/redisClient');
 const Neighborhood = require('models/neighborhood.model');
 const getCaching = require('./app.controller');
 
-// Retrieve all neighborhood from the database.
+// Retrieve all neighborhood.
 exports.findAll = async (request, response) => {
   try {
     const field = 'neighborhood';

@@ -2,43 +2,42 @@ const { save } = require('helpers/providers/cache/redisClient');
 const Department = require('models/department.model');
 const getCaching = require('./app.controller');
 
-// Retrieve all departments from the database.
+// Retrieve all departments.
 exports.findAll = async (request, response) => {
-  const field = 'departaments';
-  const resultCache = await getCaching(field);
+  try {
+    const field = 'departaments';
+    const resultCache = await getCaching(field);
 
-  if (resultCache) {
-    response.status(200).json({
-      success: true,
-      data: resultCache,
-    });
-
-    return;
-  }
-
-  Department.getAll((err, data) => {
-    if (err) {
-      response.status(403).send({
-        message: request.polyglot.t('not_retrieve_department') || err.message,
+    if (resultCache) {
+      return response.status(200).json({
+        data: resultCache,
       });
-    } else {
-      // Update cache.
-      save(field, data).catch((error) => console.error('Error: ', error));
-
-      const json = {
-        success: true,
-        data,
-      };
-      response.status(200).json(json);
     }
-  });
+
+    const data = await Department.getAll();
+
+    if (!data) {
+      return response.status(404).send({ message: 'Departments not found' });
+    }
+
+    // Update cache.
+    save(field, data).catch((error) => console.error('Error: ', error));
+
+    return response.status(200).json({
+      data,
+    });
+  } catch (error) {
+    return response.status(403).send({
+      message: request.polyglot.t('failed_to_retrieve_departments') || error.message,
+    });
+  }
 };
 
 exports.findByLngLat = (request, response) => {
   Department.findByLngLat(request.params, (err, data) => {
     if (err) {
       response.status(403).send({
-        message: request.polyglot.t('not_retrieve_department') || err.message,
+        message: request.polyglot.t('failed_to_retrieve_department') || err.message,
       });
     } else {
       const json = {
@@ -67,7 +66,7 @@ exports.findById = async (request, response) => {
     return response.status(200).json(data);
   } catch (error) {
     return response.status(403).send({
-      message: request.polyglot.t('not_retrieve_department') || error.message,
+      message: request.polyglot.t('failed_to_retrieve_department') || error.message,
     });
   }
 };

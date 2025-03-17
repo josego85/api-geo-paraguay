@@ -37,6 +37,7 @@ All notable changes to this project are documented in this file.
 - Improved test --> api.main.test.js and api.v1.cities.test
 - Improved district name
 - Refactored Neighborhood and City controllers for better performance and maintainability.
+- Refactored Department and District controllers for better performance and maintainability.
 
 ## [2.8.0]
 
