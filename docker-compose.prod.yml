@@ -24,7 +24,7 @@ services:
       context: ./deploy/nginx
       dockerfile: Dockerfile
     container_name: nginx-api-geo-paraguay
-restart: always
+    restart: always
     ports:
       - '80:80'
     volumes:

@@ -35,9 +35,9 @@ class City {
 
 // City.getLngLat = (request, result) => {
 //   const city = request.name;
-//   const query = `SELECT 
+//   const query = `SELECT
 //         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
-//         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
+//         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude
 //         FROM ciudades as ci
 //         WHERE ci.ciudad_nombre = '${city}'
 //       `;

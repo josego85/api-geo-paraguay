@@ -206,13 +206,16 @@ npm run build
 For production, NGINX is configured to handle incoming requests efficiently and securely. Below are the key configurations:
 
 1. **Rate Limiting**:
+
    - Limits the number of requests per IP to prevent abuse.
    - Configured using `limit_req_zone` and `limit_req`.
 
 2. **Request Size Restriction**:
+
    - Limits the size of incoming requests to 2MB using `client_max_body_size`.
 
 3. **Custom Server Signature**:
+
    - Hides the NGINX version and customizes the `Server` header using the `headers-more` module.
 
 4. **SSL/TLS**:
@@ -249,18 +252,23 @@ server {
 The production setup includes the following security measures:
 
 1. **Rate Limiting**:
+
    - Prevents abuse by limiting the number of requests per IP.
 
 2. **Request Size Restriction**:
+
    - Protects the server from large payloads by limiting request sizes.
 
 3. **Custom Server Signature**:
+
    - Hides the NGINX version to reduce exposure to potential vulnerabilities.
 
 4. **Environment Variables**:
+
    - Sensitive data such as database credentials and API keys are managed securely using environment variables.
 
 5. **Redis Authentication**:
+
    - Redis is secured with a password to prevent unauthorized access.
 
 6. **GraphQL Query Validation**:
@@ -271,23 +279,29 @@ The production setup includes the following security measures:
 To ensure smooth operation in production, consider the following:
 
 1. **Health Checks**:
+
    - Use the built-in health checks in `docker-compose.prod.yml` for MySQL, Redis, and other services to monitor their status.
 
 2. **Monitoring Tools**:
+
    - Integrate tools like **Prometheus** and **Grafana** for real-time monitoring of resource usage and application performance.
    - Use **ELK Stack (Elasticsearch, Logstash, Kibana)** or **Graylog** for centralized log management.
 
 3. **Backup Strategy**:
+
    - Schedule regular backups for the MySQL and MongoDB databases.
    - Use tools like `mysqldump` for MySQL and `mongodump` for MongoDB.
 
 4. **Scaling**:
+
    - Use Docker Swarm or Kubernetes to scale services horizontally if traffic increases.
 
 5. **SSL/TLS Certificates**:
+
    - Ensure SSL certificates are renewed automatically using tools like **Certbot**.
 
 6. **Environment Variables**:
+
    - Keep sensitive data like database credentials and API keys secure by using `.env` files or Docker secrets.
 
 7. **Error Tracking**:
