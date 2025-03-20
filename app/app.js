@@ -14,41 +14,36 @@ const app = express();
 
 app.use(express.json());
 
-// Translation. English default language.
+// Middleware for locale and translations
 app.use(
   createLocaleMiddleware({
     priority: ['accept-language', 'default'],
     default: 'en-US',
   })
 );
-
-// Set the language in the req with the phrases to be used.
 app.use(startPolyglot);
 
+// Security middleware
 securityMiddleware(app);
 
+// Logging middleware
 app.use(async (req, res, next) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const geo = lookup(ip);
-  const log = new Log({
-    url: req.url,
-    method: req.method,
-    ip,
-    geo,
-  });
-
+  const log = new Log({ url: req.url, method: req.method, ip, geo });
   await log.save();
   next();
 });
 
+// API routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', rest);
 
+// GraphQL setup
 const yoga = createYoga({
   schema: graphqlSchema,
   graphqlEndpoint: '/graphql',
 });
-
 app.use('/graphql', yoga);
 
 module.exports = app;
