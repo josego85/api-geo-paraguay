@@ -9,11 +9,12 @@ All significant changes to this project are documented in this file.
 - Upgraded Nginx configuration to enforce rate limiting using the "Many Requests" strategy.
 
 ### Added
-- Production Nginx service in the Docker configuration.
-- Connection pooling for Department and District models.
-- Connection pooling for City and Neighborhood models.
-- IP-based rate limiting in Nginx.
-- Configured `client_max_body_size` in NGINX to limit the size of incoming requests to 2MB.
+- Integrated a production-ready NGINX service in the Docker Compose configuration.
+- Implemented connection pooling for Department and District models to improve database performance.
+- Implemented connection pooling for City and Neighborhood models to enhance scalability.
+- Enabled IP-based rate limiting in NGINX to prevent abuse and ensure fair usage.
+- Configured `client_max_body_size` in NGINX to restrict the size of incoming requests to a maximum of 2MB.
+- Added `more_set_headers` configuration in NGINX to customize or hide the server signature.
 
 ## [2.9.0] - 2025-03-17
 
