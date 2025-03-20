@@ -13,7 +13,14 @@ const RootQuery = new GraphQLObjectType({
   fields: {
     departments: {
       type: new GraphQLList(DepartmentType),
-      resolve: async () => Department.getAll(),
+      resolve: async () => {
+        try {
+          return await Department.getAll();
+        } catch (error) {
+          console.error('GraphQL error in departments resolver:', error);
+          throw error;
+        }
+      },
     },
     department: {
       type: DepartmentType,
@@ -22,7 +29,14 @@ const RootQuery = new GraphQLObjectType({
     },
     districts: {
       type: new GraphQLList(DistrictType),
-      resolve: async () => District.getAll(),
+      resolve: async () => {
+        try {
+          return await District.getAll();
+        } catch (error) {
+          console.error('GraphQL error in districts resolver:', error);
+          throw error;
+        }
+      },
     },
     district: {
       type: DistrictType,

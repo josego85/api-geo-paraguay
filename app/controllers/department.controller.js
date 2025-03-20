@@ -33,22 +33,22 @@ exports.findAll = async (request, response) => {
   }
 };
 
-exports.findByLngLat = (request, response) => {
-  Department.findByLngLat(request.params, (err, data) => {
-    if (err) {
-      response.status(403).send({
-        message: request.polyglot.t('failed_to_retrieve_department') || err.message,
-      });
-    } else {
-      const json = {
-        success: true,
-        data,
-      };
+// exports.findByLngLat = (request, response) => {
+//   Department.findByLngLat(request.params, (err, data) => {
+//     if (err) {
+//       response.status(403).send({
+//         message: request.polyglot.t('failed_to_retrieve_department') || err.message,
+//       });
+//     } else {
+//       const json = {
+//         success: true,
+//         data,
+//       };
 
-      response.status(200).json(json);
-    }
-  });
-};
+//       response.status(200).json(json);
+//     }
+//   });
+// };
 
 exports.findById = async (request, response) => {
   try {
