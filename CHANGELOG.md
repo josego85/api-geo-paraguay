@@ -6,6 +6,7 @@ All significant changes to this project are documented in this file.
 
 ### Changed
 - Updated the `package.json` configuration.
+- Upgraded Nginx configuration to enforce rate limiting using the "Many Requests" strategy.
 
 ### Added
 - Production Nginx service in the Docker configuration.
