@@ -1,78 +1,67 @@
 const dbConfig = require('config/db.config');
-const sql = require('./db');
+const pool = require('./db');
 
 const { SRID_TRANSFORM } = dbConfig;
-const Neighborhood = function () {
-  // Constructor.
-};
 
-Neighborhood.getAll = () =>
-  new Promise((resolve, reject) => {
-    sql.query(
-      'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba ORDER BY ba.barrio_id',
-      (error, response) => {
-        if (error) {
-          console.log('error: ', error);
-          reject(error);
+class Neighborhood {
+  static async getAll() {
+    try {
+      const query =
+        'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba ORDER BY ba.barrio_id';
+      const [rows] = await pool.query(query);
 
-          return;
-        }
-
-        resolve(response);
-      }
-    );
-  });
-
-Neighborhood.getLngLat = (request, result) => {
-  const neighborhood = request.name;
-  const query = `SELECT 
-        ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
-        ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
-        FROM barrios as ba
-        WHERE ba.barrio_nombre = '${neighborhood}'
-      `;
-
-  sql.query(query, (error, response) => {
-    if (error) {
+      return rows;
+    } catch (error) {
       console.log('error: ', error);
-      result(error, null);
-
-      return;
+      throw error;
     }
+  }
 
-    if (response.length) {
-      result(null, response[0]);
+  static async findById(id) {
+    try {
+      const query = `SELECT ba.barrio_id, ba.barrio_nombre
+        FROM barrios ba
+        WHERE ba.barrio_id = ?
+      `;
+      const [rows] = await pool.query(query, [id]);
 
-      return;
+      if (rows.length) {
+        return rows[0];
+      }
+      throw new Error('Neighborhood not found');
+    } catch (error) {
+      console.log('error: ', error);
+      throw error;
     }
+  }
+}
 
-    // Not found neighborhood.
-    result({ kind: 'not_found' }, null);
-  });
-};
+// Neighborhood.getLngLat = (request, result) => {
+//   const neighborhood = request.name;
+//   const query = `SELECT
+//         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
+//         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude
+//         FROM barrios as ba
+//         WHERE ba.barrio_nombre = '${neighborhood}'
+//       `;
 
-Neighborhood.findById = (id) =>
-  new Promise((resolve, reject) => {
-    const query = `SELECT ba.barrio_id, ba.barrio_nombre
-    FROM barrios ba
-    WHERE ba.barrio_id = ?
-  `;
+//   sql.query(query, (error, response) => {
+//     if (error) {
+//       console.log('error: ', error);
+//       result(error, null);
 
-    sql.query(query, [id], (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        reject(error);
+//       return;
+//     }
 
-        return;
-      }
+//     if (response.length) {
+//       result(null, response[0]);
 
-      if (response.length) {
-        resolve(response[0]);
-      } else {
-        // Not found Neighborhood with the id.
-        reject(new Error('Neighborhood not found'));
-      }
-    });
-  });
+//       return;
+//     }
+
+//     // Not found neighborhood.
+//     result({ kind: 'not_found' }, null);
+//   });
+// };
 
 module.exports = Neighborhood;

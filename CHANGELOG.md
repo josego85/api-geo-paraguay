@@ -2,10 +2,22 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.10.0] - 2025-03-
+## [2.10.0] - 2025-03-20
+
+### Fixed
+- Resolved issues in the `findByLngLat` model and controller to ensure accurate geolocation queries and improved reliability.
 
 ### Changed
-- Revised package.json configuration.
+- Updated the `package.json` configuration.
+- Upgraded Nginx configuration to enforce rate limiting using the "Many Requests" strategy.
+
+### Added
+- Integrated a production-ready NGINX service in the Docker Compose configuration.
+- Implemented connection pooling for Department and District models to improve database performance.
+- Implemented connection pooling for City and Neighborhood models to enhance scalability.
+- Enabled IP-based rate limiting in NGINX to prevent abuse and ensure fair usage.
+- Configured `client_max_body_size` in NGINX to restrict the size of incoming requests to a maximum of 2MB.
+- Added `more_set_headers` configuration in NGINX to customize or hide the server signature.
 
 ## [2.9.0] - 2025-03-17
 

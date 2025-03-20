@@ -1,73 +1,64 @@
 const dbConfig = require('config/db.config');
-const sql = require('./db');
+const pool = require('./db');
 
 const { SRID_TRANSFORM } = dbConfig;
-const City = function () {
-  // Constructor.
-};
 
-City.getAll = () =>
-  new Promise((resolve, reject) => {
-    sql.query(
-      'SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci ORDER BY ci.ciudad_id',
-      (error, response) => {
-        if (error) {
-          console.log('error: ', error);
-          reject(error);
+class City {
+  static async getAll() {
+    try {
+      const query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci ORDER BY ci.ciudad_id`;
+      const [rows] = await pool.query(query);
 
-          return;
-        }
-
-        resolve(response);
-      }
-    );
-  });
-
-City.getLngLat = (request, result) => {
-  const city = request.name;
-  const query = `SELECT 
-        ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
-        ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
-        FROM ciudades as ci
-        WHERE ci.ciudad_nombre = '${city}'
-      `;
-
-  sql.query(query, (error, response) => {
-    if (error) {
+      return rows;
+    } catch (error) {
       console.log('error: ', error);
-      result(error, null);
-
-      return;
+      throw error;
     }
+  }
 
-    if (response.length) {
-      result(null, response[0]);
+  static async findById(id) {
+    try {
+      const query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades ci WHERE ci.ciudad_id = ?`;
+      const [rows] = await pool.query(query, [id]);
 
-      return;
-    }
-
-    // Not found city.
-    result({ kind: 'not_found' }, null);
-  });
-};
-
-City.findById = (id) =>
-  new Promise((resolve, reject) => {
-    const query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades ci WHERE ci.ciudad_id = ?`;
-
-    sql.query(query, [id], (error, response) => {
-      if (error) {
-        console.log('error: ', error);
-        reject(error);
-        return;
+      if (rows.length) {
+        return rows[0];
       }
 
-      if (response.length) {
-        resolve(response[0]);
-      } else {
-        reject(new Error('City not found'));
-      }
-    });
-  });
+      throw new Error('City not found');
+    } catch (error) {
+      console.log('error: ', error);
+      throw error;
+    }
+  }
+}
+
+// City.getLngLat = (request, result) => {
+//   const city = request.name;
+//   const query = `SELECT 
+//         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
+//         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude 
+//         FROM ciudades as ci
+//         WHERE ci.ciudad_nombre = '${city}'
+//       `;
+
+//   sql.query(query, (error, response) => {
+//     if (error) {
+//       console.log('error: ', error);
+//       result(error, null);
+
+//       return;
+//     }
+
+//     if (response.length) {
+//       result(null, response[0]);
+
+//       return;
+//     }
+
+//     // Not found city.
+//     result({ kind: 'not_found' }, null);
+//   });
+// };
 
 module.exports = City;
