@@ -13,6 +13,7 @@ All significant changes to this project are documented in this file.
 - Connection pooling for Department and District models.
 - Connection pooling for City and Neighborhood models.
 - IP-based rate limiting in Nginx.
+- Configured `client_max_body_size` in NGINX to limit the size of incoming requests to 2MB.
 
 ## [2.9.0] - 2025-03-17
 
