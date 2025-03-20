@@ -15,6 +15,8 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [API Documentation](#api-documentation)
 - [GraphQL Support](#graphql-support)
 - [Production](#production)
+  - [NGINX Configuration](#nginx-configuration)
+  - [Security Features](#security-features)
 - [License](#license)
 - [Support](#support)
 
@@ -29,6 +31,7 @@ API GEO Paraguay simplifies the integration of geolocation data into your applic
 - Secure endpoints following industry-standard practices.
 - Comprehensive API documentation via Swagger.
 - **GraphQL Support:** In addition to REST endpoints, use GraphQL for tailored and efficient queries.
+- **Production-ready NGINX integration** with rate limiting and request size restrictions.
 
 ## Technologies
 
@@ -41,6 +44,7 @@ API GEO Paraguay simplifies the integration of geolocation data into your applic
 - **Swagger**: For API documentation
 - **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1
+- **NGINX**: v1.27.4 with `headers-more` module for enhanced security
 
 ## Quick Start
 
@@ -177,42 +181,117 @@ npm run build
 
    ```bash
    docker compose -f docker-compose.prod.yml up --build -d
-   docker compose logs -f
    ```
 
-2. **Nginx Configuration Sample:**
+2. **View logs for all services:**
 
-   ```nginx
-   server {
-       server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
-
-       location / {
-           proxy_pass http://app:5000;
-           proxy_http_version 1.1;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection 'upgrade';
-           proxy_set_header Host $host;
-           proxy_cache_bypass $http_upgrade;
-       }
-
-       listen 443 ssl http2;
-       ssl_certificate /etc/letsencrypt/live/api-geo.proyectosbeta.net/fullchain.pem;
-       ssl_certificate_key /etc/letsencrypt/live/api-geo.proyectosbeta.net/privkey.pem;
-       include /etc/letsencrypt/options-ssl-nginx.conf;
-       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-   }
-   server {
-       if ($host = www.api-geo.proyectosbeta.net) {
-           return 301 https://$host$request_uri;
-       }
-       if ($host = api-geo.proyectosbeta.net) {
-           return 301 https://$host$request_uri;
-       }
-       listen 80;
-       server_name api-geo.proyectosbeta.net www.api-geo.proyectosbeta.net;
-       return 404;
-   }
+   ```bash
+   docker compose -f docker-compose.prod.yml logs -f
    ```
+
+3. **View logs for a specific service (e.g., NGINX):**
+
+   ```bash
+   docker compose -f docker-compose.prod.yml logs -f nginx
+   ```
+
+4. **Stop the production containers:**
+
+   ```bash
+   docker compose -f docker-compose.prod.yml down
+   ```
+
+### NGINX Configuration
+
+For production, NGINX is configured to handle incoming requests efficiently and securely. Below are the key configurations:
+
+1. **Rate Limiting**:
+   - Limits the number of requests per IP to prevent abuse.
+   - Configured using `limit_req_zone` and `limit_req`.
+
+2. **Request Size Restriction**:
+   - Limits the size of incoming requests to 2MB using `client_max_body_size`.
+
+3. **Custom Server Signature**:
+   - Hides the NGINX version and customizes the `Server` header using the `headers-more` module.
+
+4. **SSL/TLS**:
+   - Ensure secure communication by configuring SSL certificates with Let's Encrypt.
+
+Example NGINX configuration:
+
+```nginx
+server {
+    listen 80;
+    server_name localhost;
+
+    client_max_body_size 2m;
+    server_tokens off;
+
+    location / {
+        limit_req zone=req_limit_per_ip burst=20 nodelay;
+        limit_req_status 429;
+
+        proxy_pass http://app:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        more_set_headers "Server: Custom-Server";
+    }
+}
+```
+
+### Security Features
+
+The production setup includes the following security measures:
+
+1. **Rate Limiting**:
+   - Prevents abuse by limiting the number of requests per IP.
+
+2. **Request Size Restriction**:
+   - Protects the server from large payloads by limiting request sizes.
+
+3. **Custom Server Signature**:
+   - Hides the NGINX version to reduce exposure to potential vulnerabilities.
+
+4. **Environment Variables**:
+   - Sensitive data such as database credentials and API keys are managed securely using environment variables.
+
+5. **Redis Authentication**:
+   - Redis is secured with a password to prevent unauthorized access.
+
+6. **GraphQL Query Validation**:
+   - Limits query complexity and depth to prevent abuse of the GraphQL API.
+
+### Monitoring and Maintenance
+
+To ensure smooth operation in production, consider the following:
+
+1. **Health Checks**:
+   - Use the built-in health checks in `docker-compose.prod.yml` for MySQL, Redis, and other services to monitor their status.
+
+2. **Monitoring Tools**:
+   - Integrate tools like **Prometheus** and **Grafana** for real-time monitoring of resource usage and application performance.
+   - Use **ELK Stack (Elasticsearch, Logstash, Kibana)** or **Graylog** for centralized log management.
+
+3. **Backup Strategy**:
+   - Schedule regular backups for the MySQL and MongoDB databases.
+   - Use tools like `mysqldump` for MySQL and `mongodump` for MongoDB.
+
+4. **Scaling**:
+   - Use Docker Swarm or Kubernetes to scale services horizontally if traffic increases.
+
+5. **SSL/TLS Certificates**:
+   - Ensure SSL certificates are renewed automatically using tools like **Certbot**.
+
+6. **Environment Variables**:
+   - Keep sensitive data like database credentials and API keys secure by using `.env` files or Docker secrets.
+
+7. **Error Tracking**:
+   - Use tools like **Sentry** to track and debug errors in production.
 
 ## License
 
