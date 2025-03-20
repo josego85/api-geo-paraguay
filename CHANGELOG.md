@@ -10,6 +10,7 @@ All significant changes to this project are documented in this file.
 ### Added
 - Production service for Nginx in the Docker configuration.
 - Pool Connection in Departement and District Model
+- Pool Connection in City and Neighborhood Model
 
 ## [2.9.0] - 2025-03-17
 

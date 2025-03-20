@@ -45,7 +45,14 @@ const RootQuery = new GraphQLObjectType({
     },
     cities: {
       type: new GraphQLList(CityType),
-      resolve: async () => City.getAll(),
+      resolve: async () => {
+        try {
+          return await City.getAll();
+        } catch (error) {
+          console.error('GraphQL error in cities resolver:', error);
+          throw error;
+        }
+      },
     },
     city: {
       type: CityType,
@@ -54,7 +61,14 @@ const RootQuery = new GraphQLObjectType({
     },
     neighborhoods: {
       type: new GraphQLList(NeighborhoodType),
-      resolve: async () => Neighborhood.getAll(),
+      resolve: async () => {
+        try {
+          return await Neighborhood.getAll();
+        } catch (error) {
+          console.error('GraphQL error in neighborhoods resolver:', error);
+          throw error;
+        }
+      },
     },
     neighborhood: {
       type: NeighborhoodType,

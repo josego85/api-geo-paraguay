@@ -33,22 +33,22 @@ exports.findAll = async (request, response) => {
   }
 };
 
-// Get longitude and latitude of a specific neighborhood.
-exports.getLngLat = async (request, response) => {
-  Neighborhood.getLngLat(request.params, (err, data) => {
-    if (err) {
-      response.status(403).send({
-        message: request.polyglot.t('failed_to_retrieve_neighborhood') || err.message,
-      });
-    } else {
-      const json = {
-        success: true,
-        data,
-      };
-      response.status(200).json(json);
-    }
-  });
-};
+// // Get longitude and latitude of a specific neighborhood.
+// exports.getLngLat = async (request, response) => {
+//   Neighborhood.getLngLat(request.params, (err, data) => {
+//     if (err) {
+//       response.status(403).send({
+//         message: request.polyglot.t('failed_to_retrieve_neighborhood') || err.message,
+//       });
+//     } else {
+//       const json = {
+//         success: true,
+//         data,
+//       };
+//       response.status(200).json(json);
+//     }
+//   });
+// };
 
 exports.findById = async (request, response) => {
   try {
