@@ -33,22 +33,22 @@ exports.findAll = async (request, response) => {
   }
 };
 
-// exports.findByLngLat = (request, response) => {
-//   Department.findByLngLat(request.params, (err, data) => {
-//     if (err) {
-//       response.status(403).send({
-//         message: request.polyglot.t('failed_to_retrieve_department') || err.message,
-//       });
-//     } else {
-//       const json = {
-//         success: true,
-//         data,
-//       };
+exports.findByLngLat = async (request, response) => {
+  try {
+    const { lng, lat } = request;
+    const data = await Department.findByLngLat(lng, lat);
 
-//       response.status(200).json(json);
-//     }
-//   });
-// };
+    if (!data) {
+      return response.status(404).send({ message: 'Departments not found' });
+    }
+
+    return response.status(200).json(data);
+  } catch (error) {
+    return response.status(403).send({
+      message: request.polyglot.t('failed_to_retrieve_department') || error.message,
+    });
+  }
+};
 
 exports.findById = async (request, response) => {
   try {
