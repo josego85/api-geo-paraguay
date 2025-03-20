@@ -2,7 +2,7 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.10.0] - 2025-03-XX
+## [2.10.0] - 2025-03-20
 
 ### Fixed
 - Resolved issues in the `findByLngLat` model and controller to ensure accurate geolocation queries and improved reliability.
