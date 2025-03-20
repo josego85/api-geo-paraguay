@@ -25,6 +25,7 @@ All significant changes to this project are documented in this file.
 ### Refactored
 
 - Improved the structure and readability of `app.js` by organizing middleware, routes, and GraphQL setup into distinct sections.
+- Improved the structure and maintainability of `db.js` by optimizing connection pooling and enhancing error handling.
 
 ## [2.9.0] - 2025-03-17
 
