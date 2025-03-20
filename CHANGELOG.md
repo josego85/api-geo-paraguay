@@ -7,6 +7,9 @@ All significant changes to this project are documented in this file.
 ### Changed
 - Revised package.json configuration.
 
+### Added
+- Production service for Nginx in the Docker configuration.
+
 ## [2.9.0] - 2025-03-17
 
 ### Fixed
