@@ -22,6 +22,10 @@ All significant changes to this project are documented in this file.
 - Configured `client_max_body_size` in NGINX to restrict the size of incoming requests to a maximum of 2MB.
 - Added `more_set_headers` configuration in NGINX to customize or hide the server signature.
 
+### Refactored
+
+- Improved the structure and readability of `app.js` by organizing middleware, routes, and GraphQL setup into distinct sections.
+
 ## [2.9.0] - 2025-03-17
 
 ### Fixed

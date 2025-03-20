@@ -15,7 +15,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [API Documentation](#api-documentation)
 - [GraphQL Support](#graphql-support)
 - [Production](#production)
-  - [NGINX Configuration](#nginx-configuration)
+- [NGINX Configuration](#nginx-configuration)
   - [Security Features](#security-features)
 - [License](#license)
 - [Support](#support)
@@ -181,7 +181,7 @@ npm run build
 
    ```bash
    docker compose -f docker-compose.prod.yml up --build -d
-   ```
+```
 
 2. **View logs for all services:**
 
@@ -206,7 +206,7 @@ npm run build
 For production, NGINX is configured to handle incoming requests efficiently and securely. Below are the key configurations:
 
 1. **Rate Limiting**:
-
+  
    - Limits the number of requests per IP to prevent abuse.
    - Configured using `limit_req_zone` and `limit_req`.
 
@@ -223,25 +223,25 @@ For production, NGINX is configured to handle incoming requests efficiently and 
 
 Example NGINX configuration:
 
-```nginx
-server {
-    listen 80;
+   ```nginx
+   server {
+       listen 80;
     server_name localhost;
 
     client_max_body_size 2m;
     server_tokens off;
 
-    location / {
-        limit_req zone=req_limit_per_ip burst=20 nodelay;
+       location / {
+limit_req zone=req_limit_per_ip burst=20 nodelay;
         limit_req_status 429;
 
-        proxy_pass http://app:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-
+           proxy_pass http://app:5000;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+       
         more_set_headers "Server: Custom-Server";
     }
 }
@@ -297,7 +297,7 @@ To ensure smooth operation in production, consider the following:
    - Use Docker Swarm or Kubernetes to scale services horizontally if traffic increases.
 
 5. **SSL/TLS Certificates**:
-
+   
    - Ensure SSL certificates are renewed automatically using tools like **Certbot**.
 
 6. **Environment Variables**:
