@@ -2,15 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.10.0] - 2025-03-
+## [2.10.0] - 2025-03-XX
 
 ### Changed
-- Revised package.json configuration.
+- Updated the `package.json` configuration.
 
 ### Added
-- Production service for Nginx in the Docker configuration.
-- Pool Connection in Departement and District Model
-- Pool Connection in City and Neighborhood Model
+- Production Nginx service in the Docker configuration.
+- Connection pooling for Department and District models.
+- Connection pooling for City and Neighborhood models.
+- IP-based rate limiting in Nginx.
 
 ## [2.9.0] - 2025-03-17
 
