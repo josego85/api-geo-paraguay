@@ -2,6 +2,11 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.10.0] - 2025-03-
+
+### Changed
+- Revised package.json configuration.
+
 ## [2.9.0] - 2025-03-17
 
 ### Fixed
