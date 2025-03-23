@@ -11,6 +11,8 @@ All significant changes to this project are documented in this file.
 
 - Added a `CONTRIBUTING.md` file with detailed guidelines and best practices to assist contributors.
 - Included a `SUPPORT.md` file to provide troubleshooting steps and streamline issue resolution.
+- Enhanced GitHub Actions workflows to improve CI/CD processes.
+- Included Swagger documentation generation as part of the CI/CD pipeline.
 
 ## [2.10.0] - 2025-03-20
 

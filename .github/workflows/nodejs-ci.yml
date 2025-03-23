@@ -58,3 +58,12 @@ jobs:
 
       - name: Check outdated dependencies
         run: npx npm-check-updates
+
+      - name: Generate API documentation
+        run: npm run generate-docs
+
+      - name: Upload API documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-docs
+          path: ./docs
