@@ -146,13 +146,13 @@ API GEO Paraguay simplifies the integration of geolocation data into your applic
 ## API Documentation
 
 Access the Swagger documentation at:  
-[https://api-geo.proyectosbeta.net/api-docs](https://api-geo.proyectosbeta.net/api-docs)
+[http://87.106.81.190/api-docs/](http://87.106.81.190/api-docs/)
 
 ## GraphQL Support
 
 In addition to the REST endpoints, API GEO Paraguay now fully supports GraphQL. Use GraphQL to build custom queries for retrieving geographic data efficiently.
 
-- **Endpoint:** [http://localhost:5000/graphql](http://localhost:5000/graphql)
+- **Endpoint:** [http://87.106.81.190/graphql](http://87.106.81.190/graphql)
 - **GraphiQL Interface:** Simply visit the endpoint in your browser to access the interactive GraphiQL interface for testing queries.
 - **Example Query:**
 
