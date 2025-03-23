@@ -7,10 +7,10 @@ All significant changes to this project are documented in this file.
 ### Changed
 
 - Enhanced the README file for improved clarity and structure.
-
 ### Added
 
-- Introduced a `CONTRIBUTING.md` file to guide contributors on best practices and contribution guidelines.
+- Added a `CONTRIBUTING.md` file with detailed guidelines and best practices to assist contributors.
+- Included a `SUPPORT.md` file to provide troubleshooting steps and streamline issue resolution.
 
 ## [2.10.0] - 2025-03-20
 
