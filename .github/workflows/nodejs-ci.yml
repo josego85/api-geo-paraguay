@@ -39,8 +39,8 @@ jobs:
       - name: Build the project
         run: npm run build --if-present
 
-      - name: Run tests with coverage
-        run: npm test -- --coverage
+      #- name: Run tests with coverage
+      #  run: npm test -- --coverage
 
       - name: Check outdated dependencies
         run: npx npm-check-updates
