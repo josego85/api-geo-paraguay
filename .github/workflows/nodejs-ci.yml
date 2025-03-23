@@ -45,5 +45,5 @@ jobs:
       - name: Check outdated dependencies
         run: npx npm-check-updates
 
-      - name: Generate API documentation
-        run: npm run generate-docs
+      #- name: Generate API documentation
+      #  run: npm run generate-docs
