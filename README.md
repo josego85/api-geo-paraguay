@@ -177,18 +177,6 @@ query {
 }
 ```
 
-### Mutation Example
-
-```graphql
-mutation {
-  createDepartment(input: { departamento_nombre: "New Department", departamento_capital: "New Capital" }) {
-    departamento_id
-    departamento_nombre
-    departamento_capital
-  }
-}
-```
-
 ### GraphQL Playground
 
 - Access the GraphQL Playground at `http://87.106.81.190/graphql` to test queries and mutations interactively.
