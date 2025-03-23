@@ -15,13 +15,16 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [Database Setup](#database-setup)
 - [API Examples](#api-examples)
 - [GraphQL Support](#graphql-support)
+- [API Documentation](#api-documentation)
 - [Testing & Code Quality](#testing--code-quality)
 - [Production Deployment](#production-deployment)
 - [Security](#security)
 - [Troubleshooting](#troubleshooting)
 - [Performance Optimization](#performance-optimization)
-- [License](#license)
+- [Contributing](#contributing)
+- [Changelog](#changelog)
 - [Support](#support)
+- [License](#license)
 
 ## Prerequisites
 
@@ -176,7 +179,25 @@ query {
 
 ### GraphQL Playground
 
-- Access the GraphQL Playground at `http://87.106.81.190/graphql` to test queries and mutations interactively.
+- Access the GraphQL Playground at `http://87.106.81.190/graphql` to test queries interactively.
+
+## API Documentation
+
+You can access the Swagger API documentation at the following URL:
+
+- **Swagger Documentation**: [http://87.106.81.190/api-docs/](http://87.106.81.190/api-docs/)
+
+## Contributing
+
+We welcome contributions from the community! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed guidelines on how to contribute to this project.
+
+## Changelog
+
+For a detailed list of changes and updates, please refer to the [CHANGELOG.md](CHANGELOG.md) file.
+
+## Support
+
+If you encounter any issues or have feature requests, please refer to the [SUPPORT.md](SUPPORT.md) file for guidance on how to get help.
 
 ## Testing & Code Quality
 

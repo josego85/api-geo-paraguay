@@ -7,6 +7,7 @@ All significant changes to this project are documented in this file.
 ### Changed
 
 - Enhanced the README file for improved clarity and structure.
+
 ### Added
 
 - Added a `CONTRIBUTING.md` file with detailed guidelines and best practices to assist contributors.
