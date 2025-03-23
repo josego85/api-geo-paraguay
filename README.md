@@ -183,13 +183,11 @@ npm run build
    docker compose -f docker-compose.prod.yml up --build -d
    ```
 
-````
-
 2. **View logs for all services:**
 
    ```bash
    docker compose -f docker-compose.prod.yml logs -f
-````
+   ````
 
 3. **View logs for a specific service (e.g., NGINX):**
 
