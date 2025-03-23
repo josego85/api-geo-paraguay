@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.10.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.11.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 
 API GEO Paraguay is a powerful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). The API supports both traditional REST endpoints and a flexible GraphQL interface, giving you multiple options for querying geographic data including details on departments, districts, cities, and neighborhoods.
@@ -20,7 +20,6 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [Security](#security)
 - [Troubleshooting](#troubleshooting)
 - [Performance Optimization](#performance-optimization)
-- [Contributing](#contributing)
 - [License](#license)
 - [Support](#support)
 
@@ -259,14 +258,6 @@ docker compose -f docker-compose.prod.yml down
 - NGINX response caching
 - GraphQL query optimization
 - Request size limits
-
-## Contributing
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/new-feature`
-3. Commit changes: `git commit -am 'Add feature'`
-4. Push branch: `git push origin feature/new-feature`
-5. Submit pull request
 
 ## License
 

@@ -2,6 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.11.0] - 2025-03-XX
+
+### Changed
+
+- Enhanced the README file for improved clarity and structure.
+
+### Added
+
+- Introduced a `CONTRIBUTING.md` file to guide contributors on best practices and contribution guidelines.
+
 ## [2.10.0] - 2025-03-20
 
 ### Fixed
