@@ -99,12 +99,10 @@ REDIS_PORT=6379
 
 ### Development Environment
 
-- Use `NODE_ENV=development`.
 - Ensure local database and Redis instances are running.
 
 ### Production Environment
 
-- Use `NODE_ENV=production`.
 - Update database and Redis credentials to match your production setup.
 - Ensure sensitive information is stored securely (e.g., use a secrets manager).
 
