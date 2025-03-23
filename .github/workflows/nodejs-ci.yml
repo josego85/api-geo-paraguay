@@ -42,27 +42,8 @@ jobs:
       - name: Run tests with coverage
         run: npm test -- --coverage
 
-      # Simplified artifact upload steps without if: always()
-      - name: Upload test results
-        uses: actions/upload-artifact@v1
-        with:
-          name: test-results
-          path: test-results
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v1
-        with:
-          name: coverage-report
-          path: coverage
-
       - name: Check outdated dependencies
         run: npx npm-check-updates
 
       - name: Generate API documentation
         run: npm run generate-docs
-
-      - name: Upload API documentation
-        uses: actions/upload-artifact@v1
-        with:
-          name: api-docs
-          path: docs
