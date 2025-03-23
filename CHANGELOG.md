@@ -2,12 +2,13 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.11.0] - 2025-03-XX
+## [2.11.0] - 2025-03-23
 
 ### Changed
 
-- Enhanced the README file for improved clarity and structure.
-- Updated the `package.json` configuration.
+- Improved the structure and clarity of the `README.md` file for better usability.
+- Updated the `package.json` configuration to reflect the latest project dependencies and settings.
+- Added additional badges to `README.md` for enhanced project visibility and status tracking.
 
 ### Added
 
