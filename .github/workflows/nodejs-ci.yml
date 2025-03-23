@@ -31,7 +31,7 @@ jobs:
         run: npm run format:check
 
       - name: Run linters
-        run: npm run lint
+        run: npm run lint:check
 
       - name: Run security audit
         run: npm audit --audit-level=high
