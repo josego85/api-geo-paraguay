@@ -5,9 +5,11 @@ Thank you for considering contributing to API GEO Paraguay! We welcome contribut
 ## How to Contribute
 
 1. **Fork the Repository**
+
    - Click the "Fork" button at the top of this repository to create your own copy.
 
 2. **Clone Your Fork**
+
    - Clone your forked repository to your local machine:
      ```bash
      git clone https://github.com/your-username/api-geo-paraguay.git
@@ -15,29 +17,34 @@ Thank you for considering contributing to API GEO Paraguay! We welcome contribut
      ```
 
 3. **Create a Feature Branch**
+
    - Create a new branch for your feature or bug fix:
      ```bash
      git checkout -b feature/your-feature-name
      ```
 
 4. **Make Changes**
+
    - Implement your changes or fixes.
    - Ensure your code follows the project's coding standards (e.g., ESLint and Prettier).
    - Add or update tests if necessary.
 
 5. **Run Tests**
+
    - Run the tests to ensure your changes don't break anything:
      ```bash
      npm run test
      ```
 
 6. **Commit Your Changes**
+
    - Write clear and concise commit messages:
      ```bash
      git commit -am "Add feature: description of your feature"
      ```
 
 7. **Push Your Branch**
+
    - Push your branch to your forked repository:
      ```bash
      git push origin feature/your-feature-name

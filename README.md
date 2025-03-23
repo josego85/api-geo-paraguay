@@ -63,11 +63,13 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 ### Local Development
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Configure environment:**
+
    ```bash
    cp .env.example .env
    ```
@@ -113,11 +115,13 @@ REDIS_PORT=6379
 ### MySQL Import
 
 1. **Extract SQL dump:**
+
    ```bash
    tar xzvf database/paraguay.sql.tar.gz
    ```
 
 2. **Copy to container:**
+
    ```bash
    docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
    ```
@@ -259,10 +263,12 @@ docker compose -f docker-compose.prod.yml down
 ### Common Issues
 
 1. **Rate Limiting (HTTP 429)**
+
    - Wait for the cooling period
    - Check NGINX configuration
 
 2. **Database Connections**
+
    - Verify credentials in `.env`
    - Check container status
    - Verify Redis connection

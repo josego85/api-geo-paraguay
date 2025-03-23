@@ -15,6 +15,10 @@ All significant changes to this project are documented in this file.
 - Enhanced GitHub Actions workflows to improve CI/CD processes.
 - Included Swagger documentation generation as part of the CI/CD pipeline.
 
+### Refactored
+
+- Applied Prettier formatting for consistent code style and readability.
+
 ## [2.10.0] - 2025-03-20
 
 ### Fixed
