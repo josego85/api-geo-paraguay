@@ -52,7 +52,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - **Express**: 5.0.1
 - **MySQL**: 8.0.xx
 - **Redis**: 7.4.x (client: Redis 4.7.0)
-- **MongoDB**: Server 7.0 (client: Mongoose 8.12.1)
+- **MongoDB**: Server 7.0 (client: Mongoose 8.12.2)
 - **Swagger**: For API documentation
 - **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1

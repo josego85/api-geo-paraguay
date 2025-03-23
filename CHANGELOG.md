@@ -7,6 +7,7 @@ All significant changes to this project are documented in this file.
 ### Changed
 
 - Enhanced the README file for improved clarity and structure.
+- Updated the `package.json` configuration.
 
 ### Added
 
