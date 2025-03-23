@@ -144,10 +144,10 @@ exit
 
 ```bash
 # Get all departments
-curl http://87.106.81.190/api/v1/departments
+curl http://87.106.81.190/api/v1/departamentos
 
 # Get department by ID
-curl http://87.106.81.190/api/v1/departments/1
+curl http://87.106.81.190/api/v1/departamentos/1
 ```
 
 ## GraphQL Support
