@@ -1,37 +1,47 @@
 # API GEO Paraguay
 
+[![Version](https://img.shields.io/badge/version-2.10.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
+
 API GEO Paraguay is a powerful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). The API supports both traditional REST endpoints and a flexible GraphQL interface, giving you multiple options for querying geographic data including details on departments, districts, cities, and neighborhoods.
 
 ## Table of Contents
 
-- [Overview](#overview)
+- [Prerequisites](#prerequisites)
 - [Features](#features)
 - [Technologies](#technologies)
 - [Quick Start](#quick-start)
-  - [Local Development](#local-development)
-  - [Docker (Development)](#docker-development)
+- [Environment Configuration](#environment-configuration)
 - [Database Setup](#database-setup)
-- [Testing & Code Quality](#testing--code-quality)
-- [API Documentation](#api-documentation)
+- [API Examples](#api-examples)
 - [GraphQL Support](#graphql-support)
-- [Production](#production)
-- [NGINX Configuration](#nginx-configuration)
-  - [Security Features](#security-features)
+- [Testing & Code Quality](#testing--code-quality)
+- [Production Deployment](#production-deployment)
+- [Security](#security)
+- [Troubleshooting](#troubleshooting)
+- [Performance Optimization](#performance-optimization)
+- [Contributing](#contributing)
 - [License](#license)
 - [Support](#support)
 
-## Overview
+## Prerequisites
 
-API GEO Paraguay simplifies the integration of geolocation data into your applications by offering high precision information based on coordinates. Whether you prefer to use REST endpoints or the GraphQL interface, our API delivers comprehensive geographic data—covering departments, districts, cities, and neighborhoods—ideal for applications in logistics, tourism, research, and urban planning.
+- Node.js v22.14.0 or higher
+- NPM 11.2.0 or higher
+- Docker v27.5.1 or higher
+- Docker Compose
+- MySQL 8.0
+- Redis 7.4.x
+- MongoDB 7.0
 
 ## Features
 
-- Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates.
-- Cache integration with Redis for rapid responses.
-- Secure endpoints following industry-standard practices.
-- Comprehensive API documentation via Swagger.
-- **GraphQL Support:** In addition to REST endpoints, use GraphQL for tailored and efficient queries.
-- **Production-ready NGINX integration** with rate limiting and request size restrictions.
+- Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates
+- Cache integration with Redis for rapid responses
+- Secure endpoints following industry-standard practices
+- Comprehensive API documentation via Swagger
+- GraphQL support for flexible and efficient queries
+- Production-ready NGINX integration with rate limiting and security features
 
 ## Technologies
 
@@ -44,276 +54,241 @@ API GEO Paraguay simplifies the integration of geolocation data into your applic
 - **Swagger**: For API documentation
 - **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1
-- **NGINX**: v1.27.4 with `headers-more` module for enhanced security
+- **NGINX**: v1.27.4 with `headers-more` module
 
 ## Quick Start
 
 ### Local Development
 
 1. **Install dependencies:**
-
    ```bash
    npm install
    ```
 
-2. **Copy and update environment configuration:**
-
+2. **Configure environment:**
    ```bash
    cp .env.example .env
    ```
 
-3. **Run the application:**
-
+3. **Start the application:**
    ```bash
    npm start
    ```
 
-### Docker (Development)
+### Docker Development
 
-1. **Install dependencies:**
+```bash
+docker compose -f docker-compose.dev.yml up --build -d
+docker compose logs -f
+```
 
-   ```bash
-   npm install
-   ```
+## Environment Configuration
 
-2. **Start the development environment:**
+The `.env` file is required for both development and production environments. Below is a basic example:
 
-   ```bash
-   docker compose -f docker-compose.dev.yml up --build -d
-   docker compose logs -f
-   ```
+```env
+NODE_ENV=development
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=paraguay
+REDIS_HOST=localhost
+REDIS_PORT=6379
+```
+
+### Development Environment
+
+- Use `NODE_ENV=development`.
+- Ensure local database and Redis instances are running.
+
+### Production Environment
+
+- Use `NODE_ENV=production`.
+- Update database and Redis credentials to match your production setup.
+- Ensure sensitive information is stored securely (e.g., use a secrets manager).
 
 ## Database Setup
 
-### Import Database (MySQL 8.0)
+### MySQL Import
 
-1. **Extract the SQL dump:**
-
+1. **Extract SQL dump:**
    ```bash
    tar xzvf database/paraguay.sql.tar.gz
    ```
 
-2. **Copy the SQL file into the MySQL container:**
-
+2. **Copy to container:**
    ```bash
    docker cp paraguay.sql database-api-geo-paraguay:/paraguay.sql
    ```
 
-3. **Import the database:**
-
+3. **Import database:**
    ```bash
    docker exec -it database-api-geo-paraguay sh
    mysql -u root -p paraguay < paraguay.sql
    exit
    ```
 
-## Testing & Code Quality
+### Database Permissions
 
-- **Prettier**  
-  Check formatting:
+```bash
+docker cp database/init.sql database-api-geo-paraguay:/init.sql
+docker exec -it database-api-geo-paraguay sh
+mysql -u root -p < init.sql
+exit
+```
 
-  ```bash
-  npm run format:check
-  ```
+## API Examples
 
-  Auto-format:
+### REST Endpoints
 
-  ```bash
-  npm run format:write
-  ```
+```bash
+# Get all departments
+curl http://87.106.81.190/api/v1/departments
 
-- **ESLint**  
-  Check linting:
-
-  ```bash
-  npm run lint:check
-  ```
-
-  Auto-fix linting errors:
-
-  ```bash
-  npm run lint:fix
-  ```
-
-- **Jest**  
-  Run tests:
-
-  ```bash
-  docker exec -it app-api-geo-paraguay sh
-  npm run test
-  ```
-
-## API Documentation
-
-Access the Swagger documentation at:  
-[http://87.106.81.190/api-docs/](http://87.106.81.190/api-docs/)
+# Get department by ID
+curl http://87.106.81.190/api/v1/departments/1
+```
 
 ## GraphQL Support
 
-In addition to the REST endpoints, API GEO Paraguay now fully supports GraphQL. Use GraphQL to build custom queries for retrieving geographic data efficiently.
+GraphQL provides a flexible way to query data. Below are some examples:
 
-- **Endpoint:** [http://87.106.81.190/graphql](http://87.106.81.190/graphql)
-- **GraphiQL Interface:** Simply visit the endpoint in your browser to access the interactive GraphiQL interface for testing queries.
-- **Example Query:**
+### Query Examples
 
-  ```graphql
-  query {
-    city(id: 10) {
-      ciudad_id
-      ciudad_nombre
-    }
+```graphql
+# Get a single department
+query {
+  department(id: 1) {
+    departamento_nombre
+    departamento_capital
   }
-  ```
+}
 
-## Production
+# Get all departments and cities
+query {
+  departments {
+    departamento_id
+    departamento_nombre
+  }
+  cities {
+    ciudad_nombre
+  }
+}
+```
 
-### Build for Production
+### Mutation Example
 
-Build the production bundle:
+```graphql
+mutation {
+  createDepartment(input: { departamento_nombre: "New Department", departamento_capital: "New Capital" }) {
+    departamento_id
+    departamento_nombre
+    departamento_capital
+  }
+}
+```
+
+### GraphQL Playground
+
+- Access the GraphQL Playground at `http://87.106.81.190/graphql` to test queries and mutations interactively.
+
+## Testing & Code Quality
+
+### Format & Lint
+
+```bash
+# Prettier
+npm run format:check
+npm run format:write
+
+# ESLint
+npm run lint:check
+npm run lint:fix
+```
+
+### Unit Tests
+
+```bash
+docker exec -it app-api-geo-paraguay sh
+npm run test
+```
+
+## Production Deployment
+
+### Build
 
 ```bash
 npm run build
 ```
 
-### Docker (Production)
+### Docker Production
 
-1. **Build and start the production containers:**
+```bash
+# Start
+docker compose -f docker-compose.prod.yml up --build -d
 
-   ```bash
-   docker compose -f docker-compose.prod.yml up --build -d
-   ```
+# Logs
+docker compose -f docker-compose.prod.yml logs -f
 
-2. **View logs for all services:**
-
-   ```bash
-   docker compose -f docker-compose.prod.yml logs -f
-   ````
-
-3. **View logs for a specific service (e.g., NGINX):**
-
-   ```bash
-   docker compose -f docker-compose.prod.yml logs -f nginx
-   ```
-
-4. **Stop the production containers:**
-
-   ```bash
-   docker compose -f docker-compose.prod.yml down
-   ```
-
-### NGINX Configuration
-
-For production, NGINX is configured to handle incoming requests efficiently and securely. Below are the key configurations:
-
-1. **Rate Limiting**:
-
-   - Limits the number of requests per IP to prevent abuse.
-   - Configured using `limit_req_zone` and `limit_req`.
-
-2. **Request Size Restriction**:
-
-   - Limits the size of incoming requests to 2MB using `client_max_body_size`.
-
-3. **Custom Server Signature**:
-
-   - Hides the NGINX version and customizes the `Server` header using the `headers-more` module.
-
-4. **SSL/TLS**:
-   - Ensure secure communication by configuring SSL certificates with Let's Encrypt.
-
-Example NGINX configuration:
-
-```nginx
-server {
-    listen 80;
- server_name localhost;
-
- client_max_body_size 2m;
- server_tokens off;
-
-    location / {
-limit_req zone=req_limit_per_ip burst=20 nodelay;
-     limit_req_status 429;
-
-        proxy_pass http://app:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-
-     more_set_headers "Server: Custom-Server";
- }
-}
+# Stop
+docker compose -f docker-compose.prod.yml down
 ```
 
-### Security Features
+## Security
 
-The production setup includes the following security measures:
+### Implemented Measures
 
-1. **Rate Limiting**:
+- Rate limiting (NGINX + Express)
+- Request size restrictions (2MB max)
+- CORS policy
+- Helmet security headers
+- SQL injection prevention
+- GraphQL query depth limiting
+- Redis authentication
+- Environment variable protection
 
-   - Prevents abuse by limiting the number of requests per IP.
+## Troubleshooting
 
-2. **Request Size Restriction**:
+### Common Issues
 
-   - Protects the server from large payloads by limiting request sizes.
+1. **Rate Limiting (HTTP 429)**
+   - Wait for the cooling period
+   - Check NGINX configuration
 
-3. **Custom Server Signature**:
+2. **Database Connections**
+   - Verify credentials in `.env`
+   - Check container status
+   - Verify Redis connection
 
-   - Hides the NGINX version to reduce exposure to potential vulnerabilities.
+3. **Performance Issues**
+   - Check Redis cache status
+   - Verify connection pooling
+   - Monitor NGINX logs
 
-4. **Environment Variables**:
+## Performance Optimization
 
-   - Sensitive data such as database credentials and API keys are managed securely using environment variables.
+- Database connection pooling
+- Redis caching layer
+- NGINX response caching
+- GraphQL query optimization
+- Request size limits
 
-5. **Redis Authentication**:
+## Contributing
 
-   - Redis is secured with a password to prevent unauthorized access.
-
-6. **GraphQL Query Validation**:
-   - Limits query complexity and depth to prevent abuse of the GraphQL API.
-
-### Monitoring and Maintenance
-
-To ensure smooth operation in production, consider the following:
-
-1. **Health Checks**:
-
-   - Use the built-in health checks in `docker-compose.prod.yml` for MySQL, Redis, and other services to monitor their status.
-
-2. **Monitoring Tools**:
-
-   - Integrate tools like **Prometheus** and **Grafana** for real-time monitoring of resource usage and application performance.
-   - Use **ELK Stack (Elasticsearch, Logstash, Kibana)** or **Graylog** for centralized log management.
-
-3. **Backup Strategy**:
-
-   - Schedule regular backups for the MySQL and MongoDB databases.
-   - Use tools like `mysqldump` for MySQL and `mongodump` for MongoDB.
-
-4. **Scaling**:
-
-   - Use Docker Swarm or Kubernetes to scale services horizontally if traffic increases.
-
-5. **SSL/TLS Certificates**:
-
-   - Ensure SSL certificates are renewed automatically using tools like **Certbot**.
-
-6. **Environment Variables**:
-
-   - Keep sensitive data like database credentials and API keys secure by using `.env` files or Docker secrets.
-
-7. **Error Tracking**:
-   - Use tools like **Sentry** to track and debug errors in production.
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push branch: `git push origin feature/new-feature`
+5. Submit pull request
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0.
+GNU General Public License v3.0
 
 ## Support
 
-For issues or feature requests, please open a new issue in the [GitHub repository](https://github.com/josego85/api-geo-paraguay/issues).
+Issues and feature requests: [GitHub Issues](https://github.com/josego85/api-geo-paraguay/issues)
 
 ---
 
