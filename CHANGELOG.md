@@ -2,6 +2,12 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.12.0] - 2025-04-06
+
+### Changed
+
+- Updated the `package.json` configuration to reflect the latest project dependencies and settings.
+
 ## [2.11.0] - 2025-03-23
 
 ### Changed
