@@ -8,6 +8,10 @@ All significant changes to this project are documented in this file.
 
 - Updated the `package.json` configuration to reflect the latest project dependencies and settings.
 
+### Added
+
+- Added documentation for `npx npm-check-updates` command in README.md to help manage package updates.
+
 ## [2.11.0] - 2025-03-23
 
 ### Changed

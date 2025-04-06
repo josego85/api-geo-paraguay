@@ -1,9 +1,9 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.11.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.12.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.14.0-green.svg)](https://nodejs.org)
-[![Express](https://img.shields.io/badge/express-v5.0.1-lightgrey.svg)](https://expressjs.com)
+[![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
 [![Docker](https://img.shields.io/badge/docker-v27.5.1-blue.svg)](https://www.docker.com/)
 [![Redis](https://img.shields.io/badge/redis-v7.4-red.svg)](https://redis.io)
 [![MySQL](https://img.shields.io/badge/mysql-v8.0-orange.svg)](https://www.mysql.com)
@@ -58,10 +58,10 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 
 - **NodeJS**: v22.14.0 LTS
 - **NPM**: 11.2.0
-- **Express**: 5.0.1
+- **Express**: 5.1.0
 - **MySQL**: 8.0.xx
 - **Redis**: 7.4.x (client: Redis 4.7.0)
-- **MongoDB**: Server 7.0 (client: Mongoose 8.12.2)
+- **MongoDB**: Server 7.0 (client: Mongoose 8.13.2)
 - **Swagger**: For API documentation
 - **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1
@@ -213,6 +213,16 @@ For a detailed list of changes and updates, please refer to the [CHANGELOG.md](C
 If you encounter any issues or have feature requests, please refer to the [SUPPORT.md](SUPPORT.md) file for guidance on how to get help.
 
 ## Testing & Code Quality
+
+### Dependencies Update
+
+```bash
+# Check for package updates
+npx npm-check-updates
+
+# Update package.json with new versions
+npx npm-check-updates -u
+```
 
 ### Format & Lint
 
