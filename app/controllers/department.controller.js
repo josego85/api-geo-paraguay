@@ -1,5 +1,6 @@
 const { save } = require('helpers/providers/cache/redisClient');
 const Department = require('models/department.model');
+const { saveGeoLocation, getGeoLocation } = require('helpers/providers/cache/geoCache');
 const getCaching = require('./app.controller');
 
 // Retrieve all departments.
@@ -35,12 +36,26 @@ exports.findAll = async (request, response) => {
 
 exports.findByLngLat = async (request, response) => {
   try {
-    const { lng, lat } = request;
+    const { lng, lat } = request.params;
+
+    if (!lng || !lat) {
+      return response.status(400).send({ message: 'Longitude and latitude are required' });
+    }
+
+    // Check if the data is already cached.
+    const formCache = await getGeoLocation(lng, lat);
+    if (formCache) {
+      return response.status(200).json(formCache);
+    }
+
     const data = await Department.findByLngLat(lng, lat);
 
     if (!data) {
       return response.status(404).send({ message: 'Departments not found' });
     }
+
+    // Update cache.
+    saveGeoLocation(lng, lat, data).catch((error) => console.error('Error: ', error));
 
     return response.status(200).json(data);
   } catch (error) {

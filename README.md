@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.12.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.13.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.14.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -30,6 +30,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [Security](#security)
 - [Troubleshooting](#troubleshooting)
 - [Performance Optimization](#performance-optimization)
+- [GeoHash-Based Caching](#geohash-based-caching)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [Support](#support)
@@ -108,6 +109,7 @@ DB_PASSWORD=yourpassword
 DB_NAME=paraguay
 REDIS_HOST=localhost
 REDIS_PORT=6379
+GEOHASH_PRECISION=7
 ```
 
 ### Development Environment
@@ -200,18 +202,6 @@ You can access the Swagger API documentation at the following URL:
 
 - **Swagger Documentation**: [http://87.106.81.190/api-docs/](http://87.106.81.190/api-docs/)
 
-## Contributing
-
-We welcome contributions from the community! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed guidelines on how to contribute to this project.
-
-## Changelog
-
-For a detailed list of changes and updates, please refer to the [CHANGELOG.md](CHANGELOG.md) file.
-
-## Support
-
-If you encounter any issues or have feature requests, please refer to the [SUPPORT.md](SUPPORT.md) file for guidance on how to get help.
-
 ## Testing & Code Quality
 
 ### Dependencies Update
@@ -270,9 +260,8 @@ docker compose -f docker-compose.prod.yml down
 
 - Rate limiting (NGINX + Express)
 - Request size restrictions (2MB max)
-- CORS policy
-- Helmet security headers
-- SQL injection prevention
+- CORS and Helmet
+- SQL injection protection
 - GraphQL query depth limiting
 - Redis authentication
 - Environment variable protection
@@ -299,19 +288,60 @@ docker compose -f docker-compose.prod.yml down
 
 ## Performance Optimization
 
-- Database connection pooling
-- Redis caching layer
-- NGINX response caching
-- GraphQL query optimization
-- Request size limits
+- Redis-based location caching
+- Request limiters
+- Swagger + GraphQL optimizations
+- DB indexes and connection pooling
+
+## GeoHash-Based Caching
+
+As of version **2.13.0**, the API now supports **GeoHash-based caching** using Redis to improve performance for reverse geocoding queries.
+
+### How It Works
+
+- Coordinates (`longitude`, `latitude`) are converted into a **GeoHash** string using 7-character precision (~76 meters).
+- The GeoHash is used as a Redis cache key (e.g., `GEO_CACHE:6gkzwgj`).
+- When a query is made:
+  - The system checks Redis for an existing entry using the generated GeoHash key.
+  - If found, the cached data is returned.
+  - If not, the system performs the lookup and stores the result in Redis for future requests.
+
+### Benefits
+
+- Reduces reverse geocoding processing time.
+- Efficiently groups nearby coordinates into a single cache key.
+- Minimizes repeated lookups for similar locations.
+- Works seamlessly with the existing Redis layer.
+
+### Example
+
+```bash
+curl http://87.106.81.190/api/v1/reverse-geocode?lat=-25.263812&lon=-57.635812
+```
+
+The response will be cached under:
+
+```
+GEO_CACHE:6gkzwgj
+```
+
+> 📌 **Note**: The GeoHash precision level is fixed to ensure consistent caching. Changing the precision will result in different keys.
+
+## Contributing
+
+We welcome contributions from the community! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed guidelines on how to contribute to this project.
+
+## Changelog
+
+For a detailed list of changes and updates, please refer to the [CHANGELOG.md](CHANGELOG.md) file.
+
+## Support
+
+If you encounter any issues or have feature requests, please refer to the [SUPPORT.md](SUPPORT.md) file for guidance on how to get help.
 
 ## License
 
 GNU General Public License v3.0
-
-## Support
-
-Issues and feature requests: [GitHub Issues](https://github.com/josego85/api-geo-paraguay/issues)
 
 ---
 
