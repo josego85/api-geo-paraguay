@@ -1,16 +1,16 @@
-const { save } = require('helpers/providers/cache/redisClient');
+const cacheService = require('services/cacheService');
+const geoCacheService = require('services/geoCacheService');
 const Department = require('models/department.model');
-const getCaching = require('./app.controller');
 
 // Retrieve all departments.
 exports.findAll = async (request, response) => {
   try {
-    const field = 'departaments';
-    const resultCache = await getCaching(field);
+    const cacheKey = 'departaments';
+    const cachedData = await cacheService.get(cacheKey);
 
-    if (resultCache) {
+    if (cachedData) {
       return response.status(200).json({
-        data: resultCache,
+        data: cachedData,
       });
     }
 
@@ -21,7 +21,7 @@ exports.findAll = async (request, response) => {
     }
 
     // Update cache.
-    save(field, data).catch((error) => console.error('Error: ', error));
+    cacheService.set(cacheKey, data).catch((error) => console.error('Error: ', error));
 
     return response.status(200).json({
       data,
@@ -35,12 +35,26 @@ exports.findAll = async (request, response) => {
 
 exports.findByLngLat = async (request, response) => {
   try {
-    const { lng, lat } = request;
+    const { lng, lat } = request.params;
+
+    if (!lng || !lat) {
+      return response.status(400).send({ message: 'Longitude and latitude are required' });
+    }
+
+    // Check if the data is already cached.
+    const cachedData = await geoCacheService.getCachedLocation(lng, lat);
+    if (cachedData) {
+      return response.status(200).json(cachedData);
+    }
+
     const data = await Department.findByLngLat(lng, lat);
 
     if (!data) {
       return response.status(404).send({ message: 'Departments not found' });
     }
+
+    // Update cache.
+    geoCacheService.cacheLocation(lng, lat, data).catch((error) => console.error('Error: ', error));
 
     return response.status(200).json(data);
   } catch (error) {

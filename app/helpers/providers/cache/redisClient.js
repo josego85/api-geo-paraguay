@@ -13,8 +13,7 @@ let redisClient;
   await redisClient.connect();
 })();
 
-const save = async (field, data) => {
-  const expirationTime = 86400 * 30 * 1; // 1 month.
+const save = async (field, data, expirationTime) => {
   const serializedDetails = JSON.stringify(data);
 
   try {

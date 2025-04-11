@@ -2,6 +2,24 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.13.0] - 2025-04-11
+
+### Changed
+
+- Updated the `package.json` configuration to reflect the latest project dependencies and settings.
+
+### Added
+
+- Implemented GeoHash-based caching for reverse geocoding using Redis.
+- Introduced a new helper function to convert latitude and longitude into 7-character GeoHash strings.
+- Added a new section in the README explaining how GeoHash caching works and its benefits.
+- Created `cacheService` and `geoCacheService` to encapsulate caching logic and improve code organization.
+
+### Improved
+
+- Reduced reverse geocoding response times by grouping nearby coordinates into shared cache keys.
+- Refactored controller logic to follow SOLID principles by moving cache logic into dedicated services.
+
 ## [2.12.0] - 2025-04-06
 
 ### Changed

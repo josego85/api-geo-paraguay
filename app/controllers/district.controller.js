@@ -1,16 +1,15 @@
-const { save } = require('helpers/providers/cache/redisClient');
+const cacheService = require('services/cacheService');
 const District = require('models/district.model');
-const getCaching = require('./app.controller');
 
 // Retrieve all districts.
 exports.findAll = async (request, response) => {
   try {
-    const field = 'districts';
-    const resultCache = await getCaching(field);
+    const cacheKey = 'districts';
+    const cachedData = await cacheService.get(cacheKey);
 
-    if (resultCache) {
+    if (cachedData) {
       return response.status(200).json({
-        data: resultCache,
+        data: cachedData,
       });
     }
 
@@ -21,7 +20,7 @@ exports.findAll = async (request, response) => {
     }
 
     // Update cache.
-    save(field, data).catch((error) => console.error('Error: ', error));
+    cacheService.set(cacheKey, data).catch((error) => console.error('Error: ', error));
 
     return response.status(200).json({
       data,

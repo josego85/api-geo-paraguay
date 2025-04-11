@@ -13,7 +13,8 @@
           "helpers": "./app/helpers",
           "middleware": "./app/middleware",
           "models": "./app/models",
-          "routes": "./app/routes"
+          "routes": "./app/routes",
+          "services": "./app/services"
         }
       }
     ]
