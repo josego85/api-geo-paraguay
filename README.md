@@ -101,14 +101,20 @@ docker compose logs -f
 The `.env` file is required for both development and production environments. Below is a basic example:
 
 ```env
-NODE_ENV=development
+APP_PORT=5000
+URL_DOMAIN=http://localhost:5000
+
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=paraguay
+
 REDIS_HOST=localhost
 REDIS_PORT=6379
+REDIS_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxx
+REDIS_CACHE_EXPIRATION_TIME=2592000
+
 GEOHASH_PRECISION=7
 ```
 

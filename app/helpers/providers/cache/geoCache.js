@@ -1,5 +1,5 @@
 const ngeohash = require('ngeohash');
-const { GEOHASH_PRECISION } = require('config/global.config');
+const { REDIS_CACHE_EXPIRATION_TIME, GEOHASH_PRECISION } = require('config/global.config');
 const { save, redisClient } = require('./redisClient');
 
 const getGeoCacheKey = (lng, lat) => {
@@ -9,7 +9,7 @@ const getGeoCacheKey = (lng, lat) => {
 
 const saveGeoLocation = async (lng, lat, data) => {
   const key = getGeoCacheKey(lng, lat);
-  await save(key, data);
+  await save(key, data, REDIS_CACHE_EXPIRATION_TIME);
 };
 
 const getGeoLocation = async (lng, lat) => {

@@ -26,6 +26,7 @@ module.exports = {
       middleware: path.resolve(__dirname, './app/middleware'),
       models: path.resolve(__dirname, './app/models'),
       routes: path.resolve(__dirname, './app/routes'),
+      services: path.resolve(__dirname, './app/services'),
     },
     modules: ['node_modules'],
   },

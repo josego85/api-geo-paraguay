@@ -1,17 +1,16 @@
-const { save } = require('helpers/providers/cache/redisClient');
+const cacheService = require('services/cacheService');
+const geoCacheService = require('services/geoCacheService');
 const Department = require('models/department.model');
-const { saveGeoLocation, getGeoLocation } = require('helpers/providers/cache/geoCache');
-const getCaching = require('./app.controller');
 
 // Retrieve all departments.
 exports.findAll = async (request, response) => {
   try {
-    const field = 'departaments';
-    const resultCache = await getCaching(field);
+    const cacheKey = 'departaments';
+    const cachedData = await cacheService.get(cacheKey);
 
-    if (resultCache) {
+    if (cachedData) {
       return response.status(200).json({
-        data: resultCache,
+        data: cachedData,
       });
     }
 
@@ -22,7 +21,7 @@ exports.findAll = async (request, response) => {
     }
 
     // Update cache.
-    save(field, data).catch((error) => console.error('Error: ', error));
+    cacheService.set(cacheKey, data).catch((error) => console.error('Error: ', error));
 
     return response.status(200).json({
       data,
@@ -43,9 +42,9 @@ exports.findByLngLat = async (request, response) => {
     }
 
     // Check if the data is already cached.
-    const formCache = await getGeoLocation(lng, lat);
-    if (formCache) {
-      return response.status(200).json(formCache);
+    const cachedData = await geoCacheService.getCachedLocation(lng, lat);
+    if (cachedData) {
+      return response.status(200).json(cachedData);
     }
 
     const data = await Department.findByLngLat(lng, lat);
@@ -55,7 +54,7 @@ exports.findByLngLat = async (request, response) => {
     }
 
     // Update cache.
-    saveGeoLocation(lng, lat, data).catch((error) => console.error('Error: ', error));
+    geoCacheService.cacheLocation(lng, lat, data).catch((error) => console.error('Error: ', error));
 
     return response.status(200).json(data);
   } catch (error) {

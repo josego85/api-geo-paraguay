@@ -9,6 +9,7 @@ const {
   REDIS_PASSWORD,
   MONGO_URI,
   GEOHASH_PRECISION,
+  REDIS_CACHE_EXPIRATION_TIME,
 } = process.env;
 
 module.exports = {
@@ -20,4 +21,5 @@ module.exports = {
   REDIS_PASSWORD,
   MONGO_URI,
   GEOHASH_PRECISION,
+  REDIS_CACHE_EXPIRATION_TIME,
 };
