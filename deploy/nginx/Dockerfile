@@ -24,7 +24,7 @@ RUN cd /opt \
     && cd /opt/headers-more-nginx-module \
     && git submodule update --init \
     && cd /opt \
-    && wget -O - http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar zxfv - \
+    && wget --secure-protocol=TLSv1_2 --max-redirect=0 -q -O - https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar zxfv - \
     && mv /opt/nginx-$NGINX_VERSION /opt/nginx \
     && cd /opt/nginx \
     && ./configure --with-compat --add-dynamic-module=/opt/headers-more-nginx-module \

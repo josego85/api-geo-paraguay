@@ -3,6 +3,6 @@ dist/
 build/
 logs/
 tmp/
-test/
+tests/
 newrelic.js
 webpack.config.js
