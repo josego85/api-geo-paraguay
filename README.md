@@ -1,13 +1,13 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.13.1-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.14.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
-[![Node.js Version](https://img.shields.io/badge/node-v22.14.0-green.svg)](https://nodejs.org)
+[![Node.js Version](https://img.shields.io/badge/node-v22.15.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
 [![Docker](https://img.shields.io/badge/docker-v27.5.1-blue.svg)](https://www.docker.com/)
-[![Redis](https://img.shields.io/badge/redis-v7.4-red.svg)](https://redis.io)
-[![MySQL](https://img.shields.io/badge/mysql-v8.0-orange.svg)](https://www.mysql.com)
-[![MongoDB](https://img.shields.io/badge/mongodb-v7.0-green.svg)](https://www.mongodb.com)
+[![Redis](https://img.shields.io/badge/redis-v7.4.3-red.svg)](https://redis.io)
+[![MySQL](https://img.shields.io/badge/mysql-v8.0.42-orange.svg)](https://www.mysql.com)
+[![MongoDB](https://img.shields.io/badge/mongodb-v7.0.19-green.svg)](https://www.mongodb.com)
 [![GraphQL](https://img.shields.io/badge/graphql-✓-e10098.svg)](https://graphql.org)
 [![SonarQube](https://img.shields.io/badge/code%20quality-sonarqube-4AB6E5.svg)](http://localhost:9000)
 [![CodeQL](https://github.com/josego85/api-geo-paraguay/workflows/CodeQL/badge.svg)](https://github.com/josego85/api-geo-paraguay/actions)
@@ -33,6 +33,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [Troubleshooting](#troubleshooting)
 - [Performance Optimization](#performance-optimization)
 - [GeoHash-Based Caching](#geohash-based-caching)
+- [Automated Docker Image Monitoring (Diun)](#automated-docker-image-monitoring-diun)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [Support](#support)
@@ -40,13 +41,13 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 
 ## Prerequisites
 
-- Node.js v22.14.0 or higher
-- NPM 11.2.0 or higher
+- Node.js v22.15.0 or higher
+- NPM 10.9.2 or higher
 - Docker v27.5.1 or higher
 - Docker Compose
-- MySQL 8.0
-- Redis 7.4.x
-- MongoDB 7.0
+- MySQL 8.0.42
+- Redis 7.4.3
+- MongoDB 7.0.19
 
 ## Features
 
@@ -59,16 +60,16 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 
 ## Technologies
 
-- **NodeJS**: v22.14.0 LTS
-- **NPM**: 11.2.0
+- **NodeJS**: v22.15.0 LTS
+- **NPM**: 10.9.2
 - **Express**: 5.1.0
-- **MySQL**: 8.0.xx
-- **Redis**: 7.4.x (client: Redis 4.7.0)
-- **MongoDB**: Server 7.0 (client: Mongoose 8.13.2)
+- **MySQL**: 8.0.42
+- **Redis**: 7.4.3 (client: Redis 4.7.0)
+- **MongoDB**: Server 7.0.19 (client: Mongoose 8.13.2)
 - **Swagger**: For API documentation
 - **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1
-- **NGINX**: v1.27.4 with `headers-more` module
+- **NGINX**: v1.28.0 with `headers-more` module
 
 ## Quick Start
 
@@ -340,6 +341,20 @@ GEO_CACHE:6gkzwgj
 ```
 
 > 📌 **Note**: The GeoHash precision level is fixed to ensure consistent caching. Changing the precision will result in different keys.
+
+## Automated Docker Image Monitoring (Diun)
+
+As of version **2.14.0**, the project integrates **[Diun](https://crazymax.dev/diun/)** (Docker Image Update Notifier) to automatically detect and monitor updates of Docker images used in the project.
+
+### Key Features
+
+- Monitors running Docker containers for image updates.
+- Watches specific static images like NodeJS and NGINX versions.
+- Alerts (planned) can be configured via Email, Slack, Telegram, etc.
+
+### Documentation
+
+Detailed setup and usage instructions are available in the [DIUN.md](docs/DIUN.md) file.
 
 ## Contributing
 

@@ -2,6 +2,17 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.14.0] - 2025-04-28
+
+### Added
+
+- Integrated Diun service in the `docker-compose.dev.yml` for automated Docker image update monitoring.
+- Added `DIUN.md` documentation under `/docs/` explaining setup and usage of Diun for image update tracking.
+
+### Changed
+
+- Updated Docker images to use more specific, pinned versions to ensure environment stability and reproducibility.
+
 ## [2.13.1] - 2025-04-28
 
 ### Fixed
