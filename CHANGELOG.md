@@ -2,6 +2,13 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.14.1] - 2025-04-28
+
+### Fixed
+
+- Fixed the Dockerfile for NGINX to remove the invalid `--secure-protocol=TLSv1_2` option from the `wget` command.
+- Resolved build errors related to `wget: unrecognized option: secure-protocol=TLSv1_2` during NGINX module compilation.
+
 ## [2.14.0] - 2025-04-28
 
 ### Added
