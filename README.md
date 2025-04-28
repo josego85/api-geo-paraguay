@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.13.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.13.1-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.14.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -9,6 +9,7 @@
 [![MySQL](https://img.shields.io/badge/mysql-v8.0-orange.svg)](https://www.mysql.com)
 [![MongoDB](https://img.shields.io/badge/mongodb-v7.0-green.svg)](https://www.mongodb.com)
 [![GraphQL](https://img.shields.io/badge/graphql-✓-e10098.svg)](https://graphql.org)
+[![SonarQube](https://img.shields.io/badge/code%20quality-sonarqube-4AB6E5.svg)](http://localhost:9000)
 [![CodeQL](https://github.com/josego85/api-geo-paraguay/workflows/CodeQL/badge.svg)](https://github.com/josego85/api-geo-paraguay/actions)
 [![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/josego85/api-geo-paraguay/graphs/commit-activity)
 
@@ -26,6 +27,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [GraphQL Support](#graphql-support)
 - [API Documentation](#api-documentation)
 - [Testing & Code Quality](#testing--code-quality)
+- [Code Quality](#code-quality)
 - [Production Deployment](#production-deployment)
 - [Security](#security)
 - [Troubleshooting](#troubleshooting)
@@ -239,6 +241,12 @@ docker exec -it app-api-geo-paraguay sh
 npm run test
 ```
 
+## Code Quality
+
+This project uses **SonarQube** for continuous inspection of code quality, security vulnerabilities, and maintainability.
+
+For setup instructions and detailed analysis configuration, please refer to the [SONARQUBE.md](docs/SONARQUBE.md) file.
+
 ## Production Deployment
 
 ### Build
@@ -343,7 +351,7 @@ For a detailed list of changes and updates, please refer to the [CHANGELOG.md](C
 
 ## Support
 
-If you encounter any issues or have feature requests, please refer to the [SUPPORT.md](SUPPORT.md) file for guidance on how to get help.
+If you encounter any issues or have feature requests, please refer to the [SUPPORT.md](docs/SUPPORT.md) file for guidance on how to get help.
 
 ## License
 
