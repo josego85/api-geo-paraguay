@@ -2,6 +2,25 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.13.1] - 2025-04-28
+
+### Fixed
+
+- Corrected SonarQube analysis configuration to properly separate source and test files.
+- Resolved scanner conflict related to duplicated indexing of test files.
+- Updated `sonar-project.properties` to improve project analysis reliability and security.
+
+### Improved
+
+- Applied improvements based on SonarQube recommendations, including better file organization between source and test code.
+- Enhanced code quality and static analysis compliance according to SonarQube's best practices.
+
+### Added
+
+- Integrated SonarQube as a service in the `docker-compose.dev.yml` file for local code quality analysis.
+- Added SonarQube section to the `README.md` for visibility on code quality processes.
+- Created a dedicated `SONARQUBE.md` document inside the `/docs/` directory for detailed SonarQube setup and usage instructions.
+
 ## [2.13.0] - 2025-04-11
 
 ### Changed
