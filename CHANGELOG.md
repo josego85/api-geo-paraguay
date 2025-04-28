@@ -12,6 +12,7 @@ All significant changes to this project are documented in this file.
 ### Changed
 
 - Updated Docker images to use more specific, pinned versions to ensure environment stability and reproducibility.
+- Updated the `package.json` configuration to reflect the latest project dependencies and settings.
 
 ## [2.13.1] - 2025-04-28
 
