@@ -1,0 +1,12 @@
+watch:
+  workers: 20
+  schedule: "*/5 * * * *"
+  jitter: 30s
+
+providers:
+  docker:
+    endpoint: unix:///var/run/docker.sock
+    watchByDefault: true
+
+  file:
+    filename: /deploy/diun/watched.yml
