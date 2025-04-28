@@ -21,6 +21,10 @@ All significant changes to this project are documented in this file.
 - Added SonarQube section to the `README.md` for visibility on code quality processes.
 - Created a dedicated `SONARQUBE.md` document inside the `/docs/` directory for detailed SonarQube setup and usage instructions.
 
+### Changed
+
+- Updated `package.json` to set the application version to `2.13.1`.
+
 ## [2.13.0] - 2025-04-11
 
 ### Changed
