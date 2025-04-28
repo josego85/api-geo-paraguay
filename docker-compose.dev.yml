@@ -26,7 +26,7 @@ services:
       - app-network
 
   database:
-    image: mysql:8.0
+    image: mysql:8.0.42
     container_name: database-api-geo-paraguay
     restart: always
     environment:
@@ -50,7 +50,7 @@ services:
       - app-network
 
   mongodb:
-    image: mongo:7-jammy
+    image: mongo:7.0.19-jammy
     container_name: mongodb-api-geo-paraguay
     restart: always
     ports:
@@ -61,7 +61,7 @@ services:
       - app-network
 
   cache:
-    image: redis:7.4-alpine
+    image: redis:7.4.3-alpine
     container_name: cache-api-geo-paraguay
     restart: always
     ports:
@@ -78,9 +78,9 @@ services:
       retries: 5
     networks:
       - app-network
-    
+
   sonarqube:
-    image: sonarqube:latest
+    image: sonarqube:lts-community
     container_name: sonarqube
     ports:
       - "9000:9000"
@@ -90,7 +90,21 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_logs:/opt/sonarqube/logs
+    networks:
+      - app-network
 
+  diun:
+    image: crazymax/diun:4.29.0
+    command: serve --config /deploy/diun/diun.yml
+    volumes:
+      - "./deploy/diun:/deploy/diun"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - TZ=Europe/Berlin
+    restart: always
+    networks:
+      - app-network
+      
 volumes:
   mysql-data:
   dbdata6:

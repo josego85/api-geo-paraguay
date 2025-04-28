@@ -1,0 +1,5 @@
+- name: node:22-alpine3.21
+- name: nginx:1-alpine
+
+
+
