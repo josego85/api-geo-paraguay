@@ -23,14 +23,24 @@ docker compose -f docker-compose.dev.yml up --build -d
 SonarQube will be available at:
 - [http://localhost:9000](http://localhost:9000)
 
-### 2. Default Credentials
+### 2. Install SonarQube Scanner Globally
+
+You must install the SonarQube Scanner CLI globally using npm:
+
+```bash
+npm install -g sonarqube-scanner
+```
+
+This tool is required to run local scans against the SonarQube server.
+
+### 3. Default Credentials
 
 - **Username:** `admin`
 - **Password:** `admin`
 
 _You will be prompted to change the default password upon first login._
 
-### 3. Create a SonarQube Project and Token
+### 4. Create a SonarQube Project and Token
 
 - Log in to SonarQube.
 - Create a new project manually.
@@ -38,7 +48,7 @@ _You will be prompted to change the default password upon first login._
 
 **Important:** Never hardcode tokens inside project files.
 
-### 4. Configure Project for SonarQube
+### 5. Configure Project for SonarQube
 
 The project contains a `sonar-project.properties` file with the basic configuration.
 
@@ -51,7 +61,7 @@ sonar-scanner
 
 Alternatively, use the `scan.sh` script provided.
 
-### 5. Using scan.sh for Automated Scanning
+### 6. Using scan.sh for Automated Scanning
 
 A `scan.sh` script is available to automate the process of running SonarQube scans.  
 It automatically loads environment variables from the `.env` file and runs the scanner securely.
@@ -72,9 +82,9 @@ SONAR_TOKEN=your_generated_token
 bash scan.sh
 ```
 
-### 6. Project Improvements Based on SonarQube Recommendations
+### 7. Project Improvements Based on SonarQube Recommendations
 
-As of **version 2.14.1**, the following improvements were applied:
+As of **version 2.13.1**, the following improvements were applied:
 
 - **Separation of Source and Test Files:**
   - `sonar.sources=.` 
