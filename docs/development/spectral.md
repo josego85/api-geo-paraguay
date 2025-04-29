@@ -1,16 +1,34 @@
 # Spectral API Linting
 
-This document explains how to use Spectral with pre-commit hooks for API contract linting.
+## API Contract Validation
 
-## Prerequisites
+### Quick Start
+```bash
+# Validate OpenAPI specification
+npm run validate:api
+```
+
+### Configuration
+The `.spectral.yaml` for API validation:
+```yaml
+extends: spectral:oas
+rules:
+  operation-description: error
+  operation-tags: error
+  operation-operationId: error
+```
+
+## Security Validation with Pre-commit
+
+### Prerequisites
 
 1. Python 3.x installed
 2. Node.js and npm installed
 3. Spectral CLI: `npm install -g @stoplight/spectral-cli`
 
-## Setup
+### Setup
 
-### 1. Python Virtual Environment
+#### 1. Python Virtual Environment
 
 ```bash
 # Create and activate virtual environment
@@ -20,14 +38,14 @@ source venv/bin/activate  # On Linux/Mac
 .\venv\Scripts\activate   # On Windows
 ```
 
-### 2. Install Pre-commit
+#### 2. Install Pre-commit
 
 ```bash
 pip install --upgrade pip
 pip install pre-commit
 ```
 
-### 3. Configure Pre-commit
+#### 3. Configure Pre-commit
 
 Create `.pre-commit-config.yaml` in your project root:
 
@@ -56,7 +74,7 @@ repos:
         always_run: true
 ```
 
-### 4. Initialize Pre-commit
+#### 4. Initialize Pre-commit
 
 ```bash
 # Install the git hook scripts
@@ -70,7 +88,7 @@ pre-commit clean
 pre-commit run --all-files
 ```
 
-## Usage
+### Usage
 
 Pre-commit will automatically run on `git commit`. To manually check files:
 
@@ -85,7 +103,7 @@ pre-commit run --files path/to/file.yaml
 pre-commit run spectral-lint --all-files
 ```
 
-## Troubleshooting
+### Troubleshooting
 
 - **Hook failed**: Run with verbose flag `pre-commit run -v`
 - **Cache issues**: Clear cache with `pre-commit clean`

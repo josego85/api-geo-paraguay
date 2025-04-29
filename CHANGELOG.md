@@ -22,6 +22,11 @@ All significant changes to this project are documented in this file.
   - Moved tool-specific docs (SUPPORT.md, SPECTRAL.md, DIUN.md) to appropriate directories
   - Improved documentation organization and accessibility
   - Enhanced documentation maintainability
+- Restructured README.md:
+  - Simplified and organized Quick Links section
+  - Improved documentation navigation
+  - Separated API and development documentation into dedicated files
+  - Enhanced readability and maintainability
 
 ### Security
 
