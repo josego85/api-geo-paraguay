@@ -2,6 +2,17 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.14.2] - 2025-04-29
+
+### Improved
+
+- Ran `npm run format:check` (Prettier) to ensure code formatting compliance and maintain consistent code style across the project.
+- Updated the SonarQube image in `docker-compose.dev.yml` from `sonarqube:lts-community` to `sonarqube:latest` for better compatibility and latest feature support.
+- Updated the `sonar-project.properties` file to improve project analysis configuration and align with current source structure.
+- Updated the `README.md`:
+  - Bumped the project version number.
+  - Added SonarQube section and included the current SonarQube version in the badges list.
+
 ## [2.14.1] - 2025-04-28
 
 ### Fixed

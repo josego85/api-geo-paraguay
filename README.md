@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.14.1-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.14.2-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.15.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -70,6 +70,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - **GraphQL**: Flexible query language for your API
 - **Docker**: Version 27.5.1
 - **NGINX**: v1.28.0 with `headers-more` module
+- **SonarQube Server**: 25.4.0.105899
 
 ## Quick Start
 
