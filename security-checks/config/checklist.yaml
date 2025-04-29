@@ -1,0 +1,29 @@
+rules:
+  security-headers-config:
+    description: Validate security headers configuration
+    message: Security headers configuration is invalid
+    severity: error
+    given: $.security.headers
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^(x-content-type-options|x-frame-options|content-security-policy|strict-transport-security)$
+  
+  auth-config:
+    description: Validate authentication configuration
+    message: Authentication configuration is invalid
+    severity: error
+    given: $.security.auth
+    then:
+      field: enabled
+      function: truthy
+
+  rate-limiting-config:
+    description: Validate rate limiting configuration
+    message: Rate limiting configuration is invalid
+    severity: error
+    given: $.security.rate-limiting
+    then:
+      field: enabled
+      function: truthy

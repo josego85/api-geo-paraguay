@@ -1,0 +1,10 @@
+rules:
+  security-headers-present:
+    description: Ensure security headers are present
+    message: Missing required security header
+    severity: error
+    given: $.headers.*
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[A-Za-z0-9-]+$

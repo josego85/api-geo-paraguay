@@ -1,0 +1,12 @@
+security:
+  headers:
+    x-content-type-options: true
+    x-frame-options: true
+    content-security-policy: true
+    strict-transport-security: true
+  auth:
+    enabled: true
+    type: "jwt"
+  rate-limiting:
+    enabled: true
+    max-requests: 100
