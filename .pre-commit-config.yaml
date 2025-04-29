@@ -1,0 +1,22 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-headers
+        name: 'Check security headers'
+        entry: security-checks/scripts/check-headers.sh http://127.0.0.1/api/v1
+        language: script
+        pass_filenames: false
+
+      - id: spectral-headers
+        name: 'Spectral lint security headers'
+        entry: spectral lint --ruleset security-checks/config/spectral.yaml tmp/headers.json --fail-severity=error --verbose
+        language: node
+        always_run: true
+        pass_filenames: false
+
+      - id: security-checklist
+        name: 'Security checklist validation'
+        entry: spectral lint --ruleset security-checks/config/checklist.yaml --verbose security-checks/checklist.yaml
+        language: node
+        pass_filenames: false
+        always_run: true

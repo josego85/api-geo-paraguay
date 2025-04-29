@@ -2,6 +2,45 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.15.0] - 2025-04-29
+
+### Added
+
+- Integrated Spectral for OpenAPI/AsyncAPI linting:
+  - Added `.spectral.yaml` configuration file
+  - Implemented API contract validation in CI pipeline
+  - Added pre-commit hook for local API spec validation
+  - Added npm script `validate:api` for OpenAPI validation
+- Migrated Swagger configuration to OpenAPI format:
+  - Created `docs/api/openapi.yaml` specification file
+  - Updated swagger configuration to use the OpenAPI specification
+  - Improved API documentation structure and validation
+
+### Refactored
+
+- Reorganized documentation structure:
+  - Moved tool-specific docs (SUPPORT.md, SPECTRAL.md, DIUN.md) to appropriate directories
+  - Improved documentation organization and accessibility
+  - Enhanced documentation maintainability
+- Restructured README.md:
+  - Simplified and organized Quick Links section
+  - Improved documentation navigation
+  - Separated API and development documentation into dedicated files
+  - Enhanced readability and maintainability
+
+### Security
+
+- Hardened **Nginx** reverse-proxy configuration:
+  - Added `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`, and `Referrer-Policy` headers to reduce XSS, click-jacking, MIME-sniffing, and referrer-leak risks.
+  - Added `Cache-Control` header with `public, max-age=2592000, immutable, stale-while-revalidate=86400` for optimal caching strategy.
+  - Blocked access to hidden files (e.g., `.git`, `.env`) via a restrictive location rule.
+- Updated formidable package from 2.1.0 to 3.5.2 to address security vulnerability (GHSA-75v8-2h7p-7m2m) related to filename guessing prevention.
+
+### Documentation
+
+- Updated README.md to include NGINX security hardening details in the Security section.
+- Added `SPECTRAL.md` under `/docs` directory with comprehensive setup and usage guidelines for API linting.
+
 ## [2.14.2] - 2025-04-29
 
 ### Improved

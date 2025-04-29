@@ -1,0 +1,303 @@
+openapi: 3.0.3
+info:
+  version: 2.15.0
+  title: API GEO Paraguay
+  description: A RESTful service that provides detailed geographical information for Paraguay based on coordinates (longitude and latitude).
+  contact:
+    email: josego85@gmail.com
+
+servers:
+  - url: /api/v1
+    description: Development server
+
+externalDocs:
+  url: /api-docs
+  description: Find more info here
+
+tags:
+  - name: Geolocation
+    description: Geographical coordinate lookup endpoints
+  - name: Department
+    description: Department related endpoints
+  - name: District
+    description: District related endpoints
+  - name: City
+    description: City related endpoints
+  - name: Neighborhood
+    description: Neighborhood related endpoints
+
+paths:
+  /paraguay/{longitude}/{latitude}:
+    get:
+      tags:
+        - Geolocation
+      operationId: getGeographicalDataByCoordinates
+      summary: Get all geographical data for a coordinate
+      description: Retrieves detailed information including department, district, city, and neighborhood for the given longitude and latitude.
+      parameters:
+        - in: header
+          name: accept-language
+          description: Language code (e.g. en, es)
+          schema:
+            type: string
+        - in: path
+          name: longitude
+          description: Longitude coordinate
+          required: true
+          schema:
+            type: number
+            minimum: -180
+            maximum: 180
+        - in: path
+          name: latitude
+          description: Latitude coordinate
+          required: true
+          schema:
+            type: number
+            minimum: -90
+            maximum: 90
+      responses:
+        '200':
+          description: Successfully retrieved geographical data
+        '400':
+          description: Invalid parameters supplied
+        '500':
+          description: Internal server error
+
+  /departamentos:
+    get:
+      tags:
+        - Department
+      operationId: getAllDepartments
+      summary: List all departments
+      description: Retrieves a list of all departments in Paraguay.
+      responses:
+        '200':
+          description: Successful retrieval of departments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Departments'
+        '500':
+          description: Internal server error
+
+  /departamentos/{id}:
+    get:
+      tags:
+        - Department
+      operationId: getDepartmentById
+      summary: Get a department by ID
+      description: Retrieves details for a specific department identified by its ID.
+      parameters:
+        - in: path
+          name: id
+          description: Department ID
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful retrieval of department details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '404':
+          description: Department not found
+        '500':
+          description: Internal server error
+
+  /distritos:
+    get:
+      tags:
+        - District
+      operationId: getAllDistricts
+      summary: List all districts
+      description: Retrieves a list of all districts in Paraguay.
+      responses:
+        '200':
+          description: Successful retrieval of districts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Districts'
+        '500':
+          description: Internal server error
+
+  /distritos/{id}:
+    get:
+      tags:
+        - District
+      operationId: getDistrictById
+      summary: Get a district by ID
+      description: Retrieves details for a specific district identified by its ID.
+      parameters:
+        - in: path
+          name: id
+          description: District ID
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful retrieval of district details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/District'
+        '404':
+          description: District not found
+        '500':
+          description: Internal server error
+
+  /ciudades:
+    get:
+      tags:
+        - City
+      operationId: getAllCities
+      summary: List all cities
+      description: Retrieves a list of all cities in Paraguay.
+      responses:
+        '200':
+          description: Successful retrieval of cities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cities'
+        '500':
+          description: Internal server error
+
+  /ciudades/{id}:
+    get:
+      tags:
+        - City
+      operationId: getCityById
+      summary: Get a city by ID
+      description: Retrieves details for a specific city identified by its ID.
+      parameters:
+        - in: path
+          name: id
+          description: City ID
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful retrieval of city details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        '404':
+          description: City not found
+        '500':
+          description: Internal server error
+
+  /barrios:
+    get:
+      tags:
+        - Neighborhood
+      operationId: getAllNeighborhoods
+      summary: List all neighborhoods
+      description: Retrieves a list of all neighborhoods in Paraguay.
+      responses:
+        '200':
+          description: Successful retrieval of neighborhoods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Neighborhoods'
+        '500':
+          description: Internal server error
+
+  /barrios/{id}:
+    get:
+      tags:
+        - Neighborhood
+      operationId: getNeighborhoodById
+      summary: Get a neighborhood by ID
+      description: Retrieves details for a specific neighborhood identified by its ID.
+      parameters:
+        - in: path
+          name: id
+          description: Neighborhood ID
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Successful retrieval of neighborhood details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Neighborhood'
+        '404':
+          description: Neighborhood not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    Department:
+      type: object
+      properties:
+        departamento_id:
+          type: integer
+          description: Unique identifier for the department
+        departamento_nombre:
+          type: string
+          description: Name of the department
+
+    Departments:
+      type: array
+      description: List of all departments
+      items:
+        $ref: '#/components/schemas/Department'
+
+    District:
+      type: object
+      properties:
+        distrito_id:
+          type: integer
+          description: Unique identifier for the district
+        distrito_nombre:
+          type: string
+          description: Name of the district
+
+    Districts:
+      type: array
+      description: List of all districts
+      items:
+        $ref: '#/components/schemas/District'
+
+    City:
+      type: object
+      properties:
+        ciudad_id:
+          type: integer
+          description: Unique identifier for the city
+        ciudad_nombre:
+          type: string
+          description: Name of the city
+
+    Cities:
+      type: array
+      description: List of all cities
+      items:
+        $ref: '#/components/schemas/City'
+
+    Neighborhood:
+      type: object
+      properties:
+        barrio_id:
+          type: integer
+          description: Unique identifier for the neighborhood
+        barrio_nombre:
+          type: string
+          description: Name of the neighborhood
+
+    Neighborhoods:
+      type: array
+      description: List of all neighborhoods
+      items:
+        $ref: '#/components/schemas/Neighborhood'

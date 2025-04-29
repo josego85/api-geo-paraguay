@@ -6,3 +6,5 @@ paraguay.sql
 newrelic.js
 newrelic_agent.log
 .eslintcache
+venv/
+tmp/
