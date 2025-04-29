@@ -3,6 +3,7 @@
 ## REST API
 
 ### Endpoints Overview
+
 ```bash
 GET /api/v1/paraguay/{longitude}/{latitude}   # Get geographical data by coordinates
 GET /api/v1/departamentos                     # List all departments
@@ -18,11 +19,13 @@ GET /api/v1/barrios/{id}                     # Get neighborhood by ID
 ### Example Requests
 
 #### Get Geographical Data by Coordinates
+
 ```bash
 curl http://87.106.81.190/api/v1/paraguay/-57.333333/-25.28333
 ```
 
 Response:
+
 ```json
 {
   "department": {
@@ -41,7 +44,9 @@ Response:
 ```
 
 ### API Documentation
+
 Full OpenAPI specification available at:
+
 ```
 http://87.106.81.190/api-docs/
 ```

@@ -18,6 +18,7 @@
 API GEO Paraguay is a powerful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). The API supports both traditional REST endpoints and a flexible GraphQL interface, giving you multiple options for querying geographic data including details on departments, districts, cities, and neighborhoods.
 
 ## Quick Links
+
 - [Getting Started Guide](docs/guides/setup.md)
 - [API Documentation](docs/api/README.md)
 - [REST API](docs/guides/rest.md)
@@ -31,17 +32,20 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [Changelog](CHANGELOG.md)
 
 ## Core Features
+
 - REST & GraphQL APIs for geographical data
 - Redis caching with GeoHash optimization
 - Security-first design
 - Production-ready with Docker support
 
 ## Database Architecture
+
 - **MySQL**: Primary database for geographical data (departments, districts, cities, neighborhoods)
 - **MongoDB**: Logging and analytics storage
 - **Redis**: High-performance caching and GeoHash lookup
 
 ## Features
+
 - Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates
 - Cache integration with Redis for rapid responses
 - Secure endpoints following industry-standard practices
@@ -50,9 +54,11 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - Production-ready NGINX integration with rate limiting and security features
 
 ## Contributing
+
 See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
+
 GNU General Public License v3.0
 
 ---

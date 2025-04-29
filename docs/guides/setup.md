@@ -3,22 +3,26 @@
 ## Local Development
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/josego85/api-geo-paraguay.git
 cd api-geo-paraguay
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Configure environment:
+
 ```bash
 cp .env.example .env
 ```
 
 4. Start development server:
+
 ```bash
 npm run dev
 ```
@@ -26,10 +30,12 @@ npm run dev
 ## Docker Development Environment
 
 ### Requirements
+
 - Docker v27.5.1 or higher
 - Docker Compose
 
 ### Start Development Environment
+
 ```bash
 # Build and start containers
 docker compose -f docker-compose.dev.yml up --build -d
@@ -44,6 +50,7 @@ docker compose -f docker-compose.dev.yml down
 ## Production Environment
 
 ### Docker Production Deployment
+
 ```bash
 # Build and start production containers
 docker compose -f docker-compose.prod.yml up --build -d
@@ -56,6 +63,7 @@ docker compose -f docker-compose.prod.yml down
 ```
 
 ### Production Build
+
 ```bash
 # Build for production
 npm run build
@@ -86,10 +94,12 @@ GEOHASH_PRECISION=7
 ### Environment-Specific Configurations
 
 #### Development
+
 - Local database and Redis instances
 - Debug logging enabled
 
 #### Production
+
 - Secure database credentials
 - Production NGINX settings
 - Optimized caching
@@ -100,6 +110,7 @@ GEOHASH_PRECISION=7
 ### Development Environment
 
 #### MySQL Setup
+
 ```bash
 # Extract database dump
 tar xzvf database/paraguay.sql.tar.gz
@@ -113,11 +124,13 @@ docker exec -it database-api-geo-paraguay sh -c 'mysql -u root -p paraguay < par
 ```
 
 #### MongoDB Development
+
 - Uses local MongoDB instance
 - Default port: 27017
 - Stores logs and analytics
 
 #### Redis Development
+
 - Local Redis server
 - Default port: 6379
 - Used for caching and GeoHash lookup
@@ -125,10 +138,12 @@ docker exec -it database-api-geo-paraguay sh -c 'mysql -u root -p paraguay < par
 ### Production Environment
 
 #### MySQL Production
+
 - Use managed MySQL service (recommended)
 - Set up replication for high availability
 - Regular backups required
 - Configure in `.env`:
+
 ```env
 DB_HOST=your-production-host
 DB_PORT=3306
@@ -138,15 +153,18 @@ DB_NAME=paraguay
 ```
 
 #### MongoDB Production
+
 - Use MongoDB Atlas or managed solution
 - Configure replica set for reliability
 - Enable authentication
 
 #### Redis Production
+
 - Use Redis Cloud or managed service
 - Enable persistence
 - Configure SSL/TLS
 - Set up authentication:
+
 ```env
 REDIS_HOST=your-production-redis
 REDIS_PORT=6379
@@ -155,6 +173,7 @@ REDIS_SSL=true
 ```
 
 ### Database Maintenance
+
 - Regular backups configured
 - Automatic failover setup
 - Monitoring and alerts enabled

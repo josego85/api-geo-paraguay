@@ -11,6 +11,13 @@ All significant changes to this project are documented in this file.
   - Eliminated redundant setup guide references
   - Improved documentation flow and readability
 - Updated OpenAPI specification version from 3.0.3 to 3.1.0 for better compatibility and features
+- Fixed critical path resolution bug in production Docker environment:
+  - Resolved issue with OpenAPI specification file not being found
+  - Updated webpack configuration to properly copy docs directory
+  - Fixed paths in swagger configuration for production environment
+
+### Improved
+- Applied Prettier formatting across all project files for consistent code style
 
 ## [2.15.0] - 2025-04-29
 

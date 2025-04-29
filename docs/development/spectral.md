@@ -3,13 +3,16 @@
 ## API Contract Validation
 
 ### Quick Start
+
 ```bash
 # Validate OpenAPI specification
 npm run validate:api
 ```
 
 ### Configuration
+
 The `.spectral.yaml` for API validation:
+
 ```yaml
 extends: spectral:oas
 rules:
