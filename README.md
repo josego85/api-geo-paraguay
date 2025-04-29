@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.15.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.15.1-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.15.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -18,7 +18,7 @@
 API GEO Paraguay is a powerful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). The API supports both traditional REST endpoints and a flexible GraphQL interface, giving you multiple options for querying geographic data including details on departments, districts, cities, and neighborhoods.
 
 ## Quick Links
-- [Installation & Setup](docs/guides/setup.md)
+- [Getting Started Guide](docs/guides/setup.md)
 - [API Documentation](docs/api/README.md)
 - [REST API](docs/guides/rest.md)
 - [GraphQL API](docs/guides/graphql.md)
@@ -48,15 +48,6 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - Comprehensive API documentation via Swagger
 - GraphQL support for flexible and efficient queries
 - Production-ready NGINX integration with rate limiting and security features
-
-## Quick Start
-For detailed installation instructions, including development and production environments, see our [Setup Guide](docs/guides/setup.md).
-
-## Documentation Structure
-- [Setup & Installation](docs/guides/setup/)
-- [API Reference](docs/api/)
-- [Security & Performance](docs/guides/security.md)
-- [Development Guide](docs/development/)
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md)
