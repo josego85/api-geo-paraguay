@@ -2,6 +2,18 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.15.0] - 2025-04-29
+
+### Security
+
+- Hardened **Nginx** reverse-proxy configuration:
+  - Added `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`, and `Referrer-Policy` headers to reduce XSS, click-jacking, MIME-sniffing, and referrer-leak risks.
+  - Blocked access to hidden files (e.g., `.git`, `.env`) via a restrictive location rule.
+
+### Documentation
+
+- Updated README.md to include NGINX security hardening details in the Security section.
+
 ## [2.14.2] - 2025-04-29
 
 ### Improved

@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.14.2-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.15.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.15.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -12,6 +12,10 @@
 [![SonarQube](https://img.shields.io/badge/code%20quality-sonarqube-4AB6E5.svg)](http://localhost:9000)
 [![CodeQL](https://github.com/josego85/api-geo-paraguay/workflows/CodeQL/badge.svg)](https://github.com/josego85/api-geo-paraguay/actions)
 [![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/josego85/api-geo-paraguay/graphs/commit-activity)
+
+**API GEO Paraguay** delivers precise geographical information for Paraguay via **REST** & **GraphQL**.
+
+> **New in v2.15.0 — NGINX hardening**: secure‑headers.
 
 API GEO Paraguay is a powerful service that provides precise geographical information for Paraguay based on given coordinates (latitude and longitude). The API supports both traditional REST endpoints and a flexible GraphQL interface, giving you multiple options for querying geographic data including details on departments, districts, cities, and neighborhoods.
 
@@ -281,6 +285,11 @@ docker compose -f docker-compose.prod.yml down
 - GraphQL query depth limiting
 - Redis authentication
 - Environment variable protection
+- Hardened NGINX reverse-proxy:
+  - Security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+  - Hidden files access prevention (`.git`, `.env`, etc.)
+  - MIME-sniffing and XSS protection
+  - Click-jacking prevention
 
 ## Troubleshooting
 
