@@ -4,6 +4,13 @@ All significant changes to this project are documented in this file.
 
 ## [2.15.0] - 2025-04-29
 
+### Added
+
+- Integrated Spectral for OpenAPI/AsyncAPI linting:
+  - Added `.spectral.yaml` configuration file
+  - Implemented API contract validation in CI pipeline
+  - Added pre-commit hook for local API spec validation
+
 ### Security
 
 - Hardened **Nginx** reverse-proxy configuration:
@@ -15,6 +22,7 @@ All significant changes to this project are documented in this file.
 ### Documentation
 
 - Updated README.md to include NGINX security hardening details in the Security section.
+- Added `SPECTRAL.md` under `/docs` directory with comprehensive setup and usage guidelines for API linting.
 
 ## [2.14.2] - 2025-04-29
 

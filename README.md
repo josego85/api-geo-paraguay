@@ -38,6 +38,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - [Performance Optimization](#performance-optimization)
 - [GeoHash-Based Caching](#geohash-based-caching)
 - [Automated Docker Image Monitoring (Diun)](#automated-docker-image-monitoring-diun)
+- [API Contract Linting (Spectral)](#api-contract-linting-spectral)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [Support](#support)
@@ -370,6 +371,19 @@ As of version **2.14.0**, the project integrates **[Diun](https://crazymax.dev/d
 ### Documentation
 
 Detailed setup and usage instructions are available in the [DIUN.md](docs/DIUN.md) file.
+
+## API Contract Linting (Spectral)
+
+We use **Spectral** to lint and validate our OpenAPI/AsyncAPI specifications. This ensures our API documentation maintains high quality and consistency.
+
+### Key Features
+
+- Validates OpenAPI/AsyncAPI specifications
+- Enforces consistent API design patterns
+- Runs in CI pipeline and pre-commit hooks
+- Custom rulesets for specific API requirements
+
+For detailed setup and usage instructions, see [SPECTRAL.md](docs/SPECTRAL.md).
 
 ## Contributing
 
