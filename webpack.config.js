@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -16,7 +17,22 @@ module.exports = {
     clean: true,
   },
   externals: [nodeExternals()],
-  plugins: [new Dotenv(), new CleanWebpackPlugin()],
+  plugins: [
+    new Dotenv(),
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'docs'),
+          to: path.resolve(__dirname, 'dist/docs'),
+          noErrorOnMissing: true,
+          globOptions: {
+            ignore: ['**/.DS_Store'],
+          },
+        },
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       config: path.resolve(__dirname, './app/config'),
