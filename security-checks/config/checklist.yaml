@@ -9,7 +9,7 @@ rules:
       function: pattern
       functionOptions:
         match: ^(x-content-type-options|x-frame-options|content-security-policy|strict-transport-security)$
-  
+
   auth-config:
     description: Validate authentication configuration
     message: Authentication configuration is invalid

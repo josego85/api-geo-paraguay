@@ -1,49 +1,49 @@
 extends: []
 rules:
   csp-present:
-    description: "Content-Security-Policy header must exist"
-    given: "$.content-security-policy"
+    description: 'Content-Security-Policy header must exist'
+    given: '$.content-security-policy'
     severity: error
     then: { function: truthy }
 
   xframe-present:
-    description: "X-Frame-Options must be DENY or SAMEORIGIN"
-    given: "$.x-frame-options"
+    description: 'X-Frame-Options must be DENY or SAMEORIGIN'
+    given: '$.x-frame-options'
     severity: error
     then:
       function: pattern
       functionOptions:
-        match: "^(DENY|SAMEORIGIN)$"
+        match: '^(DENY|SAMEORIGIN)$'
 
   nosniff-present:
-    description: "X-Content-Type-Options must be nosniff"
-    given: "$.x-content-type-options"
+    description: 'X-Content-Type-Options must be nosniff'
+    given: '$.x-content-type-options'
     severity: error
     then:
       function: pattern
       functionOptions:
-        match: "^nosniff$"
+        match: '^nosniff$'
 
   referrer-policy-present:
-    description: "Referrer-Policy must be strict-origin-when-cross-origin, same-origin or no-referrer"
-    given: "$.referrer-policy"
+    description: 'Referrer-Policy must be strict-origin-when-cross-origin, same-origin or no-referrer'
+    given: '$.referrer-policy'
     severity: error
     then:
       function: pattern
       functionOptions:
-        match: "^(strict-origin-when-cross-origin|same-origin|no-referrer)$"
+        match: '^(strict-origin-when-cross-origin|same-origin|no-referrer)$'
 
   permissions-policy-present:
-    description: "Permissions-Policy header must exist"
-    given: "$.permissions-policy"
+    description: 'Permissions-Policy header must exist'
+    given: '$.permissions-policy'
     severity: error
     then: { function: truthy }
 
   cache-control-present:
-    description: "Cache-Control must be no-store, private/no-cache or public max-age"
-    given: "$.cache-control"
+    description: 'Cache-Control must be no-store, private/no-cache or public max-age'
+    given: '$.cache-control'
     severity: error
     then:
       function: pattern
       functionOptions:
-        match: "^(no-store|private.*no-cache.*|public, max-age=[0-9]+.*)$"
+        match: '^(no-store|private.*no-cache.*|public, max-age=[0-9]+.*)$'
