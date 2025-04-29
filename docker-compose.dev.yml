@@ -80,10 +80,10 @@ services:
       - app-network
 
   sonarqube:
-    image: sonarqube:lts-community
+    image: sonarqube:latest
     container_name: sonarqube
     ports:
-      - "9000:9000"
+      - '9000:9000'
     environment:
       - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
     volumes:
@@ -97,14 +97,14 @@ services:
     image: crazymax/diun:4.29.0
     command: serve --config /deploy/diun/diun.yml
     volumes:
-      - "./deploy/diun:/deploy/diun"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - './deploy/diun:/deploy/diun'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     environment:
       - TZ=Europe/Berlin
     restart: always
     networks:
       - app-network
-      
+
 volumes:
   mysql-data:
   dbdata6:
