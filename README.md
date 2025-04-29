@@ -211,11 +211,17 @@ query {
 
 - Access the GraphQL Playground at `http://87.106.81.190/graphql` to test queries interactively.
 
-## API Documentation
+## Documentation
 
-You can access the Swagger API documentation at the following URL:
+### API Documentation
+- [API Specification](docs/api/openapi.yaml)
 
-- **Swagger Documentation**: [http://87.106.81.190/api-docs/](http://87.106.81.190/api-docs/)
+### Development
+- [SonarQube Setup](docs/development/sonarqube.md)
+- [DIUN Configuration](docs/development/diun.md)
+
+### Support
+- [Support Guidelines](docs/support/support.md)
 
 ## Testing & Code Quality
 
@@ -383,7 +389,7 @@ We use **Spectral** to lint and validate our OpenAPI/AsyncAPI specifications. Th
 - Runs in CI pipeline and pre-commit hooks
 - Custom rulesets for specific API requirements
 
-For detailed setup and usage instructions, see [SPECTRAL.md](docs/SPECTRAL.md).
+For detailed setup and usage instructions, see [spectral.md](docs/spectral.md).
 
 ## Contributing
 
