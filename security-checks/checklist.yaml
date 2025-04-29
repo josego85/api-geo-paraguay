@@ -6,7 +6,44 @@ security:
     strict-transport-security: true
   auth:
     enabled: true
-    type: "jwt"
+    type: 'jwt'
   rate-limiting:
     enabled: true
     max-requests: 100
+
+spectral:
+  openapi:
+    validate-specs: true
+    enforce-https: true
+    require-security-schemes: true
+    require-auth-on-write: true
+
+  naming:
+    paths-kebab-case: true
+    operations-camel-case: true
+    schema-pascal-case: true
+    parameters-camel-case: true
+
+  responses:
+    require-error-responses: true
+    validate-status-codes: true
+    require-success-response: true
+    require-problem-details: true
+
+  schemas:
+    require-descriptions: true
+    enforce-nullable: true
+    no-invalid-types: true
+    require-property-descriptions: true
+
+  security:
+    validate-jwt-scope: true
+    require-auth-schemes: true
+    no-basic-auth: true
+    require-security-responses: true
+
+  documentation:
+    require-examples: true
+    validate-markdown: true
+    require-operation-summary: true
+    require-tag-descriptions: true

@@ -1,0 +1,7 @@
+extends: spectral:oas
+formats: [oas3]
+rules:
+  operation-success-response: error
+  operation-description: warn
+  path-params: error
+  no-$ref-siblings: off

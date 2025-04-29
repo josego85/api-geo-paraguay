@@ -10,6 +10,18 @@ All significant changes to this project are documented in this file.
   - Added `.spectral.yaml` configuration file
   - Implemented API contract validation in CI pipeline
   - Added pre-commit hook for local API spec validation
+  - Added npm script `validate:api` for OpenAPI validation
+- Migrated Swagger configuration to OpenAPI format:
+  - Created `docs/api/openapi.yaml` specification file
+  - Updated swagger configuration to use the OpenAPI specification
+  - Improved API documentation structure and validation
+
+### Refactored
+
+- Reorganized documentation structure:
+  - Moved tool-specific docs (SUPPORT.md, SPECTRAL.md, DIUN.md) to appropriate directories
+  - Improved documentation organization and accessibility
+  - Enhanced documentation maintainability
 
 ### Security
 
