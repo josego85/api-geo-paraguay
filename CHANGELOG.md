@@ -2,6 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.15.1] - 2025-04-29
+
+### Fixed
+
+- Removed duplicate information from README.md:
+  - Consolidated Quick Start and Installation sections
+  - Eliminated redundant setup guide references
+  - Improved documentation flow and readability
+- Updated OpenAPI specification version from 3.0.3 to 3.1.0 for better compatibility and features
+
 ## [2.15.0] - 2025-04-29
 
 ### Added
