@@ -34,9 +34,9 @@ By integrating Diun, we ensure awareness of new Docker image releases and mainta
 
 ## Folder Structure
 
-| Folder | Purpose |
-|:---|:---|
-| `/deploy/diun/diun.yml` | Main Diun configuration file |
+| Folder                     | Purpose                          |
+| :------------------------- | :------------------------------- |
+| `/deploy/diun/diun.yml`    | Main Diun configuration file     |
 | `/deploy/diun/watched.yml` | List of static images to monitor |
 
 ## Configuration
@@ -50,8 +50,8 @@ diun:
   image: crazymax/diun:latest
   command: serve --config /deploy/diun/diun.yml
   volumes:
-    - "./deploy/diun:/deploy/diun"
-    - "/var/run/docker.sock:/var/run/docker.sock"
+    - './deploy/diun:/deploy/diun'
+    - '/var/run/docker.sock:/var/run/docker.sock'
   environment:
     - TZ=Europe/Berlin
   restart: always
@@ -64,7 +64,7 @@ diun:
 ```yaml
 watch:
   workers: 20
-  schedule: "*/5 * * * *"
+  schedule: '*/5 * * * *'
   jitter: 30s
 
 providers:

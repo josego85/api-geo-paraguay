@@ -1,6 +1,6 @@
 watch:
   workers: 20
-  schedule: "*/5 * * * *"
+  schedule: '*/5 * * * *'
   jitter: 30s
 
 providers:

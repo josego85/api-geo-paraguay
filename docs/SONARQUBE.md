@@ -21,6 +21,7 @@ docker compose -f docker-compose.dev.yml up --build -d
 ```
 
 SonarQube will be available at:
+
 - [http://localhost:9000](http://localhost:9000)
 
 ### 2. Install SonarQube Scanner Globally
@@ -87,7 +88,7 @@ bash scan.sh
 As of **version 2.13.1**, the following improvements were applied:
 
 - **Separation of Source and Test Files:**
-  - `sonar.sources=.` 
+  - `sonar.sources=.`
   - `sonar.tests=tests`
   - `sonar.exclusions=**/node_modules/**,**/dist/**,**/tests/**`
   - `sonar.test.inclusions=tests/**/*.js`
