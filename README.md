@@ -290,6 +290,11 @@ docker compose -f docker-compose.prod.yml down
   - Hidden files access prevention (`.git`, `.env`, etc.)
   - MIME-sniffing and XSS protection
   - Click-jacking prevention
+- **Cache Control**: Implements advanced caching strategy:
+  - `public`: Allows caching by CDNs and intermediate proxies
+  - `max-age=2592000`: Content can be cached for 30 days
+  - `immutable`: Resource will not change during its TTL
+  - `stale-while-revalidate=86400`: Allow serving stale content while revalidating for up to 24 hours
 
 ## Troubleshooting
 

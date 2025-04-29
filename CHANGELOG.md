@@ -8,6 +8,7 @@ All significant changes to this project are documented in this file.
 
 - Hardened **Nginx** reverse-proxy configuration:
   - Added `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`, and `Referrer-Policy` headers to reduce XSS, click-jacking, MIME-sniffing, and referrer-leak risks.
+  - Added `Cache-Control` header with `public, max-age=2592000, immutable, stale-while-revalidate=86400` for optimal caching strategy.
   - Blocked access to hidden files (e.g., `.git`, `.env`) via a restrictive location rule.
 - Updated formidable package from 2.1.0 to 3.5.2 to address security vulnerability (GHSA-75v8-2h7p-7m2m) related to filename guessing prevention.
 
