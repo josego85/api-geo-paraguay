@@ -4,27 +4,20 @@ const District = require('models/district.model');
 // Retrieve all districts.
 exports.findAll = async (request, response) => {
   try {
-    const cacheKey = 'districts';
-    const cachedData = await cacheService.get(cacheKey);
-
-    if (cachedData) {
-      return response.status(200).json({
-        data: cachedData,
-      });
-    }
-
-    const data = await District.getAll();
+    const data = await District.getAll(request.sorting);
 
     if (!data) {
       return response.status(404).send({ message: 'Districts not found' });
     }
 
-    // Update cache.
-    cacheService.set(cacheKey, data).catch((error) => console.error('Error: ', error));
+    // Update cache if middleware provided cache info
+    if (request.cacheInfo) {
+      cacheService
+        .set(request.cacheInfo.key, data)
+        .catch((error) => console.error('Cache Error:', error));
+    }
 
-    return response.status(200).json({
-      data,
-    });
+    return response.status(200).json({ data });
   } catch (error) {
     return response.status(500).send({
       message: request.polyglot.t('failed_to_retrieve_districts') || error.message,

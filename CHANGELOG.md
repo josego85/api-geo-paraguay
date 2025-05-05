@@ -2,6 +2,39 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.16.0] - 2025-05-05
+
+### Added
+
+- Implemented sorting functionality for key endpoints:
+  - Departments endpoint now supports sorting
+  - Districts endpoint now supports sorting
+  - Cities endpoint now supports sorting
+  - Neighborhoods endpoint now supports sorting
+- Added validation middleware for sort parameters:
+  - Whitelist of allowed sort fields per resource
+  - Validation of sort directions (ASC/DESC)
+- Enhanced security measures:
+  - Input validation for sort parameters
+  - Field name whitelisting
+
+### Refactored
+
+- Enhanced caching implementation:
+  - Created reusable cache middleware
+  - Implemented dynamic cache keys based on sort parameters
+  - Centralized cache management logic
+  - Improved cache invalidation strategy
+- Improved validation architecture:
+  - Created centralized validation service
+  - Added type-safe field validation
+  - Enhanced error handling and messages
+
+### Improved
+
+- Better error handling for invalid sort fields
+- Enhanced response times through optimized caching
+
 ## [2.15.1] - 2025-04-29
 
 ### Fixed
@@ -17,6 +50,7 @@ All significant changes to this project are documented in this file.
   - Fixed paths in swagger configuration for production environment
 
 ### Improved
+
 - Applied Prettier formatting across all project files for consistent code style
 
 ## [2.15.0] - 2025-04-29

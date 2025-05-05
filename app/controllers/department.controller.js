@@ -2,30 +2,22 @@ const cacheService = require('services/cacheService');
 const geoCacheService = require('services/geoCacheService');
 const Department = require('models/department.model');
 
-// Retrieve all departments.
 exports.findAll = async (request, response) => {
   try {
-    const cacheKey = 'departaments';
-    const cachedData = await cacheService.get(cacheKey);
-
-    if (cachedData) {
-      return response.status(200).json({
-        data: cachedData,
-      });
-    }
-
-    const data = await Department.getAll();
+    const data = await Department.getAll(request.sorting);
 
     if (!data) {
       return response.status(404).send({ message: 'Departments not found' });
     }
 
-    // Update cache.
-    cacheService.set(cacheKey, data).catch((error) => console.error('Error: ', error));
+    // Update cache if middleware provided cache info
+    if (request.cacheInfo) {
+      cacheService
+        .set(request.cacheInfo.key, data)
+        .catch((error) => console.error('Cache Error:', error));
+    }
 
-    return response.status(200).json({
-      data,
-    });
+    return response.status(200).json({ data });
   } catch (error) {
     return response.status(403).send({
       message: request.polyglot.t('failed_to_retrieve_departments') || error.message,
