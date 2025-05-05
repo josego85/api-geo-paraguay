@@ -19,7 +19,7 @@ redisClient.on('error', (error) => {
 const save = async (field, data, expirationTime) => {
   try {
     const serializedDetails = JSON.stringify(data);
-    await redisClient.set(field, serializedDetails, 'EX', expirationTime); // Guardar con tiempo de expiración
+    await redisClient.set(field, serializedDetails, 'EX', expirationTime);
   } catch (error) {
     console.error(`Failed to save data in Redis: ${error}`);
   }
