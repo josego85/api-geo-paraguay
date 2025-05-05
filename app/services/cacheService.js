@@ -1,5 +1,5 @@
 const { REDIS_CACHE_EXPIRATION_TIME } = require('config/global.config');
-const { redisClient, save } = require('helpers/providers/cache/redisClient');
+const { redisClient } = require('helpers/providers/cache/redisClient');
 
 const cacheService = {
   async get(key) {
@@ -13,9 +13,16 @@ const cacheService = {
   },
   async set(key, value) {
     try {
-      await save(key, value, REDIS_CACHE_EXPIRATION_TIME);
+      await redisClient.set(key, JSON.stringify(value), 'EX', REDIS_CACHE_EXPIRATION_TIME);
     } catch (error) {
-      console.error('Cache set error: ', error);
+      console.error('Cache set error:', error);
+    }
+  },
+  async clear() {
+    try {
+      await redisClient.flushdb();
+    } catch (error) {
+      console.error('Cache clear error:', error);
     }
   },
 };
