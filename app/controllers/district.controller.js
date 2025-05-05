@@ -1,4 +1,3 @@
-const cacheService = require('services/cacheService');
 const District = require('models/district.model');
 
 // Retrieve all districts.
@@ -8,13 +7,6 @@ exports.findAll = async (request, response) => {
 
     if (!data) {
       return response.status(404).send({ message: 'Districts not found' });
-    }
-
-    // Update cache if middleware provided cache info
-    if (request.cacheInfo) {
-      cacheService
-        .set(request.cacheInfo.key, data)
-        .catch((error) => console.error('Cache Error:', error));
     }
 
     return response.status(200).json({ data });

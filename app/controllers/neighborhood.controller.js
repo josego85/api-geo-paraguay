@@ -1,4 +1,3 @@
-const cacheService = require('services/cacheService');
 const Neighborhood = require('models/neighborhood.model');
 
 exports.findAll = async (request, response) => {
@@ -7,13 +6,6 @@ exports.findAll = async (request, response) => {
 
     if (!data) {
       return response.status(404).send({ message: 'Neighborhoods not found' });
-    }
-
-    // Update cache if middleware provided cache info
-    if (request.cacheInfo) {
-      cacheService
-        .set(request.cacheInfo.key, data)
-        .catch((error) => console.error('Cache Error:', error));
     }
 
     return response.status(200).json({ data });

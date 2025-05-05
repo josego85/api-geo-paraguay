@@ -14,18 +14,16 @@ All significant changes to this project are documented in this file.
 - Added validation middleware for sort parameters:
   - Whitelist of allowed sort fields per resource
   - Validation of sort directions (ASC/DESC)
+  - Validation of query parameters (`page`, `limit`, `sortField`, `sortOrder`) to ensure they are valid and sanitized.
 - Enhanced security measures:
   - Input validation for sort parameters
   - Field name whitelisting
 - Updated OpenAPI specification to document sorting functionality:
   - Added sort parameter documentation for all endpoints
   - Documented ASC/DESC sort directions
-- Added `clear` function to the cache service to clean Redis data.
-- Added integration tests for key endpoints:
-  - Departments endpoint
-  - Districts endpoint
-  - Cities endpoint
-  - Neighborhoods endpoint
+- Added pagination support to the `getCities` method in the City controller.
+- Added pagination support to the `findAll` method in the City model to handle `page` and `limit` parameters.
+- Created `cityService` to encapsulate business logic for cities and improve separation of concerns.
 
 ### Changed
 
@@ -33,6 +31,14 @@ All significant changes to this project are documented in this file.
   - Mongoose from 8.14.0 to 8.14.1
   - Updated several development dependencies to their latest versions
 - Replaced `redis` package with `ioredis` for `redisClient` to improve connection handling and support advanced Redis features.
+- Improved caching implementation:
+  - Moved caching logic from individual controllers to a reusable middleware (`cacheMiddleware`).
+  - Simplified caching by intercepting `res.json` to handle cache storage automatically.
+  - Removed the need for `cacheKeyService` and `cacheService`.
+
+### Removed
+
+- Deleted `cacheKeyService` and `cacheService` as they are no longer needed with the new caching middleware.
 
 ### Fixed
 
@@ -41,18 +47,12 @@ All significant changes to this project are documented in this file.
 
 ### Refactored
 
-- Enhanced caching implementation:
-  - Created reusable cache middleware
-  - Implemented dynamic cache keys based on sort parameters
-  - Centralized cache management logic
-  - Improved cache invalidation strategy
 - Improved validation architecture:
   - Created centralized validation service
   - Added type-safe field validation
   - Enhanced error handling and messages
 - Renamed `findAll` to `getCities` and `findById` to `getCityById` in the City controller to align with RESTful API conventions.
 - Renamed `getAll` to `findAll` in the City model for consistency with ORM conventions.
-
 
 ### Improved
 
