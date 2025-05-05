@@ -50,6 +50,9 @@ All significant changes to this project are documented in this file.
   - Created centralized validation service
   - Added type-safe field validation
   - Enhanced error handling and messages
+- Renamed `findAll` to `getCities` and `findById` to `getCityById` in the City controller to align with RESTful API conventions.
+- Renamed `getAll` to `findAll` in the City model for consistency with ORM conventions.
+
 
 ### Improved
 
