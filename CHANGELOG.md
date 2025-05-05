@@ -18,6 +18,12 @@ All significant changes to this project are documented in this file.
   - Input validation for sort parameters
   - Field name whitelisting
 
+### Changed
+
+- Updated dependency versions in package.json:
+  - Mongoose from 8.14.0 to 8.14.1
+  - Updated several development dependencies to their latest versions
+
 ### Refactored
 
 - Enhanced caching implementation:
