@@ -1,10 +1,13 @@
 const express = require('express');
-const districts = require('controllers/district.controller');
+
+const districtController = require('controllers/district.controller');
+const queryParser = require('middleware/queryParser');
+const withCache = require('middleware/cacheMiddleware');
 
 const router = express.Router();
 
-router.get('/distritos', districts.findAll);
-router.get('/distritos/:id', districts.findById);
+router.get('/distritos', queryParser, withCache('districts'), districtController.findAll);
+router.get('/distritos/:id', districtController.findById);
 // router.get('/distritos/:name', districts.getLngLat);
 
 module.exports = router;

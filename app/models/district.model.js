@@ -1,13 +1,15 @@
-const dbConfig = require('config/db.config');
+// const dbConfig = require('config/db.config');
 const pool = require('./db');
 
-const { SRID_TRANSFORM } = dbConfig;
+// const { SRID_TRANSFORM } = dbConfig;
 
 class District {
-  static async getAll() {
+  static async getAll(sorting = {}) {
     try {
-      const query =
-        'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id';
+      let query = 'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis';
+      if (sorting.field) {
+        query += ` ORDER BY ${sorting.field} ${sorting.order}`;
+      }
       const [rows] = await pool.query(query);
 
       return rows;

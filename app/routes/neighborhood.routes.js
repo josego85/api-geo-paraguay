@@ -1,10 +1,13 @@
 const express = require('express');
-const neighborhoods = require('controllers/neighborhood.controller');
+
+const neighborhoodController = require('controllers/neighborhood.controller');
+const queryParser = require('middleware/queryParser');
+const withCache = require('middleware/cacheMiddleware');
 
 const router = express.Router();
 
-router.get('/barrios', neighborhoods.findAll);
-router.get('/barrios/:id', neighborhoods.findById);
+router.get('/barrios', queryParser, withCache('neighborhood'), neighborhoodController.findAll);
+router.get('/barrios/:id', neighborhoodController.findById);
 // router.get('/barrios/:name', neighborhoods.getLngLat);
 
 module.exports = router;

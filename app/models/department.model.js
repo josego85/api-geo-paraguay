@@ -4,11 +4,14 @@ const pool = require('./db');
 const { SRID } = dbConfig;
 
 class Department {
-  static async getAll() {
+  static async getAll(sorting = {}) {
     try {
-      const [rows] = await pool.query(
-        'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep ORDER BY dep.departamento_id'
-      );
+      let query =
+        'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep';
+      if (sorting.field) {
+        query += ` ORDER BY ${sorting.field} ${sorting.order}`;
+      }
+      const [rows] = await pool.query(query);
       return rows;
     } catch (error) {
       console.error('error:', error);
