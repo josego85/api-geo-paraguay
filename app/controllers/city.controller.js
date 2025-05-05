@@ -1,9 +1,9 @@
 const cacheService = require('services/cacheService');
 const City = require('models/city.model');
 
-exports.findAll = async (request, response) => {
+exports.getCities = async (request, response) => {
   try {
-    const data = await City.getAll(request.sorting);
+    const data = await City.findAll(request.sorting);
     if (!data) {
       return response.status(404).send({ message: 'Cities not found' });
     }
@@ -40,7 +40,7 @@ exports.findAll = async (request, response) => {
 //   });
 // };
 
-exports.findById = async (request, response) => {
+exports.getCityById = async (request, response) => {
   try {
     const { id } = request.params;
 

@@ -6,8 +6,8 @@ const withCache = require('middleware/cacheMiddleware');
 
 const router = express.Router();
 
-router.get('/ciudades', queryParser, withCache('cities'), cityController.findAll);
-router.get('/ciudades/:id', cityController.findById);
+router.get('/ciudades', queryParser, withCache('cities'), cityController.getCities);
+router.get('/ciudades/:id', cityController.getCityById);
 // router.get('/ciudades/:name', cities.getLngLat);
 
 module.exports = router;
