@@ -4,17 +4,25 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class City {
-  static async findAll(sorting = {}) {
+  static async findAll({ page = 1, limit = 10, sort = {} }) {
     try {
       let query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci`;
+      const params = [];
 
-      if (sorting.field) {
-        query += ` ORDER BY ${sorting.field} ${sorting.order}`;
+      // Apply sorting
+      if (sort.field) {
+        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
       }
-      const [rows] = await pool.query(query);
+
+      // Apply pagination
+      const offset = (page - 1) * limit;
+      query += ` LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+
+      const [rows] = await pool.query(query, params);
       return rows;
     } catch (error) {
-      console.log('error: ', error);
+      console.log('Error: ', error);
       throw error;
     }
   }
