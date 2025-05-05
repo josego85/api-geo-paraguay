@@ -88,17 +88,3 @@ All list endpoints support sorting via the `sort` query parameter:
 }
 
 ```
-
-### Error Response
-
-- **Code**: 4xx or 5xx
-- **Content**: Application/json
-
-```json
-{
-  "error": {
-    "code": "NotFound",
-    "message": "The requested resource was not found."
-  }
-}
-```
