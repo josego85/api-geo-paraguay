@@ -71,6 +71,8 @@ paths:
       operationId: getAllDepartments
       summary: List all departments
       description: Retrieves a list of all departments in Paraguay.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
       responses:
         '200':
           description: Successful retrieval of departments
@@ -114,6 +116,8 @@ paths:
       operationId: getAllDistricts
       summary: List all districts
       description: Retrieves a list of all districts in Paraguay.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
       responses:
         '200':
           description: Successful retrieval of districts
@@ -157,6 +161,8 @@ paths:
       operationId: getAllCities
       summary: List all cities
       description: Retrieves a list of all cities in Paraguay.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
       responses:
         '200':
           description: Successful retrieval of cities
@@ -200,6 +206,8 @@ paths:
       operationId: getAllNeighborhoods
       summary: List all neighborhoods
       description: Retrieves a list of all neighborhoods in Paraguay.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
       responses:
         '200':
           description: Successful retrieval of neighborhoods
@@ -237,6 +245,18 @@ paths:
           description: Internal server error
 
 components:
+  parameters:
+    sortParam:
+      in: query
+      name: sort
+      required: false
+      schema:
+        type: string
+      description: |
+        Sort field and direction. Format: field:direction
+        - Supported directions: asc, desc
+        - Example: name:asc or id:desc
+
   schemas:
     Department:
       type: object
@@ -247,6 +267,9 @@ components:
         departamento_nombre:
           type: string
           description: Name of the department
+        departamento_capital:
+          type: string
+          description: Name of the capital city of the department
 
     Departments:
       type: array
