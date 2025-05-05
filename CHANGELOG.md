@@ -553,6 +553,10 @@ All significant changes to this project are documented in this file.
 
 - Integrated Redis caching for departments, cities, districts, and neighborhoods.
 - Added API documentation.
+- Added documentation for sorting functionality:
+  - Sort parameters usage for departments, districts, cities and neighborhoods
+  - Examples of ascending and descending sort operations
+  - Valid sort field documentation for each endpoint
 
 ## [1.5.0]
 
