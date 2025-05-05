@@ -17,12 +17,27 @@ All significant changes to this project are documented in this file.
 - Enhanced security measures:
   - Input validation for sort parameters
   - Field name whitelisting
+- Updated OpenAPI specification to document sorting functionality:
+  - Added sort parameter documentation for all endpoints
+  - Documented ASC/DESC sort directions
+- Added `clear` function to the cache service to clean Redis data.
+- Added integration tests for key endpoints:
+  - Departments endpoint
+  - Districts endpoint
+  - Cities endpoint
+  - Neighborhoods endpoint
 
 ### Changed
 
 - Updated dependency versions in package.json:
   - Mongoose from 8.14.0 to 8.14.1
   - Updated several development dependencies to their latest versions
+- Replaced `redis` package with `ioredis` for `redisClient` to improve connection handling and support advanced Redis features.
+
+### Fixed
+
+- Added missing 'departamento_capital' field in Department schema
+- Updated OpenAPI schema to include the missing field
 
 ### Refactored
 
