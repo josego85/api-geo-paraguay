@@ -61,6 +61,10 @@ All significant changes to this project are documented in this file.
 - Better error handling for invalid sort fields
 - Enhanced response times through optimized caching
 
+### Documentation
+
+- Updated `redis.md` to include new configuration details and usage examples.
+
 ## [2.15.1] - 2025-04-29
 
 ### Fixed

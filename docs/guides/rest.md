@@ -3,64 +3,96 @@
 ## Endpoints
 
 ### Geographic Data
+
 - `GET /api/v1/paraguay/{longitude}/{latitude}` - Get location details by coordinates
 - `GET /api/v1/departamentos` - List all departments
 - `GET /api/v1/distritos` - List all districts
 - `GET /api/v1/ciudades` - List all cities
 - `GET /api/v1/barrios` - List all neighborhoods
 
-## Sorting
+## Pagination
 
-All list endpoints support sorting via the `sort` query parameter:
+All list endpoints support pagination via the `page` and `limit` query parameters:
 
 ```bash
 # Format
-?sort={field}:{order}
+?page={page}&limit={limit}
 
 # Where:
-# - field: The column to sort by
-# - order: 'asc' or 'desc' (case insensitive)
+# - page: The page number (starting from 1)
+# - limit: The number of items per page
+```
+
+### Example
+
+```bash
+# Get the first 10 departments
+http://localhost:5000/api/v1/departamentos?page=1&limit=10
+```
+
+## Sorting
+
+All list endpoints support sorting via the `sortField` and `sortOrder` query parameters:
+
+```bash
+# Format
+?sortField={field}&sortOrder={order}
+
+# Where:
+# - sortField: The column to sort by
+# - sortOrder: 'asc' or 'desc' (case insensitive)
+```
+
+### Example
+
+```bash
+# Sort departments by capital in descending order
+http://localhost:5000/api/v1/departamentos?page=1&limit=10&sortField=departamento_capital&sortOrder=desc
 ```
 
 ### Available Sort Fields
 
 #### Departments
+
 ```bash
 # Sort by ID
-/api/v1/departamentos?sort=departamento_id:asc
+?sortField=departamento_id&sortOrder=asc
 
 # Sort by name
-/api/v1/departamentos?sort=departamento_nombre:desc
+?sortField=departamento_nombre&sortOrder=desc
 
 # Sort by capital
-/api/v1/departamentos?sort=departamento_capital:desc
+?sortField=departamento_capital&sortOrder=desc
 ```
 
 #### Cities
+
 ```bash
 # Sort by ID
-/api/v1/ciudades?sort=ciudad_id:asc
+?sortField=ciudad_id&sortOrder=asc
 
 # Sort by name
-/api/v1/ciudades?sort=ciudad_nombre:desc
+?sortField=ciudad_nombre&sortOrder=desc
 ```
 
 #### Districts
+
 ```bash
 # Sort by ID
-/api/v1/distritos?sort=distrito_id:asc
+?sortField=distrito_id&sortOrder=asc
 
 # Sort by name
-/api/v1/distritos?sort=distrito_nombre:desc
+?sortField=distrito_nombre&sortOrder=desc
 ```
 
 #### Neighborhoods
+
 ```bash
 # Sort by ID
-/api/v1/barrios?sort=barrio_id:asc
+?sortField=barrio_id&sortOrder=asc
 
 # Sort by name
-/api/v1/barrios?sort=barrio_nombre:desc
+?sortField=barrio_nombre&sortOrder=desc
 ```
 
 ## Response Format
