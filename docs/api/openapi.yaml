@@ -73,6 +73,9 @@ paths:
       description: Retrieves a list of all departments in Paraguay.
       parameters:
         - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortOrderParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: Successful retrieval of departments
@@ -118,6 +121,9 @@ paths:
       description: Retrieves a list of all districts in Paraguay.
       parameters:
         - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortOrderParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: Successful retrieval of districts
@@ -163,6 +169,9 @@ paths:
       description: Retrieves a list of all cities in Paraguay.
       parameters:
         - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortOrderParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: Successful retrieval of cities
@@ -208,6 +217,9 @@ paths:
       description: Retrieves a list of all neighborhoods in Paraguay.
       parameters:
         - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortOrderParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: Successful retrieval of neighborhoods
@@ -248,14 +260,44 @@ components:
   parameters:
     sortParam:
       in: query
-      name: sort
+      name: sortField
       required: false
       schema:
         type: string
       description: |
-        Sort field and direction. Format: field:direction
-        - Supported directions: asc, desc
-        - Example: name:asc or id:desc
+        Field to sort by. Example: departamento_nombre, ciudad_nombre, etc.
+
+    sortOrderParam:
+      in: query
+      name: sortOrder
+      required: false
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+      description: |
+        Sort direction. Supported values: asc, desc.
+
+    pageParam:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+      description: |
+        Page number for pagination. Must be a numeric value greater than or equal to 1.
+
+    limitParam:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+      description: |
+        Number of items per page for pagination. Must be a numeric value greater than or equal to 1.
 
   schemas:
     Department:

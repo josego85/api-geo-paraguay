@@ -26,6 +26,7 @@ All significant changes to this project are documented in this file.
 - Added pagination support to the endpoints for departments, neighborhoods, and districts.
 - Created `cityService` to encapsulate business logic for cities and improve separation of concerns.
 - Created `departmentService`, `districtService`, and `neighborhoodService` to encapsulate business logic for departments, districts, and neighborhoods, respectively, and improve separation of concerns.
+- Added pagination support and updated sorting usage in all `GET` endpoints in the OpenAPI specification.
 
 ### Changed
 
