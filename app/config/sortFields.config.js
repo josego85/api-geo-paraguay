@@ -3,7 +3,7 @@ const ALLOWED_SORT_FIELDS = {
     fields: ['id', 'name', 'capital_name'],
     defaultSort: { field: 'id', order: 'ASC' },
   },
-  distritos: {
+  districts: {
     fields: ['id', 'name'],
     defaultSort: { field: 'id', order: 'ASC' },
   },

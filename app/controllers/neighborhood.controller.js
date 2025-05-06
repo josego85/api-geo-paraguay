@@ -3,11 +3,13 @@ const NeighborhoodService = require('services/neighborhoodService');
 
 exports.getNeighborhoods = async (req, res) => {
   try {
-    const { page, limit, sortField, sortOrder } = req.processedQuery;
+    const { page, limit, sortField, sortOrder, name } = req.processedQuery;
     const options = {
       page,
       limit,
-      sort: { field: sortField, order: sortOrder },
+      sortField,
+      sortOrder,
+      filter: { name },
     };
     const data = await NeighborhoodService.findAll(options);
 

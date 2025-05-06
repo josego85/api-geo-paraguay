@@ -113,7 +113,7 @@ paths:
         '500':
           description: Internal server error
 
-  /distritos:
+  /districts:
     get:
       tags:
         - District
@@ -136,7 +136,7 @@ paths:
         '500':
           description: Internal server error
 
-  /distritos/{id}:
+  /districts/{id}:
     get:
       tags:
         - District

@@ -4,15 +4,24 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class District {
-  static async findAll({ page = 1, limit = 10, sort = {} }) {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
     try {
       let query = 'SELECT dis.id, dis.name FROM district as dis';
       const params = [];
 
-      // Apply sorting
-      if (sort.field) {
-        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
+      // Apply filters
+      const filterConditions = [];
+      if (filter.name) {
+        filterConditions.push(`dis.name LIKE ?`);
+        params.push(`%${filter.name}%`);
       }
+
+      if (filterConditions.length > 0) {
+        query += ` WHERE ${filterConditions.join(' AND ')}`;
+      }
+
+      // Apply sorting
+      query += ` ORDER BY ${sortField} ${sortOrder}`;
 
       // Apply pagination
       const offset = (page - 1) * limit;
@@ -20,7 +29,6 @@ class District {
       params.push(limit, offset);
 
       const [rows] = await pool.query(query, params);
-
       return rows;
     } catch (error) {
       console.error('Error: ', error);

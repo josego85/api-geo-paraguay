@@ -4,15 +4,24 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class Neighborhood {
-  static async findAll({ page = 1, limit = 10, sort = {} }) {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
     try {
-      let query = 'SELECT ba.id, ba.name FROM neighborhood as ba';
+      let query = 'SELECT ne.id, ne.name FROM neighborhood as ne';
       const params = [];
 
-      // Apply sorting
-      if (sort.field) {
-        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
+      // Apply filters
+      const filterConditions = [];
+      if (filter.name) {
+        filterConditions.push(`ne.name LIKE ?`);
+        params.push(`%${filter.name}%`);
       }
+
+      if (filterConditions.length > 0) {
+        query += ` WHERE ${filterConditions.join(' AND ')}`;
+      }
+
+      // Apply sorting
+      query += ` ORDER BY ${sortField} ${sortOrder}`;
 
       // Apply pagination
       const offset = (page - 1) * limit;
@@ -29,9 +38,9 @@ class Neighborhood {
 
   static async findById(id) {
     try {
-      const query = `SELECT ba.id, ba.name
-        FROM neighborhood ba
-        WHERE ba.id = ?
+      const query = `SELECT ne.id, ne.name
+        FROM neighborhood ne
+        WHERE ne.id = ?
       `;
       const [rows] = await pool.query(query, [id]);
 
@@ -51,8 +60,8 @@ class Neighborhood {
 //   const query = `SELECT
 //         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
 //         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude
-//         FROM barrios as ba
-//         WHERE ba.barrio_nombre = '${neighborhood}'
+//         FROM barrios as ne
+//         WHERE ne.barrio_nombre = '${neighborhood}'
 //       `;
 
 //   sql.query(query, (error, response) => {

@@ -1,7 +1,15 @@
 const Neighborhood = require('models/neighborhood.model');
 
 const neighborhoodService = {
-  async findAll(options = {}) {
+  async findAll({ page, limit, sortField, sortOrder, filter } = {}) {
+    const options = {
+      page,
+      limit,
+      sortField,
+      sortOrder,
+      filter,
+    };
+
     return Neighborhood.findAll(options);
   },
 

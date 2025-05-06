@@ -10,7 +10,7 @@ router.get(
   queryParser,
   cacheResponse({
     key: (req) =>
-      `neighborhoods:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}`,
+      `neighborhoods:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}`,
     ttl: 3600, // one hour
   }),
   neighborhoodController.getNeighborhoods

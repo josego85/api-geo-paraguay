@@ -8,8 +8,8 @@
 GET /api/v1/paraguay/{longitude}/{latitude}   # Get geographical data by coordinates
 GET /api/v1/departments                     # List all departments
 GET /api/v1/departments/{id}               # Get department by ID
-GET /api/v1/distritos                        # List all districts
-GET /api/v1/distritos/{id}                   # Get district by ID
+GET /api/v1/districts                        # List all districts
+GET /api/v1/districts/{id}                   # Get district by ID
 GET /api/v1/cities                         # List all cities
 GET /api/v1/cities/{id}                    # Get city by ID
 GET /api/v1/neighborhoods                          # List all neighborhoods

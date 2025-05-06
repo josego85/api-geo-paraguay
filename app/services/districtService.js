@@ -1,7 +1,15 @@
 const District = require('models/district.model');
 
 const districtService = {
-  async findAll(options = {}) {
+  async findAll({ page, limit, sortField, sortOrder, filter } = {}) {
+    const options = {
+      page,
+      limit,
+      sortField,
+      sortOrder,
+      filter,
+    };
+
     return District.findAll(options);
   },
 

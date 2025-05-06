@@ -39,7 +39,10 @@ const QueryValidationService = {
     const filters = {};
 
     // Example: Filter for name
-    if (resource === 'cities' && query.name) {
+    if (
+      (resource === 'cities' || resource === 'districts' || resource === 'neighborhoods') &&
+      query.name
+    ) {
       filters.name = query.name.trim();
     }
 
