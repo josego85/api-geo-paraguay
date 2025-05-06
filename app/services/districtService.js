@@ -1,12 +1,12 @@
-const City = require('models/city.model');
+const District = require('models/district.model');
 
-const cityService = {
+const districtService = {
   async findAll(options = {}) {
-    return City.findAll(options);
+    return District.findAll(options);
   },
 
-  async findById(cityId) {
-    return City.findById(cityId);
+  async findById(districtId) {
+    return District.findById(districtId);
   },
 
   // validateCityData(cityData) {
@@ -19,4 +19,4 @@ const cityService = {
   // },
 };
 
-module.exports = cityService;
+module.exports = districtService;
