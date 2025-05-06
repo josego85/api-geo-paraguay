@@ -1,3 +1,4 @@
+const ALLOWED_FILTER_FIELDS = require('config/filterFields.config');
 const ValidationService = require('services/validationService');
 
 const QueryValidationService = {
@@ -36,18 +37,27 @@ const QueryValidationService = {
   },
 
   processFilters(query, resource) {
-    const filters = {};
+    const resourceFilterConfig = ALLOWED_FILTER_FIELDS[resource];
 
-    // Example: Filter for name
     if (
-      (resource === 'cities' || resource === 'districts' || resource === 'neighborhoods') &&
-      query.name
+      !resourceFilterConfig ||
+      !resourceFilterConfig.fields ||
+      resourceFilterConfig.fields.length === 0
     ) {
-      filters.name = query.name.trim();
+      return {};
     }
 
-    // Add more filters for other resources as needed
-    return filters;
+    return resourceFilterConfig.fields.reduce((acc, fieldName) => {
+      if (query[fieldName] !== undefined) {
+        const value = query[fieldName];
+        if (typeof value === 'string') {
+          acc[fieldName] = value.trim();
+        } else {
+          acc[fieldName] = value;
+        }
+      }
+      return acc;
+    }, {});
   },
 };
 

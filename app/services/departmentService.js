@@ -1,7 +1,15 @@
 const Department = require('models/department.model');
 
 const departmentService = {
-  async findAll(options = {}) {
+  async findAll({ page, limit, sortField, sortOrder, filter } = {}) {
+    const options = {
+      page,
+      limit,
+      sortField,
+      sortOrder,
+      filter,
+    };
+
     return Department.findAll(options);
   },
 

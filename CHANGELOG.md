@@ -14,38 +14,49 @@ All significant changes to this project are documented in this file.
 - Added validation middleware for sort parameters:
   - Whitelist of allowed sort fields per resource
   - Validation of sort directions (ASC/DESC)
-  - Validation of query parameters (`page`, `limit`, `sortField`, `sortOrder`) to ensure they are valid and sanitized.
+  - Validation of query parameters (`page`, `limit`, `sortField`, `sortOrder`) to ensure they are valid and sanitized
 - Enhanced security measures:
   - Input validation for sort parameters
   - Field name whitelisting
 - Updated OpenAPI specification to document sorting functionality:
   - Added sort parameter documentation for all endpoints
   - Documented ASC/DESC sort directions
-- Added pagination support to the `getCities` method in the City controller.
-- Added pagination support to the `findAll` method in the City model to handle `page` and `limit` parameters.
-- Added pagination support to the endpoints for departments, neighborhoods, and districts.
-- Created `cityService` to encapsulate business logic for cities and improve separation of concerns.
-- Created `departmentService`, `districtService`, and `neighborhoodService` to encapsulate business logic for departments, districts, and neighborhoods, respectively, and improve separation of concerns.
-- Added pagination support and updated sorting usage in all `GET` endpoints in the OpenAPI specification.
+- Added pagination support to the `getCities` method in the City controller
+- Added pagination support to the `findAll` method in the City model to handle `page` and `limit` parameters
+- Added pagination support to the endpoints for departments, neighborhoods, and districts
+- Created `cityService` to encapsulate business logic for cities and improve separation of concerns
+- Created `departmentService`, `districtService`, and `neighborhoodService` to encapsulate business logic for departments, districts, and neighborhoods, respectively, and improve separation of concerns
+- Added pagination support and updated sorting usage in all `GET` endpoints in the OpenAPI specification
+- Added filter support to all `GET` endpoints in the OpenAPI specification:
+  - Filter departments by name
+  - Filter districts by name
+  - Filter cities by name
+  - Filter neighborhoods by name
+- Implemented filter functionality for the following endpoints:
+  - `GET /api/v1/departments`: Filter by `name`
+  - `GET /api/v1/districts`: Filter by `name`
+  - `GET /api/v1/cities`: Filter by `name`
+  - `GET /api/v1/neighborhoods`: Filter by `name`
 
 ### Changed
 
-- Updated dependency versions in package.json:
+- Updated dependency versions in `package.json`:
   - Mongoose from 8.14.0 to 8.14.1
   - Updated several development dependencies to their latest versions
-- Replaced `redis` package with `ioredis` for `redisClient` to improve connection handling and support advanced Redis features.
+- Replaced `redis` package with `ioredis` for `redisClient` to improve connection handling and support advanced Redis features
 - Improved caching implementation:
-  - Moved caching logic from individual controllers to a reusable middleware (`cacheMiddleware`).
-  - Simplified caching by intercepting `res.json` to handle cache storage automatically.
-  - Removed the need for `cacheKeyService` and `cacheService`.
+  - Moved caching logic from individual controllers to a reusable middleware (`cacheMiddleware`)
+  - Simplified caching by intercepting `res.json` to handle cache storage automatically
+  - Removed the need for `cacheKeyService` and `cacheService`
+- Renamed database column names from Spanish to English (e.g. `departamento` → `department`), updated request/response field names to English, and adjusted endpoint routes accordingly (e.g. `/api/v1/districts` → `/api/v1/districts`)
 
 ### Removed
 
-- Deleted `cacheKeyService` and `cacheService` as they are no longer needed with the new caching middleware.
+- Deleted `cacheKeyService` and `cacheService` as they are no longer needed with the new caching middleware
 
 ### Fixed
 
-- Added missing 'departamento_capital' field in Department schema
+- Added missing `capital_name` field in Department schema
 - Updated OpenAPI schema to include the missing field
 
 ### Refactored
@@ -54,8 +65,9 @@ All significant changes to this project are documented in this file.
   - Created centralized validation service
   - Added type-safe field validation
   - Enhanced error handling and messages
-- Renamed `findAll` to `getCities` and `findById` to `getCityById` in the City controller to align with RESTful API conventions.
-- Renamed `getAll` to `findAll` in the City model for consistency with ORM conventions.
+- Renamed `findAll` to `getCities` and `findById` to `getCityById` in the City controller to align with RESTful API conventions
+- Renamed `getAll` to `findAll` in the City model for consistency with ORM conventions
+- Refactored `queryParser` middleware by extracting validation logic into `QueryValidationService` and separating pagination and filter handling into `processPagination` and `processFilters`
 
 ### Improved
 
@@ -64,7 +76,7 @@ All significant changes to this project are documented in this file.
 
 ### Documentation
 
-- Updated `redis.md` to include new configuration details and usage examples.
+- Updated `redis.md` to include new configuration details and usage examples
 
 ## [2.15.1] - 2025-04-29
 
@@ -254,7 +266,7 @@ All significant changes to this project are documented in this file.
 
 - ESLint configuration.
 - Jest testing configuration.
-- API endpoint: `/api/v1/departamentos/1`.
+- API endpoint: `/api/v1/departments/1`.
 
 ### Changed
 

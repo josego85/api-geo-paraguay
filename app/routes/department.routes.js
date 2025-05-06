@@ -10,7 +10,7 @@ router.get(
   queryParser,
   cacheResponse({
     key: (req) =>
-      `departments:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}`,
+      `departments:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}:capital_name=${req.processedQuery.capital_name || ''}`,
     ttl: 3600, // one hour
   }),
   departmentController.getDepartments

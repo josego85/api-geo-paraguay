@@ -4,15 +4,29 @@ const pool = require('./db');
 const { SRID } = dbConfig;
 
 class Department {
-  static async findAll({ page = 1, limit = 10, sort = {} }) {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
     try {
       let query = 'SELECT dep.id, dep.name, dep.capital_name FROM department as dep';
       const params = [];
 
-      // Apply sorting
-      if (sort.field) {
-        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
+      // Apply filters
+      const filterConditions = [];
+      if (filter.name) {
+        filterConditions.push(`dep.name LIKE ?`);
+        params.push(`%${filter.name}%`);
       }
+
+      if (filter.capital_name) {
+        filterConditions.push(`dep.capital_name LIKE ?`);
+        params.push(`%${filter.capital_name}%`);
+      }
+
+      if (filterConditions.length > 0) {
+        query += ` WHERE ${filterConditions.join(' AND ')}`;
+      }
+
+      // Apply sorting
+      query += ` ORDER BY ${sortField} ${sortOrder}`;
 
       // Apply pagination
       const offset = (page - 1) * limit;

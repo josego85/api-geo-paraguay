@@ -4,11 +4,13 @@ const Department = require('models/department.model');
 
 exports.getDepartments = async (req, res) => {
   try {
-    const { page, limit, sortField, sortOrder } = req.processedQuery;
+    const { page, limit, sortField, sortOrder, name, capital_name } = req.processedQuery;
     const options = {
       page,
       limit,
-      sort: { field: sortField, order: sortOrder },
+      sortField,
+      sortOrder,
+      filter: { name, capital_name },
     };
     const data = await DepartmentService.findAll(options);
 
