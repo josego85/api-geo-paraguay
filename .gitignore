@@ -8,3 +8,4 @@ newrelic_agent.log
 .eslintcache
 venv/
 tmp/
+coverage/

@@ -20,8 +20,6 @@ const queryParser = (req, res, next) => {
       ...filters,
     };
 
-    console.log('req.processedQuery: ', req.processedQuery);
-
     return next();
   } catch (error) {
     return res.status(400).json({ error: error.message });

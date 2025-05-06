@@ -8,7 +8,6 @@ async function connectDB() {
   mongoose.set('strictQuery', false);
   try {
     await mongoose.connect(`${MONGO_URI}/${APP_NAME}`);
-    console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
     if (process.env.NODE_ENV !== 'test') process.exit(1);
