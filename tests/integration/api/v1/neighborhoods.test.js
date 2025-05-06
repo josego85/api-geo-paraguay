@@ -35,7 +35,7 @@ describe('Neighborhoods API Integration Tests', () => {
     });
 
     describe('Sorting Operations', () => {
-      it.only('should sort by name ASC', async () => {
+      it('should sort by name ASC', async () => {
         const response = await request(app)
           .get('/api/v1/neighborhoods')
           .query({ sort: 'name:asc' });
