@@ -4,15 +4,24 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class City {
-  static async findAll({ page = 1, limit = 10, sort = {} }) {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
     try {
-      let query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades as ci`;
+      let query = `SELECT ci.id, ci.name FROM city as ci`;
       const params = [];
 
-      // Apply sorting
-      if (sort.field) {
-        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
+      // Apply filters
+      const filterConditions = [];
+      if (filter.name) {
+        filterConditions.push(`ci.name LIKE ?`);
+        params.push(`%${filter.name}%`);
       }
+
+      if (filterConditions.length > 0) {
+        query += ` WHERE ${filterConditions.join(' AND ')}`;
+      }
+
+      // Apply sorting
+      query += ` ORDER BY ${sortField} ${sortOrder}`;
 
       // Apply pagination
       const offset = (page - 1) * limit;
@@ -29,7 +38,7 @@ class City {
 
   static async findById(id) {
     try {
-      const query = `SELECT ci.ciudad_id, ci.ciudad_nombre FROM ciudades ci WHERE ci.ciudad_id = ?`;
+      const query = `SELECT ci.id, ci.name FROM city ci WHERE ci.id = ?`;
       const [rows] = await pool.query(query, [id]);
 
       if (rows.length) {

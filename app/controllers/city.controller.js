@@ -3,11 +3,13 @@ const CityService = require('services/cityService');
 
 exports.getCities = async (req, res) => {
   try {
-    const { page, limit, sortField, sortOrder } = req.processedQuery;
+    const { page, limit, sortField, sortOrder, name } = req.processedQuery;
     const options = {
       page,
       limit,
-      sort: { field: sortField, order: sortOrder },
+      sortField,
+      sortOrder,
+      filter: { name },
     };
     const data = await CityService.findAll(options);
 
