@@ -6,7 +6,7 @@ const pool = require('./db');
 class District {
   static async findAll({ page = 1, limit = 10, sort = {} }) {
     try {
-      let query = 'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis';
+      let query = 'SELECT dis.id, dis.name FROM district as dis';
       const params = [];
 
       // Apply sorting
@@ -31,9 +31,9 @@ class District {
 
   static async findById(id) {
     try {
-      const query = `SELECT dis.distrito_id, dis.distrito_nombre
-      FROM distritos dis
-      WHERE dis.distrito_id = ?
+      const query = `SELECT dis.id, dis.name
+      FROM district dis
+      WHERE dis.id = ?
     `;
       const [rows] = await pool.query(query, [id]);
 
@@ -55,7 +55,7 @@ class District {
 //   const query = `SELECT
 //         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
 //         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude
-//         FROM distritos as dis
+//         FROM district as dis
 //         WHERE dis.distrito_nombre = '${district}'
 //       `;
 

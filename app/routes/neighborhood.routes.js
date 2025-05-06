@@ -6,23 +6,23 @@ const cacheResponse = require('middleware/cacheMiddleware');
 const router = express.Router();
 
 router.get(
-  '/barrios',
+  '/neighborhoods',
   queryParser,
   cacheResponse({
     key: (req) =>
-      `barrios:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}`,
+      `neighborhoods:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}`,
     ttl: 3600, // one hour
   }),
   neighborhoodController.getNeighborhoods
 );
 router.get(
-  '/barrios/:id',
+  '/neighborhoods/:id',
   cacheResponse({
-    key: (req) => `barrios:id=${req.params.id}`,
+    key: (req) => `neighborhoods:id=${req.params.id}`,
     ttl: 3600, // one hour
   }),
   neighborhoodController.getNeighborhoodById
 );
-// router.get('/barrios/:name', neighborhoods.getLngLat);
+// router.get('/neighborhoods/:name', neighborhoods.getLngLat);
 
 module.exports = router;

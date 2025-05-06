@@ -6,8 +6,7 @@ const { SRID } = dbConfig;
 class Department {
   static async findAll({ page = 1, limit = 10, sort = {} }) {
     try {
-      let query =
-        'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep';
+      let query = 'SELECT dep.id, dep.name, dep.capital_name FROM department as dep';
       const params = [];
 
       // Apply sorting
@@ -29,10 +28,10 @@ class Department {
   }
 
   static async findById(id) {
-    const query = `SELECT dep.departamento_id, dep.departamento_nombre,
-      dep.departamento_capital
-      FROM departamentos dep
-      WHERE dep.departamento_id = ?
+    const query = `SELECT dep.id, dep.name,
+      dep.capital_name
+      FROM department dep
+      WHERE dep.id = ?
     `;
     try {
       const [rows] = await pool.query(query, [id]);
@@ -47,13 +46,13 @@ class Department {
   }
 
   static async findByLngLat(lng, lat) {
-    const query = `SELECT dep.departamento_nombre, dep.departamento_capital,
-        dis.distrito_nombre, ciu.ciudad_nombre,ba.barrio_nombre
-        FROM departamentos dep LEFT JOIN distritos dis
+    const query = `SELECT dep.name, dep.capital_name,
+        dis.name, ciu.name, ba.name
+        FROM department dep LEFT JOIN district dis
         ON ST_Contains(dis.geom, ST_GeomFromText("POINT(
-        ${lng} ${lat})",${SRID})) LEFT JOIN ciudades ciu
+        ${lng} ${lat})",${SRID})) LEFT JOIN city ciu
         ON ST_Contains(ciu.geom, ST_GeomFromText("POINT(
-        ${lng} ${lat})",${SRID})) LEFT JOIN barrios ba
+        ${lng} ${lat})",${SRID})) LEFT JOIN neighborhood ba
         ON ST_Contains(ba.geom, ST_GeomFromText("POINT(
         ${lng} ${lat})",${SRID})) WHERE
         ST_Contains(dep.geom, ST_GeomFromText("POINT(

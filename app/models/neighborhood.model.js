@@ -6,7 +6,7 @@ const pool = require('./db');
 class Neighborhood {
   static async findAll({ page = 1, limit = 10, sort = {} }) {
     try {
-      let query = 'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba';
+      let query = 'SELECT ba.id, ba.name FROM neighborhood as ba';
       const params = [];
 
       // Apply sorting
@@ -29,9 +29,9 @@ class Neighborhood {
 
   static async findById(id) {
     try {
-      const query = `SELECT ba.barrio_id, ba.barrio_nombre
-        FROM barrios ba
-        WHERE ba.barrio_id = ?
+      const query = `SELECT ba.id, ba.name
+        FROM neighborhood ba
+        WHERE ba.id = ?
       `;
       const [rows] = await pool.query(query, [id]);
 

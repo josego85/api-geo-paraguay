@@ -5,10 +5,10 @@
 ### Geographic Data
 
 - `GET /api/v1/paraguay/{longitude}/{latitude}` - Get location details by coordinates
-- `GET /api/v1/departamentos` - List all departments
+- `GET /api/v1/departments` - List all departments
 - `GET /api/v1/distritos` - List all districts
-- `GET /api/v1/ciudades` - List all cities
-- `GET /api/v1/barrios` - List all neighborhoods
+- `GET /api/v1/cities` - List all cities
+- `GET /api/v1/neighborhoods` - List all neighborhoods
 
 ## Pagination
 
@@ -27,7 +27,7 @@ All list endpoints support pagination via the `page` and `limit` query parameter
 
 ```bash
 # Get the first 10 departments
-http://localhost:5000/api/v1/departamentos?page=1&limit=10
+http://localhost:5000/api/v1/departments?page=1&limit=10
 ```
 
 ## Sorting
@@ -47,7 +47,7 @@ All list endpoints support sorting via the `sortField` and `sortOrder` query par
 
 ```bash
 # Sort departments by capital in descending order
-http://localhost:5000/api/v1/departamentos?page=1&limit=10&sortField=departamento_capital&sortOrder=desc
+http://localhost:5000/api/v1/departments?page=1&limit=10&sortField=capital_name&sortOrder=desc
 ```
 
 ### Available Sort Fields
@@ -56,43 +56,43 @@ http://localhost:5000/api/v1/departamentos?page=1&limit=10&sortField=departament
 
 ```bash
 # Sort by ID
-?sortField=departamento_id&sortOrder=asc
+?sortField=id&sortOrder=asc
 
 # Sort by name
-?sortField=departamento_nombre&sortOrder=desc
+?sortField=name&sortOrder=desc
 
 # Sort by capital
-?sortField=departamento_capital&sortOrder=desc
+?sortField=capital_name&sortOrder=desc
 ```
 
 #### Cities
 
 ```bash
 # Sort by ID
-?sortField=ciudad_id&sortOrder=asc
+?sortField=id&sortOrder=asc
 
 # Sort by name
-?sortField=ciudad_nombre&sortOrder=desc
+?sortField=name&sortOrder=desc
 ```
 
 #### Districts
 
 ```bash
 # Sort by ID
-?sortField=distrito_id&sortOrder=asc
+?sortField=id&sortOrder=asc
 
 # Sort by name
-?sortField=distrito_nombre&sortOrder=desc
+?sortField=name&sortOrder=desc
 ```
 
 #### Neighborhoods
 
 ```bash
 # Sort by ID
-?sortField=barrio_id&sortOrder=asc
+?sortField=id&sortOrder=asc
 
 # Sort by name
-?sortField=barrio_nombre&sortOrder=desc
+?sortField=name&sortOrder=desc
 ```
 
 ## Response Format
@@ -106,14 +106,14 @@ http://localhost:5000/api/v1/departamentos?page=1&limit=10&sortField=departament
 {
   "data": [
     {
-      "departamento_id": 2,
-      "departamento_nombre": "San Pedro",
-      "departamento_capital": "San Pedro de Ycuamandiyú"
+      "id": 2,
+      "name": "San Pedro",
+      "capital_name": "San Pedro de Ycuamandiyú"
     },
     {
-      "departamento_id": 15,
-      "departamento_nombre": "Presidente Hayes",
-      "departamento_capital": "Villa Hayes"
+      "id": 15,
+      "name": "Presidente Hayes",
+      "capital_name": "Villa Hayes"
     }
     ...
   ]

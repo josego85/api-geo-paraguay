@@ -6,20 +6,20 @@ const cacheResponse = require('middleware/cacheMiddleware');
 const router = express.Router();
 
 router.get(
-  '/ciudades',
+  '/cities',
   queryParser,
   cacheResponse({
     key: (req) =>
-      `ciudades:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}`,
+      `cities:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}`,
     ttl: 3600, // one hour
   }),
   cityController.getCities
 );
 
 router.get(
-  '/ciudades/:id',
+  '/cities/:id',
   cacheResponse({
-    key: (req) => `ciudades:id=${req.params.id}`,
+    key: (req) => `cities:id=${req.params.id}`,
     ttl: 3600, // one hour
   }),
   cityController.getCityById

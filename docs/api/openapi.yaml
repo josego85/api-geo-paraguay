@@ -64,7 +64,7 @@ paths:
         '500':
           description: Internal server error
 
-  /departamentos:
+  /departments:
     get:
       tags:
         - Department
@@ -76,6 +76,7 @@ paths:
         - $ref: '#/components/parameters/sortOrderParam'
         - $ref: '#/components/parameters/pageParam'
         - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/filterDepartmentName'
       responses:
         '200':
           description: Successful retrieval of departments
@@ -86,7 +87,7 @@ paths:
         '500':
           description: Internal server error
 
-  /departamentos/{id}:
+  /departments/{id}:
     get:
       tags:
         - Department
@@ -124,6 +125,7 @@ paths:
         - $ref: '#/components/parameters/sortOrderParam'
         - $ref: '#/components/parameters/pageParam'
         - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/filterDistrictName'
       responses:
         '200':
           description: Successful retrieval of districts
@@ -160,7 +162,7 @@ paths:
         '500':
           description: Internal server error
 
-  /ciudades:
+  /cities:
     get:
       tags:
         - City
@@ -172,6 +174,7 @@ paths:
         - $ref: '#/components/parameters/sortOrderParam'
         - $ref: '#/components/parameters/pageParam'
         - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/filterCityName'
       responses:
         '200':
           description: Successful retrieval of cities
@@ -182,7 +185,7 @@ paths:
         '500':
           description: Internal server error
 
-  /ciudades/{id}:
+  /cities/{id}:
     get:
       tags:
         - City
@@ -208,7 +211,7 @@ paths:
         '500':
           description: Internal server error
 
-  /barrios:
+  /neighborhoods:
     get:
       tags:
         - Neighborhood
@@ -220,6 +223,7 @@ paths:
         - $ref: '#/components/parameters/sortOrderParam'
         - $ref: '#/components/parameters/pageParam'
         - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/filterNeighborhoodName'
       responses:
         '200':
           description: Successful retrieval of neighborhoods
@@ -230,7 +234,7 @@ paths:
         '500':
           description: Internal server error
 
-  /barrios/{id}:
+  /neighborhoods/{id}:
     get:
       tags:
         - Neighborhood
@@ -265,7 +269,7 @@ components:
       schema:
         type: string
       description: |
-        Field to sort by. Example: departamento_nombre, ciudad_nombre, etc.
+        Field to sort by. Example: id, name, etc.
 
     sortOrderParam:
       in: query
@@ -299,17 +303,49 @@ components:
       description: |
         Number of items per page for pagination. Must be a numeric value greater than or equal to 1.
 
+    filterDepartmentName:
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+      description: Filter departments by name.
+
+    filterDistrictName:
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+      description: Filter districts by name.
+
+    filterCityName:
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+      description: Filter cities by name.
+
+    filterNeighborhoodName:
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+      description: Filter neighborhoods by name.
+
   schemas:
     Department:
       type: object
       properties:
-        departamento_id:
+        id:
           type: integer
           description: Unique identifier for the department
-        departamento_nombre:
+        name:
           type: string
           description: Name of the department
-        departamento_capital:
+        capital_name:
           type: string
           description: Name of the capital city of the department
 
@@ -322,10 +358,10 @@ components:
     District:
       type: object
       properties:
-        distrito_id:
+        id:
           type: integer
           description: Unique identifier for the district
-        distrito_nombre:
+        name:
           type: string
           description: Name of the district
 
@@ -338,10 +374,10 @@ components:
     City:
       type: object
       properties:
-        ciudad_id:
+        id:
           type: integer
           description: Unique identifier for the city
-        ciudad_nombre:
+        name:
           type: string
           description: Name of the city
 
@@ -354,10 +390,10 @@ components:
     Neighborhood:
       type: object
       properties:
-        barrio_id:
+        id:
           type: integer
           description: Unique identifier for the neighborhood
-        barrio_nombre:
+        name:
           type: string
           description: Name of the neighborhood
 
