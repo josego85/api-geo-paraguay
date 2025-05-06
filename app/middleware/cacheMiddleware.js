@@ -14,7 +14,6 @@ module.exports = function cacheResponse(options) {
       // 2) Try to read from the cache
       const cached = await redisClient.get(key);
       if (cached) {
-        console.log(`[cache] Cache hit for key: ${key}`);
         return res.json(JSON.parse(cached)); // Return cached response
       }
 
@@ -27,17 +26,16 @@ module.exports = function cacheResponse(options) {
         // Save to cache (asynchronous, errors do not block)
         try {
           await redisClient.set(key, JSON.stringify(body), 'EX', ttl);
-          console.log(`[cache] Cache set for key: ${key}`);
         } catch (err) {
           console.error('[cache] Error saving to cache:', err);
         }
       };
 
       // 4) Continue with the controller
-      next();
+      return next();
     } catch (err) {
       console.error('[cache] Error in middleware:', err);
-      next(err);
+      return next(err);
     }
   };
 };

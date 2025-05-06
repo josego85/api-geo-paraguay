@@ -2,7 +2,7 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.16.0] - 2025-05-05
+## [2.16.0] - 2025-05-06
 
 ### Added
 
@@ -23,7 +23,9 @@ All significant changes to this project are documented in this file.
   - Documented ASC/DESC sort directions
 - Added pagination support to the `getCities` method in the City controller.
 - Added pagination support to the `findAll` method in the City model to handle `page` and `limit` parameters.
+- Added pagination support to the endpoints for departments, neighborhoods, and districts.
 - Created `cityService` to encapsulate business logic for cities and improve separation of concerns.
+- Created `departmentService`, `districtService`, and `neighborhoodService` to encapsulate business logic for departments, districts, and neighborhoods, respectively, and improve separation of concerns.
 
 ### Changed
 

@@ -45,6 +45,7 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - **Redis**: High-performance caching and GeoHash lookup
 
 ## Features
+
 - Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates
 - Cache integration with Redis for rapid responses
 - Secure endpoints following industry-standard practices

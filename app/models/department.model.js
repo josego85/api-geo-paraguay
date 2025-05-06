@@ -4,14 +4,23 @@ const pool = require('./db');
 const { SRID } = dbConfig;
 
 class Department {
-  static async getAll(sorting = {}) {
+  static async findAll({ page = 1, limit = 10, sort = {} }) {
     try {
       let query =
         'SELECT dep.departamento_id, dep.departamento_nombre, dep.departamento_capital FROM departamentos as dep';
-      if (sorting.field) {
-        query += ` ORDER BY ${sorting.field} ${sorting.order}`;
+      const params = [];
+
+      // Apply sorting
+      if (sort.field) {
+        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
       }
-      const [rows] = await pool.query(query);
+
+      // Apply pagination
+      const offset = (page - 1) * limit;
+      query += ` LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+
+      const [rows] = await pool.query(query, params);
       return rows;
     } catch (error) {
       console.error('error:', error);

@@ -4,14 +4,22 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class Neighborhood {
-  static async getAll(sorting = {}) {
+  static async findAll({ page = 1, limit = 10, sort = {} }) {
     try {
       let query = 'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba';
-      if (sorting.field) {
-        query += ` ORDER BY ${sorting.field} ${sorting.order}`;
-      }
-      const [rows] = await pool.query(query);
+      const params = [];
 
+      // Apply sorting
+      if (sort.field) {
+        query += ` ORDER BY ${sort.field} ${sort.order || 'ASC'}`;
+      }
+
+      // Apply pagination
+      const offset = (page - 1) * limit;
+      query += ` LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+
+      const [rows] = await pool.query(query, params);
       return rows;
     } catch (error) {
       console.log('error: ', error);

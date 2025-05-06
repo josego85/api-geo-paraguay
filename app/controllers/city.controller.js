@@ -1,5 +1,5 @@
 const City = require('models/city.model');
-const cityService = require('services/cityService');
+const CityService = require('services/cityService');
 
 exports.getCities = async (req, res) => {
   try {
@@ -9,8 +9,7 @@ exports.getCities = async (req, res) => {
       limit,
       sort: { field: sortField, order: sortOrder },
     };
-
-    const data = await cityService.findAll(options);
+    const data = await CityService.findAll(options);
 
     if (!data || data.length === 0) {
       return res.status(404).send({ message: 'Cities not found' });
