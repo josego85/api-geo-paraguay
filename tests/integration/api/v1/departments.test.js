@@ -1,6 +1,5 @@
 const request = require('supertest');
 const app = require('../../../../app/app');
-const { clearCache } = require('../../../helpers/cache');
 const { seedDepartments } = require('../../../fixtures/departments');
 const mysqlConnection = require('../../../../app/models/db');
 const { closeConnection } = require('../../../../app/helpers/providers/cache/redisClient');
@@ -8,10 +7,6 @@ const { closeConnection } = require('../../../../app/helpers/providers/cache/red
 describe('Departments API Integration Tests', () => {
   beforeAll(async () => {
     await seedDepartments();
-  });
-
-  afterEach(async () => {
-    await clearCache();
   });
 
   afterAll(async () => {
@@ -22,10 +17,10 @@ describe('Departments API Integration Tests', () => {
     }
   });
 
-  describe('GET /api/v1/departamentos', () => {
+  describe('GET /api/v1/departments', () => {
     describe('Basic Read Operations', () => {
       it('should return all departments', async () => {
-        const response = await request(app).get('/api/v1/departamentos');
+        const response = await request(app).get('/api/v1/departments');
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data');
@@ -33,38 +28,34 @@ describe('Departments API Integration Tests', () => {
 
         const firstDepartment = response.body.data[0];
         expect(firstDepartment).toMatchObject({
-          departamento_id: expect.any(Number),
-          departamento_nombre: expect.any(String),
-          departamento_capital: expect.any(String),
+          id: expect.any(Number),
+          name: expect.any(String),
+          capital_name: expect.any(String),
         });
       });
     });
 
     describe('Sorting Operations', () => {
-      it('should sort by departamento_nombre ASC', async () => {
+      it('should sort by name ASC', async () => {
         const response = await request(app)
-          .get('/api/v1/departamentos')
-          .query({ sort: 'departamento_nombre:asc' });
+          .get('/api/v1/departments')
+          .query({ sortField: 'name', sortOrder: 'asc' });
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data');
         expect(Array.isArray(response.body.data)).toBe(true);
-        expect(response.body.data).toBeSorted((a, b) =>
-          a.departamento_nombre.localeCompare(b.departamento_nombre)
-        );
+        expect(response.body.data).toBeSorted((a, b) => a.name.localeCompare(b.name));
       });
 
-      it('should sort by departamento_nombre DESC', async () => {
+      it('should sort by name DESC', async () => {
         const response = await request(app)
-          .get('/api/v1/departamentos')
-          .query({ sort: 'departamento_nombre:desc' });
+          .get('/api/v1/departments')
+          .query({ sortField: 'name', sortOrder: 'desc' });
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data');
         expect(Array.isArray(response.body.data)).toBe(true);
-        expect(response.body.data).toBeSorted((a, b) =>
-          b.departamento_nombre.localeCompare(a.departamento_nombre)
-        );
+        expect(response.body.data).toBeSorted((a, b) => b.name.localeCompare(a.name));
       });
     });
   });

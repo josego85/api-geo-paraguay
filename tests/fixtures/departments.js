@@ -1,16 +1,30 @@
 const db = require('../../app/models/db');
 
 const testDepartments = [
-  { departamento_id: 1, departamento_nombre: 'Central', departamento_capital: 'Areguá' },
-  { departamento_id: 2, departamento_nombre: 'Alto Paraná', departamento_capital: 'Ciudad del Este' },
-  { departamento_id: 3, departamento_nombre: 'Itapúa', departamento_capital: 'Encarnación' },
+  {
+    id: 1,
+    name: 'Central',
+    capital_name: 'Areguá',
+  },
+  {
+    id: 2,
+    name: 'Alto Paraná',
+    capital_name: 'Ciudad del Este',
+  },
+  {
+    id: 3,
+    name: 'Itapúa',
+    capital_name: 'Encarnación',
+  },
 ];
 
 const seedDepartments = async () => {
   try {
-    const [results] = await db.query('SELECT COUNT(*) as count FROM departamentos');
+    const [results] = await db.query('SELECT COUNT(*) as count FROM department');
     if (results[0].count === 0) {
-      throw new Error('No test data available in the "departamentos" table. Please ensure the database is seeded.');
+      throw new Error(
+        'No test data available in the "departments" table. Please ensure the database is seeded.'
+      );
     }
   } catch (error) {
     console.error('Error verifying departments data:', error);

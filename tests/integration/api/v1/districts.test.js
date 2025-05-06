@@ -1,6 +1,5 @@
 const request = require('supertest');
 const app = require('../../../../app/app');
-const { clearCache } = require('../../../helpers/cache');
 const { seedDistricts } = require('../../../fixtures/districts');
 const mysqlConnection = require('../../../../app/models/db');
 const { closeConnection } = require('../../../../app/helpers/providers/cache/redisClient');
@@ -10,22 +9,18 @@ describe('Districts API Integration Tests', () => {
     await seedDistricts();
   });
 
-  afterEach(async () => {
-    await clearCache();
-  });
-
   afterAll(async () => {
     await closeConnection();
-    
+
     if (mysqlConnection) {
       await mysqlConnection.end();
     }
   });
 
-  describe('GET /api/v1/distritos', () => {
+  describe('GET /api/v1/districts', () => {
     describe('Basic Read Operations', () => {
       it('should return all districts', async () => {
-        const response = await request(app).get('/api/v1/distritos');
+        const response = await request(app).get('/api/v1/districts');
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data');
@@ -33,37 +28,33 @@ describe('Districts API Integration Tests', () => {
 
         const firstDistrict = response.body.data[0];
         expect(firstDistrict).toMatchObject({
-          distrito_id: expect.any(Number),
-          distrito_nombre: expect.any(String),
+          id: expect.any(Number),
+          name: expect.any(String),
         });
       });
     });
 
     describe('Sorting Operations', () => {
-      it('should sort by distrito_nombre ASC', async () => {
+      it('should sort by name ASC', async () => {
         const response = await request(app)
-          .get('/api/v1/distritos')
-          .query({ sort: 'distrito_nombre:asc' });
+          .get('/api/v1/districts')
+          .query({ sortField: 'name', sortOrder: 'asc' });
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data');
         expect(Array.isArray(response.body.data)).toBe(true);
-        expect(response.body.data).toBeSorted((a, b) =>
-          a.distrito_nombre.localeCompare(b.distrito_nombre)
-        );
+        expect(response.body.data).toBeSorted((a, b) => a.name.localeCompare(b.name));
       });
 
-      it('should sort by distrito_nombre DESC', async () => {
+      it('should sort by name DESC', async () => {
         const response = await request(app)
-          .get('/api/v1/distritos')
-          .query({ sort: 'distrito_nombre:desc' });
+          .get('/api/v1/districts')
+          .query({ sortField: 'name', sortOrder: 'desc' });
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('data');
         expect(Array.isArray(response.body.data)).toBe(true);
-        expect(response.body.data).toBeSorted((a, b) =>
-          b.distrito_nombre.localeCompare(a.distrito_nombre)
-        );
+        expect(response.body.data).toBeSorted((a, b) => b.name.localeCompare(a.name));
       });
     });
   });
