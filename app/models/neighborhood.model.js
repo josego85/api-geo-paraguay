@@ -1,15 +1,34 @@
-const dbConfig = require('config/db.config');
+// const dbConfig = require('config/db.config');
 const pool = require('./db');
 
-const { SRID_TRANSFORM } = dbConfig;
+// const { SRID_TRANSFORM } = dbConfig;
 
 class Neighborhood {
-  static async getAll() {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
     try {
-      const query =
-        'SELECT ba.barrio_id, ba.barrio_nombre FROM barrios as ba ORDER BY ba.barrio_id';
-      const [rows] = await pool.query(query);
+      let query = 'SELECT ne.id, ne.name FROM neighborhood as ne';
+      const params = [];
 
+      // Apply filters
+      const filterConditions = [];
+      if (filter.name) {
+        filterConditions.push(`ne.name LIKE ?`);
+        params.push(`%${filter.name}%`);
+      }
+
+      if (filterConditions.length > 0) {
+        query += ` WHERE ${filterConditions.join(' AND ')}`;
+      }
+
+      // Apply sorting
+      query += ` ORDER BY ${sortField} ${sortOrder}`;
+
+      // Apply pagination
+      const offset = (page - 1) * limit;
+      query += ` LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+
+      const [rows] = await pool.query(query, params);
       return rows;
     } catch (error) {
       console.log('error: ', error);
@@ -19,9 +38,9 @@ class Neighborhood {
 
   static async findById(id) {
     try {
-      const query = `SELECT ba.barrio_id, ba.barrio_nombre
-        FROM barrios ba
-        WHERE ba.barrio_id = ?
+      const query = `SELECT ne.id, ne.name
+        FROM neighborhood ne
+        WHERE ne.id = ?
       `;
       const [rows] = await pool.query(query, [id]);
 
@@ -41,8 +60,8 @@ class Neighborhood {
 //   const query = `SELECT
 //         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
 //         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude
-//         FROM barrios as ba
-//         WHERE ba.barrio_nombre = '${neighborhood}'
+//         FROM barrios as ne
+//         WHERE ne.barrio_nombre = '${neighborhood}'
 //       `;
 
 //   sql.query(query, (error, response) => {

@@ -1,15 +1,34 @@
-const dbConfig = require('config/db.config');
+// const dbConfig = require('config/db.config');
 const pool = require('./db');
 
-const { SRID_TRANSFORM } = dbConfig;
+// const { SRID_TRANSFORM } = dbConfig;
 
 class District {
-  static async getAll() {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
     try {
-      const query =
-        'SELECT dis.distrito_id, dis.distrito_nombre FROM distritos as dis ORDER BY dis.distrito_id';
-      const [rows] = await pool.query(query);
+      let query = 'SELECT dis.id, dis.name FROM district as dis';
+      const params = [];
 
+      // Apply filters
+      const filterConditions = [];
+      if (filter.name) {
+        filterConditions.push(`dis.name LIKE ?`);
+        params.push(`%${filter.name}%`);
+      }
+
+      if (filterConditions.length > 0) {
+        query += ` WHERE ${filterConditions.join(' AND ')}`;
+      }
+
+      // Apply sorting
+      query += ` ORDER BY ${sortField} ${sortOrder}`;
+
+      // Apply pagination
+      const offset = (page - 1) * limit;
+      query += ` LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+
+      const [rows] = await pool.query(query, params);
       return rows;
     } catch (error) {
       console.error('Error: ', error);
@@ -20,9 +39,9 @@ class District {
 
   static async findById(id) {
     try {
-      const query = `SELECT dis.distrito_id, dis.distrito_nombre
-      FROM distritos dis
-      WHERE dis.distrito_id = ?
+      const query = `SELECT dis.id, dis.name
+      FROM district dis
+      WHERE dis.id = ?
     `;
       const [rows] = await pool.query(query, [id]);
 
@@ -44,7 +63,7 @@ class District {
 //   const query = `SELECT
 //         ST_X(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as latitude,
 //         ST_Y(ST_Centroid(ST_Transform(geom, ${SRID_TRANSFORM}))) as longitude
-//         FROM distritos as dis
+//         FROM district as dis
 //         WHERE dis.distrito_nombre = '${district}'
 //       `;
 

@@ -26,9 +26,9 @@ http://87.106.81.190/graphql
 # Get department with cities
 query {
   department(id: 1) {
-    departamento_nombre
+    name
     cities {
-      ciudad_nombre
+      name
     }
   }
 }

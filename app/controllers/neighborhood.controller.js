@@ -1,33 +1,26 @@
-const cacheService = require('services/cacheService');
 const Neighborhood = require('models/neighborhood.model');
+const NeighborhoodService = require('services/neighborhoodService');
 
-// Retrieve all neighborhood.
-exports.findAll = async (request, response) => {
+exports.getNeighborhoods = async (req, res) => {
   try {
-    const cacheKey = 'neighborhood';
-    const cachedData = await cacheService.get(cacheKey);
+    const { page, limit, sortField, sortOrder, name } = req.processedQuery;
+    const options = {
+      page,
+      limit,
+      sortField,
+      sortOrder,
+      filter: { name },
+    };
+    const data = await NeighborhoodService.findAll(options);
 
-    if (cachedData) {
-      return response.status(200).json({
-        data: cachedData,
-      });
+    if (!data || data.length === 0) {
+      return res.status(404).send({ message: 'Neighborhoods not found' });
     }
 
-    const data = await Neighborhood.getAll();
-
-    if (!data) {
-      return response.status(404).send({ message: 'Neighborhoods not found' });
-    }
-
-    // Update cache.
-    cacheService.set(cacheKey, data).catch((error) => console.error('Error: ', error));
-
-    return response.status(200).json({
-      data,
-    });
+    return res.status(200).json({ data, page, limit });
   } catch (error) {
-    return response.status(500).send({
-      message: request.polyglot.t('failed_to_retrieve_neighborhoods') || error.message,
+    return res.status(500).send({
+      message: req.polyglot.t('failed_to_retrieve_neighborhoods') || error.message,
     });
   }
 };
@@ -49,24 +42,24 @@ exports.findAll = async (request, response) => {
 //   });
 // };
 
-exports.findById = async (request, response) => {
+exports.getNeighborhoodById = async (req, res) => {
   try {
-    const { id } = request.params;
+    const { id } = req.params;
 
     if (!id) {
-      return response.status(400).send({ message: 'ID is required' });
+      return res.status(400).send({ message: 'ID is required' });
     }
 
     const data = await Neighborhood.findById(id);
 
     if (!data) {
-      return response.status(404).send({ message: 'Neighborhood not found' });
+      return res.status(404).send({ message: 'Neighborhood not found' });
     }
 
-    return response.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
-    return response.status(403).send({
-      message: request.polyglot.t('failed_to_retrieve_neighborhood') || error.message,
+    return res.status(403).send({
+      message: req.polyglot.t('failed_to_retrieve_neighborhood') || error.message,
     });
   }
 };
