@@ -2,6 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.16.1] - 2025-05-07
+
+### Refactored
+
+- Refactored and enhanced services for cities, departments, districts, and neighborhoods.
+
+### Documentation
+
+- Updated `setup.md` to correct the database `.tar.gz` filename.
+
 ## [2.16.0] - 2025-05-06
 
 ### Added
