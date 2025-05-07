@@ -4,7 +4,7 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class City {
-  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', ...filter }) {
     try {
       let query = `SELECT ci.id, ci.name FROM city as ci`;
       const params = [];

@@ -1,5 +1,5 @@
 const express = require('express');
-const cityController = require('controllers/city.controller');
+const cityController = require('controllers/cityController');
 const queryParser = require('middleware/queryParser');
 const cacheResponse = require('middleware/cacheMiddleware');
 
