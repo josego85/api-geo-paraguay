@@ -113,7 +113,7 @@ GEOHASH_PRECISION=7
 
 ```bash
 # Extract database dump
-tar xzvf database/paraguay.sql.tar.gz
+tar xzvf database/paraguay.tar.gz
 
 # Import to local MySQL
 mysql -u root -p paraguay < paraguay.sql
