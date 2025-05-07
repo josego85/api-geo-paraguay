@@ -1,5 +1,5 @@
 const express = require('express');
-const neighborhoodController = require('controllers/neighborhood.controller');
+const neighborhoodController = require('controllers/neighborhoodController');
 const queryParser = require('middleware/queryParser');
 const cacheResponse = require('middleware/cacheMiddleware');
 
@@ -23,6 +23,5 @@ router.get(
   }),
   neighborhoodController.getNeighborhoodById
 );
-// router.get('/neighborhoods/:name', neighborhoods.getLngLat);
 
 module.exports = router;

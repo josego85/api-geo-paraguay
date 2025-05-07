@@ -4,7 +4,7 @@ const pool = require('./db');
 // const { SRID_TRANSFORM } = dbConfig;
 
 class Neighborhood {
-  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filter = {} }) {
+  static async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', ...filter }) {
     try {
       let query = 'SELECT ne.id, ne.name FROM neighborhood as ne';
       const params = [];

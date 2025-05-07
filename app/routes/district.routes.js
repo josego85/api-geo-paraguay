@@ -1,5 +1,5 @@
 const express = require('express');
-const districtController = require('controllers/district.controller');
+const districtController = require('controllers/districtController');
 const queryParser = require('middleware/queryParser');
 const cacheResponse = require('middleware/cacheMiddleware');
 
@@ -23,6 +23,5 @@ router.get(
   }),
   districtController.getDistrictById
 );
-// router.get('/districts/:name', districts.getLngLat);
 
 module.exports = router;

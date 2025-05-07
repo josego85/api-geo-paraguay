@@ -1,5 +1,5 @@
 const express = require('express');
-const departmentController = require('controllers/department.controller');
+const departmentController = require('controllers/departmentController');
 const queryParser = require('middleware/queryParser');
 const cacheResponse = require('middleware/cacheMiddleware');
 
@@ -24,6 +24,6 @@ router.get(
   departmentController.getDepartmentById
 );
 router.get('/departments/:lng/:lat', departmentController.findByLngLat);
-router.use('/paraguay/:lng/:lat', departmentController.findByLngLat);
+router.get('/paraguay/:lng/:lat', departmentController.findByLngLat);
 
 module.exports = router;
