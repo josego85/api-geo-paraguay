@@ -37,10 +37,12 @@ module.exports = {
     alias: {
       config: path.resolve(__dirname, './app/config'),
       controllers: path.resolve(__dirname, './app/controllers'),
+      entities: path.resolve(__dirname, './app/entities'),
       i18n: path.resolve(__dirname, './app/i18n'),
       helpers: path.resolve(__dirname, './app/helpers'),
       middleware: path.resolve(__dirname, './app/middleware'),
       models: path.resolve(__dirname, './app/models'),
+      repositories: path.resolve(__dirname, './app/repositories'),
       routes: path.resolve(__dirname, './app/routes'),
       services: path.resolve(__dirname, './app/services'),
     },

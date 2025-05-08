@@ -36,10 +36,12 @@
         "allowModules": [
           "config",
           "controllers",
+          "entities",
           "i18n",
           "helpers",
           "middleware",
           "models",
+          "repositories",
           "routes",
           "services"
         ]

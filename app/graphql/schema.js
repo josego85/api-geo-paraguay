@@ -1,8 +1,10 @@
 const { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLID } = require('graphql');
-const Department = require('models/department.model');
-const District = require('models/district.model');
-const City = require('models/city.model');
-const Neighborhood = require('models/neighborhood.model');
+
+const DepartmentService = require('services/departmentService');
+const DistrictService = require('services/districtService');
+const CityService = require('services/cityService');
+const NeighborhoodService = require('services/neighborhoodService');
+
 const DepartmentType = require('./types/DepartmentType');
 const DistrictType = require('./types/DistrictType');
 const CityType = require('./types/CityType');
@@ -15,7 +17,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(DepartmentType),
       resolve: async () => {
         try {
-          return await Department.getAll();
+          return await DepartmentService.findAll();
         } catch (error) {
           console.error('GraphQL error in departments resolver:', error);
           throw error;
@@ -25,13 +27,13 @@ const RootQuery = new GraphQLObjectType({
     department: {
       type: DepartmentType,
       args: { id: { type: GraphQLID } },
-      resolve: async (parent, args) => Department.findById(args.id),
+      resolve: async (parent, args) => DepartmentService.findById(args.id),
     },
     districts: {
       type: new GraphQLList(DistrictType),
       resolve: async () => {
         try {
-          return await District.getAll();
+          return await DistrictService.findAll();
         } catch (error) {
           console.error('GraphQL error in districts resolver:', error);
           throw error;
@@ -41,13 +43,13 @@ const RootQuery = new GraphQLObjectType({
     district: {
       type: DistrictType,
       args: { id: { type: GraphQLID } },
-      resolve: async (parent, args) => District.findById(args.id),
+      resolve: async (parent, args) => DistrictService.findById(args.id),
     },
     cities: {
       type: new GraphQLList(CityType),
       resolve: async () => {
         try {
-          return await City.getAll();
+          return await CityService.findAll();
         } catch (error) {
           console.error('GraphQL error in cities resolver:', error);
           throw error;
@@ -57,13 +59,13 @@ const RootQuery = new GraphQLObjectType({
     city: {
       type: CityType,
       args: { id: { type: GraphQLID } },
-      resolve: async (parent, args) => City.findById(args.id),
+      resolve: async (parent, args) => CityService.findById(args.id),
     },
     neighborhoods: {
       type: new GraphQLList(NeighborhoodType),
       resolve: async () => {
         try {
-          return await Neighborhood.getAll();
+          return await NeighborhoodService.findAll();
         } catch (error) {
           console.error('GraphQL error in neighborhoods resolver:', error);
           throw error;
@@ -73,7 +75,7 @@ const RootQuery = new GraphQLObjectType({
     neighborhood: {
       type: NeighborhoodType,
       args: { id: { type: GraphQLID } },
-      resolve: async (parent, args) => Neighborhood.findById(args.id),
+      resolve: async (parent, args) => NeighborhoodService.findById(args.id),
     },
   },
 });
