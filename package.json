@@ -1,7 +1,7 @@
 {
   "name": "api-geo-paraguay",
   "description": "API GEO - Paraguay",
-  "version": "2.16.1",
+  "version": "2.17.0",
   "private": true,
   "main": "server.js",
   "author": {
@@ -48,8 +48,10 @@
     "newrelic": "12.8.2",
     "ngeohash": "0.6.3",
     "node-polyglot": "2.6.0",
+    "reflect-metadata": "0.2.2",
     "send": "1.2.0",
-    "swagger-ui-express": "5.0.1"
+    "swagger-ui-express": "5.0.1",
+    "typeorm": "0.3.23"
   },
   "devDependencies": {
     "@babel/core": "7.27.1",
