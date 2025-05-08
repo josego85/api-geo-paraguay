@@ -1,4 +1,7 @@
 const BaseService = require('services/baseService');
-const Department = require('models/department.model');
+const DepartmentRepository = require('repositories/DepartmentRepository');
+const dataSource = require('config/data-source');
 
-module.exports = new BaseService(Department);
+const departmentRepo = new DepartmentRepository(dataSource);
+
+module.exports = new BaseService(departmentRepo);

@@ -2,6 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.17.0] - 2025-05-08
+
+### Added
+- Introduced ORM: **TypeORM** for database abstraction and security against SQL injection.
+
+### Refactored
+- Migrated from raw models to **repositories** with **entities**.
+- Updated service layer to call repository → entity instead of direct database queries.
+- Switched from direct service-to-DB access to service → repository → entity flow.
+
 ## [2.16.1] - 2025-05-07
 
 ### Refactored

@@ -1,4 +1,6 @@
 const BaseService = require('services/baseService');
-const Neighborhood = require('models/neighborhood.model');
+const NeighborhoodRepository = require('repositories/NeighborhoodRepository');
+const dataSource = require('config/data-source');
 
-module.exports = new BaseService(Neighborhood);
+const neighborhoodRepo = new NeighborhoodRepository(dataSource);
+module.exports = new BaseService(neighborhoodRepo);

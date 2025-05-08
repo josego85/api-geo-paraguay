@@ -1,4 +1,7 @@
 const BaseService = require('services/baseService');
-const City = require('models/city.model');
+const CityRepository = require('repositories/CityRepository');
+const dataSource = require('config/data-source');
 
-module.exports = new BaseService(City);
+const cityRepo = new CityRepository(dataSource);
+
+module.exports = new BaseService(cityRepo);

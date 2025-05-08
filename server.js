@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 const globalConfig = require('./app/config/global.config');
+const AppDataSource = require('./app/config/data-source');
 const app = require('./app/app');
 
 const { APP_NAME, APP_PORT, MONGO_URI } = globalConfig;
 
 async function connectDB() {
+  try {
+    await AppDataSource.initialize();
+  } catch (error) {
+    console.error('MySQL connection error:', error);
+    if (process.env.NODE_ENV !== 'test') process.exit(1);
+  }
+}
+
+async function connectDBLog() {
   mongoose.set('strictQuery', false);
   try {
     await mongoose.connect(`${MONGO_URI}/${APP_NAME}`);
@@ -16,6 +26,7 @@ async function connectDB() {
 
 async function startServer() {
   await connectDB();
+  await connectDBLog();
 
   app.listen(APP_PORT, (err) => {
     if (err) {
