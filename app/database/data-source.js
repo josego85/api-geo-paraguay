@@ -1,6 +1,10 @@
 require('reflect-metadata');
 const { DataSource } = require('typeorm');
-const config = require('../config');
+const config = require('config');
+const DepartmentEntity = require('entities/Department');
+const DistrictEntity = require('entities/District');
+const CityEntity = require('entities/City');
+const NeighborhoodEntity = require('entities/Neighborhood');
 
 const {
   db: { host, port, user, pass, name: database },
@@ -13,7 +17,7 @@ const AppDataSource = new DataSource({
   username: user,
   password: pass,
   database,
-  entities: [`${__dirname}/../entities/*.{js,ts}`],
+  entities: [DepartmentEntity, DistrictEntity, CityEntity, NeighborhoodEntity],
   synchronize: false,
   logging: false,
 });

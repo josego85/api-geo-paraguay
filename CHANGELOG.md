@@ -2,6 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.17.1] - 2025-05-09
+
+### Fixed
+
+- Resolved production entity metadata loading issue by explicitly importing all EntitySchemas in the DataSource configuration.
+
+### Refactored
+
+- Improved `BaseRepository` implementation: replaced `for…of` loops with `Object.entries().filter().map()` and `Object.fromEntries()` to comply with lint rule `no-restricted-syntax`.
+
 ## [2.17.0] - 2025-05-09
 
 ### Added
