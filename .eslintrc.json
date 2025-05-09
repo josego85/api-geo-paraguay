@@ -36,6 +36,7 @@
         "allowModules": [
           "config",
           "controllers",
+          "database",
           "entities",
           "i18n",
           "helpers",

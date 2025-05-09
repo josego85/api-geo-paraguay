@@ -1,7 +1,7 @@
 const BaseService = require('services/baseService');
 const DistrictRepository = require('repositories/DistrictRepository');
-const dataSource = require('config/data-source');
+const AppDataSource = require('database/data-source');
 
-const districtRepo = new DistrictRepository(dataSource);
+const districtRepo = new DistrictRepository(AppDataSource);
 
 module.exports = new BaseService(districtRepo);

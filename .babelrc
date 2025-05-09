@@ -9,6 +9,7 @@
         "alias": {
           "config": "./app/config",
           "controllers": "./app/controllers",
+          "database": "./app/database",
           "entities": "./app/entities",
           "i18n": "./app/i18n",
           "helpers": "./app/helpers",

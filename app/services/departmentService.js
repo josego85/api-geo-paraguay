@@ -1,7 +1,7 @@
 const BaseService = require('services/baseService');
 const DepartmentRepository = require('repositories/DepartmentRepository');
-const dataSource = require('config/data-source');
+const AppDataSource = require('database/data-source');
 
-const departmentRepo = new DepartmentRepository(dataSource);
+const departmentRepo = new DepartmentRepository(AppDataSource);
 
 module.exports = new BaseService(departmentRepo);

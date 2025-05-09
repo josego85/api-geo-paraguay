@@ -37,6 +37,7 @@ module.exports = {
     alias: {
       config: path.resolve(__dirname, './app/config'),
       controllers: path.resolve(__dirname, './app/controllers'),
+      database: path.resolve(__dirname, './app/database'),
       entities: path.resolve(__dirname, './app/entities'),
       i18n: path.resolve(__dirname, './app/i18n'),
       helpers: path.resolve(__dirname, './app/helpers'),
