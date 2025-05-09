@@ -6,13 +6,11 @@ class BaseRepository {
   }
 
   async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', ...filters }) {
-    const where = {};
-
-    for (const [key, val] of Object.entries(filters)) {
-      if (val != null) {
-        where[key] = Like(`%${val}%`);
-      }
-    }
+    const where = Object.fromEntries(
+      Object.entries(filters)
+        .filter(([, val]) => val != null)
+        .map(([key, val]) => [key, Like(`%${val}%`)])
+    );
 
     return this.repo.find({
       where,
