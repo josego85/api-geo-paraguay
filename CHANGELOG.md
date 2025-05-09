@@ -2,13 +2,16 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.17.0] - 2025-05-08
+## [2.17.0] - 2025-05-09
 
 ### Added
 - Introduced ORM: **TypeORM** for database abstraction and security against SQL injection.
+- Added **Joi** for comprehensive environment variable validation.
 
 ### Refactored
 - Migrated from raw models to **repositories** with **entities**.
+- Centralized all environment variables into `config/index.js` and validated them with Joi.
+- Refactored DataSource initialization; now located in `database/data-source.js`.
 - Updated service layer to call repository → entity instead of direct database queries.
 - Switched from direct service-to-DB access to service → repository → entity flow.
 
