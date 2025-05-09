@@ -16,7 +16,7 @@ All significant changes to this project are documented in this file.
 - Switched from direct service-to-DB access to service → repository → entity flow.
 
 ### Removed
-- Deleted legacy models for **District**, **Neighborhood**, and **City**.
+- Deleted legacy models for **Department**, **District**, **Neighborhood**, and **City**.
 
 ### Updated
 - Adapted GraphQL resolvers to use service layer instead of direct model access.

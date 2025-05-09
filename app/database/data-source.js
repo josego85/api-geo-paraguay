@@ -5,7 +5,6 @@ const config = require('../config');
 const {
   db: { host, port, user, pass, name: database },
 } = config;
-const isProd = process.env.NODE_ENV === 'production';
 
 const AppDataSource = new DataSource({
   type: 'mysql',
@@ -16,7 +15,7 @@ const AppDataSource = new DataSource({
   database,
   entities: [`${__dirname}/../entities/*.{js,ts}`],
   synchronize: false,
-  logging: !isProd,
+  logging: false,
 });
 
 module.exports = AppDataSource;

@@ -1,41 +1,41 @@
-const mongoose = require('mongoose');
-const { redisClient } = require('./app/helpers/providers/cache/redisClient');
-const mysqlConnection = require('./app/models/db');
-const app = require('./server');
+// const mongoose = require('mongoose');
+// const { redisClient } = require('./app/helpers/providers/cache/redisClient');
+// const mysqlConnection = require('./app/models/db');
+// const app = require('./server');
 
-let server;
+// let server;
 
-beforeAll(async () => {
-  const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongodb:27017';
-  const TEST_APP_NAME = process.env.TEST_APP_NAME || 'test-api-geo-paraguay';
+// beforeAll(async () => {
+//   const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongodb:27017';
+//   const TEST_APP_NAME = process.env.TEST_APP_NAME || 'test-api-geo-paraguay';
 
-  try {
-    await mongoose.connect(`${MONGO_URI}/${TEST_APP_NAME}`);
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-  }
+//   try {
+//     await mongoose.connect(`${MONGO_URI}/${TEST_APP_NAME}`);
+//   } catch (error) {
+//     console.error('MongoDB connection error:', error);
+//   }
 
-  server = app.listen();
-});
+//   server = app.listen();
+// });
 
-afterAll(async () => {
-  if (redisClient && redisClient.isOpen) {
-    await redisClient.quit();
-  }
+// afterAll(async () => {
+//   if (redisClient && redisClient.isOpen) {
+//     await redisClient.quit();
+//   }
 
-  if (mongoose.connection.readyState !== 0) {
-    await mongoose.disconnect();
-  }
+//   if (mongoose.connection.readyState !== 0) {
+//     await mongoose.disconnect();
+//   }
 
-  if (mysqlConnection) {
-    await mysqlConnection.end();
-  }
+//   if (mysqlConnection) {
+//     await mysqlConnection.end();
+//   }
 
-  if (server) {
-    server.close();
-  }
+//   if (server) {
+//     server.close();
+//   }
 
-  await new Promise((resolve) => {
-    setTimeout(() => resolve(), 100);
-  });
-});
+//   await new Promise((resolve) => {
+//     setTimeout(() => resolve(), 100);
+//   });
+// });

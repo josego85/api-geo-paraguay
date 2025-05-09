@@ -1,4 +1,7 @@
 const { EntitySchema } = require('typeorm');
+const {
+  db: { srid },
+} = require('config');
 
 module.exports = new EntitySchema({
   name: 'Department',
@@ -15,11 +18,12 @@ module.exports = new EntitySchema({
     capital_name: {
       type: String,
     },
-    // geom: {
-    //   type: 'geometry',
-    //   spatialFeatureType: 'MultiPolygon',
-    //   srid: +process.env.SRID,
-    //   nullable: false,
-    // },
+    geom: {
+      type: 'geometry',
+      spatialFeatureType: 'MultiPolygon',
+      srid,
+      nullable: false,
+      select: false,
+    },
   },
 });
