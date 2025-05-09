@@ -14,6 +14,7 @@ All significant changes to this project are documented in this file.
 - Refactored DataSource initialization; now located in `database/data-source.js`.
 - Updated service layer to call repository → entity instead of direct database queries.
 - Switched from direct service-to-DB access to service → repository → entity flow.
+- Refactored **entities** to remove duplication, centralize common columns (via `BaseColumns.js`) and DRY up schema definitions.
 
 ### Removed
 - Deleted legacy models for **Department**, **District**, **Neighborhood**, and **City**.
