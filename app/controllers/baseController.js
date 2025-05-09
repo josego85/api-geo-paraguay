@@ -3,8 +3,8 @@ const catchAsync = (fn) => (req, res, next) => fn(req, res, next).catch(next);
 function createController({ service, namePlural, nameSingular }) {
   return {
     getAll: catchAsync(async (req, res) => {
-      const { page, limit, sortField, sortOrder, ...filter } = req.processedQuery;
-      const data = await service.findAll({ page, limit, sortField, sortOrder, ...filter });
+      const { page, limit, sortField, sortOrder, ...filters } = req.processedQuery;
+      const data = await service.findAll({ page, limit, sortField, sortOrder, ...filters });
 
       if (!data || data.length === 0) {
         return res.status(404).json({ message: `${namePlural} not found` });

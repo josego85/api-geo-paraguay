@@ -1,6 +1,5 @@
 const geoCacheService = require('services/geoCacheService');
 const departmentService = require('services/departmentService');
-const Department = require('models/department.model');
 const createController = require('./baseController');
 
 const { getAll, getById } = createController({
@@ -18,7 +17,7 @@ exports.findByLngLat = async (req, res) => {
     const { lng, lat } = req.params;
 
     if (!lng || !lat) {
-      return res.status(400).send({ message: 'Longitude and latitude are required' });
+      return res.status(400).json({ message: 'Longitude and latitude are required' });
     }
 
     // Check if the data is already cached.
@@ -27,18 +26,18 @@ exports.findByLngLat = async (req, res) => {
       return res.status(200).json(cachedData);
     }
 
-    const data = await Department.findByLngLat(lng, lat);
+    const data = await departmentService.findByLngLat(lng, lat);
 
     if (!data) {
-      return res.status(404).send({ message: 'Departments not found' });
+      return res.status(404).json({ message: 'Departments not found' });
     }
 
     // Update cache.
     geoCacheService.cacheLocation(lng, lat, data).catch((error) => console.error('Error: ', error));
 
-    return res.status(200).json(data);
+    return res.json(data);
   } catch (error) {
-    return res.status(403).send({
+    return res.status(403).json({
       message: req.polyglot.t('failed_to_retrieve_department') || error.message,
     });
   }

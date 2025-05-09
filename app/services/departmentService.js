@@ -1,4 +1,20 @@
 const BaseService = require('services/baseService');
-const Department = require('models/department.model');
+const DepartmentRepository = require('repositories/DepartmentRepository');
+const AppDataSource = require('database/data-source');
 
-module.exports = new BaseService(Department);
+const departmentRepo = new DepartmentRepository(AppDataSource);
+
+class DepartmentService extends BaseService {
+  /**
+   * Find the department, district, city, and neighborhood
+   * containing the given coordinates
+   * @param {number|string} lng - Longitude
+   * @param {number|string} lat - Latitude
+   * @returns {Promise<Object>} - Raw result with names
+   */
+  async findByLngLat(lng, lat) {
+    return this.repository.findByLngLat(lng, lat);
+  }
+}
+
+module.exports = new DepartmentService(departmentRepo);

@@ -1,10 +1,12 @@
 const Redis = require('ioredis');
-const { REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = require('config/global.config');
+const config = require('config');
+
+const { host, port, password } = config.redis;
 
 const redisClient = new Redis({
-  host: REDIS_HOST || 'localhost',
-  port: REDIS_PORT || 6379,
-  password: REDIS_PASSWORD || null,
+  host,
+  port,
+  password,
   retryStrategy(times) {
     return Math.min(times * 50, 2000);
   },
