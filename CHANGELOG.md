@@ -5,10 +5,12 @@ All significant changes to this project are documented in this file.
 ## [2.17.0] - 2025-05-09
 
 ### Added
+
 - Introduced ORM: **TypeORM** for database abstraction and security against SQL injection.
 - Added **Joi** for comprehensive environment variable validation.
 
 ### Refactored
+
 - Migrated from raw models to **repositories** with **entities**.
 - Centralized all environment variables into `config/index.js` and validated them with Joi.
 - Refactored DataSource initialization; now located in `database/data-source.js`.
@@ -17,9 +19,11 @@ All significant changes to this project are documented in this file.
 - Refactored **entities** to remove duplication, centralize common columns (via `BaseColumns.js`) and DRY up schema definitions.
 
 ### Removed
+
 - Deleted legacy models for **Department**, **District**, **Neighborhood**, and **City**.
 
 ### Updated
+
 - Adapted GraphQL resolvers to use service layer instead of direct model access.
 
 ## [2.16.1] - 2025-05-07
