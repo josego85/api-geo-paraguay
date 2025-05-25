@@ -1,8 +1,8 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.17.1-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.18.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
-[![Node.js Version](https://img.shields.io/badge/node-v22.15.0-green.svg)](https://nodejs.org)
+[![Node.js Version](https://img.shields.io/badge/node-v22.16.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
 [![Docker](https://img.shields.io/badge/docker-v27.5.1-blue.svg)](https://www.docker.com/)
 [![Redis](https://img.shields.io/badge/redis-v7.4.3-red.svg)](https://redis.io)
