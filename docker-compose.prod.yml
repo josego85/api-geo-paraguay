@@ -28,7 +28,15 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./deploy/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - type: volume
+        source: nginx-logs
+        target: /var/log/nginx
+        volume:
+          nocopy: true
+      - type: bind
+        source: ./deploy/nginx/empty-conf.d
+        target: /etc/nginx/conf.d
     depends_on:
       - app
     networks:
@@ -89,6 +97,7 @@ services:
       - app-network
 
 volumes:
+  nginx-logs: {}
   mysql-data:
   dbdata6:
   cache:
