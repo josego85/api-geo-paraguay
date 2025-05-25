@@ -2,6 +2,15 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.0] - 2025-05-25
+
+### Changed
+
+- Updated dependency versions in `package.json`:
+  - Updated several development dependencies to their latest versions
+- Upgraded Node.js to v22.16.0
+- Upgraded Mongodb to 7.0.20
+
 ## [2.17.1] - 2025-05-09
 
 ### Fixed

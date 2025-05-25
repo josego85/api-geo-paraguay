@@ -24,6 +24,7 @@ services:
       DB_NAME: ${DB_NAME}
     networks:
       - app-network
+      # - monitoring_net
 
   database:
     image: mysql:8.0.42
@@ -50,7 +51,7 @@ services:
       - app-network
 
   mongodb:
-    image: mongo:7.0.19-jammy
+    image: mongo:7.0.20-jammy
     container_name: mongodb-api-geo-paraguay
     restart: always
     ports:
@@ -117,3 +118,6 @@ volumes:
 networks:
   app-network:
     driver: bridge
+
+  # monitoring_net:
+  #   external: true
