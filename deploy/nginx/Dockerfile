@@ -35,6 +35,8 @@ RUN mkdir -p /opt && cd /opt && \
 
 FROM nginx:${NGINX_VERSION}-alpine
 
+RUN rm -f /etc/nginx/conf.d/*.conf
+
 COPY --from=build /opt/nginx/objs/ngx_http_headers_more_filter_module.so /usr/lib/nginx/modules/
 
 RUN chmod 644 /usr/lib/nginx/modules/ngx_http_headers_more_filter_module.so && \

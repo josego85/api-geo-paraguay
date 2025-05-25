@@ -2,6 +2,20 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.17.2] - 2025-05-25
+
+### Fixed
+
+- Persist Nginx logs inside the container by configuring a named volume with `nocopy` and restoring symbolic links from `/var/log/nginx/*.log` to Docker’s stdout/stderr.
+
+### Improved
+
+- Refined `nginx.conf` to:
+  - Duplicate access and error logs to both `/var/log/nginx/*.log` and `/dev/stdout`/`/dev/stderr`.
+  - Define a `log_format main` for structured logging.
+  - Use `listen 80 default_server` to eliminate server name conflicts.
+  - Load the `headers_more` dynamic module via `load_module` directive.
+
 ## [2.17.1] - 2025-05-09
 
 ### Fixed
