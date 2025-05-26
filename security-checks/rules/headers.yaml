@@ -25,13 +25,13 @@ rules:
         match: '^nosniff$'
 
   referrer-policy-present:
-    description: 'Referrer-Policy must be strict-origin-when-cross-origin, same-origin or no-referrer'
+    description: 'Referrer-Policy must be strict-origin, strict-origin-when-cross-origin, same-origin or no-referrer'
     given: '$.referrer-policy'
     severity: error
     then:
       function: pattern
       functionOptions:
-        match: '^(strict-origin-when-cross-origin|same-origin|no-referrer)$'
+        match: '^(strict-origin|strict-origin-when-cross-origin|same-origin|no-referrer)$'
 
   permissions-policy-present:
     description: 'Permissions-Policy header must exist'

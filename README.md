@@ -38,6 +38,22 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 - Security-first design
 - Production-ready with Docker support
 
+## Security Considerations
+
+### HTTPS and Strict-Transport-Security (HSTS)
+
+For any production deployment, it is **critically important** to configure your application to be served over **HTTPS (SSL/TLS)**. HTTPS encrypts data in transit, protecting it from eavesdropping and tampering.
+
+Many web security features, including **HTTP Strict Transport Security (HSTS)**, rely on HTTPS. HSTS is a security policy mechanism that helps to protect websites against protocol downgrade attacks and cookie hijacking. It allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections, and never via the insecure HTTP protocol.
+
+**Recommendation:**
+
+1.  **Enable HTTPS**: Configure your environment (e.g., via a reverse proxy like Nginx or directly in Node.js if applicable) to use SSL/TLS certificates and serve all traffic over HTTPS.
+    *   **Note on SSL Certificates**: Using direct IP addresses (without a DNS hostname) makes obtaining and using standard SSL certificates challenging. It is highly recommended to use a registered DNS name for your service to properly secure it with HTTPS.
+2.  **Implement HSTS**: Once HTTPS is correctly set up and all traffic is being served exclusively over HTTPS, enable the `Strict-Transport-Security` header. In this application's `app/middleware/security.middleware.js`, this can be achieved by adding or uncommenting a line similar to `app.use(helmet.hsts({ maxAge: 15552000, includeSubDomains: true, preload: true }));` (15552000 seconds is equivalent to 6 months). Ensure this is only done after HTTPS is fully functional.
+
+Using HTTP without encryption should be strictly limited to local development environments.
+
 ## Database Architecture
 
 - **MySQL**: Primary database for geographical data (departments, districts, cities, neighborhoods)

@@ -1,7 +1,7 @@
 const helmet = require('helmet');
-const cors = require('cors');
+const cors =require('cors');
 const expectCt = require('expect-ct');
-const featurePolicy = require('feature-policy');
+const permissionsPolicy = require('permissions-policy'); // Replaced feature-policy
 const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
@@ -39,7 +39,7 @@ const securityMiddleware = (app) => {
     app.use(helmet.frameguard({ action: 'DENY' }));
     app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' }));
     app.use(
-      featurePolicy({
+      permissionsPolicy({ // Replaced featurePolicy with permissionsPolicy
         features: {
           fullscreen: ["'self'"],
           vibrate: ["'none'"],
@@ -51,9 +51,18 @@ const securityMiddleware = (app) => {
       })
     );
 
+    // Set Cache-Control header to prevent caching
+    res.setHeader('Cache-Control', 'no-store');
+
     return next();
   });
 
+  // CORS Configuration
+  // The current configuration allows requests from any origin ('*') and only GET methods.
+  // This is suitable for a public, read-only API.
+  // If this API is primarily intended to be consumed by a specific frontend application,
+  // consider restricting the 'origin' to that application's domain for enhanced security.
+  // e.g., origin: 'https://your-frontend-app.com'
   app.use(
     cors({
       origin: '*',

@@ -1,9 +1,14 @@
+# General Note: Enabling HTTPS is crucial for production environments
+# as it allows the use of important security headers like Strict-Transport-Security (HSTS).
 security:
   headers:
-    x-content-type-options: true
-    x-frame-options: true
-    content-security-policy: true
-    strict-transport-security: true
+    x-content-type-options: true # Set by default by helmet()
+    x-frame-options: true # Set by helmet.frameguard({ action: 'DENY' })
+    content-security-policy: true # Set by helmet.contentSecurityPolicy()
+    strict-transport-security: false # Requires HTTPS, currently not enabled
+    permissions-policy: true # Set by permissionsPolicy() middleware
+    cache-control: true # Set by res.setHeader('Cache-Control', 'no-store')
+    referrer-policy: true # Set by helmet.referrerPolicy({ policy: 'strict-origin' })
   auth:
     enabled: true
     type: 'jwt'
