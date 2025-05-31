@@ -2,6 +2,14 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.0] - 2025-05-31
+
+### Improved
+
+- Refined `nginx.conf` to:
+  - Added and tuned caching in NGINX for improved performance, reduced backend load, and faster response times for frequently accessed resources.
+  - Enhanced cache invalidation and revalidation strategies to ensure data freshness while maximizing cache hit ratio.
+
 ## [2.17.2] - 2025-05-25
 
 ### Fixed
