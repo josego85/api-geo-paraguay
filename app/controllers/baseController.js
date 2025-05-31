@@ -10,7 +10,7 @@ function createController({ service, namePlural, nameSingular }) {
         return res.status(404).json({ message: `${namePlural} not found` });
       }
 
-      return res.json({ data, page, limit });
+      return res.json({ data: data.data, metadata: data.metadata });
     }),
 
     getById: catchAsync(async (req, res) => {
