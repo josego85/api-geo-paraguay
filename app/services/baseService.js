@@ -1,3 +1,5 @@
+const ServiceResponse = require('../utils/responses/ServiceResponse');
+
 class BaseService {
   /**
    * @param {object} repository
@@ -7,7 +9,20 @@ class BaseService {
   }
 
   async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', ...filters } = {}) {
-    return this.repository.findAll({ page, limit, sortField, sortOrder, ...filters });
+    try {
+      const { data, total } = await this.repository.findAll({
+        page,
+        limit,
+        sortField,
+        sortOrder,
+        ...filters,
+      });
+
+      return ServiceResponse.success(data, { total, page, limit });
+    } catch (error) {
+      console.error('BaseService findAll error:', error);
+      return ServiceResponse.empty();
+    }
   }
 
   async findById(id) {
