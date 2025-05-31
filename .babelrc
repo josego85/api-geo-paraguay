@@ -15,6 +15,7 @@
           "helpers": "./app/helpers",
           "middleware": "./app/middleware",
           "models": "./app/models",
+          "protocols": "./app/protocols",
           "repositories": "./app/repositories",
           "routes": "./app/routes",
           "services": "./app/services"

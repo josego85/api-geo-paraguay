@@ -43,6 +43,7 @@ module.exports = {
       helpers: path.resolve(__dirname, './app/helpers'),
       middleware: path.resolve(__dirname, './app/middleware'),
       models: path.resolve(__dirname, './app/models'),
+      protocols: path.resolve(__dirname, './app/protocols'),
       repositories: path.resolve(__dirname, './app/repositories'),
       routes: path.resolve(__dirname, './app/routes'),
       services: path.resolve(__dirname, './app/services'),

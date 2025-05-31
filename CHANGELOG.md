@@ -2,6 +2,35 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.19.0] - 2025-06-01
+
+### Added
+
+- MCP (Message Control Protocol) implementation for AI/LLM integration
+- New response utilities:
+  - `PaginationResponse` class for standardized pagination handling
+  - `ServiceResponse` class for consistent service responses
+
+### Changed
+
+- Improved response structure with standardized metadata
+- Reorganized pagination parameters (page, limit) into metadata object
+- Enhanced data structure consistency across REST, GraphQL and MCP endpoints
+- Fixed queryParser to keep filters grouped under 'filters' property instead of spreading them
+
+### Technical Improvements
+
+- Moved response handling to utils/responses/
+- Added data validation for response classes
+- Standardized pagination metadata format
+- Improved error handling in responses
+
+### Internal
+- Refactored the base service to utilize the new standardized response classes for improved consistency.
+- Updated the base repository to adopt the new pagination metadata format.
+- Implemented strict type validation for all service responses.
+- Improved documentation for response formats
+
 ## [2.18.0] - 2025-05-31
 
 ### Improved

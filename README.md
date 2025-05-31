@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.18.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.19.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.15.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -38,6 +38,7 @@ The production setup leverages both NGINX caching and Redis caching for improved
 - REST & GraphQL APIs for geographical data
 - Redis caching with GeoHash optimization
 - **NGINX caching for API responses to improve performance and reduce backend load**
+- Message Control Protocol (MCP) support for reliable message handling
 - Security-first design
 - Production-ready with Docker support
 
@@ -56,6 +57,7 @@ The production setup leverages both NGINX caching and Redis caching for improved
 - Comprehensive API documentation via Swagger
 - GraphQL support for flexible and efficient queries
 - Production-ready NGINX integration with rate limiting and security features
+- Message Control Protocol (MCP) implementation for robust communication
 - Flexible sorting options for all geographic endpoints ([see REST API docs](docs/guides/rest.md#sorting))
 
 ## Contributing

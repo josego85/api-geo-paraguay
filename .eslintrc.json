@@ -42,6 +42,7 @@
           "helpers",
           "middleware",
           "models",
+          "protocols",
           "repositories",
           "routes",
           "services"
