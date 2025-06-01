@@ -3,33 +3,20 @@ const departmentController = require('controllers/departmentController');
 const queryParser = require('middleware/queryParser');
 const cacheResponse = require('middleware/cacheMiddleware');
 const validateId = require('middleware/validateId.middleware');
+const { createList, createSingle } = require('utils/cache');
 
 const router = express.Router();
 
 router.get(
   '/departments',
   queryParser,
-  cacheResponse({
-    key: (req) => {
-      const filters = req.processedQuery.filters || {};
-      const filterString = Object.entries(filters)
-        .map(([key, value]) => `${key}=${value}`)
-        .sort()
-        .join(':');
-
-      return `departments:${filterString}:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}`;
-    },
-    ttl: 3600, // one hour
-  }),
+  cacheResponse(createList('departments')),
   departmentController.getDepartments,
 );
 router.get(
   '/departments/:id',
   validateId,
-  cacheResponse({
-    key: (req) => `cache:departments:single:${req.validatedId}`,
-    ttl: 24 * 3600, // 24 hours for single items since
-  }),
+  cacheResponse(createSingle('departments')),
   departmentController.getDepartmentById,
 );
 router.get('/departments/:lng/:lat', departmentController.findByLngLat);
