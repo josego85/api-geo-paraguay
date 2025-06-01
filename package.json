@@ -12,7 +12,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
     "dev": "webpack --mode development --progress",
-    "build": "webpack --mode production --progress",
+    "build": "npm run clean && webpack --mode production --progress",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint:check": "eslint . --ext .js",
@@ -22,7 +22,8 @@
     "test:coverage": "jest --coverage",
     "test:integration": "jest tests/integration",
     "test:unit": "jest tests/unit",
-    "validate:api": "spectral lint openapi.yaml"
+    "validate:api": "spectral lint openapi.yaml",
+    "clean": "rimraf dist"
   },
   "bugs": {
     "url": "https://github.com/josego85/api-geo-paraguay/issues"
@@ -64,7 +65,6 @@
     "@stoplight/spectral-cli": "6.15.0",
     "babel-loader": "10.0.0",
     "babel-plugin-module-resolver": "5.0.2",
-    "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "13.0.0",
     "dotenv-webpack": "8.1.0",
     "eslint": "^9.28.0",
@@ -74,9 +74,13 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.4.1",
     "eslint-plugin-security": "^3.0.1",
+    "glob": "^10.3.10",
+    "globby": "^14.0.0",
     "jest": "29.7.0",
     "nodemon": "3.1.10",
+    "pify": "^6.1.0",
     "prettier": "^3.5.3",
+    "rimraf": "^5.0.5",
     "supertest": "7.1.1",
     "swagger-jsdoc": "6.2.8",
     "webpack": "5.99.9",
@@ -105,5 +109,21 @@
       "<rootDir>/src"
     ]
   },
-  "type": "module"
+  "overrides": {
+    "inflight": "npm:lru-cache@^10.2.0",
+    "glob": "^10.3.10",
+    "sourcemap-codec": "npm:@jridgewell/sourcemap-codec@^1.4.15",
+    "rimraf": "^5.0.5",
+    "lodash.isequal": "npm:deep-equal@^2.2.3",
+    "globby": "^14.0.0",
+    "del": "^7.1.0",
+    "acorn-import-assertions": "npm:acorn-import-attributes@^1.0.0",
+    "*": {
+      "lodash.get": false
+    }
+  },
+  "resolutions": {
+    "globby": "^14.0.0",
+    "pify": "^6.1.0"
+  }
 }
