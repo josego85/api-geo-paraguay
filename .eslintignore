@@ -1,8 +1,0 @@
-node_modules/
-dist/
-build/
-logs/
-tmp/
-tests/
-newrelic.js
-webpack.config.js
