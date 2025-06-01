@@ -10,6 +10,7 @@ All significant changes to this project are documented in this file.
 - New response utilities:
   - `PaginationResponse` class for standardized pagination handling
   - `ServiceResponse` class for consistent service responses
+- Added .prettierignore file to exclude dist, coverage and other build artifacts from formatting
 
 ### Changed
 
@@ -17,6 +18,26 @@ All significant changes to this project are documented in this file.
 - Reorganized pagination parameters (page, limit) into metadata object
 - Enhanced data structure consistency across REST, GraphQL and MCP endpoints
 - Fixed queryParser to keep filters grouped under 'filters' property instead of spreading them
+- Migrated to ESLint 9.x using new flat config format
+- Switched from custom ESLint rules to standard defaults for better maintainability
+- Removed deprecated ESLint plugins and configurations
+- Integrated ESLint with modern module resolution
+- Updated dependencies:
+  - graphql-yoga to 5.13.5
+  - mongoose to 8.15.1
+  - typeorm to 0.3.24
+- Updated development dependencies:
+  - ESLint from 8.x to 9.28.0
+  - eslint-config-prettier to 10.1.5
+  - eslint-plugin-prettier to 5.4.1
+  - eslint-plugin-import to 2.31.0
+  - webpack to 5.99.9
+  - webpack-cli to 6.0.1
+  - supertest to 7.1.1
+- Updated Babel configuration:
+  - Changed plugin name from @babel/plugin-transform-class-properties to @babel/plugin-proposal-class-properties
+- Enhanced Prettier configuration:
+  - Updated trailingComma to "all" for cleaner diffs when adding new items to arrays/objects
 
 ### Technical Improvements
 
@@ -24,12 +45,22 @@ All significant changes to this project are documented in this file.
 - Added data validation for response classes
 - Standardized pagination metadata format
 - Improved error handling in responses
+- Enhanced ESLint and Prettier integration
+- Simplified module alias resolution in ESLint config
+- Applied consistent code formatting across the project
 
 ### Internal
+
 - Refactored the base service to utilize the new standardized response classes for improved consistency.
 - Updated the base repository to adopt the new pagination metadata format.
 - Implemented strict type validation for all service responses.
 - Improved documentation for response formats
+
+### Removed
+
+- Legacy .eslintignore file in favor of native ESLint 9.x ignore patterns
+- Deprecated ESLint plugins and unused configurations
+- Redundant ESLint rules and overrides
 
 ## [2.18.0] - 2025-05-31
 
