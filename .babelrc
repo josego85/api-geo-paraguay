@@ -1,16 +1,14 @@
 {
-  "presets": ["@babel/preset-env"],
+  "presets": [["@babel/preset-env", { "loose": true }]],
   "plugins": [
-    [
-      "@babel/plugin-transform-class-properties",
-      {
-        "loose": true
-      }
-    ],
+    ["@babel/plugin-transform-class-properties", { "loose": true }],
+    ["@babel/plugin-transform-private-methods", { "loose": true }],
+    ["@babel/plugin-transform-private-property-in-object", { "loose": true }],
     [
       "module-resolver",
       {
-        "root": ["."],
+        "cwd": "babelrc",
+        "extensions": [".js"],
         "alias": {
           "config": "./app/config",
           "controllers": "./app/controllers",
@@ -23,9 +21,11 @@
           "protocols": "./app/protocols",
           "repositories": "./app/repositories",
           "routes": "./app/routes",
-          "services": "./app/services"
+          "services": "./app/services",
+          "utils": "./app/utils"
         }
       }
-    ]
+    ],
+    ["@babel/plugin-transform-optional-chaining", { "loose": true }]
   ]
 }
