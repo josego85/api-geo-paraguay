@@ -96,6 +96,22 @@ All significant changes to this project are documented in this file.
   - Improved filter validation against column metadata
   - Added string value trimming to prevent whitespace issues
   - Added logging for ignored invalid column filters
+- Fixed GraphQL endpoints data fetching:
+  - Corrected data resolution for departments, districts, cities and neighborhoods
+  - Added proper error handling for all GraphQL queries
+  - Fixed pagination arguments in queries
+  - Improved response structure for better data access
+
+### Refactored
+- Separated GraphQL and MCP implementations:
+  - Created dedicated routes and configurations for each protocol
+  - Improved GraphQL schema organization
+  - Enhanced MCP protocol implementation
+  - Added better type definitions and validations
+- Improved GraphQL architecture:
+  - Centralized schema definitions
+  - Added consistent error handling
+  - Improved query resolvers structure
 
 ## [2.18.0] - 2025-05-31
 
