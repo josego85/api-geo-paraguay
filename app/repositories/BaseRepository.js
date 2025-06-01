@@ -1,23 +1,25 @@
-const { Like } = require('typeorm');
-
 class BaseRepository {
   constructor(dataSource, entity) {
     this.repo = dataSource.getRepository(entity);
   }
 
-  async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', ...filters }) {
+  async findAll({ page = 1, limit = 10, sortField = 'id', sortOrder = 'ASC', filters = {} }) {
     const queryBuilder = this.repo.createQueryBuilder('entity');
+    const metadata = this.repo.metadata;
 
-    // Apply filters if they exist and are valid columns
     if (Object.keys(filters).length > 0) {
-      const metadata = this.repo.metadata;
       Object.entries(filters).forEach(([key, value]) => {
-        if (value != null && metadata.findColumnWithPropertyName(key)) {
+        const column = metadata.findColumnWithPropertyName(key);
+        if (value != null && column) {
           if (typeof value === 'string') {
-            queryBuilder.andWhere(`entity.${key} LIKE :${key}`, { [key]: `%${value}%` });
+            queryBuilder.andWhere(`LOWER(entity.${key}) LIKE LOWER(:${key})`, {
+              [key]: `%${value.trim()}%`,
+            });
           } else {
             queryBuilder.andWhere(`entity.${key} = :${key}`, { [key]: value });
           }
+        } else {
+          console.warn(`Ignoring filter for non-existent column: ${key}`);
         }
       });
     }
