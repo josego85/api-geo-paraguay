@@ -3,7 +3,7 @@ const validateId = (req, res, next) => {
   if (isNaN(id) || id <= 0) {
     return res.status(400).json({
       error: 'Invalid ID',
-      message: 'ID must be a positive number'
+      message: 'ID must be a positive number',
     });
   }
   req.validatedId = id;

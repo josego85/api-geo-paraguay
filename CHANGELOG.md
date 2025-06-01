@@ -11,6 +11,19 @@ All significant changes to this project are documented in this file.
   - `PaginationResponse` class for standardized pagination handling
   - `ServiceResponse` class for consistent service responses
 - Added .prettierignore file to exclude dist, coverage and other build artifacts from formatting
+- validateId middleware endpoints to prevent invalid ID queries
+- Enhanced Redis cache implementation across all geographic endpoints:
+  - Improved Redis cache key generation for all listing endpoints
+  - Added unified cache prefixes for single item queries (departments, districts, cities, neighborhoods)
+  - Added filter-aware Redis caching for all search operations
+  - Extended Redis cache TTL to 24 hours for all single item queries
+  - Implemented in departments, districts, cities, and neighborhoods endpoints
+- Created utils/cache.js to centralize Redis cache configuration:
+  - Added createList for all listing endpoints
+  - Added createSingle for all individual record endpoints
+  - Standardized cache key generation across all geographic routes
+  - Unified TTL configuration (1 hour for lists, 24 hours for single items)
+  - Applied consistent caching strategy across all API endpoints
 
 ### Changed
 
@@ -39,6 +52,17 @@ All significant changes to this project are documented in this file.
 - Enhanced Prettier configuration:
   - Updated trailingComma to "all" for cleaner diffs when adding new items to arrays/objects
 
+### Improved
+
+- Enhanced production logging:
+  - Added source maps to webpack build
+  - Improved code readability in production logs
+  - Added deterministic chunk and module IDs
+- Enhanced build configuration:
+  - Added source maps support for better debugging
+  - Improved code minification and compression settings
+  - Added deterministic module and chunk IDs for better caching
+
 ### Technical Improvements
 
 - Moved response handling to utils/responses/
@@ -61,6 +85,17 @@ All significant changes to this project are documented in this file.
 - Legacy .eslintignore file in favor of native ESLint 9.x ignore patterns
 - Deprecated ESLint plugins and unused configurations
 - Redundant ESLint rules and overrides
+
+### Fixed
+
+- Replaced deprecated inflight package with lru-cache to resolve memory leak warning
+- Replaced deprecated sourcemap-codec with @jridgewell/sourcemap-codec
+- Updated rimraf dependency to version 5.0.5 to resolve deprecation warning
+- Enhanced BaseRepository filter handling:
+  - Added case-insensitive search using LOWER() for string filters
+  - Improved filter validation against column metadata
+  - Added string value trimming to prevent whitespace issues
+  - Added logging for ignored invalid column filters
 
 ## [2.18.0] - 2025-05-31
 
