@@ -13,7 +13,7 @@ router.get(
       `departments:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}:capital_name=${req.processedQuery.capital_name || ''}`,
     ttl: 3600, // one hour
   }),
-  departmentController.getDepartments
+  departmentController.getDepartments,
 );
 router.get(
   '/departments/:id',
@@ -21,7 +21,7 @@ router.get(
     key: (req) => `departments:id=${req.params.id}`,
     ttl: 3600, // one hour
   }),
-  departmentController.getDepartmentById
+  departmentController.getDepartmentById,
 );
 router.get('/departments/:lng/:lat', departmentController.findByLngLat);
 router.get('/paraguay/:lng/:lat', departmentController.findByLngLat);

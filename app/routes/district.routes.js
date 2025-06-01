@@ -13,7 +13,7 @@ router.get(
       `districts:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}`,
     ttl: 3600, // one hour
   }),
-  districtController.getDistricts
+  districtController.getDistricts,
 );
 router.get(
   '/districts/:id',
@@ -21,7 +21,7 @@ router.get(
     key: (req) => `districts:id=${req.params.id}`,
     ttl: 3600, // one hour
   }),
-  districtController.getDistrictById
+  districtController.getDistrictById,
 );
 
 module.exports = router;

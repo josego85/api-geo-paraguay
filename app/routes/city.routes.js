@@ -13,7 +13,7 @@ router.get(
       `cities:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}`,
     ttl: 3600, // one hour
   }),
-  cityController.getCities
+  cityController.getCities,
 );
 
 router.get(
@@ -22,7 +22,7 @@ router.get(
     key: (req) => `cities:id=${req.params.id}`,
     ttl: 3600, // one hour
   }),
-  cityController.getCityById
+  cityController.getCityById,
 );
 
 module.exports = router;

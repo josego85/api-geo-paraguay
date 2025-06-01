@@ -13,7 +13,7 @@ router.get(
       `neighborhoods:sortField=${req.processedQuery.sortField}:sortOrder=${req.processedQuery.sortOrder}:page=${req.processedQuery.page}:limit=${req.processedQuery.limit}:name=${req.processedQuery.name || ''}`,
     ttl: 3600, // one hour
   }),
-  neighborhoodController.getNeighborhoods
+  neighborhoodController.getNeighborhoods,
 );
 router.get(
   '/neighborhoods/:id',
@@ -21,7 +21,7 @@ router.get(
     key: (req) => `neighborhoods:id=${req.params.id}`,
     ttl: 3600, // one hour
   }),
-  neighborhoodController.getNeighborhoodById
+  neighborhoodController.getNeighborhoodById,
 );
 
 module.exports = router;
