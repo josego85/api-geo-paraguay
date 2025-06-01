@@ -1,11 +1,11 @@
-import eslint from '@eslint/js';
-import babelParser from '@babel/eslint-parser';
-import prettierConfig from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
-import * as importPlugin from 'eslint-plugin-import';
-import * as security from 'eslint-plugin-security';
+const eslint = require('@eslint/js');
+const babelParser = require('@babel/eslint-parser');
+const prettierConfig = require('eslint-config-prettier');
+const prettierPlugin = require('eslint-plugin-prettier');
+const importPlugin = require('eslint-plugin-import');
+const security = require('eslint-plugin-security');
 
-export default [
+module.exports = [
   {
     ignores: [
       '**/dist/**',
@@ -21,8 +21,13 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 2021,
-      sourceType: 'module',
+      sourceType: 'script',
       parser: babelParser,
+      parserOptions: {
+        requireConfigFile: false,
+        sourceType: 'script',
+        allowImportExportEverywhere: true,
+      },
       globals: {
         require: true,
         module: true,
@@ -90,9 +95,12 @@ export default [
       'import/resolver': {
         alias: {
           map: [
+            ['config', './app/config'],
             ['controllers', './app/controllers'],
             ['database', './app/database'],
             ['entities', './app/entities'],
+            ['i18n', './app/i18n'],
+            ['helpers', './app/helpers'],
             ['middleware', './app/middleware'],
             ['models', './app/models'],
             ['protocols', './app/protocols'],
