@@ -40,6 +40,7 @@ All significant changes to this project are documented in this file.
   - mongoose to 8.15.1
   - typeorm to 0.3.24
 - Updated development dependencies:
+  - @babel/eslint-parser to 7.17.5
   - ESLint from 8.x to 9.28.0
   - eslint-config-prettier to 10.1.5
   - eslint-plugin-prettier to 5.4.1
@@ -103,6 +104,7 @@ All significant changes to this project are documented in this file.
   - Improved response structure for better data access
 
 ### Refactored
+
 - Separated GraphQL and MCP implementations:
   - Created dedicated routes and configurations for each protocol
   - Improved GraphQL schema organization
