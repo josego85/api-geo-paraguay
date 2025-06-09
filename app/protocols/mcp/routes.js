@@ -9,8 +9,9 @@ const mcpSchema = createSchema({
 
 const mcpYoga = createYoga({
   schema: mcpSchema,
-  graphiql: false,
-  context: async ({ req }) => ({
+  graphiql: true,
+  graphqlEndpoint: '/mcp',
+  context: async () => ({
     startTime: Date.now(),
     protocol: 'mcp',
   }),
