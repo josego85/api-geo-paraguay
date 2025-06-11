@@ -45,6 +45,9 @@ All significant changes to this project are documented in this file.
   - eslint-config-prettier to 10.1.5
   - eslint-plugin-prettier to 5.4.1
   - eslint-plugin-import to 2.31.0
+  - glob to 11.0.2
+  - globby to 14.1.0
+  - rimraf to 6.0.1
   - webpack to 5.99.9
   - webpack-cli to 6.0.1
   - supertest to 7.1.1
