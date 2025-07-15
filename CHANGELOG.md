@@ -2,6 +2,14 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.1] - 2025-07-15
+
+### Security
+
+- Updated vulnerable dependencies:
+  - **brace-expansion**: Fixed Regular Expression Denial of Service vulnerability ([GHSA-v6h2-p8h4-qcjw](https://github.com/advisories/GHSA-v6h2-p8h4-qcjw)) via `npm audit fix`.
+  - **tar-fs**: Fixed directory traversal vulnerability ([GHSA-8cj5-5rvv-wf4v](https://github.com/advisories/GHSA-8cj5-5rvv-wf4v)) via `npm audit fix`.
+
 ## [2.18.0] - 2025-05-31
 
 ### Improved
