@@ -2,6 +2,13 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.2] - 2025-07-22
+
+### Security
+
+- Updated vulnerable dependencies:
+  - **form-data**: Fixed critical vulnerability due to use of unsafe random function for boundary selection ([GHSA-fjxv-7rqg-78g4](https://github.com/advisories/GHSA-fjxv-7rqg-78g4)) via `npm audit fix`.
+
 ## [2.18.1] - 2025-07-15
 
 ### Security
