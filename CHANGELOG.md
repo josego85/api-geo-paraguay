@@ -2,7 +2,7 @@
 
 All significant changes to this project are documented in this file.
 
-## [2.19.0] - 2025-06-01
+## [2.19.0] - 2025-08-19
 
 ### Added
 
@@ -36,21 +36,24 @@ All significant changes to this project are documented in this file.
 - Removed deprecated ESLint plugins and configurations
 - Integrated ESLint with modern module resolution
 - Updated dependencies:
+  - express-rate-limit from 7.5.0 to 8.0.1
   - graphql-yoga to 5.13.5
   - mongoose to 8.15.1
-  - typeorm to 0.3.24
+  - mysql2 to 3.14.3
+  - typeorm to 0.3.26
 - Updated development dependencies:
   - @babel/eslint-parser to 7.17.5
+  - copy-webpack-plugin to 13.0.1
   - ESLint from 8.x to 9.28.0
-  - eslint-config-prettier to 10.1.5
+  - eslint-config-prettier to 10.1.8
   - eslint-plugin-prettier to 5.4.1
   - eslint-plugin-import to 2.31.0
-  - glob to 11.0.2
+  - glob to 11.0.3
   - globby to 14.1.0
   - rimraf to 6.0.1
   - webpack to 5.99.9
   - webpack-cli to 6.0.1
-  - supertest to 7.1.1
+  - supertest to 7.1.4
 - Updated Babel configuration:
   - Changed plugin name from @babel/plugin-transform-class-properties to @babel/plugin-proposal-class-properties
 - Enhanced Prettier configuration:
@@ -124,14 +127,6 @@ All significant changes to this project are documented in this file.
 
 - Updated vulnerable dependencies:
   - **form-data**: Fixed critical vulnerability due to use of unsafe random function for boundary selection ([GHSA-fjxv-7rqg-78g4](https://github.com/advisories/GHSA-fjxv-7rqg-78g4)) via `npm audit fix`.
-
-## [2.18.1] - 2025-07-15
-
-### Security
-
-- Updated vulnerable dependencies:
-  - **brace-expansion**: Fixed Regular Expression Denial of Service vulnerability ([GHSA-v6h2-p8h4-qcjw](https://github.com/advisories/GHSA-v6h2-p8h4-qcjw)) via `npm audit fix`.
-  - **tar-fs**: Fixed directory traversal vulnerability ([GHSA-8cj5-5rvv-wf4v](https://github.com/advisories/GHSA-8cj5-5rvv-wf4v)) via `npm audit fix`.
 
 ## [2.18.1] - 2025-07-15
 
