@@ -1,56 +1,43 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const Dotenv = require('dotenv-webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
   target: 'node',
-  entry: {
-    index: path.resolve(__dirname, './server.js'),
-  },
+  entry: './server.js',
   output: {
+    clean: true,
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    clean: true,
   },
   externals: [nodeExternals()],
-  plugins: [
-    new Dotenv(),
-    new CleanWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'docs'),
-          to: path.resolve(__dirname, 'dist/docs'),
-          noErrorOnMissing: true,
-          globOptions: {
-            ignore: ['**/.DS_Store'],
-          },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
         },
+      },
+    ],
+  },
+  plugins: [
+    new DotenvWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'app/i18n', to: 'i18n' },
+        { from: 'docs', to: 'docs' },
       ],
     }),
   ],
-  resolve: {
-    alias: {
-      config: path.resolve(__dirname, './app/config'),
-      controllers: path.resolve(__dirname, './app/controllers'),
-      database: path.resolve(__dirname, './app/database'),
-      entities: path.resolve(__dirname, './app/entities'),
-      i18n: path.resolve(__dirname, './app/i18n'),
-      helpers: path.resolve(__dirname, './app/helpers'),
-      middleware: path.resolve(__dirname, './app/middleware'),
-      models: path.resolve(__dirname, './app/models'),
-      repositories: path.resolve(__dirname, './app/repositories'),
-      routes: path.resolve(__dirname, './app/routes'),
-      services: path.resolve(__dirname, './app/services'),
-    },
-    modules: ['node_modules'],
-  },
+  devtool: 'source-map',
   optimization: {
     minimize: true,
+    moduleIds: 'deterministic',
+    chunkIds: 'deterministic',
     minimizer: [
       new TerserPlugin({
         terserOptions: {
