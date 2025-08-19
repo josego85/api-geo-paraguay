@@ -58,6 +58,7 @@ All significant changes to this project are documented in this file.
 - Enhanced Prettier configuration:
   - Updated trailingComma to "all" for cleaner diffs when adding new items to arrays/objects
 - Updated MySQL Docker Compose image from 8.0.42 to 8.0.43.
+- Upgraded Node.js Docker image from 22.15.0 to 22.18.0.
 
 ### Improved
 
