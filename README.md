@@ -9,6 +9,7 @@
 [![MySQL](https://img.shields.io/badge/mysql-v8.0.43-orange.svg)](https://www.mysql.com)
 [![MongoDB](https://img.shields.io/badge/mongodb-v7.0.23-green.svg)](https://www.mongodb.com)
 [![GraphQL](https://img.shields.io/badge/graphql-✓-e10098.svg)](https://graphql.org)
+[![NGINX](https://img.shields.io/badge/nginx-v1.29.1-brightgreen.svg)](https://nginx.org)
 [![SonarQube](https://img.shields.io/badge/code%20quality-sonarqube-4AB6E5.svg)](http://localhost:9000)
 [![CodeQL](https://github.com/josego85/api-geo-paraguay/workflows/CodeQL/badge.svg)](https://github.com/josego85/api-geo-paraguay/actions)
 [![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/josego85/api-geo-paraguay/graphs/commit-activity)

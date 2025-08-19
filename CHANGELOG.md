@@ -61,6 +61,7 @@ All significant changes to this project are documented in this file.
 - Upgraded Node.js Docker image from 22.15.0 to 22.18.0.
 - Updated MongoDB Docker Compose image from 7.0.19 to 7.0.23.
 - Upgraded Redis Docker Compose image from 7.4.3 to 8.2.1.
+- Upgraded Nginx Docker Compose image from 1.28.0 to 1.29.1.
 
 ### Improved
 
