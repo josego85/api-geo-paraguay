@@ -10,14 +10,14 @@ const queryParser = (req, res, next) => {
     // Validate and process pagination
     const pagination = QueryValidationService.processPagination(req.query);
 
-    // Validate and process filters
+    // Validate and process filters (plural)
     const filters = QueryValidationService.processFilters(req.query, resource);
 
     // Store processed query parameters in a new property
     req.processedQuery = {
       ...sorting,
       ...pagination,
-      ...filters,
+      filters, // keeps the filters grouped: { name: 'test', status: 'active' }
     };
 
     return next();

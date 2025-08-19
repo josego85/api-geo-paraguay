@@ -5,7 +5,7 @@ class ValidationService {
     const config = ALLOWED_SORT_FIELDS[resource];
     if (!config) {
       throw new Error(
-        `Invalid resource: ${resource}. Available resources: ${Object.keys(ALLOWED_SORT_FIELDS).join(', ')}`
+        `Invalid resource: ${resource}. Available resources: ${Object.keys(ALLOWED_SORT_FIELDS).join(', ')}`,
       );
     }
     return config;
@@ -25,7 +25,7 @@ class ValidationService {
 
     if (!config.fields.includes(sanitizedField)) {
       throw new Error(
-        `Invalid sort field. Allowed fields for ${resource}: ${config.fields.join(', ')}`
+        `Invalid sort field. Allowed fields for ${resource}: ${config.fields.join(', ')}`,
       );
     }
     return true;

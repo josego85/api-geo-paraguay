@@ -23,7 +23,7 @@ const seedDistricts = async () => {
     const [results] = await db.query('SELECT COUNT(*) as count FROM district');
     if (results[0].count === 0) {
       throw new Error(
-        'No test data available in the "district" table. Please ensure the database is seeded.'
+        'No test data available in the "district" table. Please ensure the database is seeded.',
       );
     }
   } catch (error) {

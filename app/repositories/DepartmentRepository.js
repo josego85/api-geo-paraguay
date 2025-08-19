@@ -49,7 +49,7 @@ class DepartmentRepository extends BaseRepository {
         `ST_Contains(
           dis.geom,
           ST_GeomFromText(CONCAT('POINT(', :lng, ' ', :lat, ')'), :srid)
-        )`
+        )`,
       )
       // LEFT JOIN city ciu ON ST_Contains(ciu.geom, POINT)
       .leftJoin(
@@ -58,7 +58,7 @@ class DepartmentRepository extends BaseRepository {
         `ST_Contains(
           ciu.geom,
           ST_GeomFromText(CONCAT('POINT(', :lng, ' ', :lat, ')'), :srid)
-        )`
+        )`,
       )
       // LEFT JOIN neighborhood ba ON ST_Contains(ba.geom, POINT)
       .leftJoin(
@@ -67,21 +67,21 @@ class DepartmentRepository extends BaseRepository {
         `ST_Contains(
           ba.geom,
           ST_GeomFromText(CONCAT('POINT(', :lng, ' ', :lat, ')'), :srid)
-        )`
+        )`,
       )
       // WHERE ST_Contains(dep.geom, POINT)
       .where(
         `ST_Contains(
           dep.geom,
           ST_GeomFromText(CONCAT('POINT(', :lng, ' ', :lat, ')'), :srid)
-        )`
+        )`,
       )
       // AND ST_Contains(ciu.geom, POINT)
       .andWhere(
         `ST_Contains(
           ciu.geom,
           ST_GeomFromText(CONCAT('POINT(', :lng, ' ', :lat, ')'), :srid)
-        )`
+        )`,
       );
 
     const result = await qb.getRawOne();

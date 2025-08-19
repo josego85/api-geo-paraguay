@@ -28,13 +28,13 @@ const securityMiddleware = (app) => {
           styleSrc: ["'self'"],
           imgSrc: ["'self'"],
         },
-      })
+      }),
     );
     app.use(
       expectCt({
         enforce: true,
         maxAge: 123,
-      })
+      }),
     );
     app.use(helmet.frameguard({ action: 'DENY' }));
     app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' }));
@@ -48,7 +48,7 @@ const securityMiddleware = (app) => {
           camera: ["'none'"],
           microphone: ["'none'"],
         },
-      })
+      }),
     );
 
     return next();
@@ -59,7 +59,7 @@ const securityMiddleware = (app) => {
       origin: '*',
       optionsSuccessStatus: 200,
       methods: ['GET'],
-    })
+    }),
   );
 
   app.use(limiter);
