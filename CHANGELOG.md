@@ -57,6 +57,7 @@ All significant changes to this project are documented in this file.
   - Changed plugin name from @babel/plugin-transform-class-properties to @babel/plugin-proposal-class-properties
 - Enhanced Prettier configuration:
   - Updated trailingComma to "all" for cleaner diffs when adding new items to arrays/objects
+- Updated MySQL Docker Compose image from 8.0.42 to 8.0.43.
 
 ### Improved
 

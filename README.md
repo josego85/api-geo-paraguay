@@ -6,7 +6,7 @@
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
 [![Docker](https://img.shields.io/badge/docker-v27.5.1-blue.svg)](https://www.docker.com/)
 [![Redis](https://img.shields.io/badge/redis-v7.4.3-red.svg)](https://redis.io)
-[![MySQL](https://img.shields.io/badge/mysql-v8.0.42-orange.svg)](https://www.mysql.com)
+[![MySQL](https://img.shields.io/badge/mysql-v8.0.43-orange.svg)](https://www.mysql.com)
 [![MongoDB](https://img.shields.io/badge/mongodb-v7.0.19-green.svg)](https://www.mongodb.com)
 [![GraphQL](https://img.shields.io/badge/graphql-✓-e10098.svg)](https://graphql.org)
 [![SonarQube](https://img.shields.io/badge/code%20quality-sonarqube-4AB6E5.svg)](http://localhost:9000)
