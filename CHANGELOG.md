@@ -2,6 +2,119 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.3] - 2025-08-19
+
+### Added
+
+- New response utilities:
+  - `PaginationResponse` class for standardized pagination handling
+  - `ServiceResponse` class for consistent service responses
+- Added .prettierignore file to exclude dist, coverage and other build artifacts from formatting
+- validateId middleware endpoints to prevent invalid ID queries
+- Enhanced Redis cache implementation across all geographic endpoints:
+  - Improved Redis cache key generation for all listing endpoints
+  - Added unified cache prefixes for single item queries (departments, districts, cities, neighborhoods)
+  - Added filter-aware Redis caching for all search operations
+  - Extended Redis cache TTL to 24 hours for all single item queries
+  - Implemented in departments, districts, cities, and neighborhoods endpoints
+- Created utils/cache.js to centralize Redis cache configuration:
+  - Added createList for all listing endpoints
+  - Added createSingle for all individual record endpoints
+  - Standardized cache key generation across all geographic routes
+  - Unified TTL configuration (1 hour for lists, 24 hours for single items)
+  - Applied consistent caching strategy across all API endpoints
+
+### Changed
+
+- Improved response structure with standardized metadata
+- Reorganized pagination parameters (page, limit) into metadata object
+- Enhanced data structure consistency across REST and GraphQL endpoints
+- Fixed queryParser to keep filters grouped under 'filters' property instead of spreading them
+- Migrated to ESLint 9.x using new flat config format
+- Switched from custom ESLint rules to standard defaults for better maintainability
+- Removed deprecated ESLint plugins and configurations
+- Integrated ESLint with modern module resolution
+- Updated dependencies:
+  - express-rate-limit from 7.5.0 to 8.0.1
+  - graphql-yoga to 5.13.5
+  - mongoose to 8.15.1
+  - mysql2 to 3.14.3
+  - typeorm to 0.3.26
+- Updated development dependencies:
+  - @babel/eslint-parser to 7.17.5
+  - copy-webpack-plugin to 13.0.1
+  - ESLint from 8.x to 9.28.0
+  - eslint-config-prettier to 10.1.8
+  - eslint-plugin-prettier to 5.4.1
+  - eslint-plugin-import to 2.31.0
+  - glob to 11.0.3
+  - globby to 14.1.0
+  - rimraf to 6.0.1
+  - webpack to 5.99.9
+  - webpack-cli to 6.0.1
+  - supertest to 7.1.4
+- Updated Babel configuration:
+  - Changed plugin name from @babel/plugin-transform-class-properties to @babel/plugin-proposal-class-properties
+- Enhanced Prettier configuration:
+  - Updated trailingComma to "all" for cleaner diffs when adding new items to arrays/objects
+
+### Improved
+
+- Enhanced production logging:
+  - Added source maps to webpack build
+  - Improved code readability in production logs
+  - Added deterministic chunk and module IDs
+- Enhanced build configuration:
+  - Added source maps support for better debugging
+  - Improved code minification and compression settings
+  - Added deterministic module and chunk IDs for better caching
+
+### Technical Improvements
+
+- Moved response handling to utils/responses/
+- Added data validation for response classes
+- Standardized pagination metadata format
+- Improved error handling in responses
+- Enhanced ESLint and Prettier integration
+- Simplified module alias resolution in ESLint config
+- Applied consistent code formatting across the project
+
+### Internal
+
+- Refactored the base service to utilize the new standardized response classes for improved consistency.
+- Updated the base repository to adopt the new pagination metadata format.
+- Implemented strict type validation for all service responses.
+- Improved documentation for response formats
+
+### Removed
+
+- Legacy .eslintignore file in favor of native ESLint 9.x ignore patterns
+- Deprecated ESLint plugins and unused configurations
+- Redundant ESLint rules and overrides
+
+### Fixed
+
+- Replaced deprecated inflight package with lru-cache to resolve memory leak warning
+- Replaced deprecated sourcemap-codec with @jridgewell/sourcemap-codec
+- Updated rimraf dependency to version 5.0.5 to resolve deprecation warning
+- Enhanced BaseRepository filter handling:
+  - Added case-insensitive search using LOWER() for string filters
+  - Improved filter validation against column metadata
+  - Added string value trimming to prevent whitespace issues
+  - Added logging for ignored invalid column filters
+- Fixed GraphQL endpoints data fetching:
+  - Corrected data resolution for departments, districts, cities and neighborhoods
+  - Added proper error handling for all GraphQL queries
+  - Fixed pagination arguments in queries
+  - Improved response structure for better data access
+
+### Refactored
+
+- Improved GraphQL architecture:
+  - Centralized schema definitions
+  - Added consistent error handling
+  - Improved query resolvers structure
+
 ## [2.18.2] - 2025-07-22
 
 ### Security
