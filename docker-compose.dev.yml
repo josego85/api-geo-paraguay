@@ -50,7 +50,7 @@ services:
       - app-network
 
   mongodb:
-    image: mongo:7.0.19-jammy
+    image: mongo:7.0.23-jammy
     container_name: mongodb-api-geo-paraguay
     restart: always
     ports:
@@ -61,7 +61,7 @@ services:
       - app-network
 
   cache:
-    image: redis:7.4.3-alpine
+    image: redis:8.2.1-alpine
     container_name: cache-api-geo-paraguay
     restart: always
     ports:
