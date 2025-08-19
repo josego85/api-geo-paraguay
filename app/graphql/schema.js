@@ -1,4 +1,11 @@
-const { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLID } = require('graphql');
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLList,
+  GraphQLID,
+  GraphQLInt,
+  GraphQLString,
+} = require('graphql');
 
 const DepartmentService = require('services/departmentService');
 const DistrictService = require('services/districtService');
@@ -15,11 +22,21 @@ const RootQuery = new GraphQLObjectType({
   fields: {
     departments: {
       type: new GraphQLList(DepartmentType),
-      resolve: async () => {
+      args: {
+        page: { type: GraphQLInt },
+        limit: { type: GraphQLInt },
+        sortField: { type: GraphQLString },
+        sortOrder: { type: GraphQLString },
+      },
+      resolve: async (_, args) => {
         try {
-          return await DepartmentService.findAll();
+          const result = await DepartmentService.findAll(args);
+          if (!result || !result.data) {
+            throw new Error('No departments found');
+          }
+          return result.data;
         } catch (error) {
-          console.error('GraphQL error in departments resolver:', error);
+          console.error('GraphQL departments error:', error);
           throw error;
         }
       },
@@ -31,11 +48,21 @@ const RootQuery = new GraphQLObjectType({
     },
     districts: {
       type: new GraphQLList(DistrictType),
-      resolve: async () => {
+      args: {
+        page: { type: GraphQLInt },
+        limit: { type: GraphQLInt },
+        sortField: { type: GraphQLString },
+        sortOrder: { type: GraphQLString },
+      },
+      resolve: async (_, args) => {
         try {
-          return await DistrictService.findAll();
+          const result = await DistrictService.findAll(args);
+          if (!result || !result.data) {
+            throw new Error('No districts found');
+          }
+          return result.data;
         } catch (error) {
-          console.error('GraphQL error in districts resolver:', error);
+          console.error('GraphQL districts error:', error);
           throw error;
         }
       },
@@ -47,11 +74,21 @@ const RootQuery = new GraphQLObjectType({
     },
     cities: {
       type: new GraphQLList(CityType),
-      resolve: async () => {
+      args: {
+        page: { type: GraphQLInt },
+        limit: { type: GraphQLInt },
+        sortField: { type: GraphQLString },
+        sortOrder: { type: GraphQLString },
+      },
+      resolve: async (_, args) => {
         try {
-          return await CityService.findAll();
+          const result = await CityService.findAll(args);
+          if (!result || !result.data) {
+            throw new Error('No cities found');
+          }
+          return result.data;
         } catch (error) {
-          console.error('GraphQL error in cities resolver:', error);
+          console.error('GraphQL cities error:', error);
           throw error;
         }
       },
@@ -63,11 +100,21 @@ const RootQuery = new GraphQLObjectType({
     },
     neighborhoods: {
       type: new GraphQLList(NeighborhoodType),
-      resolve: async () => {
+      args: {
+        page: { type: GraphQLInt },
+        limit: { type: GraphQLInt },
+        sortField: { type: GraphQLString },
+        sortOrder: { type: GraphQLString },
+      },
+      resolve: async (_, args) => {
         try {
-          return await NeighborhoodService.findAll();
+          const result = await NeighborhoodService.findAll(args);
+          if (!result || !result.data) {
+            throw new Error('No neighborhoods found');
+          }
+          return result.data;
         } catch (error) {
-          console.error('GraphQL error in neighborhoods resolver:', error);
+          console.error('GraphQL neighborhoods error:', error);
           throw error;
         }
       },
