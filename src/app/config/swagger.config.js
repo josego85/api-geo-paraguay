@@ -7,7 +7,7 @@ try {
   if (process.env.NODE_ENV === 'production') {
     openapiPath = path.join(process.cwd(), 'dist/docs/api/openapi.yaml');
   } else {
-    openapiPath = path.join(__dirname, '../../docs/api/openapi.yaml');
+    openapiPath = path.join(__dirname, '../../../docs/api/openapi.yaml');
   }
   const swagger = yaml.load(fs.readFileSync(openapiPath, 'utf8'));
   module.exports = swagger;

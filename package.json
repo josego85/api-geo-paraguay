@@ -1,7 +1,7 @@
 {
   "name": "api-geo-paraguay",
   "description": "API GEO - Paraguay",
-  "version": "2.18.3",
+  "version": "2.18.4",
   "private": true,
   "main": "server.js",
   "author": {
@@ -10,7 +10,7 @@
   },
   "license": "GPlv3",
   "scripts": {
-    "start": "nodemon --exec babel-node server.js",
+    "start": "nodemon --exec babel-node src/server.js",
     "dev": "webpack --mode development --progress",
     "build": "npm run clean && webpack --mode production --progress",
     "format:check": "prettier --check .",
