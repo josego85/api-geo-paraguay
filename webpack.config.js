@@ -6,7 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   target: 'node',
-  entry: './server.js',
+  entry: './src/server.js',
   output: {
     clean: true,
     path: path.resolve(__dirname, 'dist'),
@@ -28,7 +28,7 @@ module.exports = {
     new DotenvWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'app/i18n', to: 'i18n' },
+        { from: 'src/app/i18n', to: 'i18n' },
         { from: 'docs', to: 'docs' },
       ],
     }),
