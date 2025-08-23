@@ -4,11 +4,13 @@
 
 ### Geographic Data
 
-- `GET /api/v1/paraguay/{longitude}/{latitude}` - Get location details by coordinates
-- `GET /api/v1/departments` - List all departments
-- `GET /api/v1/districts` - List all districts
-- `GET /api/v1/cities` - List all cities
-- `GET /api/v1/neighborhoods` - List all neighborhoods
+```bash
+GET /api/v1/paraguay/{longitude}/{latitude}  # Get location details by coordinates
+GET /api/v1/departments                      # List all departments
+GET /api/v1/districts                        # List all districts
+GET /api/v1/cities                           # List all cities
+GET /api/v1/neighborhoods                    # List all neighborhoods
+```
 
 ## Pagination
 

@@ -2,6 +2,38 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.5] - 2025-08-23
+
+### Added
+
+- Reorganized project layout by moving the main application folder (app/) and the top-level server.js into src/ to centralize source code.
+- Added `.dockerignore` file to optimize Docker build context.
+
+### Changed
+
+- Updated internal imports and module paths to reference files under src/.
+- Updated package.json scripts (start, dev) to point to src/server.js.
+- Adjusted Dockerfile.dev and docker-compose.dev to use the project root as build context and ensure package.json is available inside the container; added temporary shim during migration where needed.
+- Updated ESLint configuration paths to align with the new `src/` directory structure.
+- Minor documentation updates to reflect the new source layout.
+- Updated the src alias in webpack.config.js to reflect the new directory structure.
+- Refactored and improved the development Dockerfile image for the `app` service.
+- Adapted tests to align with the new `src/` folder structure.
+- Reorganized Docker setup:
+  - The former `deploy/` folder (containing production `nginx` and `diun` configs) was renamed to `docker/`.
+  - Inside `docker/`, two subfolders were created: `dev/` and `prod/`.
+  - Dockerfiles were moved from the project root (`Dockerfile.dev`, `Dockerfile.prod`) into their respective folders.
+  - Both are now simply named `Dockerfile` within `docker/dev/` and `docker/prod/` for a cleaner structure.
+- Renamed and reorganized Compose files:
+  - `docker-compose.dev.yml` → `docker-compose.override.yml`.
+  - `docker-compose.prod.yml` → `docker-compose.yml`.
+- Updated documentation to reflect the new Compose file naming (`docker-compose.yml` and `docker-compose.override.yml`).
+- Optimized the production Dockerfile for the `app` service to improve build performance and image size.
+
+### Improved
+
+- Documentation: The features.md and rest.md documentation files were improved, with a specific focus on the GET request section.
+
 ## [2.18.4] - 2025-08-23
 
 ### Improved

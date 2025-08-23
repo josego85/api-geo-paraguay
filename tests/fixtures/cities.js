@@ -1,4 +1,4 @@
-const db = require('../../app/models/db');
+const db = require('../../src/app/models/db');
 
 const testCities = [
   {

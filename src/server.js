@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const config = require('./app/config');
-const dataSource = require('./app/database/data-source');
+const config = require('config');
+const dataSource = require('database/data-source');
 const app = require('./app/app');
 
 (async () => {
