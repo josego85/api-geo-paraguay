@@ -43,7 +43,7 @@ By integrating Diun, we ensure awareness of new Docker image releases and mainta
 
 ### Docker Compose Setup
 
-The Diun service is defined inside `docker-compose.dev.yml`:
+The Diun service is defined inside `docker-compose.override.yml`:
 
 ```yaml
 diun:
@@ -88,7 +88,7 @@ providers:
 ### Start Diun
 
 ```bash
-docker compose -f docker-compose.dev.yml up -d diun
+docker compose up -d diun
 ```
 
 ### Check Logs

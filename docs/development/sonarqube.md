@@ -8,7 +8,7 @@ Starting from **version 2.13.1**, the API GEO Paraguay project officially integr
 
 ## Setup Instructions
 
-SonarQube is now included as a service in the project's `docker-compose.dev.yml` file for streamlined local development and code quality analysis.
+SonarQube is now included as a service in the project's `docker-compose.override.yml` file for streamlined local development and code quality analysis.
 
 ### 1. Install SonarQube via Docker Compose
 
@@ -17,7 +17,7 @@ Make sure Docker and Docker Compose are installed on your machine.
 Start all services including SonarQube:
 
 ```bash
-docker compose -f docker-compose.dev.yml up --build -d
+docker compose up --build -d
 ```
 
 SonarQube will be available at:

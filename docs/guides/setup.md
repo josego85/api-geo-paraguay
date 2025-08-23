@@ -38,13 +38,13 @@ npm run dev
 
 ```bash
 # Build and start containers
-docker compose -f docker-compose.dev.yml up --build -d
+docker compose up --build -d
 
 # View logs
 docker compose logs -f
 
 # Stop environment
-docker compose -f docker-compose.dev.yml down
+docker compose down
 ```
 
 ## Production Environment
@@ -53,13 +53,13 @@ docker compose -f docker-compose.dev.yml down
 
 ```bash
 # Build and start production containers
-docker compose -f docker-compose.prod.yml up --build -d
+docker compose -f docker-compose.yml up --build -d
 
 # View production logs
-docker compose -f docker-compose.prod.yml logs -f
+docker compose -f docker-compose.yml logs -f
 
 # Stop production environment
-docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.yml down
 ```
 
 ### Production Build
