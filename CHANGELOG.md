@@ -2,6 +2,27 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.5] - 2025-08-23
+
+### Added
+
+- Reorganized project layout by moving the main application folder (app/) and the top-level server.js into src/ to centralize source code.
+- Added `.dockerignore` file to optimize Docker build context.
+
+### Changed
+
+- Updated internal imports and module paths to reference files under src/.
+- Updated package.json scripts (start, dev) to point to src/server.js.
+- Adjusted Dockerfile.dev and docker-compose.dev to use the project root as build context and ensure package.json is available inside the container; added temporary shim during migration where needed.
+- Updated ESLint configuration paths to align with the new `src/` directory structure.
+- Minor documentation updates to reflect the new source layout.
+- Updated the src alias in webpack.config.js to reflect the new directory structure.
+- Refactored and improved the development Dockerfile image for the `app` service.
+
+### Improved
+
+- Documentation: The features.md and rest.md documentation files were improved, with a specific focus on the GET request section.
+
 ## [2.18.3] - 2025-08-19
 
 ### Added
