@@ -4,18 +4,22 @@ All significant changes to this project are documented in this file.
 
 ## [2.18.4] - 2025-08-23
 
+### Improved
+
+- Ran `npm run format:check` (Prettier) to ensure code formatting compliance and maintain consistent code style across the project.
+
 ### Fixed
 
 - Resolved **critical security vulnerability** reported by `npm audit`:
-  - **sha.js (<=2.4.11)**: Missing type checks leading to potential hash rewind and crafted data issues  
-    - Advisory: [GHSA-95m3-7q98-8xr5](https://github.com/advisories/GHSA-95m3-7q98-8xr5)  
-    - Fixed by applying `npm audit fix`  
+  - **sha.js (<=2.4.11)**: Missing type checks leading to potential hash rewind and crafted data issues
+    - Advisory: [GHSA-95m3-7q98-8xr5](https://github.com/advisories/GHSA-95m3-7q98-8xr5)
+    - Fixed by applying `npm audit fix`
     - Updated to secure version via dependency resolution
 
 ### Security
 
-- Ensured all dependencies are patched against known vulnerabilities  
-- Verified `sha.js` update to mitigate critical severity issue  
+- Ensured all dependencies are patched against known vulnerabilities
+- Verified `sha.js` update to mitigate critical severity issue
 - Confirmed no remaining unresolved security warnings in `npm audit`
 
 ## [2.18.3] - 2025-08-19
