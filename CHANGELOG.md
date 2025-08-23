@@ -19,6 +19,11 @@ All significant changes to this project are documented in this file.
 - Updated the src alias in webpack.config.js to reflect the new directory structure.
 - Refactored and improved the development Dockerfile image for the `app` service.
 - Adapted tests to align with the new `src/` folder structure.
+- Reorganized Docker setup:  
+  - The former `deploy/` folder (containing production `nginx` and `diun` configs) was renamed to `docker/`.  
+  - Inside `docker/`, two subfolders were created: `dev/` and `prod/`.  
+  - Dockerfiles were moved from the project root (`Dockerfile.dev`, `Dockerfile.prod`) into their respective folders.  
+  - Both are now simply named `Dockerfile` within `docker/dev/` and `docker/prod/` for a cleaner structure.
 
 ### Improved
 

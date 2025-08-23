@@ -34,10 +34,10 @@ By integrating Diun, we ensure awareness of new Docker image releases and mainta
 
 ## Folder Structure
 
-| Folder                     | Purpose                          |
-| :------------------------- | :------------------------------- |
-| `/deploy/diun/diun.yml`    | Main Diun configuration file     |
-| `/deploy/diun/watched.yml` | List of static images to monitor |
+| Folder                         | Purpose                          |
+| :----------------------------- | :------------------------------- |
+| `/docker/dev/diun/diun.yml`    | Main Diun configuration file     |
+| `/docker/dev/diun/watched.yml` | List of static images to monitor |
 
 ## Configuration
 
@@ -48,9 +48,9 @@ The Diun service is defined inside `docker-compose.dev.yml`:
 ```yaml
 diun:
   image: crazymax/diun:latest
-  command: serve --config /deploy/diun/diun.yml
+  command: serve --config /docker/dev/diun/diun.yml
   volumes:
-    - './deploy/diun:/deploy/diun'
+    - './docker/dev/diun:/docker/dev/diun'
     - '/var/run/docker.sock:/var/run/docker.sock'
   environment:
     - TZ=Europe/Berlin
@@ -73,7 +73,7 @@ providers:
     watchByDefault: true
 
   file:
-    filename: /deploy/diun/watched.yml
+    filename: /docker/dev/diun/watched.yml
 ```
 
 ### Static Images to Monitor (`watched.yml`)

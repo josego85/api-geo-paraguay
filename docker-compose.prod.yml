@@ -5,7 +5,7 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: ./docker/prod/app/Dockerfile
     ports:
       - '5000:5000'
     depends_on:
@@ -21,21 +21,21 @@ services:
 
   nginx:
     build:
-      context: ./deploy/nginx
+      context: ./docker/prod/nginx
       dockerfile: Dockerfile
     container_name: nginx-api-geo-paraguay
     restart: always
     ports:
       - '80:80'
     volumes:
-      - ./deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/prod/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - type: volume
         source: nginx-logs
         target: /var/log/nginx
         volume:
           nocopy: true
       - type: bind
-        source: ./deploy/nginx/empty-conf.d
+        source: ./docker/prod/nginx/empty-conf.d
         target: /etc/nginx/conf.d
     depends_on:
       - app

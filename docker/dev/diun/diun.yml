@@ -9,4 +9,4 @@ providers:
     watchByDefault: true
 
   file:
-    filename: /deploy/diun/watched.yml
+    filename: /docker/dev/diun/watched.yml

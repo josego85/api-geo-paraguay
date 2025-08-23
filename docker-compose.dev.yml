@@ -5,7 +5,7 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: ./docker/dev/app/Dockerfile
     ports:
       - '5000:5000'
     depends_on:
@@ -95,9 +95,9 @@ services:
 
   diun:
     image: crazymax/diun:4.29.0
-    command: serve --config /deploy/diun/diun.yml
+    command: serve --config /docker/dev/diun/diun.yml
     volumes:
-      - './deploy/diun:/deploy/diun'
+      - './docker/dev/diun:/docker/diun'
       - '/var/run/docker.sock:/var/run/docker.sock'
     environment:
       - TZ=Europe/Berlin
