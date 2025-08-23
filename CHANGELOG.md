@@ -18,6 +18,7 @@ All significant changes to this project are documented in this file.
 - Minor documentation updates to reflect the new source layout.
 - Updated the src alias in webpack.config.js to reflect the new directory structure.
 - Refactored and improved the development Dockerfile image for the `app` service.
+- Adapted tests to align with the new `src/` folder structure.
 
 ### Improved
 
