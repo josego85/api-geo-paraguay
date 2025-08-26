@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+     "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<GITHUB_PERSONAL_ACCESS_TOKEN>"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "sonarqube": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network",
+        "api-geo-paraguay_app-network",
+        "-e",
+        "SONARQUBE_URL",
+        "-e",
+        "SONARQUBE_ORG",
+        "-e",
+        "SONARQUBE_TOKEN",
+        "mcp/sonarqube"
+      ],
+      "env": {
+        "SONARQUBE_URL": "http://sonarqube:9000/",
+        "SONARQUBE_ORG": "my-org",
+        "SONARQUBE_TOKEN": "<SONARQUBE_TOKEN>"
+      }
+    },
+    "npm-sentinel": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@nekzus/mcp-server@latest"]
+    }
+  }
+}
