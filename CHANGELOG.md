@@ -2,6 +2,17 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.19.0] - 2025-08-27
+
+### Added
+
+- Added `.cursor/mcp.json` file to configure Managed Codebase Patterns (MCP) for use in Cursor, enabling standardized code patterns and improved development workflows.
+
+### Changed
+
+- Fixed Redis port mapping in `docker-compose.yml`:
+  - Changed from `ports: - '6380:6379'` to `ports: - '6379:6379'` to align with the standard Redis port and avoid conflicts.
+
 ## [2.18.5] - 2025-08-23
 
 ### Added

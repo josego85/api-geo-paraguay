@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.18.5-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.19.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.18.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)

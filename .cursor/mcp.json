@@ -1,11 +1,19 @@
 {
   "mcpServers": {
-     "github": {
+    "github": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "<GITHUB_PERSONAL_ACCESS_TOKEN>"
       }
+    },
+    "npm-sentinel": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@nekzus/mcp-server@latest"
+      ]
     },
     "memory": {
       "command": "npx",
@@ -33,10 +41,48 @@
         "SONARQUBE_TOKEN": "<SONARQUBE_TOKEN>"
       }
     },
-    "npm-sentinel": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@nekzus/mcp-server@latest"]
+    "redis": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network",
+        "api-geo-paraguay_app-network",
+        "-e",
+        "REDIS_HOST",
+        "-e",
+        "REDIS_PORT",
+        "-e",
+        "REDIS_SSL",
+        "-e",
+        "REDIS_CA_PATH",
+        "-e",
+        "REDIS_SSL_KEYFILE",
+        "-e",
+        "REDIS_SSL_CERTFILE",
+        "-e",
+        "REDIS_CERT_REQS",
+        "-e",
+        "REDIS_CA_CERTS",
+        "-e",
+        "REDIS_CLUSTER_MODE",
+        "-e",
+        "REDIS_PWD",
+        "mcp/redis"
+      ],
+      "env": {
+        "REDIS_HOST": "cache",
+        "REDIS_PORT": "6379",
+        "REDIS_SSL": "False",
+        "REDIS_CA_PATH": "",
+        "REDIS_SSL_KEYFILE": "",
+        "REDIS_SSL_CERTFILE": "",
+        "REDIS_CERT_REQS": "required",
+        "REDIS_CA_CERTS": "",
+        "REDIS_CLUSTER_MODE": "False",
+        "REDIS_PWD": "<REDIS_PASSWORD>"
+      }
     }
   }
 }
