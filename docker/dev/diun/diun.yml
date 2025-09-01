@@ -1,12 +1,33 @@
+# Diun Configuration
+#
+# This configuration prioritizes explicitness and a single source of truth.
+# All images to be monitored are explicitly listed in `watched.yml`.
+#
 watch:
-  workers: 20
+  workers: 10
   schedule: '*/5 * * * *'
   jitter: 30s
+  firstCheckNotif: true
+  runOnStartup: true
+  compareDigest: true
 
+# Notifier configured to output update details to the container log.
+notif:
+  script:
+    cmd: |
+      /bin/sh -c 'echo "Diun update found! | Image: $DIUN_ENTRY_IMAGE | Status: $DIUN_ENTRY_STATUS | Provider: $DIUN_ENTRY_PROVIDER"'
+
+# Providers are simplified. We only use the `file` provider for `watched.yml`
+# and the `docker` provider to resolve image IDs to names, but not for watching.
 providers:
   docker:
     endpoint: unix:///var/run/docker.sock
-    watchByDefault: true
-
+    # Watch by default is disabled to be explicit.
+    watchByDefault: false
+  
   file:
     filename: /docker/dev/diun/watched.yml
+
+# Database path for persisting state.
+db:
+  path: /data/diun.db

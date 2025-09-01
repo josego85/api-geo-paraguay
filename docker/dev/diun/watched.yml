@@ -1,2 +1,63 @@
-- name: node:22-alpine3.21
-- name: nginx:1-alpine
+# Single Source of Truth for Docker Image Monitoring
+#
+# This file explicitly lists all images to be monitored by Diun.
+# Using specific version tags (e.g., 'node:22-alpine') instead of 'latest'
+# allows for predictable updates and better security.
+
+# --- Application Base Images ---
+- name: docker.io/library/node
+  # Used in: /docker/dev/app/Dockerfile, /docker/prod/app/Dockerfile
+  # Watching for minor/patch updates for Node.js 22 on Alpine.
+  watch_repo: true
+  include_tags:
+    - "22-alpine"
+
+- name: docker.io/library/nginx
+  # Used in: /docker/prod/nginx/Dockerfile
+  # Watching for minor/patch updates for Nginx 1 on Alpine.
+  watch_repo: true
+  include_tags:
+    - "1-alpine"
+
+- name: docker.io/library/alpine
+  # Used in: /docker/prod/nginx/Dockerfile (as build stage)
+  # Watching for minor/patch updates for Alpine 3.20.
+  watch_repo: true
+  include_tags:
+    - "3.20"
+
+# --- Service Images (from docker-compose) ---
+- name: docker.io/library/mysql
+  # Used in: /docker-compose.yml
+  watch_repo: true
+  include_tags:
+    - "8.0"
+
+- name: docker.io/library/mongo
+  # Used in: /docker-compose.yml
+  watch_repo: true
+  include_tags:
+    - "7.0-jammy"
+
+- name: docker.io/library/redis
+  # Used in: /docker-compose.yml
+  watch_repo: true
+  include_tags:
+    - "8-alpine"
+
+- name: docker.io/sonarqube
+  # Used in: /docker-compose.override.yml
+  # It is a best practice to avoid 'latest' tags in production.
+  # We are watching the '10-community' series instead.
+  # You should update your docker-compose.override.yml to use a specific tag.
+  watch_repo: true
+  include_tags:
+    - "10-community"
+
+# --- Tooling Images ---
+- name: docker.io/crazymax/diun
+  # Used in: /docker-compose.override.yml
+  # Monitoring the Diun image itself for updates.
+  watch_repo: true
+  include_tags:
+    - "4"

@@ -2,6 +2,26 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.6] - 2025-09-01
+
+### Changed
+
+- Overhauled the Diun (Docker Image Update Notifier) configuration for clarity, robustness, and maintainability.
+- Centralized all image monitoring into a single `watched.yml` file, making it the single source of truth.
+- Disabled ambiguous monitoring settings like `watchByDefault` to ensure the watch list is explicit.
+- Upgraded Diun Docker Compose image from 4.29.0 to 4.30.0.
+
+### Added
+
+- Added all Docker images used across `docker-compose` and `Dockerfile` files to the Diun watch list for comprehensive monitoring.
+- Implemented a script-based notifier in Diun to log detailed image update information directly to the container's output.
+- Configured a persistent database for Diun to store image state, preventing duplicate notifications on restart.
+
+### Fixed
+
+- Corrected multiple Diun configuration errors that prevented the service from starting.
+- Resolved YAML syntax errors in `diun.yml` to ensure successful parsing.
+
 ## [2.18.5] - 2025-08-23
 
 ### Added
