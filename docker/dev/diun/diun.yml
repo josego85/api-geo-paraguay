@@ -24,7 +24,7 @@ providers:
     endpoint: unix:///var/run/docker.sock
     # Watch by default is disabled to be explicit.
     watchByDefault: false
-  
+
   file:
     filename: /docker/dev/diun/watched.yml
 

@@ -2,6 +2,12 @@
 
 All significant changes to this project are documented in this file.
 
+## [2.18.7] - 2025-09-01
+
+### Improved
+
+- Ran `npm run format:check` (Prettier) to ensure code formatting compliance and maintain consistent code style across the project.
+
 ## [2.18.6] - 2025-09-01
 
 ### Changed

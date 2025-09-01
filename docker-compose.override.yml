@@ -37,8 +37,8 @@ services:
       - './docker/dev/diun/data:/data'
     environment:
       - TZ=Europe/Berlin
-      - "LOG_LEVEL=info"
-      - "LOG_JSON=false"
+      - 'LOG_LEVEL=info'
+      - 'LOG_JSON=false'
     restart: always
     networks:
       - app-network
