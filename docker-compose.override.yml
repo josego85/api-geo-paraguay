@@ -29,13 +29,16 @@ services:
       - app-network
 
   diun:
-    image: crazymax/diun:4.29.0
+    image: crazymax/diun:4.30.0
     command: serve --config /docker/dev/diun/diun.yml
     volumes:
-      - './docker/dev/diun:/docker/diun'
+      - './docker/dev/diun:/docker/dev/diun'
       - '/var/run/docker.sock:/var/run/docker.sock'
+      - './docker/dev/diun/data:/data'
     environment:
       - TZ=Europe/Berlin
+      - "LOG_LEVEL=info"
+      - "LOG_JSON=false"
     restart: always
     networks:
       - app-network
