@@ -7,13 +7,17 @@ All significant changes to this project are documented in this file.
 ## [2.18.8] - 2025-09-08
 
 ### Added
+- Add `codeql-analysis.yml` GitHub Actions workflow to enable CodeQL security analysis.
+- Add `codeql-config.yml` configuration file for the CodeQL GitHub Actions workflow.
+- Add `scorecard-analysis.yml` GitHub Actions workflow to enable OpenSSF Scorecard security checks.
+- Add `actions-runner` to `.gitignore` to exclude GitHub Actions runner-related files from version control.
+- Add `actions-runner` to `.dockerignore` to exclude GitHub Actions runner-related files from Docker image builds.
 
-- Add `codeql.yml` in workflows.
-- Add `codeql-config.yml`.
+### Changed
+- Renamed `codeql.yml` to `codeql-analysis.yml` for clarity and consistency in GitHub Actions workflows.
 
 ### Removed
-
-- Remove `nodejs-ci.yml` in workflows.
+- Remove `nodejs-ci.yml` GitHub Actions workflow.
 
 ---
 

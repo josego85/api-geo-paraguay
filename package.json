@@ -1,7 +1,7 @@
 {
   "name": "api-geo-paraguay",
   "description": "API GEO - Paraguay",
-  "version": "2.18.7",
+  "version": "2.18.8",
   "private": true,
   "main": "server.js",
   "author": {
