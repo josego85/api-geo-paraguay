@@ -9,3 +9,4 @@ dist
 coverage
 logs
 *.log
+actions-runner
