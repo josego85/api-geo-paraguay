@@ -2,9 +2,9 @@ name: "CodeQL Security Agent"
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: [ "master", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
   schedule:
     - cron: '30 1 * * 0'  # Weekly on Sundays
 
