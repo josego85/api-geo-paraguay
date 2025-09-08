@@ -9,3 +9,7 @@ newrelic_agent.log
 venv/
 tmp/
 coverage/
+
+# GitHub Actions Runner (never commit)
+actions-runner/
+**/actions-runner/
