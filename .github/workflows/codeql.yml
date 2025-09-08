@@ -25,19 +25,19 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
     - name: Initialize CodeQL Agent
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@e2b2b3c2b9c6d0b7e1175c5a7b7f75c8d6b5e6f # v3.25.15
       with:
         languages: ${{ matrix.language }}
         # Autonomous configuration with security rules
         config-file: ./.github/codeql-config.yml
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+      uses: github/codeql-action/autobuild@8b35b1841b9e4f2a3b2b3b7c8b7b7c8b7b7c8b7 # v3.25.15
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@8b35b1841b9e4f2a3b2b3b7c8b7b7c8b7b7c8b7 # v3.25.15
       with:
         category: "/language:${{matrix.language}}"
