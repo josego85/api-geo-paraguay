@@ -28,7 +28,7 @@ jobs:
       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
     - name: Initialize CodeQL Agent
-      uses: github/codeql-action/init@e2b2b3c2b9c6d0b7e1175c5a7b7f75c8d6b5e6f # v3.25.15
+      uses: github/codeql-action/init@f1f6e5f6af878fb37288ce1c627459e94dbf7d01 # v3.25.15
       with:
         languages: ${{ matrix.language }}
         # Autonomous configuration with security rules
