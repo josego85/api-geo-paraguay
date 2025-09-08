@@ -279,7 +279,7 @@ All significant changes to this project are documented in this file.
 - Improved `BaseRepository` implementation: replaced `for…of` loops with `Object.entries().filter().map()` and `Object.fromEntries()` to comply with lint rule `no-restricted-syntax`.
 
 ---
----
+
 ## [2.17.0] - 2025-05-09
 
 ### Added
