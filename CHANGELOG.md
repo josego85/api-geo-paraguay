@@ -2,11 +2,28 @@
 
 All significant changes to this project are documented in this file.
 
+---
+
+## [2.18.8] - 2025-09-08
+
+### Added
+
+- Add `codeql.yml` in workflows.
+- Add `codeql-config.yml`.
+
+### Removed
+
+- Remove `nodejs-ci.yml` in workflows.
+
+---
+
 ## [2.18.7] - 2025-09-01
 
 ### Improved
 
 - Ran `npm run format:check` (Prettier) to ensure code formatting compliance and maintain consistent code style across the project.
+
+---
 
 ## [2.18.6] - 2025-09-01
 
@@ -27,6 +44,8 @@ All significant changes to this project are documented in this file.
 
 - Corrected multiple Diun configuration errors that prevented the service from starting.
 - Resolved YAML syntax errors in `diun.yml` to ensure successful parsing.
+
+---
 
 ## [2.18.5] - 2025-08-23
 
@@ -60,6 +79,8 @@ All significant changes to this project are documented in this file.
 
 - Documentation: The features.md and rest.md documentation files were improved, with a specific focus on the GET request section.
 
+---
+
 ## [2.18.4] - 2025-08-23
 
 ### Improved
@@ -79,6 +100,8 @@ All significant changes to this project are documented in this file.
 - Ensured all dependencies are patched against known vulnerabilities
 - Verified `sha.js` update to mitigate critical severity issue
 - Confirmed no remaining unresolved security warnings in `npm audit`
+
+---
 
 ## [2.18.3] - 2025-08-19
 
@@ -198,12 +221,16 @@ All significant changes to this project are documented in this file.
   - Added consistent error handling
   - Improved query resolvers structure
 
+---
+
 ## [2.18.2] - 2025-07-22
 
 ### Security
 
 - Updated vulnerable dependencies:
   - **form-data**: Fixed critical vulnerability due to use of unsafe random function for boundary selection ([GHSA-fjxv-7rqg-78g4](https://github.com/advisories/GHSA-fjxv-7rqg-78g4)) via `npm audit fix`.
+
+---
 
 ## [2.18.1] - 2025-07-15
 
@@ -213,6 +240,8 @@ All significant changes to this project are documented in this file.
   - **brace-expansion**: Fixed Regular Expression Denial of Service vulnerability ([GHSA-v6h2-p8h4-qcjw](https://github.com/advisories/GHSA-v6h2-p8h4-qcjw)) via `npm audit fix`.
   - **tar-fs**: Fixed directory traversal vulnerability ([GHSA-8cj5-5rvv-wf4v](https://github.com/advisories/GHSA-8cj5-5rvv-wf4v)) via `npm audit fix`.
 
+---
+
 ## [2.18.0] - 2025-05-31
 
 ### Improved
@@ -220,6 +249,8 @@ All significant changes to this project are documented in this file.
 - Refined `nginx.conf` to:
   - Added and tuned caching in NGINX for improved performance, reduced backend load, and faster response times for frequently accessed resources.
   - Enhanced cache invalidation and revalidation strategies to ensure data freshness while maximizing cache hit ratio.
+
+---
 
 ## [2.17.2] - 2025-05-25
 
@@ -235,6 +266,8 @@ All significant changes to this project are documented in this file.
   - Use `listen 80 default_server` to eliminate server name conflicts.
   - Load the `headers_more` dynamic module via `load_module` directive.
 
+---
+
 ## [2.17.1] - 2025-05-09
 
 ### Fixed
@@ -245,6 +278,8 @@ All significant changes to this project are documented in this file.
 
 - Improved `BaseRepository` implementation: replaced `for…of` loops with `Object.entries().filter().map()` and `Object.fromEntries()` to comply with lint rule `no-restricted-syntax`.
 
+---
+---
 ## [2.17.0] - 2025-05-09
 
 ### Added
@@ -269,6 +304,8 @@ All significant changes to this project are documented in this file.
 
 - Adapted GraphQL resolvers to use service layer instead of direct model access.
 
+---
+
 ## [2.16.1] - 2025-05-07
 
 ### Refactored
@@ -280,6 +317,8 @@ All significant changes to this project are documented in this file.
 ### Documentation
 
 - Updated `setup.md` to correct the database `.tar.gz` filename.
+
+---
 
 ## [2.16.0] - 2025-05-06
 
@@ -357,6 +396,8 @@ All significant changes to this project are documented in this file.
 
 - Updated `redis.md` to include new configuration details and usage examples
 
+---
+
 ## [2.15.1] - 2025-04-29
 
 ### Fixed
@@ -374,6 +415,8 @@ All significant changes to this project are documented in this file.
 ### Improved
 
 - Applied Prettier formatting across all project files for consistent code style
+
+---
 
 ## [2.15.0] - 2025-04-29
 
@@ -414,6 +457,8 @@ All significant changes to this project are documented in this file.
 - Updated README.md to include NGINX security hardening details in the Security section.
 - Added `SPECTRAL.md` under `/docs` directory with comprehensive setup and usage guidelines for API linting.
 
+---
+
 ## [2.14.2] - 2025-04-29
 
 ### Improved
@@ -425,12 +470,16 @@ All significant changes to this project are documented in this file.
   - Bumped the project version number.
   - Added SonarQube section and included the current SonarQube version in the badges list.
 
+---
+
 ## [2.14.1] - 2025-04-28
 
 ### Fixed
 
 - Fixed the Dockerfile for NGINX to remove the invalid `--secure-protocol=TLSv1_2` option from the `wget` command.
 - Resolved build errors related to `wget: unrecognized option: secure-protocol=TLSv1_2` during NGINX module compilation.
+
+---
 
 ## [2.14.0] - 2025-04-28
 
@@ -443,6 +492,8 @@ All significant changes to this project are documented in this file.
 
 - Updated Docker images to use more specific, pinned versions to ensure environment stability and reproducibility.
 - Updated the `package.json` configuration to reflect the latest project dependencies and settings.
+
+---
 
 ## [2.13.1] - 2025-04-28
 
@@ -467,6 +518,8 @@ All significant changes to this project are documented in this file.
 
 - Updated `package.json` to set the application version to `2.13.1`.
 
+---
+
 ## [2.13.0] - 2025-04-11
 
 ### Changed
@@ -485,6 +538,8 @@ All significant changes to this project are documented in this file.
 - Reduced reverse geocoding response times by grouping nearby coordinates into shared cache keys.
 - Refactored controller logic to follow SOLID principles by moving cache logic into dedicated services.
 
+---
+
 ## [2.12.0] - 2025-04-06
 
 ### Changed
@@ -494,6 +549,8 @@ All significant changes to this project are documented in this file.
 ### Added
 
 - Added documentation for `npx npm-check-updates` command in README.md to help manage package updates.
+
+---
 
 ## [2.11.0] - 2025-03-23
 
@@ -513,6 +570,8 @@ All significant changes to this project are documented in this file.
 ### Refactored
 
 - Applied Prettier formatting for consistent code style and readability.
+
+---
 
 ## [2.10.0] - 2025-03-20
 
@@ -538,6 +597,8 @@ All significant changes to this project are documented in this file.
 
 - Improved the structure and readability of `app.js` by organizing middleware, routes, and GraphQL setup into distinct sections.
 - Improved the structure and maintainability of `db.js` by optimizing connection pooling and enhancing error handling.
+
+---
 
 ## [2.9.0] - 2025-03-17
 
@@ -576,6 +637,8 @@ All significant changes to this project are documented in this file.
 - Refactored Neighborhood and City controllers for improved performance and maintainability.
 - Refactored Department and District controllers for improved performance and maintainability.
 
+---
+
 ## [2.8.0]
 
 ### Changed
@@ -583,11 +646,15 @@ All significant changes to this project are documented in this file.
 - Upgraded Node.js to v20.18.3.
 - Revised package.json configuration.
 
+---
+
 ## [2.7.0]
 
 ### Changed
 
 - Upgraded Node.js to v20.18.2.
+
+---
 
 ## [2.6.0]
 
@@ -599,11 +666,15 @@ All significant changes to this project are documented in this file.
 
 - Upgraded Express to version 5.
 
+---
+
 ## [2.5.0]
 
 ### Changed
 
 - Updated package.json to address a critical security vulnerability in Mongoose.
+
+---
 
 ## [2.4.0]
 
@@ -616,6 +687,8 @@ All significant changes to this project are documented in this file.
 - Fixed issues in application controllers.
 - Optimized webpack configuration.
 
+---
+
 ## [2.3.0]
 
 ### Changed
@@ -623,6 +696,8 @@ All significant changes to this project are documented in this file.
 - Updated package.json.
 - Refined Dockerfile for development.
 - Revised README documentation.
+
+---
 
 ## [2.2.0]
 
@@ -634,6 +709,8 @@ All significant changes to this project are documented in this file.
 - Corrected version information in Swagger.
 - Revised README documentation.
 - Updated production Dockerfile.
+
+---
 
 ## [2.1.1]
 
@@ -647,12 +724,16 @@ All significant changes to this project are documented in this file.
 - Applied Prettier formatting.
 - Improved ESLint configurations.
 
+---
+
 ## [2.1.0]
 
 ### Added
 
 - Modified Docker Compose to change application and service ports.
 - Introduced production Dockerfile and corresponding Docker Compose configuration.
+
+---
 
 ## [2.0.0]
 
@@ -668,6 +749,8 @@ All significant changes to this project are documented in this file.
 - Corrected city and neighborhood data for MySQL 8.0.
 - Fixed database import issues for MySQL 8.0.
 
+---
+
 ## [1.20.0]
 
 ### Added
@@ -678,11 +761,15 @@ All significant changes to this project are documented in this file.
 
 - Updated package.json configuration.
 
+---
+
 ## [1.19.0]
 
 ### Changed
 
 - Updated package.json configuration.
+
+---
 
 ## [1.18.0]
 
@@ -698,12 +785,16 @@ All significant changes to this project are documented in this file.
 
 - Revised README documentation.
 
+---
+
 ## [1.17.0]
 
 ### Added
 
 - Implemented Continuous Integration (CI).
 - Enhanced environment variable management.
+
+---
 
 ## [1.16.0]
 
@@ -714,6 +805,8 @@ All significant changes to this project are documented in this file.
 ### Changed
 
 - Updated package.json.
+
+---
 
 ## [1.15.0]
 
@@ -735,6 +828,8 @@ All significant changes to this project are documented in this file.
 - Implemented rate limiting.
 - Added Feature-Policy header.
 
+---
+
 ## [1.14.1]
 
 ### Fixed
@@ -745,11 +840,15 @@ All significant changes to this project are documented in this file.
 
 - Added constant for MongoDB configuration in the .env file.
 
+---
+
 ## [1.14.0]
 
 ### Changed
 
 - Updated package.json configuration.
+
+---
 
 ## [1.13.1]
 
@@ -761,11 +860,15 @@ All significant changes to this project are documented in this file.
 
 - General code refactoring for stability.
 
+---
+
 ## [1.13.0]
 
 ### Added
 
 - Introduced log storage functionality.
+
+---
 
 ## [1.12.2]
 
@@ -790,11 +893,15 @@ All significant changes to this project are documented in this file.
 - Enhanced code for the cities endpoint.
 - Refactored app.js.
 
+---
+
 ## [1.12.1]
 
 ### Changed
 
 - Updated package.json.
+
+---
 
 ## [1.12.0]
 
@@ -802,11 +909,15 @@ All significant changes to this project are documented in this file.
 
 - Integrated ESLint and Prettier for development.
 
+---
+
 ## [1.11.0]
 
 ### Changed
 
 - Updated dependency versions in package.json.
+
+---
 
 ## [1.10.0]
 
@@ -814,11 +925,15 @@ All significant changes to this project are documented in this file.
 
 - Updated dependency versions in package.json.
 
+---
+
 ## [1.9.1]
 
 ### Fixed
 
 - Corrected the API documentation URL.
+
+---
 
 ## [1.9.0]
 
@@ -830,11 +945,15 @@ All significant changes to this project are documented in this file.
 
 - Updated package.json.
 
+---
+
 ## [1.8.0]
 
 ### Changed
 
 - Updated package.json.
+
+---
 
 ## [1.7.0]
 
@@ -847,11 +966,15 @@ All significant changes to this project are documented in this file.
 - General code refactoring.
 - Improved CORS security configuration.
 
+---
+
 ## [1.6.3]
 
 ### Fixed
 
 - Resolved aliasing issues.
+
+---
 
 ## [1.6.2]
 
@@ -859,11 +982,15 @@ All significant changes to this project are documented in this file.
 
 - Various bug fixes.
 
+---
+
 ## [1.6.1]
 
 ### Added
 
 - Specified Node.js engine requirement in package.json.
+
+---
 
 ## [1.6.0]
 
@@ -880,11 +1007,15 @@ All significant changes to this project are documented in this file.
   - Examples of ascending and descending sort operations
   - Valid sort field documentation for each endpoint
 
+---
+
 ## [1.5.0]
 
 ### Added
 
 - Introduced Babel and Webpack for modern JavaScript support.
+
+---
 
 ## [1.4.0]
 
@@ -892,11 +1023,15 @@ All significant changes to this project are documented in this file.
 
 - Added API documentation.
 
+---
+
 ## [1.3.0]
 
 ### Changed
 
 - Prepared package.json for production deployment.
+
+---
 
 ## [1.2.0]
 
@@ -904,11 +1039,15 @@ All significant changes to this project are documented in this file.
 
 - Enhanced security using CORS and Helmet.
 
+---
+
 ## [1.1.0]
 
 ### Added
 
 - Introduced environment variable support.
+
+---
 
 ## [1.0.0]
 
