@@ -28,7 +28,7 @@ jobs:
       with:
         results_format: sarif
         results_file: ./scorecard-results.sarif
-        publish_results: true
+        publish_results: false  # API Scorecard
         repo_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload SARIF file
