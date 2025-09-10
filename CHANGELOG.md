@@ -4,6 +4,13 @@ All significant changes to this project are documented in this file.
 
 ---
 
+## [2.18.9] - 2025-09-10
+
+### Fixed
+- Fixed npm malware vulnerabilities by upgrading or replacing affected dependencies.
+
+---
+
 ## [2.18.8] - 2025-09-08
 
 ### Added
