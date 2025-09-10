@@ -2,11 +2,11 @@ name: Scorecard Security Check
 
 on:
   push:
-    branches: [ "master", "dev" ]
+    branches: ['master', 'dev']
   pull_request:
-    branches: [ "master" ]
+    branches: ['master']
   schedule:
-    - cron: '0 0 * * 1'  # Weekly on Mondays at 00:00
+    - cron: '0 0 * * 1' # Weekly on Mondays at 00:00
 
 jobs:
   scorecard:
@@ -17,21 +17,21 @@ jobs:
       security-events: write
       id-token: write
       actions: read
-      contents: read 
+      contents: read
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Checkout repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-    - name: Run Scorecard
-      uses: ossf/scorecard-action@05b42c624433fc40578a4040d5cf5e36ddca8cde # v2.4.2
-      with:
-        results_format: sarif
-        results_file: ./scorecard-results.sarif
-        publish_results: false  # API Scorecard
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Scorecard
+        uses: ossf/scorecard-action@05b42c624433fc40578a4040d5cf5e36ddca8cde # v2.4.2
+        with:
+          results_format: sarif
+          results_file: ./scorecard-results.sarif
+          publish_results: false # API Scorecard
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@f1f6e5f6af878fb37288ce1c627459e94dbf7d01 # v3.30.1
-      with:
-        sarif_file: ./scorecard-results.sarif
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@f1f6e5f6af878fb37288ce1c627459e94dbf7d01 # v3.30.1
+        with:
+          sarif_file: ./scorecard-results.sarif

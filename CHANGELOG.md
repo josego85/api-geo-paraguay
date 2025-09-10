@@ -7,13 +7,19 @@ All significant changes to this project are documented in this file.
 ## [2.18.9] - 2025-09-10
 
 ### Fixed
+
 - Fixed npm malware vulnerabilities by upgrading or replacing affected dependencies.
+
+### Improved
+
+- Ran `npm run format:check` (Prettier) to ensure code formatting compliance and maintain consistent code style across the project.
 
 ---
 
 ## [2.18.8] - 2025-09-08
 
 ### Added
+
 - Add `codeql-analysis.yml` GitHub Actions workflow to enable CodeQL security analysis.
 - Add `codeql-config.yml` configuration file for the CodeQL GitHub Actions workflow.
 - Add `scorecard-analysis.yml` GitHub Actions workflow to enable OpenSSF Scorecard security checks.
@@ -21,9 +27,11 @@ All significant changes to this project are documented in this file.
 - Add `actions-runner` to `.dockerignore` to exclude GitHub Actions runner-related files from Docker image builds.
 
 ### Changed
+
 - Renamed `codeql.yml` to `codeql-analysis.yml` for clarity and consistency in GitHub Actions workflows.
 
 ### Removed
+
 - Remove `nodejs-ci.yml` GitHub Actions workflow.
 
 ---
