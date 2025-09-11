@@ -56,7 +56,7 @@
     "typeorm": "0.3.26"
   },
   "devDependencies": {
-    "@babel/core": "7.27.4",
+    "@babel/core": "7.28.4",
     "@babel/eslint-parser": "7.27.5",
     "@babel/node": "7.27.1",
     "@babel/plugin-transform-class-properties": "7.27.1",
