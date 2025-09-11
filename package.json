@@ -41,7 +41,7 @@
     "graphql": "16.11.0",
     "graphql-yoga": "5.13.5",
     "helmet": "8.1.0",
-    "ioredis": "5.6.1",
+    "ioredis": "5.7.0",
     "joi": "17.13.3",
     "js-yaml": "4.1.0",
     "mongoose": "8.15.1",
