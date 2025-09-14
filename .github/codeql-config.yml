@@ -1,14 +1,14 @@
-name: "Security-focused CodeQL Configuration"
+name: 'Security-focused CodeQL Configuration'
 
 # Autonomous CodeQL agent configuration
 queries:
   # Specific security queries
   - uses: security-and-quality
-  
-# Path configuration  
+
+# Path configuration
 paths-ignore:
-  - "node_modules"
-  - "dist"
-  - "build"
-  - "*.min.js"
-  - "docs"
+  - 'node_modules'
+  - 'dist'
+  - 'build'
+  - '*.min.js'
+  - 'docs'

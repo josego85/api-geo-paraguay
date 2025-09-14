@@ -1,6 +1,29 @@
 # Changelog
 
-All significant changes to this project are documented in this file.
+All notable changes to this project will be documented in this file.  
+This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) guidelines.
+
+---
+
+## [2.18.10] - 2025-09-14
+
+### Overview
+This is a patch release that includes minor dependency updates, a critical security fix for `axios`, and code formatting improvements to maintain project consistency. No breaking changes were introduced.
+
+### Dependency Updates
+- Updated `ioredis` from `5.6.1` to `5.7.0` to incorporate performance optimizations and bug fixes. [](https://github.com/redis/ioredis/releases/tag/v5.7.0)
+- Updated `github/codeql-action` from `3.30.1` to `3.30.3` to enhance code scanning capabilities and address minor issues. [](https://github.com/github/codeql-action/releases)
+- Updated `@babel/core` from `7.27.4` to `7.28.4` to leverage new features, performance improvements, and compatibility enhancements. [](https://babeljs.io/releases)
+- Updated `@babel/eslint-parser` from `7.27.5` to `7.28.4` to align with `@babel/core` updates and improve JavaScript linting support. [](https://babeljs.io/releases)
+- Updated `eslint-plugin-import` from `2.31.0` to `2.32.0` to enhance import/export linting rules and resolve minor bugs. [](https://github.com/import-js/eslint-plugin-import/releases/tag/v2.32.0)
+- Updated `axios` from `1.11.0` to `1.12.1` to address a high-severity Denial of Service (DoS) vulnerability caused by insufficient data size checks [](https://github.com/axios/axios/releases/tag/v1.12.1)
+
+### Improved
+- Executed `npm run format:check` using Prettier to enforce consistent code formatting across all JavaScript and TypeScript files in the project. This ensures adherence to the defined coding style and improves readability for contributors.
+
+### Notes
+- All dependency updates are minor version bumps, ensuring compatibility with existing functionality and improving overall stability.
+- No breaking changes were introduced in this release.
 
 ---
 

@@ -1,43 +1,43 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "daily"
-      time: "09:00"
+      interval: 'daily'
+      time: '09:00'
     open-pull-requests-limit: 5
     reviewers:
-      - "josego85"
+      - 'josego85'
     assignees:
-      - "josego85"
+      - 'josego85'
     commit-message:
-      prefix: "security"
-      prefix-development: "security"
-      include: "scope"
+      prefix: 'security'
+      prefix-development: 'security'
+      include: 'scope'
     labels:
-      - "dependencies"
-      - "security"
+      - 'dependencies'
+      - 'security'
     allow:
-      - dependency-type: "direct"
-      - dependency-type: "indirect"
+      - dependency-type: 'direct'
+      - dependency-type: 'indirect'
     ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
-        
-  - package-ecosystem: "github-actions"
-    directory: "/"
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:30"
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:30'
     open-pull-requests-limit: 3
     reviewers:
-      - "josego85"
+      - 'josego85'
     assignees:
-      - "josego85"
+      - 'josego85'
     commit-message:
-      prefix: "ci"
-      include: "scope"
+      prefix: 'ci'
+      include: 'scope'
     labels:
-      - "github-actions"
-      - "security"
+      - 'github-actions'
+      - 'security'
