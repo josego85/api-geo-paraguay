@@ -8,20 +8,31 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 ## [2.18.10] - 2025-09-14
 
 ### Overview
-This is a patch release that includes minor dependency updates, a critical security fix for `axios`, and code formatting improvements to maintain project consistency. No breaking changes were introduced.
+
+This is a patch release that includes minor dependency updates, a critical security fix for `axios`, code formatting improvements, and updates to GitHub Actions configurations to enhance CI/CD processes. No breaking changes were introduced.
 
 ### Dependency Updates
-- Updated `ioredis` from `5.6.1` to `5.7.0` to incorporate performance optimizations and bug fixes. [](https://github.com/redis/ioredis/releases/tag/v5.7.0)
-- Updated `github/codeql-action` from `3.30.1` to `3.30.3` to enhance code scanning capabilities and address minor issues. [](https://github.com/github/codeql-action/releases)
-- Updated `@babel/core` from `7.27.4` to `7.28.4` to leverage new features, performance improvements, and compatibility enhancements. [](https://babeljs.io/releases)
-- Updated `@babel/eslint-parser` from `7.27.5` to `7.28.4` to align with `@babel/core` updates and improve JavaScript linting support. [](https://babeljs.io/releases)
-- Updated `eslint-plugin-import` from `2.31.0` to `2.32.0` to enhance import/export linting rules and resolve minor bugs. [](https://github.com/import-js/eslint-plugin-import/releases/tag/v2.32.0)
-- Updated `axios` from `1.11.0` to `1.12.1` to address a high-severity Denial of Service (DoS) vulnerability caused by insufficient data size checks [](https://github.com/axios/axios/releases/tag/v1.12.1)
+
+- Updated `ioredis` from `5.6.1` to `5.7.0` to incorporate performance optimizations and bug fixes. ([Release Notes](https://github.com/redis/ioredis/releases/tag/v5.7.0))
+- Updated `github/codeql-action` from `3.30.1` to `3.30.3` to enhance code scanning capabilities and address minor issues. ([Release Notes](https://github.com/github/codeql-action/releases))
+- Updated `@babel/core` from `7.27.4` to `7.28.4` to leverage new features, performance improvements, and compatibility enhancements. ([Release Notes](https://babeljs.io/releases))
+- Updated `@babel/eslint-parser` from `7.27.5` to `7.28.4` to align with `@babel/core` updates and improve JavaScript linting support. ([Release Notes](https://babeljs.io/releases))
+- Updated `eslint-plugin-import` from `2.31.0` to `2.32.0` to enhance import/export linting rules and resolve minor bugs. ([Release Notes](https://github.com/import-js/eslint-plugin-import/releases/tag/v2.32.0))
+- Updated `axios` from `1.11.0` to `1.12.1` to address a high-severity Denial of Service (DoS) vulnerability caused by insufficient data size checks ([Issue #60](https://github.com/axios/axios/issues/60); CVSS v3: High, Attack Vector: Network, Attack Complexity: Low, Privileges Required: None, User Interaction: None, Scope: Unchanged, Confidentiality: None, Integrity: None, Availability: High). This update also includes performance improvements and new features. ([Release Notes](https://github.com/axios/axios/releases/tag/v1.12.1))
 
 ### Improved
+
 - Executed `npm run format:check` using Prettier to enforce consistent code formatting across all JavaScript and TypeScript files in the project. This ensures adherence to the defined coding style and improves readability for contributors.
 
+### CI/CD Configuration Updates
+
+- Added `docs` to the `paths-ignore` list in `.github/codeql-config.yml` to exclude documentation files from CodeQL analysis, reducing noise in scan results.
+- Added `.github/dependabot.yml` to enable automated dependency updates via Dependabot, improving dependency management and security.
+- Changed the `runs-on` configuration in `.github/workflows/codeql-analysis.yml` from `self-hosted` to `ubuntu-latest` to leverage GitHub-hosted runners for improved reliability and performance in CodeQL analysis.
+- Changed the `runs-on` configuration in `.github/workflows/scorecard-analysis.yml` from `self-hosted` to `ubuntu-latest` to align with standard GitHub-hosted runners for OpenSSF Scorecard analysis.
+
 ### Notes
+
 - All dependency updates are minor version bumps, ensuring compatibility with existing functionality and improving overall stability.
 - No breaking changes were introduced in this release.
 
