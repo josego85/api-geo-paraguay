@@ -12,6 +12,33 @@ GET /api/v1/cities                           # List all cities
 GET /api/v1/neighborhoods                    # List all neighborhoods
 ```
 
+### Example Request
+
+A simple `curl` request to get data by coordinates:
+
+```bash
+curl http://87.106.81.190/api/v1/paraguay/-57.333333/-25.28333
+```
+
+Response:
+
+```json
+{
+  "department": {
+    "id": 11,
+    "name": "Central"
+  },
+  "district": {
+    "id": 1,
+    "name": "Asunción"
+  },
+  "city": {
+    "id": 1,
+    "name": "Asunción"
+  }
+}
+```
+
 ## Pagination
 
 All list endpoints support pagination via the `page` and `limit` query parameters:

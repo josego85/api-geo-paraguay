@@ -1,6 +1,6 @@
 # API GEO Paraguay
 
-[![Version](https://img.shields.io/badge/version-2.18.10-blue.svg)](https://github.com/josego85/api-geo-paraguay)
+[![Version](https://img.shields.io/badge/version-2.19.0-blue.svg)](https://github.com/josego85/api-geo-paraguay)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-v22.18.0-green.svg)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/express-v5.1.0-lightgrey.svg)](https://expressjs.com)
@@ -20,12 +20,57 @@ API GEO Paraguay is a powerful service that provides precise geographical inform
 
 The production setup leverages both NGINX caching and Redis caching for improved performance, scalability, and rapid API responses.
 
-## Quick Links
+<p align="center">
+  <img src="docs/assets/rest-get-cities-filtered-sorted.png" alt="Example of a REST API query with filtering and sorting" width="90%">
+  <br>
+  <em>A REST API query showing filtering by name and sorting results in descending order.</em>
+</p>
+
+<details>
+<summary>Click to see more examples from the gallery</summary>
+
+### Basic REST Query: All Departments
+
+_A REST API call that returns all departments in Paraguay._
+
+<p align="center">
+  <img src="docs/assets/rest-get-all-departments.png" alt="Example of a GET request for all departments" width="90%">
+</p>
+
+### REST Query: Paginated Districts
+
+_A REST API call that returns all districts, using page=1 and limit=3 for pagination._
+
+<p align="center">
+  <img src="docs/assets/rest-get-districts-paginated.png" alt="Example of pagination in the REST API" width="90%">
+</p>
+
+### GraphQL Query
+
+_An example of a GraphQL query._
+
+<p align="center">
+  <img src="docs/assets/graphql-query-example.png" alt="Example of a GraphQL query" width="90%">
+</p>
+
+### Interactive Documentation with Swagger
+
+_Shows the Swagger UI developers use to explore the API._
+
+<p align="center">
+  <img src="docs/assets/api-swagger-documentation.png" alt="API documentation with Swagger UI" width="90%">
+</p>
+
+</details>
+
+## Documentation
 
 - [Getting Started Guide](docs/guides/setup.md)
 - [API Documentation](docs/api/README.md)
 - [REST API](docs/guides/rest.md)
 - [GraphQL API](docs/guides/graphql.md)
+- [Features](docs/guides/features.md)
+- [Database Architecture](docs/development/architecture.md)
 - [Security & Performance](docs/guides/security.md)
 - [Development Guide](docs/development/README.md)
 - [API & Security Validation](docs/development/spectral.md)
@@ -41,23 +86,6 @@ The production setup leverages both NGINX caching and Redis caching for improved
 - **NGINX caching for API responses to improve performance and reduce backend load**
 - Security-first design
 - Production-ready with Docker support
-
-## Database Architecture
-
-- **MySQL**: Primary database for geographical data (departments, districts, cities, neighborhoods)
-- **MongoDB**: Logging and analytics storage
-- **Redis**: High-performance caching and GeoHash lookup
-
-## Features
-
-- Retrieve detailed geographic data (department, district, city, neighborhood) based on coordinates
-- Cache integration with Redis for rapid responses
-- **NGINX caching for frequently accessed API endpoints**
-- Secure endpoints following industry-standard practices
-- Comprehensive API documentation via Swagger
-- GraphQL support for flexible and efficient queries
-- Production-ready NGINX integration with rate limiting and security features
-- Flexible sorting options for all geographic endpoints ([see REST API docs](docs/guides/rest.md#sorting))
 
 ## Contributing
 

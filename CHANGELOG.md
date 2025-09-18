@@ -5,6 +5,26 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.19.0] - 2025-09-18
+
+### Documentation
+
+- **Complete `README.md` Overhaul**: The main `README.md` has been significantly refactored for clarity, conciseness, and professionalism.
+  - Introduced a prominent hero image to visually represent the API's capabilities.
+  - Implemented a collapsible gallery for supplementary images to save space while maintaining visual appeal.
+  - Reorganized the entire layout for a more logical and readable flow, grouping descriptive text and visual elements separately.
+  - Rewrote and reviewed all user-facing text to ensure high-quality, idiomatic English.
+- **Improved Documentation Architecture**:
+  - Added a dedicated `docs/assets` directory for all documentation images, moving them from the project root.
+  - Renamed image files to be descriptive of their content (e.g., `rest-get-cities-filtered-sorted.png`).
+  - Created a new `docs/development/architecture.md` file to house the database architecture details, previously in the `README.md`.
+  - Refactored `docs/guides/features.md` and `docs/guides/rest.md` to remove duplicated content, following the DRY (Don't Repeat Yourself) principle. `rest.md` is now the single source of truth for REST API details.
+- **Enhanced Navigation**:
+  - Renamed the "Quick Links" section to "Documentation" for better accuracy.
+  - Added a link to the `features.md` guide, which was previously unlinked, ensuring all documentation is discoverable.
+
+---
+
 ## [2.18.10] - 2025-09-14
 
 ### Overview
