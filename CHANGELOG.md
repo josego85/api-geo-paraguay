@@ -5,6 +5,40 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.19.1] - 2025-10-11
+
+### Overview
+
+This is a maintenance release focused on security hardening, dependency updates, and CI/CD pipeline improvements. Multiple security vulnerabilities have been addressed across production and development dependencies. No breaking changes were introduced.
+
+### Security
+
+- **tar-fs**: Updated from `2.1.3` to `2.1.4` to address security vulnerabilities ([#65](https://github.com/josego85/api-geo-paraguay/pull/65))
+- **webpack**: Updated from `5.99.9` to `5.102.1` (dev dependency) to patch security issues ([#74](https://github.com/josego85/api-geo-paraguay/pull/74))
+- **express-rate-limit**: Updated from `8.0.1` to `8.1.0` to incorporate security enhancements and bug fixes ([#62](https://github.com/josego85/api-geo-paraguay/pull/62))
+- **joi**: Updated from `17.13.3` to `18.0.1` to address security vulnerabilities and improve validation features ([#61](https://github.com/josego85/api-geo-paraguay/pull/61))
+- **mongoose**: Updated from `8.15.1` to `8.19.1` to patch security issues and improve MongoDB driver compatibility ([#73](https://github.com/josego85/api-geo-paraguay/pull/73))
+
+### Dependency Updates
+
+- Updated `dotenv-webpack` from `8.1.0` to `8.1.1` for improved environment variable handling
+- Updated `typeorm` from `0.3.26` to `0.3.27` to incorporate bug fixes and performance improvements
+- Updated `mysql2` from `3.14.3` to `3.14.5` for enhanced database connection stability
+- Updated `dotenv` from `16.5.0` to `16.6.1` to improve environment configuration management
+
+### CI/CD
+
+- Updated `ossf/scorecard-action` from `2.4.2` to `2.4.3` to enhance security posture analysis ([#71](https://github.com/josego85/api-geo-paraguay/pull/71))
+- Updated `github/codeql-action` from `3.30.3` to `3.30.6` to improve code scanning capabilities ([#72](https://github.com/josego85/api-geo-paraguay/pull/72))
+
+### Notes
+
+- All dependency updates are backward-compatible and maintain existing API functionality
+- Thoroughly tested to ensure no regression issues
+- Recommended upgrade for all production environments to benefit from security patches
+
+---
+
 ## [2.19.0] - 2025-09-18
 
 ### Documentation

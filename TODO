@@ -1,6 +1,6 @@
 ## Todo
 
-- Ver el tema de limpiar el redis en los test. que pasa si ya habia en redis datos. y se ejecuta y se pierden. ver la mejor forma de solucionar.
-- Ver el tema de los logs de mongodb al usar tests.
-- Agregar nginx para dev
-- Cuando enta en docker prod. No funciona el cache (redis) --> http://localhost/api/v1/ciudades?page=1&limit=15&sortField=id&sortOrder=DESC
+- Review the issue of clearing Redis in tests. What happens if there is already data in Redis, and it gets executed and lost? Explore the best way to address this.
+- Check the issue of MongoDB logs when running tests.
+- Add Nginx for development.
+- Update the Diun documentation.
