@@ -11,17 +11,15 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 #### Added
 
-- Modular CI architecture with reusable workflows:
-  - `security-audit.yml` - npm audit checks
-  - `code-quality.yml` - format:check + lint:check
-  - `build.yml` - production build verification with artifact upload
-- Composite action `setup-node-deps` for DRY Node.js + npm setup
+- New `ci.yml` workflow with modular orchestrator pattern
+- Reusable workflows for separation of concerns:
+  - `security-audit.yml` - npm audit security checks
+  - `code-quality.yml` - prettier format + eslint validation
+  - `build.yml` - production build verification with artifacts
+- Composite action `setup-node-deps` for Node.js + dependencies setup
 - Build artifact uploads (7-day retention)
 - ESLint result caching
-
-#### Changed
-
-- CI jobs now run in parallel for faster feedback
+- Parallel job execution for faster CI feedback
 
 ---
 
