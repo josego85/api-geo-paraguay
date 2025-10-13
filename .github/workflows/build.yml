@@ -1,0 +1,55 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: false
+        type: string
+        default: '22'
+      retention-days:
+        required: false
+        type: number
+        default: 7
+
+jobs:
+  build:
+    name: Production Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            nodejs.org:443
+            registry.npmjs.org:443
+            objects.githubusercontent.com:443
+
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup-node-deps
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Build
+        run: |
+          npm run build
+          du -sh dist/
+          test -f dist/bundle.js || exit 1
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43f2f88e4 # v4.6.0
+        with:
+          name: build-${{ github.sha }}
+          path: dist/
+          retention-days: ${{ inputs.retention-days }}

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+    branches: [master, dev]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    name: Security
+    uses: ./.github/workflows/security-audit.yml
+
+  quality:
+    name: Quality
+    uses: ./.github/workflows/code-quality.yml
+
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+
+  dependency-review:
+    name: Dependencies
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - uses: actions/dependency-review-action@4081c8f33594e0ccf6b5fb0a89e74b9e6f6c94a5 # v4.5.1
+        with:
+          fail-on-severity: moderate
+          deny-licenses: GPL-2.0, LGPL-2.0
