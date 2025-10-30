@@ -45,7 +45,6 @@ This is a maintenance release focused on security hardening, CI/CD pipeline impr
 - Docker profiles are opt-in; default behavior starts core services only
 - Recommended upgrade to benefit from security patches, performance improvements, and optimized development workflow
 
-
 ## [2.20.0] - 2025-10-13
 
 ### CI/CD

@@ -83,6 +83,7 @@ Optional tools like SonarQube and Diun are resource-intensive and not required f
 - **Flexible workflow**: Enable tools on-demand for specific tasks
 
 For more details on these tools:
+
 - [SonarQube Documentation](../development/sonarqube.md)
 - [Diun Documentation](../development/diun.md)
 
