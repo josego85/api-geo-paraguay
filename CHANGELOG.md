@@ -5,6 +5,47 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.1] - 2025-10-29
+
+### Overview
+
+This is a maintenance release focused on security hardening, CI/CD pipeline improvements, and enhanced developer experience through automated dependency updates and Docker optimization. Multiple GitHub Actions have been updated to their latest versions to incorporate performance improvements and security patches. No breaking changes were introduced.
+
+### Security
+
+- **validator**: Updated from `13.15.15` to `13.15.20` (dev dependency) in the npm_and_yarn group to address security vulnerabilities and improve validation features ([#87](https://github.com/josego85/api-geo-paraguay/pull/87))
+
+### CI/CD
+
+- Updated `github/codeql-action` from `4.30.8` to `4.31.0` to enhance code scanning capabilities and improve security analysis ([#86](https://github.com/josego85/api-geo-paraguay/pull/86))
+- Updated `actions/checkout` from `4` to `5` to leverage improved repository checkout performance and new features ([#83](https://github.com/josego85/api-geo-paraguay/pull/83))
+- Updated `actions/cache` from `4.2.0` to `4.3.0` to improve caching mechanisms and reduce workflow execution times ([#82](https://github.com/josego85/api-geo-paraguay/pull/82))
+
+### Improved
+
+- **Docker Compose Profiles**: Implemented profile-based architecture for optional development tools in `docker-compose.override.yml`
+  - Added `quality` profile for SonarQube (code quality analysis)
+  - Added `monitoring` profile for Diun (Docker image update monitoring)
+  - Added `tools` profile for enabling all optional tools at once
+  - Optimized default development startup by making resource-intensive tools opt-in
+  - Reduced memory footprint by ~2GB when optional tools are not needed
+  - Enhanced developer experience with faster startup times for daily development
+  - Documented profile usage in [setup.md](docs/guides/setup.md) with practical examples
+
+### Documentation
+
+- Enhanced [setup.md](docs/guides/setup.md) with comprehensive Docker Compose profiles documentation
+- Added practical usage examples for different development scenarios
+- Included benefits and rationale for profile-based architecture
+- Added links to tool-specific documentation (SonarQube, Diun)
+
+### Notes
+
+- All dependency updates are backward-compatible and maintain existing CI/CD functionality
+- Docker profiles are opt-in; default behavior starts core services only
+- Recommended upgrade to benefit from security patches, performance improvements, and optimized development workflow
+
+
 ## [2.20.0] - 2025-10-13
 
 ### CI/CD

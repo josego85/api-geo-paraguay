@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.20.0
+  version: 2.20.1
   title: API GEO Paraguay
   description: A RESTful service that provides detailed geographical information for Paraguay based on coordinates (longitude and latitude).
   contact:

@@ -17,6 +17,9 @@ services:
   sonarqube:
     image: sonarqube:latest
     container_name: sonarqube
+    profiles:
+      - tools
+      - quality
     ports:
       - '9000:9000'
     environment:
@@ -31,6 +34,9 @@ services:
   diun:
     image: crazymax/diun:4.30.0
     command: serve --config /docker/dev/diun/diun.yml
+    profiles:
+      - tools
+      - monitoring
     volumes:
       - './docker/dev/diun:/docker/dev/diun'
       - '/var/run/docker.sock:/var/run/docker.sock'

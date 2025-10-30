@@ -37,7 +37,7 @@ npm run dev
 ### Start Development Environment
 
 ```bash
-# Build and start containers
+# Build and start containers (core services only)
 docker compose up --build -d
 
 # View logs
@@ -46,6 +46,45 @@ docker compose logs -f
 # Stop environment
 docker compose down
 ```
+
+### Optional Development Tools (Docker Profiles)
+
+The development environment includes optional tools that can be enabled using Docker Compose profiles:
+
+#### Available Profiles
+
+- **`quality`** - Code quality analysis with SonarQube
+- **`monitoring`** - Docker image update monitoring with Diun
+- **`tools`** - All optional tools (quality + monitoring)
+
+#### Usage Examples
+
+```bash
+# Start with SonarQube for code quality analysis
+docker compose --profile quality up -d
+
+# Start with Diun for Docker image monitoring
+docker compose --profile monitoring up -d
+
+# Start with all optional tools
+docker compose --profile tools up -d
+
+# Combine multiple profiles
+docker compose --profile quality --profile monitoring up -d
+```
+
+#### Why Use Profiles?
+
+Optional tools like SonarQube and Diun are resource-intensive and not required for daily development:
+
+- **Faster startup**: Core services start in seconds vs. minutes
+- **Lower resource usage**: Saves ~2GB RAM when not using SonarQube
+- **Better developer experience**: Start only what you need
+- **Flexible workflow**: Enable tools on-demand for specific tasks
+
+For more details on these tools:
+- [SonarQube Documentation](../development/sonarqube.md)
+- [Diun Documentation](../development/diun.md)
 
 ## Production Environment
 
