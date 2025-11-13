@@ -5,7 +5,13 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
-## [2.20.2] - 2025-11-12
+## [2.20.2] - 2025-11-13
+
+### CI/CD
+
+- Updated `actions/checkout` to commit hash `71cf2267` (v5.0.0) across all GitHub Actions workflows to incorporate latest security patches and improvements.
+
+### Dependencies
 
 - Upgraded Node.js Docker image from 22.18.0-alpine3.22 to 22.21.1-alpine3.21.
 - Updated Nginx Docker image from 1.29.1 to 1.29.3.
