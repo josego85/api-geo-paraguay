@@ -34,11 +34,11 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493 # v5.0.0
+      - uses: actions/checkout@71cf2267d89c5cb81562390fa70a37fa40b1305e # v5.0.0
         with:
           persist-credentials: false
 
-      - uses: actions/dependency-review-action@4081c8f33594e0ccf6b5fb0a89e74b9e6f6c94a5 # v4.5.1
+      - uses: actions/dependency-review-action@3c4e3dcb1aa7874d2c16be7d79418e9b7efd6261 # v4.8.2
         with:
           fail-on-severity: moderate
           deny-licenses: GPL-2.0, LGPL-2.0
