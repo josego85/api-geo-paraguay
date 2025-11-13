@@ -7,6 +7,14 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ## [2.20.2] - 2025-11-13
 
+### Security
+
+- **Docker Image Pinning**: Added SHA256 digest hashes to all Docker base images to prevent supply chain attacks and ensure immutable builds.
+  - Pinned `node:22.21.1` to SHA256 `dcf061...32e2a5` in development Dockerfile.
+  - Pinned `node:22.21.1-alpine` to SHA256 `b23584...f026c5` in development Dockerfile.
+  - Pinned `node:22.21.1-alpine3.21` to SHA256 `af8023...f01f8885` in production Dockerfile (builder and production stages).
+  - Pinned `alpine:3.22` to SHA256 `4b7ce0...8dd412` in Nginx production Dockerfile.
+
 ### CI/CD
 
 - Updated `actions/checkout` to commit hash `71cf2267` (v5.0.0) across all GitHub Actions workflows to incorporate latest security patches and improvements.
