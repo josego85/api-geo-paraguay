@@ -1,6 +1,6 @@
 # --- Stage 1: Build Dependencies ---
 # Leverages a full Node.js image for robust dependency installation.
-FROM node:22.18.0 AS deps
+FROM node:22.21.1 AS deps
 
 # Set working directory.
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN npm install --frozen-lockfile
 
 # --- Stage 2: Final Development Image ---
 # Uses a minimal Alpine-based Node.js image for a smaller footprint.
-FROM node:22.18.0-alpine
+FROM node:22.21.1-alpine
 
 # Set working directory.
 WORKDIR /app

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) guidelines.
 
 ---
+## [2.20.2] - 2025-11-12
+
+- Upgraded Node.js Docker image from 22.18.0-alpine3.22 to 22.21.1-alpine3.21.
+- Updated Nginx Docker image from 1.29.1 to 1.29.3.
+- Updated MongoDB Docker Compose image from 7.0.23 to 7.0.25.
+- Updated MySQL Docker Compose image from 8.0.43 to 8.0.44.
+- Updated Redis Docker Compose image from 8.2.1 to 8.2.3.
+
+---
 
 ## [2.20.1] - 2025-10-30
 
@@ -44,6 +53,8 @@ This is a maintenance release focused on security hardening, CI/CD pipeline impr
 - All dependency updates are backward-compatible and maintain existing CI/CD functionality
 - Docker profiles are opt-in; default behavior starts core services only
 - Recommended upgrade to benefit from security patches, performance improvements, and optimized development workflow
+
+---
 
 ## [2.20.0] - 2025-10-13
 
