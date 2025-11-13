@@ -10,6 +10,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 ### CI/CD
 
 - Updated `actions/checkout` to commit hash `71cf2267` (v5.0.0) across all GitHub Actions workflows to incorporate latest security patches and improvements.
+- Updated `actions/dependency-review-action` from v4.5.1 (invalid) to v4.8.2 (commit hash `3c4e3dcb`) to fix workflow errors and incorporate latest security features.
 
 ### Dependencies
 
