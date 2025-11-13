@@ -19,6 +19,8 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 - Updated `actions/checkout` to commit hash `71cf2267` (v5.0.0) across all GitHub Actions workflows to incorporate latest security patches and improvements.
 - Updated `actions/dependency-review-action` from v4.5.1 (invalid) to v4.8.2 (commit hash `3c4e3dcb`) to fix workflow errors and incorporate latest security features.
+- Updated `github/codeql-action` from v4.31.0 to v4.31.2 to enhance code scanning capabilities and security analysis ([#89](https://github.com/josego85/api-geo-paraguay/pull/89)).
+- Updated `actions/upload-artifact` from v4 to v5 to improve artifact upload performance and reliability ([#90](https://github.com/josego85/api-geo-paraguay/pull/90)).
 
 ### Dependencies
 
