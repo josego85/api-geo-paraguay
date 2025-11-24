@@ -33,7 +33,7 @@ jobs:
             registry.npmjs.org:443
             objects.githubusercontent.com:443
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
 
