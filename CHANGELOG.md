@@ -5,6 +5,15 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.3] - 2025-11-24
+
+### Security
+
+- **glob**: Updated from `11.0.3` to `13.0.0` to fix command injection vulnerability ([GHSA-5j98-mcp5-4vw2](https://github.com/advisories/GHSA-5j98-mcp5-4vw2))
+- **js-yaml**: Updated from `4.1.0` to `4.1.1` to fix prototype pollution ([GHSA-mh29-5h37-fv8m](https://github.com/advisories/GHSA-mh29-5h37-fv8m))
+
+---
+
 ## [2.20.2] - 2025-11-13
 
 ### Security
