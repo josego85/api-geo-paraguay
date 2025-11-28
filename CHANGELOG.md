@@ -5,6 +5,16 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.4] - 2025-11-28
+
+### Security
+
+- **body-parser**: Updated to `2.2.0` to fix Denial of Service (DoS) vulnerability when URL encoding is used ([GHSA-wqch-xfxh-vrr4](https://github.com/advisories/GHSA-wqch-xfxh-vrr4))
+  - Severity: Moderate
+  - Fixed via `npm audit fix`
+
+---
+
 ## [2.20.3] - 2025-11-24
 
 ### Security
