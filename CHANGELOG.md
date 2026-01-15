@@ -5,6 +5,19 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.5] - 2026-01-15
+
+### Security
+
+- **qs**: Updated to `>=6.14.1` to fix DoS vulnerability via memory exhaustion in arrayLimit bypass ([GHSA-6rw7-vpxm-498p](https://github.com/advisories/GHSA-6rw7-vpxm-498p))
+  - Severity: High
+  - Fixed via `npm audit fix`
+- **validator**: Updated to `>=13.15.22` to fix incomplete filtering vulnerability ([GHSA-vghf-hv5q-vc2g](https://github.com/advisories/GHSA-vghf-hv5q-vc2g))
+  - Severity: High
+  - Fixed via `npm audit fix`
+
+---
+
 ## [2.20.4] - 2025-11-28
 
 ### Security
