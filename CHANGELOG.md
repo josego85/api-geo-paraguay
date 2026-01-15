@@ -9,12 +9,18 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ### Security
 
+- **express**: Updated from `5.1.0` to `5.2.1` to address security vulnerabilities ([#99](https://github.com/josego85/api-geo-paraguay/pull/99))
 - **qs**: Updated to `>=6.14.1` to fix DoS vulnerability via memory exhaustion in arrayLimit bypass ([GHSA-6rw7-vpxm-498p](https://github.com/advisories/GHSA-6rw7-vpxm-498p))
   - Severity: High
   - Fixed via `npm audit fix`
 - **validator**: Updated to `>=13.15.22` to fix incomplete filtering vulnerability ([GHSA-vghf-hv5q-vc2g](https://github.com/advisories/GHSA-vghf-hv5q-vc2g))
   - Severity: High
   - Fixed via `npm audit fix`
+
+### CI/CD
+
+- Updated `github/codeql-action` from `4.31.2` to `4.31.7` to enhance code scanning capabilities ([#100](https://github.com/josego85/api-geo-paraguay/pull/100))
+- Updated `actions/checkout` from `5` to `6` to leverage improved repository checkout performance and new features ([#95](https://github.com/josego85/api-geo-paraguay/pull/95))
 
 ---
 
