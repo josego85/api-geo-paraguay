@@ -67,7 +67,7 @@ services:
       - app-network
 
   mongodb:
-    image: mongo:7.0.25-jammy
+    image: mongo:8.0.17-noble
     container_name: mongodb-api-geo-paraguay
     restart: always
     ports:
