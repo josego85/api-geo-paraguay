@@ -1,7 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const DotenvWebpackPlugin = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
@@ -25,7 +24,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new DotenvWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/app/i18n', to: 'i18n' },

@@ -5,6 +5,49 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.6] - 2026-01-19
+
+### Changed
+
+- **GraphQL**: Added custom title "API GEO Paraguay - GraphQL" to GraphiQL interface
+- **Redis**: Added `commandTimeout: 5000` for connection resilience
+- **Webpack**: Removed unused `dotenv-webpack` plugin (dotenv handles env vars at runtime)
+
+### Dependencies
+
+- **Production**:
+  - `graphql` 16.11.0 → 16.12.0
+  - `graphql-yoga` 5.13.5 → 5.18.0
+  - `ioredis` 5.7.0 → 5.9.2
+  - `mysql2` 3.14.5 → 3.16.1
+  - `typeorm` 0.3.27 → 0.3.28
+  - `joi` 18.0.1 → 18.0.2
+  - `send` 1.2.0 → 1.2.1
+  - `dotenv` 16.6.1 → 17.2.3
+  - `express-rate-limit` 8.1.0 → 8.2.1
+
+- **Development**:
+  - `@babel/*` packages → 7.28.x
+  - `webpack` 5.102.1 → 5.104.1
+  - `eslint` 9.28.0 → 9.39.2
+  - `prettier` 3.5.3 → 3.8.0
+  - `nodemon` 3.1.10 → 3.1.11
+  - `rimraf` 6.0.1 → 6.1.2
+
+### CI/CD
+
+- `github/codeql-action` 4.31.7 → 4.31.10 ([#104](https://github.com/josego85/api-geo-paraguay/pull/104))
+- `actions/upload-artifact` 5.0.0 → 6.0.0 ([#102](https://github.com/josego85/api-geo-paraguay/pull/102))
+- `actions/cache` 4.3.0 → 5.0.2 ([#103](https://github.com/josego85/api-geo-paraguay/pull/103))
+
+### Infrastructure
+
+- **Node.js**: 22.21.1 → 24.13.0 (Active LTS)
+- **MongoDB**: 7.0.25-jammy → 8.0.17-noble (LTS until Oct 2029)
+- **Nginx**: 1.29.3 → 1.29.4
+
+---
+
 ## [2.20.5] - 2026-01-15
 
 ### Security

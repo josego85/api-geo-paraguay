@@ -7,6 +7,7 @@ const redisClient = new Redis({
   host,
   port,
   password,
+  commandTimeout: 5000,
   retryStrategy(times) {
     return Math.min(times * 50, 2000);
   },
