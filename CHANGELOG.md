@@ -14,7 +14,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 ### CI/CD
 
 - Updated `github/codeql-action` from `4.31.10` to `4.31.11` to enhance code scanning capabilities ([#108](https://github.com/josego85/api-geo-paraguay/pull/108))
-- Updated `actions/checkout` from `5.0.1` to `6.0.2` to leverage improved repository checkout performance and new features ([#107](https://github.com/josego85/api-geo-paraguay/pull/107)) 
+- Updated `actions/checkout` from `5.0.1` to `6.0.2` to leverage improved repository checkout performance and new features ([#107](https://github.com/josego85/api-geo-paraguay/pull/107))
 
 ---
 
