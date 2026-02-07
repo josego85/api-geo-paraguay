@@ -9,9 +9,12 @@ services:
     ports:
       - '5000:5000'
     depends_on:
-      - database
-      - mongodb
-      - cache
+      database:
+        condition: service_healthy
+      mongodb:
+        condition: service_started
+      cache:
+        condition: service_healthy
     volumes:
       - ./:/app
     environment:
@@ -43,7 +46,7 @@ services:
       - app-network
 
   database:
-    image: mysql:8.0.44
+    image: mysql:8.0.45
     container_name: database-api-geo-paraguay
     restart: always
     environment:
@@ -67,7 +70,7 @@ services:
       - app-network
 
   mongodb:
-    image: mongo:8.0.17-noble
+    image: mongo:8.0.18-noble
     container_name: mongodb-api-geo-paraguay
     restart: always
     ports:
