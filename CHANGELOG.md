@@ -5,6 +5,28 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.8] - 2026-02-07
+
+### Security
+
+- **@isaacs/brace-expansion**: Updated from `5.0.0` to `5.0.1` to address a security vulnerability in the npm_and_yarn dependency group ([#111](https://github.com/josego85/api-geo-paraguay/pull/111))
+
+### CI/CD
+
+- Updated `actions/cache` from `5.0.2` to `5.0.3` to improve caching mechanisms and reduce workflow execution times ([#110](https://github.com/josego85/api-geo-paraguay/pull/110))
+- Updated `github/codeql-action` from `4.31.11` to `4.32.0` to enhance code scanning capabilities and security analysis ([#109](https://github.com/josego85/api-geo-paraguay/pull/109))
+
+### Fixed
+
+- **Docker Compose**: Resolved app startup failure (`ECONNREFUSED`) when upgrading MySQL from `8.0.44` to `8.0.45` by switching `depends_on` from simple list to health-based conditions, ensuring the app waits for MySQL and Redis to be fully ready before starting
+
+### Infrastructure
+
+- **MySQL**: 8.0.44 → 8.0.45
+- **MongoDB**: 8.0.17-noble → 8.0.18-noble
+
+---
+
 ## [2.20.7] - 2026-01-26
 
 ### Security
