@@ -5,6 +5,18 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.9] - 2026-02-12
+
+### Security
+
+- **axios**: Updated from `1.12.1` to `1.13.5` to address security vulnerabilities in the npm_and_yarn dependency group ([#114](https://github.com/josego85/api-geo-paraguay/pull/114))
+
+### CI/CD
+
+- Updated `github/codeql-action` from `4.32.0` to `4.32.2` to enhance code scanning capabilities and security analysis ([#113](https://github.com/josego85/api-geo-paraguay/pull/113))
+
+---
+
 ## [2.20.8] - 2026-02-07
 
 ### Security
