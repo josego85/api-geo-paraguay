@@ -5,6 +5,20 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.10] - 2026-02-23
+
+### Security
+
+- **minimatch**: Forzado a `10.2.2` vía `overrides` en `package.json` para corregir vulnerabilidad ReDoS con wildcards repetidos en patrones ([GHSA-3ppc-4f35-3m26](https://github.com/advisories/GHSA-3ppc-4f35-3m26)) — afectaba dependencias transitivas de `eslint`, `jest`, `nodemon` y `@stoplight/spectral-*`
+- **ajv**: Corregida vulnerabilidad ReDoS al usar la opción `$data` ([GHSA-2g4f-4pwh-qvx6](https://github.com/advisories/GHSA-2g4f-4pwh-qvx6))
+- **qs**: Corregida vulnerabilidad DoS por bypass de `arrayLimit` en el parseo con comas ([GHSA-w7fw-mjwx-w883](https://github.com/advisories/GHSA-w7fw-mjwx-w883))
+
+### Dependencies
+
+- **nodemon**: `3.1.11` → `3.1.14`
+
+---
+
 ## [2.20.9] - 2026-02-12
 
 ### Security
