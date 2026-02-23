@@ -9,9 +9,9 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ### Security
 
-- **minimatch**: Forzado a `10.2.2` vía `overrides` en `package.json` para corregir vulnerabilidad ReDoS con wildcards repetidos en patrones ([GHSA-3ppc-4f35-3m26](https://github.com/advisories/GHSA-3ppc-4f35-3m26)) — afectaba dependencias transitivas de `eslint`, `jest`, `nodemon` y `@stoplight/spectral-*`
-- **ajv**: Corregida vulnerabilidad ReDoS al usar la opción `$data` ([GHSA-2g4f-4pwh-qvx6](https://github.com/advisories/GHSA-2g4f-4pwh-qvx6))
-- **qs**: Corregida vulnerabilidad DoS por bypass de `arrayLimit` en el parseo con comas ([GHSA-w7fw-mjwx-w883](https://github.com/advisories/GHSA-w7fw-mjwx-w883))
+- **minimatch**: Pinned to `10.2.2` via `overrides` in `package.json` to fix ReDoS vulnerability with repeated wildcards in patterns ([GHSA-3ppc-4f35-3m26](https://github.com/advisories/GHSA-3ppc-4f35-3m26)) — affected transitive dependencies of `eslint`, `jest`, `nodemon` and `@stoplight/spectral-*`
+- **ajv**: Fixed ReDoS vulnerability when using the `$data` option ([GHSA-2g4f-4pwh-qvx6](https://github.com/advisories/GHSA-2g4f-4pwh-qvx6))
+- **qs**: Fixed DoS vulnerability via `arrayLimit` bypass in comma-based parsing ([GHSA-w7fw-mjwx-w883](https://github.com/advisories/GHSA-w7fw-mjwx-w883))
 
 ### Dependencies
 
