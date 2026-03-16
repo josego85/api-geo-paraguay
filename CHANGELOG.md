@@ -5,7 +5,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
-## [Unreleased]
+## [2.20.11] - 2026-03-16
 
 ### Security
 
