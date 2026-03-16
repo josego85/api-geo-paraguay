@@ -11,48 +11,48 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   message: 'Too many requests, please try again later.',
 });
+
+// Instantiate middleware handlers once at module load (not per request).
+const helmetMiddleware = helmet({
+  referrerPolicy: { policy: 'strict-origin' },
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'"],
+      imgSrc: ["'self'"],
+    },
+  },
+  frameguard: { action: 'DENY' },
+  permittedCrossDomainPolicies: { permittedPolicies: 'none' },
+});
+
+const expectCtMiddleware = expectCt({
+  enforce: true,
+  maxAge: 86400, // 24 hours
+});
+
+const featurePolicyMiddleware = featurePolicy({
+  features: {
+    fullscreen: ["'self'"],
+    vibrate: ["'none'"],
+    syncXhr: ["'none'"],
+    geolocation: ["'none'"],
+    camera: ["'none'"],
+    microphone: ["'none'"],
+  },
+});
+
+// Wrap a middleware so it skips /api-docs routes.
+const skipApiDocs = (middleware) => (req, res, next) => {
+  if (req.path.startsWith('/api-docs')) return next();
+  return middleware(req, res, next);
+};
+
 const securityMiddleware = (app) => {
-  app.use((req, res, next) => {
-    if (req.path.startsWith('/api-docs')) {
-      return next();
-    }
-
-    // Security headers using Helmet
-    app.use(helmet());
-    app.use(helmet.referrerPolicy({ policy: 'strict-origin' }));
-    app.use(
-      helmet.contentSecurityPolicy({
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: ["'self'"],
-          styleSrc: ["'self'"],
-          imgSrc: ["'self'"],
-        },
-      }),
-    );
-    app.use(
-      expectCt({
-        enforce: true,
-        maxAge: 123,
-      }),
-    );
-    app.use(helmet.frameguard({ action: 'DENY' }));
-    app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' }));
-    app.use(
-      featurePolicy({
-        features: {
-          fullscreen: ["'self'"],
-          vibrate: ["'none'"],
-          syncXhr: ["'none'"],
-          geolocation: ["'none'"],
-          camera: ["'none'"],
-          microphone: ["'none'"],
-        },
-      }),
-    );
-
-    return next();
-  });
+  app.use(skipApiDocs(helmetMiddleware));
+  app.use(skipApiDocs(expectCtMiddleware));
+  app.use(skipApiDocs(featurePolicyMiddleware));
 
   app.use(
     cors({

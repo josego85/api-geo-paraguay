@@ -5,6 +5,25 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [2.20.11] - 2026-03-16
+
+### Security
+
+- **security middleware**: Fixed critical bug where `app.use()` was called inside a per-request handler, causing middleware accumulation on every request (memory leak) and security headers never being applied to the current request
+- **helmet**: Consolidated redundant separate `helmet()`, `helmet.referrerPolicy()`, `helmet.contentSecurityPolicy()`, and `helmet.frameguard()` calls into a single `helmet({...})` configuration
+- **expectCt**: Fixed `maxAge` from placeholder value `123` (2 min) to `86400` (24 hours)
+- **flatted**: Pinned to `3.4.1` via `overrides` to fix unbounded recursion DoS in `parse()` ([GHSA-25h7-pfq9-p65f](https://github.com/advisories/GHSA-25h7-pfq9-p65f))
+- **minimatch**: Updated pin from `10.2.2` to `10.2.4` to fix two ReDoS vulnerabilities ([GHSA-7r86-cg39-jmmj](https://github.com/advisories/GHSA-7r86-cg39-jmmj), [GHSA-23c5-xmqv-rm74](https://github.com/advisories/GHSA-23c5-xmqv-rm74))
+- **rollup**: Pinned to `4.59.0` via `overrides` to fix Arbitrary File Write via Path Traversal ([GHSA-mw96-cpmx-2vgc](https://github.com/advisories/GHSA-mw96-cpmx-2vgc))
+- **serialize-javascript**: Pinned to `7.0.4` via `overrides` to fix RCE via `RegExp.flags` ([GHSA-5c6j-r48x-rmvq](https://github.com/advisories/GHSA-5c6j-r48x-rmvq))
+- **express-rate-limit**: `8.2.1` → `8.2.2` ([#120](https://github.com/josego85/api-geo-paraguay/pull/120))
+
+### Dependencies
+
+- **copy-webpack-plugin**: `13.0.1` → `14.0.0` (resolves `serialize-javascript` RCE chain)
+
+---
+
 ## [2.20.10] - 2026-02-23
 
 ### Security
