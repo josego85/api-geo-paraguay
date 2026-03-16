@@ -16,6 +16,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 - **minimatch**: Updated pin from `10.2.2` to `10.2.4` to fix two ReDoS vulnerabilities ([GHSA-7r86-cg39-jmmj](https://github.com/advisories/GHSA-7r86-cg39-jmmj), [GHSA-23c5-xmqv-rm74](https://github.com/advisories/GHSA-23c5-xmqv-rm74))
 - **rollup**: Pinned to `4.59.0` via `overrides` to fix Arbitrary File Write via Path Traversal ([GHSA-mw96-cpmx-2vgc](https://github.com/advisories/GHSA-mw96-cpmx-2vgc))
 - **serialize-javascript**: Pinned to `7.0.4` via `overrides` to fix RCE via `RegExp.flags` ([GHSA-5c6j-r48x-rmvq](https://github.com/advisories/GHSA-5c6j-r48x-rmvq))
+- **express-rate-limit**: `8.2.1` → `8.2.2` ([#120](https://github.com/josego85/api-geo-paraguay/pull/120))
 
 ### Dependencies
 
