@@ -5,6 +5,13 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ---
 
+## [Unreleased]
+
+### Security
+
+- Updated vulnerable direct dependencies and transitive overrides to patched compatible versions; refreshed `package-lock.json`.
+- Pinned the Spectral ruleset to preserve OpenAPI validation with the patched dependency tree.
+
 ## [2.20.11] - 2026-03-16
 
 ### Security
