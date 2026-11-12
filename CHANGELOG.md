@@ -9,8 +9,9 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ### Security
 
-- Updated vulnerable direct dependencies and transitive overrides to patched compatible versions; refreshed `package-lock.json`.
-- Pinned the Spectral ruleset to preserve OpenAPI validation with the patched dependency tree.
+- Patched runtime dependencies: `mongoose` 8.19.1 → 8.24.9 ([CVE-2026-42334](https://github.com/advisories/GHSA-wpg9-53fq-2r8h)); `mysql2` 3.16.1 → 3.24.6 ([GHSA-3f6p-5ww8-9rcr](https://github.com/advisories/GHSA-3f6p-5ww8-9rcr), [GHSA-rgwj-5xj2-c3m3](https://github.com/advisories/GHSA-rgwj-5xj2-c3m3)); and `js-yaml` 4.1.1 → 4.3.2 ([CVE-2026-59870](https://github.com/advisories/GHSA-5p4m-2wfm-xmqj)).
+- Updated `express-rate-limit` 8.2.2 → 8.7.4, `graphql-yoga` 5.18.0 → 5.24.6, `joi` 18.0.2 → 18.3.2, and `typeorm` 0.3.28 → 0.3.31 to address reported advisories.
+- Patched transitive dependencies and overrides, including `minimatch` 10.2.4 → 11.0.8 ([CVE-2026-118764](https://github.com/advisories/GHSA-g3hv-75wg-m249)); refreshed `package-lock.json` and pinned the Spectral ruleset for OpenAPI compatibility.
 
 ## [2.20.11] - 2026-03-16
 
