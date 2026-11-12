@@ -31,7 +31,7 @@ npm run dev
 
 ### Requirements
 
-- Docker v27.5.1 or higher
+- Docker v29.9.3 or higher
 - Docker Compose
 
 ### Start Development Environment

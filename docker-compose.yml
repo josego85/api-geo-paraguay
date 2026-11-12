@@ -46,7 +46,7 @@ services:
       - app-network
 
   database:
-    image: mysql:8.0.45
+    image: mysql:8.0.46
     container_name: database-api-geo-paraguay
     restart: always
     environment:
@@ -70,7 +70,7 @@ services:
       - app-network
 
   mongodb:
-    image: mongo:8.0.18-noble
+    image: mongo:8.0.38-noble
     container_name: mongodb-api-geo-paraguay
     restart: always
     ports:
@@ -81,7 +81,7 @@ services:
       - app-network
 
   cache:
-    image: redis:8.2.3-alpine
+    image: redis:8.2.11-alpine
     container_name: cache-api-geo-paraguay
     restart: always
     ports:
