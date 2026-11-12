@@ -32,7 +32,7 @@ services:
       - app-network
 
   diun:
-    image: crazymax/diun:4.30.0
+    image: crazymax/diun:4.33.1
     command: serve --config /docker/dev/diun/diun.yml
     profiles:
       - tools
