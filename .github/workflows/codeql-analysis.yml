@@ -36,7 +36,7 @@ jobs:
           config-file: ./.github/codeql-config.yml
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@89a39a4e59826350b863aa6b6252a07ad50cf83e # v4.32.4
+        uses: github/codeql-action/autobuild@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@89a39a4e59826350b863aa6b6252a07ad50cf83e # v4.32.4
